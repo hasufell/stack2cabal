@@ -1,0 +1,40 @@
+cabal-version:       2.2
+name:                stackage-to-hackage
+version:             0.0.0
+synopsis:            Convert stack.yaml to cabal.project + cabal.project.freeze
+license:             GPL
+license-file:        LICENSE
+author:              Tseen She
+maintainer:          Tseen She
+copyright:           (c) 2018 Tseen She
+bug-reports:         https://gitlab.com/tseenshe/stackage-to-hackage/merge_requests
+tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.2
+category:            Building
+description:
+  This is a small tool to create a cabal.project and cabal.project.freeze file
+  for an existing Haskell application that has its build plan defined for
+  the stack build tool.
+
+source-repository head
+  type: git
+  location: https://gitlab.com/tseenshe/stackage-to-hackage
+
+-- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
+
+common deps
+  build-depends:    , base ^>= 4.11.1.0 || ^>= 4.12.0.0
+  ghc-options:        -Wall
+                      -Werror=missing-home-modules
+  default-language:   Haskell2010
+
+executable stackage-to-hackage
+  import:             deps
+  hs-source-dirs:     src
+  main-is:            Main.hs
+  build-depends:    , bytestring           ^>= 0.10.8.2
+                    , containers           ^>= 0.6.0.1
+                    , extra                ^>= 1.6.13
+                    , aeson                ^>= 1.4.1.0
+                    , optparse-applicative ^>= 0.14.3.0
+                    , text                 ^>= 1.2.3.1
+  ghc-options:        -threaded

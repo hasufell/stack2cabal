@@ -1,0 +1,10 @@
+-- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
+packages:
+ ./
+
+--optimization:  2
+--package *
+--  optimization: 2
+
+package aeson
+  flags: +cffi
