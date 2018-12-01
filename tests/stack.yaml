@@ -1,0 +1,10 @@
+resolver: snapshot.yaml
+packages:
+- 'foo-core'
+- 'foo-logging'
+- 'foo-util'
+
+# https://docs.haskellstack.org/en/stable/yaml_configuration/#ghc-options
+# to enable optimisations for all deps, use $everything
+ghc-options:
+  "$everything": -O2

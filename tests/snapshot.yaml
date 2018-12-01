@@ -1,0 +1,33 @@
+resolver: lts-12.20
+compiler: ghc-8.4.4
+
+name: foo-0.0.1
+
+packages:
+  - base58-bytestring-0.1.0
+  - katip-0.6.0.0
+  - luhn-0.2
+  - natural-numbers-0.1.2.0
+  - secp256k1-0.5.2
+  - serialise-0.2.0.0
+
+  - aeson-1.4.1.0
+  - lens-labels-0.3.0.1
+  - proto-lens-0.4.0.1
+  - proto-lens-runtime-0.4.0.2
+
+  - git: https://github.com/TaktInc/freer.git
+    commit: b1e4911832ad12ef0b9b23883548dcf44ea3bd59
+
+  - git: https://github.com/brendanhay/gogol.git
+    commit: c2eba2df7ed69e35835e56f9827a224e2616d208
+    subdirs:
+      - gogol
+      - core
+
+  - git: https://github.com/pcapriotti/optparse-applicative.git
+    commit: 2abc5b01ba45e651daef4e0e40bfcb5958f54110
+
+flags:
+  aeson:
+    cffi: true # Enable optimized C code for Aeson

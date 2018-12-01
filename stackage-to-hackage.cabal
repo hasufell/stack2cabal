@@ -2,11 +2,11 @@ cabal-version:       2.2
 name:                stackage-to-hackage
 version:             0.0.0
 synopsis:            Convert stack.yaml to cabal.project + cabal.project.freeze
-license:             GPL
+license:             GPL-3.0-or-later
 license-file:        LICENSE
 author:              Tseen She
 maintainer:          Tseen She
-copyright:           (c) 2018 Tseen She
+copyright:           2018 Tseen She
 bug-reports:         https://gitlab.com/tseenshe/stackage-to-hackage/merge_requests
 tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.2
 category:            Building
@@ -31,10 +31,9 @@ executable stackage-to-hackage
   import:             deps
   hs-source-dirs:     src
   main-is:            Main.hs
+  other-modules:      Stackage
   build-depends:    , bytestring           ^>= 0.10.8.2
-                    , containers           ^>= 0.6.0.1
-                    , extra                ^>= 1.6.13
-                    , aeson                ^>= 1.4.1.0
-                    , optparse-applicative ^>= 0.14.3.0
                     , text                 ^>= 1.2.3.1
+                    , optparse-applicative ^>= 0.14.3.0
+                    , HsYAML               ^>= 0.1.1.2
   ghc-options:        -threaded
