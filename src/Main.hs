@@ -3,7 +3,6 @@
 {-# LANGUAGE OverloadedStrings     #-}
 {-# LANGUAGE TypeApplications      #-}
 
-import           Control.Applicative ((<|>))
 import qualified Data.ByteString     as BS
 import           Data.YAML           (decodeStrict)
 import qualified Options.Applicative as Opts
@@ -15,9 +14,7 @@ main :: IO ()
 main = do
   Options{input} <- Opts.execParser $
                    Opts.info (Opts.helper <*> optionsParser) Opts.fullDesc
-  text <- case input of
-            FileInput file -> BS.readFile file
-            StdInput       -> BS.getContents
+  text <- BS.readFile input
   putStrLn $ show (decodeStrict @Stack text)
   -- TODO parse the stackage file
   -- TODO parse the resolver
@@ -26,15 +23,12 @@ main = do
   -- TODO print out
 
 data Options = Options
-  { input      :: Input
+  { input      :: FilePath
   }
-data Input = FileInput FilePath | StdInput
 optionsParser :: Opts.Parser Options
 optionsParser = Options
-  <$> (file <|> pure StdInput)
+  <$> file
   where
-    file = FileInput <$> Opts.strOption
-             (  Opts.long "file"
-             <> Opts.short 'f'
-             <> Opts.metavar "FILENAME"
+    file = Opts.strArgument
+             (  Opts.metavar "FILENAME"
              <> Opts.help "Input stack.yaml or snapshot.yaml")
