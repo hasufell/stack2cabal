@@ -9,7 +9,8 @@ import           Data.YAML           (decodeStrict)
 import qualified Options.Applicative as Opts
 import           Stackage            (Stack)
 
--- cabal v2-run stackage-to-hackage -- -f tests/stack.yaml
+-- MANUAL TEST:
+-- cabal v2-run stackage-to-hackage -- -f tests/snapshot/stack.yaml
 main :: IO ()
 main = do
   Options{input} <- Opts.execParser $

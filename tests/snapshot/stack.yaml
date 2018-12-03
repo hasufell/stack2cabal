@@ -8,3 +8,10 @@ packages:
 # to enable optimisations for all deps, use $everything
 ghc-options:
   "$everything": -O2
+
+flags:
+  wibble:
+    cffi: true
+  wobble:
+    iama: false
+    fish: true
