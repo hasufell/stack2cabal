@@ -1,11 +1,13 @@
-{-# LANGUAGE DuplicateRecordFields #-}
-{-# LANGUAGE NamedFieldPuns        #-}
-{-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE DuplicateRecordFields      #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE NamedFieldPuns             #-}
+{-# LANGUAGE OverloadedStrings          #-}
 
 module Stackage where
 
 import           Control.Applicative          ((<|>))
-import           Data.Map.Strict              (lookupMin)
+import           Data.Map.Strict              (Map, empty)
 import           Data.Text                    (Text, isSuffixOf, unpack)
 import           Data.YAML
 import           Distribution.Parsec.Class    (simpleParsec)
@@ -18,24 +20,28 @@ data Stack = Stack
   , compiler  :: Maybe Ghc
   , packages  :: [Package]
   , extraDeps :: [Dep]
-  , flags     :: [Flags]
+  , flags     :: Flags
   -- TODO ghcOptions
-  }
+  } deriving (Show)
 
 newtype Ghc = Ghc Text
+  deriving (Show)
+  deriving newtype (FromYAML)
 
 data Package = Local FilePath
              | Remote Git Commit [SubDir]
+             deriving (Show)
 
 data Resolver = Resolver
   { resolver :: ResolverRef
   , compiler :: Maybe Ghc
   , packages :: [Dep]
-  , flags    :: [Flags]
-  }
+  , flags    :: Flags
+  } deriving (Show)
 
 data ResolverRef = Canned LTS
                  | Snapshot FilePath
+                 deriving (Show)
                  -- TODO: remote snapshots
 
 -- http://hackage.haskell.org/package/Cabal-2.4.1.0/docs/Distribution-Types-PackageId.html#t:PackageIdentifier
@@ -43,17 +49,28 @@ data ResolverRef = Canned LTS
 
 data Dep = Hackage PackageIdentifier
          | GitRepo Git Commit [SubDir]
+         deriving (Show)
 
-newtype Git = Git Text -- URL
-newtype Commit = Commit Text -- hash
+newtype Git = Git Text
+  deriving (Show)
+  deriving newtype (FromYAML) -- URL
+newtype Commit = Commit Text
+  deriving (Show)
+  deriving newtype (FromYAML) -- hash
 newtype SubDir = SubDir Text
+  deriving (Show)
+  deriving newtype (FromYAML)
 
-data Flags = Flags Text [Flag] -- PackageName
-data Flag = Flag Text Bool
+newtype Flags = Flags (Map PkgName (Map FlagName Bool))
+              deriving (Show)
+              deriving newtype (FromYAML)
+
+type PkgName = Text
+type FlagName = Text
 
 -- Canned resolvers point to LTS or snapshots here
 -- https://github.com/commercialhaskell/stackage-snapshots/blob/master/lts/12/20.yaml
-newtype LTS = LTS Text
+newtype LTS = LTS Text deriving (Show)
 
 --------------------------------------------------------------------------------
 -- YAML boilerplate
@@ -61,23 +78,16 @@ newtype LTS = LTS Text
 instance FromYAML Stack where
    parseYAML = withMap "Stack" $ \m -> Stack
        <$> m .: "resolver"
-       <*> m .: "compiler"
-       <*> m .: "packages"
-       <*> m .: "extra-deps"
-       <*> m .: "flags"
-
-instance FromYAML Ghc where
-  parseYAML = withStr "Ghc" $ pure . Ghc
+       <*> m .:? "compiler"
+       <*> m .:? "packages" .!= mempty
+       <*> m .:? "extra-deps" .!= mempty
+       <*> m .:? "flags" .!= (Flags empty)
 
 instance FromYAML ResolverRef where
   parseYAML = withStr "ResolverRef" $ \s ->
     if isSuffixOf ".yaml" s
     then (pure . Snapshot . unpack) s
     else (pure . Canned . LTS) s
-
--- instance FromYAML Resolver where
---   parseYAML = withMap "Resolver" $ \m -> Resolver
---     <$> m .: "resolver"
 
 instance FromYAML Dep where
   parseYAML n = (hackage n) <|> (gitrepo n)
@@ -89,16 +99,6 @@ instance FromYAML Dep where
                                   <*> m .: "commit"
                                   <*> m .: "subdirs"
 
-instance FromYAML Flags where
-  parseYAML = withMap "Flags" $ \s ->
-    do
-      -- how can I get the key here?
-      (_, fs) <- (hoistMaybe . lookupMin) s
-      (Flags "FIXME") <$> (parseYAML fs)
-
-instance FromYAML Flag where
-  parseYAML = undefined
-
 instance FromYAML Package where
    parseYAML n = (remote n) <|> (local n)
      where
@@ -107,12 +107,3 @@ instance FromYAML Package where
                                          <*> m .: "commit"
                                          <*> m .: "subdirs"
        local = withStr "Local" $ pure . Local . unpack
-
-instance FromYAML Git where
-  parseYAML = undefined
-
-instance FromYAML Commit where
-  parseYAML = undefined
-
-instance FromYAML SubDir where
-  parseYAML = undefined

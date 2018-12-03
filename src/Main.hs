@@ -1,14 +1,15 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE NamedFieldPuns        #-}
 {-# LANGUAGE OverloadedStrings     #-}
+{-# LANGUAGE TypeApplications      #-}
 
-import           Control.Applicative   ((<|>))
-import qualified Data.ByteString       as BS
-import           Data.ByteString.Char8 (putStrLn)
-import qualified Options.Applicative   as Opts
-import           Prelude               hiding (map, putStrLn)
+import           Control.Applicative ((<|>))
+import qualified Data.ByteString     as BS
+import           Data.YAML           (decodeStrict)
+import qualified Options.Applicative as Opts
+import           Stackage            (Stack)
 
-
+-- cabal v2-run stackage-to-hackage -- -f tests/stack.yaml
 main :: IO ()
 main = do
   Options{input} <- Opts.execParser $
@@ -16,7 +17,7 @@ main = do
   text <- case input of
             FileInput file -> BS.readFile file
             StdInput       -> BS.getContents
-  putStrLn text
+  putStrLn $ show (decodeStrict @Stack text)
   -- TODO parse the stackage file
   -- TODO parse the resolver
   -- TODO merge nested resolvers using precedence rules
