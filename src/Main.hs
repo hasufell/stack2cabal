@@ -1,15 +1,12 @@
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE NamedFieldPuns        #-}
 {-# LANGUAGE OverloadedStrings     #-}
-{-# LANGUAGE NamedFieldPuns #-}
 
-import           Data.YAML
-import           Control.Applicative ((<|>))
-import qualified Data.ByteString     as BS
-import           Data.List           (intersect, nub, (\\))
-import qualified Options.Applicative as Opts
-import           Prelude             hiding (map, putStrLn)
-import           Data.Text           (Text, intercalate, map, pack)
-import           Data.Text.IO        (putStrLn)
+import           Control.Applicative   ((<|>))
+import qualified Data.ByteString       as BS
+import           Data.ByteString.Char8 (putStrLn)
+import qualified Options.Applicative   as Opts
+import           Prelude               hiding (map, putStrLn)
 
 
 main :: IO ()
@@ -19,7 +16,7 @@ main = do
   text <- case input of
             FileInput file -> BS.readFile file
             StdInput       -> BS.getContents
-  BS.putStrLn text
+  putStrLn text
   -- TODO parse the stackage file
   -- TODO parse the resolver
   -- TODO merge nested resolvers using precedence rules
