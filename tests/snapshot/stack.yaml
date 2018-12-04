@@ -4,11 +4,26 @@ packages:
 - 'foo-logging'
 - 'foo-util'
 
+# a couple of local overrides, just for fun
+- location:
+    git: 'https://github.com/TaktInc/freer.git'
+    commit: b1e4911832ad12ef0b9b23883548dcf44ea3bd59
+  extra-dep: true
+
+- location:
+    git: https://github.com/brendanhay/gogol.git
+    commit: c2eba2df7ed69e35835e56f9827a224e2616d208
+    subdirs:
+      - gogol
+      - core
+  extra-dep: true
+
 # https://docs.haskellstack.org/en/stable/yaml_configuration/#ghc-options
 # to enable optimisations for all deps, use $everything
 ghc-options:
   "$everything": -O2
 
+# some more local overrides of the snapshot, for fun
 flags:
   wibble:
     cffi: true

@@ -4,13 +4,16 @@
 {-# LANGUAGE NamedFieldPuns             #-}
 {-# LANGUAGE OverloadedStrings          #-}
 
+-- Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
+-- the actual ADT, but stack isn't available as a library that we can build from
+-- Hackage.
 module Stackage where
 
 import           Control.Applicative          ((<|>))
 import           Data.Map.Strict              (Map, empty)
 import           Data.Text                    (Text, isSuffixOf, unpack)
 import           Data.YAML
-import           Distribution.Parsec.Class    (simpleParsec)
+import           Distribution.Text            (simpleParse)
 import           Distribution.Types.PackageId (PackageIdentifier)
 --import           Distribution.Types.PackageName (PackageName)
 import           Options.Applicative.Internal (hoistMaybe)
@@ -28,19 +31,25 @@ newtype Ghc = Ghc Text
   deriving (Show)
   deriving newtype (FromYAML)
 
-data Package = Local FilePath
-             | Remote Git Commit [SubDir]
-             deriving (Show)
+data Package = Local Text
+             | Location Git
+               deriving (Show)
+
+data Git = Git Repo Commit [Subdir] -- https://github.com/haskell-hvr/HsYAML/pull/5 for NonEmpty
+           deriving (Show)
+type Repo = Text
+type Commit = Text
+type Subdir = Text
 
 data Resolver = Resolver
-  { resolver :: ResolverRef
+  { resolver :: Maybe ResolverRef
   , compiler :: Maybe Ghc
   , packages :: [Dep]
   , flags    :: Flags
   } deriving (Show)
 
 data ResolverRef = Canned LTS
-                 | Snapshot FilePath
+                 | Snapshot Text
                  deriving (Show)
                  -- TODO: remote snapshots
 
@@ -48,18 +57,8 @@ data ResolverRef = Canned LTS
 -- http://hackage.haskell.org/package/Cabal-2.4.1.0/docs/Distribution-Parsec-Class.html#v:simpleParsec
 
 data Dep = Hackage PackageIdentifier
-         | GitRepo Git Commit [SubDir]
+         | SourceDep Git
          deriving (Show)
-
-newtype Git = Git Text
-  deriving (Show)
-  deriving newtype (FromYAML) -- URL
-newtype Commit = Commit Text
-  deriving (Show)
-  deriving newtype (FromYAML) -- hash
-newtype SubDir = SubDir Text
-  deriving (Show)
-  deriving newtype (FromYAML)
 
 newtype Flags = Flags (Map PkgName (Map FlagName Bool))
               deriving (Show)
@@ -83,27 +82,35 @@ instance FromYAML Stack where
        <*> m .:? "extra-deps" .!= mempty
        <*> m .:? "flags" .!= (Flags empty)
 
+instance FromYAML Git where
+  parseYAML = withMap "Git" $ \m -> Git
+    <$> m .: "git"
+    <*> m .: "commit"
+    <*> m .:? "subdirs" .!= (pure ".")
+
 instance FromYAML ResolverRef where
   parseYAML = withStr "ResolverRef" $ \s ->
     if isSuffixOf ".yaml" s
-    then (pure . Snapshot . unpack) s
+    then (pure . Snapshot) s
     else (pure . Canned . LTS) s
 
-instance FromYAML Dep where
-  parseYAML n = (hackage n) <|> (gitrepo n)
-    where
-      hackage = withStr "Hackage" $ \s ->
-        Hackage <$> (hoistMaybe . simpleParsec . unpack) s
-      gitrepo = withMap "GitRepo" $ \m -> GitRepo
-                                  <$> m .: "git"
-                                  <*> m .: "commit"
-                                  <*> m .: "subdirs"
-
 instance FromYAML Package where
-   parseYAML n = (remote n) <|> (local n)
+  parseYAML n = (local n) <|> (location n)
+    where
+      local = withStr "Local" $ pure . Local
+      location = withMap "Location" $ \m ->
+        Location <$> m .: "location"
+
+instance FromYAML Dep where
+   parseYAML n = (hackage n) <|> (source n)
      where
-       remote = withMap "Remote" $ \m -> Remote
-                                         <$> m .: "git"
-                                         <*> m .: "commit"
-                                         <*> m .: "subdirs"
-       local = withStr "Local" $ pure . Local . unpack
+       hackage = withStr "Hackage" $ \s ->
+         Hackage <$> (hoistMaybe . simpleParse . unpack) s
+       source n' = SourceDep <$> parseYAML n'
+
+instance FromYAML Resolver where
+  parseYAML = withMap "Resolver" $ \m -> Resolver
+    <$> m .:? "resolver"
+    <*> m .:? "compiler"
+    <*> m .:? "packages" .!= mempty
+    <*> m .:? "flags" .!= (Flags empty)

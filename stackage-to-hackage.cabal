@@ -32,10 +32,11 @@ executable stackage-to-hackage
   hs-source-dirs:     src
   main-is:            Main.hs
   other-modules:      Stackage
-  build-depends:    , bytestring           ^>= 0.10.8.2
-                    , containers           ^>= 0.6.0.1
-                    , text                 ^>= 1.2.3.1
-                    , optparse-applicative ^>= 0.14.3.0
+  build-depends:    , Cabal                ^>= 2.4.1.0
                     , HsYAML               ^>= 0.1.1.2
-                    , Cabal                ^>= 2.4.1.0
+                    , bytestring           ^>= 0.10.8.2
+                    , containers           ^>= 0.6.0.1
+                    , filepath             ^>= 1.4.2.1
+                    , optparse-applicative ^>= 0.14.3.0
+                    , text                 ^>= 1.2.3.1
   ghc-options:        -threaded
