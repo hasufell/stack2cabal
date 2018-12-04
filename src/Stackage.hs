@@ -11,12 +11,14 @@ module Stackage where
 
 import           Control.Applicative          ((<|>))
 import           Data.Map.Strict              (Map, empty)
-import           Data.Text                    (Text, isSuffixOf, unpack)
+import           Data.Text                    (Text, isSuffixOf, takeWhile,
+                                               unpack)
 import           Data.YAML
 import           Distribution.Text            (simpleParse)
 import           Distribution.Types.PackageId (PackageIdentifier)
 --import           Distribution.Types.PackageName (PackageName)
 import           Options.Applicative.Internal (hoistMaybe)
+import           Prelude                      hiding (takeWhile)
 
 data Stack = Stack
   { resolver  :: ResolverRef
@@ -48,7 +50,7 @@ data Resolver = Resolver
   , flags    :: Flags
   } deriving (Show)
 
-data ResolverRef = Canned LTS
+data ResolverRef = Canned Text
                  | Snapshot Text
                  deriving (Show)
                  -- TODO: remote snapshots
@@ -67,9 +69,16 @@ newtype Flags = Flags (Map PkgName (Map FlagName Bool))
 type PkgName = Text
 type FlagName = Text
 
--- Canned resolvers point to LTS or snapshots here
--- https://github.com/commercialhaskell/stackage-snapshots/blob/master/lts/12/20.yaml
-newtype LTS = LTS Text deriving (Show)
+-- the format used at https://github.com/commercialhaskell/stackage-snapshots
+-- which is similar to the Resolver format.
+data NewResolver = NewResolver
+  { compiler :: Ghc
+  , packages :: [NewDep]
+  , flags    :: Flags
+  } deriving (Show)
+
+data NewDep = NewDep PackageIdentifier
+              deriving (Show)
 
 --------------------------------------------------------------------------------
 -- YAML boilerplate
@@ -92,7 +101,7 @@ instance FromYAML ResolverRef where
   parseYAML = withStr "ResolverRef" $ \s ->
     if isSuffixOf ".yaml" s
     then (pure . Snapshot) s
-    else (pure . Canned . LTS) s
+    else (pure . Canned) s
 
 instance FromYAML Package where
   parseYAML n = (local n) <|> (location n)
@@ -112,5 +121,18 @@ instance FromYAML Resolver where
   parseYAML = withMap "Resolver" $ \m -> Resolver
     <$> m .:? "resolver"
     <*> m .:? "compiler"
+    <*> m .:? "packages" .!= mempty
+    <*> m .:? "flags" .!= (Flags empty)
+
+instance FromYAML NewDep where
+   parseYAML = withMap "NewDep" $ \m -> hackage' =<< m .: "hackage"
+     where
+       hackage' = \s -> NewDep <$>
+         (hoistMaybe . simpleParse . unpack)
+         (takeWhile ('@' /=) s)
+
+instance FromYAML NewResolver where
+  parseYAML = withMap "NewResolver" $ \m -> NewResolver
+    <$> m .: "compiler"
     <*> m .:? "packages" .!= mempty
     <*> m .:? "flags" .!= (Flags empty)

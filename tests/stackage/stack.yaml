@@ -1,0 +1,5 @@
+resolver: lts-12.20
+packages:
+- 'foo-core'
+- 'foo-logging'
+- 'foo-util'
