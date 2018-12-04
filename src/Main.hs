@@ -8,6 +8,7 @@ import           Data.Maybe            (listToMaybe)
 import           Data.Text             (replace, unpack)
 import           Data.YAML             (FromYAML, decodeStrict)
 import qualified Network.Http.Client   as Http
+import           OpenSSL               (withOpenSSL)
 import qualified Options.Applicative   as Opts
 import           Stackage              (Dep (..), NewDep (..), NewResolver (..),
                                         Resolver (..), ResolverRef (..),
@@ -18,7 +19,7 @@ import           System.FilePath       (takeDirectory, (</>))
 -- cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
 -- cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
 main :: IO ()
-main = do
+main = withOpenSSL $ do
   Options{input} <- Opts.execParser $
                    Opts.info (Opts.helper <*> optionsParser) Opts.fullDesc
   text <- BS.readFile input
@@ -45,7 +46,6 @@ unroll :: Stack -> IO [Resolver]
 unroll Stack{resolver} = undefined
 
 -- TODO cache the LTS files
--- TODO withOpenSSL
 resolve :: FilePath -> ResolverRef -> IO Resolver
 resolve _ (Canned lts) = do
   let path = replace "." "/" (replace "-" "/" lts)

@@ -34,6 +34,7 @@ executable stackage-to-hackage
   other-modules:      Stackage
   build-depends:    , Cabal                ^>= 2.4.1.0
                     , HsYAML               ^>= 0.1.1.2
+                    , HsOpenSSL            ^>= 0.11.4.15
                     , bytestring           ^>= 0.10.8.2
                     , http-streams         ^>= 0.8.6.1
                     , containers           ^>= 0.6.0.1
