@@ -2,17 +2,17 @@
 {-# LANGUAGE NamedFieldPuns        #-}
 {-# LANGUAGE OverloadedStrings     #-}
 
-import qualified Data.ByteString      as BS
-import           Data.ByteString.Lazy (toStrict)
-import           Data.Maybe           (listToMaybe)
-import           Data.Text            (replace, unpack)
-import           Data.YAML            (FromYAML, decodeStrict)
-import           Network.HTTP.Conduit (simpleHttp)
-import qualified Options.Applicative  as Opts
-import           Stackage             (Dep (..), NewDep (..), NewResolver (..),
-                                       Resolver (..), ResolverRef (..),
-                                       Stack (..))
-import           System.FilePath      (takeDirectory, (</>))
+import qualified Data.ByteString       as BS
+import           Data.ByteString.Char8 (pack)
+import           Data.Maybe            (listToMaybe)
+import           Data.Text             (replace, unpack)
+import           Data.YAML             (FromYAML, decodeStrict)
+import qualified Network.Http.Client   as Http
+import qualified Options.Applicative   as Opts
+import           Stackage              (Dep (..), NewDep (..), NewResolver (..),
+                                        Resolver (..), ResolverRef (..),
+                                        Stack (..))
+import           System.FilePath       (takeDirectory, (</>))
 
 -- MANUAL TEST:
 -- cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
@@ -25,7 +25,7 @@ main = do
   stack @ Stack{resolver} <- readStack text
   putStrLn $ show stack
   stackage <- resolve (takeDirectory input) resolver
-  putStrLn $ show stackage
+  putStrLn $ take 1000 $ show stackage
 
   -- TODO merge nested resolvers using precedence rules
   -- TODO convert to cabal format
@@ -44,14 +44,15 @@ decode1Strict text = do
 unroll :: Stack -> IO [Resolver]
 unroll Stack{resolver} = undefined
 
--- TODO try out http://hackage.haskell.org/package/http-io-streams-0.1.0.0/docs/Network-Http-Client.html#g:6
 -- TODO cache the LTS files
+-- TODO withOpenSSL
 resolve :: FilePath -> ResolverRef -> IO Resolver
 resolve _ (Canned lts) = do
   let path = replace "." "/" (replace "-" "/" lts)
-      url = "https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/" <> (unpack path) <> ".yaml"
-  text <- simpleHttp url
-  either fail pure $ new2old <$> (decode1Strict $ toStrict text)
+      url = "https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/" <> unpack path <> ".yaml"
+  putStrLn ("Downloading LTS " <> url)
+  text <- Http.get (pack url) Http.concatHandler
+  either fail pure $ new2old <$> (decode1Strict $ text)
 resolve base (Snapshot path) = do
   text <- BS.readFile (base </> (unpack path))
   either fail pure $ decode1Strict text
