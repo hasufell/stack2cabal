@@ -3,3 +3,7 @@ packages:
 - 'foo-core'
 - 'foo-logging'
 - 'foo-util'
+
+extra-deps:
+  - natural-numbers-0.1.2.0
+  - aeson-1.4.1.0

@@ -18,6 +18,19 @@ packages:
       - core
   extra-dep: true
 
+# a mixture of overrides and LTS upgrades
+extra-deps:
+  - natural-numbers-0.1.2.0
+  - secp256k1-0.5.2
+  - base58-bytestring-0.1.0
+  - katip-0.6.0.0
+  - serialise-0.2.0.0
+  - aeson-1.4.1.0
+  - luhn-0.2
+  - lens-labels-0.3.0.1
+  - proto-lens-0.4.0.1
+  - proto-lens-runtime-0.4.0.2
+  
 # https://docs.haskellstack.org/en/stable/yaml_configuration/#ghc-options
 # to enable optimisations for all deps, use $everything
 ghc-options:
