@@ -71,6 +71,7 @@ instance Semigroup Resolver where
   (Resolver r c p f) <> (Resolver r' c' p' f') =
     Resolver (r <|> r') (c <|> c') (p <> p') (f <> f')
 
+-- TODO: remote ResolverRefs
 data ResolverRef = Canned Text
                  | Snapshot Text
                  deriving (Show)
@@ -139,7 +140,6 @@ resolve _ (Canned lts) = do
 
       update file content = unlessM (doesFileExist file) (BS.writeFile file content)
 
--- TODO: remote snapshots
 resolve (Just base) (Snapshot path) = do
   let file = base </> (unpack path)
       dir = takeDirectory file

@@ -22,10 +22,6 @@ import           Prelude                        hiding (concat, head, lookup,
 import           Stackage
 import           System.FilePath                (takeDirectory, (</>))
 
--- TODO create a git repo with freeze files (constraints+flags) for all the LTS
-
--- TODO use https://www.well-typed.com/blog/2015/03/qualified-goals/
-
 {- MANUAL TEST:
   LC_ALL=C cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
   LC_ALL=C cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
@@ -67,7 +63,6 @@ printProject (Project (Ghc ghc) pkgs srcs) =
          then [base]
          else (\d -> concat [base, "    subdir: ", d, "\n"]) <$> subdirs
 
--- TODO: variant where constraints are ^>= in the Project
 data Project = Project Ghc [FilePath] [Git] deriving (Show)
 
 genProject :: Stack -> Resolver -> Project
@@ -117,4 +112,4 @@ optionsParser = Options
   where
     file = Opts.strArgument
              (  Opts.metavar "FILENAME"
-             <> Opts.help "Input stack.yaml or snapshot.yaml")
+             <> Opts.help "Input stack.yaml")
