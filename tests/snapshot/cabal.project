@@ -28,5 +28,6 @@ source-repository-package
     type: git
     location: https://github.com/pcapriotti/optparse-applicative.git
     tag: 2abc5b01ba45e651daef4e0e40bfcb5958f54110
+
 allow-older: *
 allow-newer: *
