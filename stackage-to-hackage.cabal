@@ -15,6 +15,10 @@ description:
   for an existing Haskell application that has its build plan defined for
   the stack build tool.
 
+  The user should wrap cabal with a script that invokes this binary (and hpack)
+  when the cabal build definition lags behind the stack one, e.g.
+  [cabal-stack](https://gitlab.com/tseenshe/stackage-to-hackage/blob/master/cabal-stack).
+
 source-repository head
   type: git
   location: https://gitlab.com/tseenshe/stackage-to-hackage
