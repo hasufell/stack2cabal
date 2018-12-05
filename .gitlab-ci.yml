@@ -1,0 +1,18 @@
+image: haskell:8.4.4
+
+# TODO matrix build
+# https://docs.gitlab.com/ce/ci/yaml/README.html
+
+build_job:
+  stage: build
+  cache:
+    key: default
+    paths:
+      - ~/.cabal
+    policy: pull
+  script:
+    - cabal v2-update
+    - cabal v2-build
+    - LC_ALL=C cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
+    - LC_ALL=C cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
+    - git diff tests
