@@ -27,8 +27,8 @@ import           System.FilePath                (takeDirectory, (</>))
 -- TODO use https://www.well-typed.com/blog/2015/03/qualified-goals/
 
 {- MANUAL TEST:
-  LC_ALL=C cabal v2-run -O2 stackage-to-hackage -- tests/snapshot/stack.yaml
-  LC_ALL=C cabal v2-run -O2 stackage-to-hackage -- tests/stackage/stack.yaml
+  LC_ALL=C cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
+  LC_ALL=C cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
   git diff tests
 -}
 main :: IO ()
@@ -52,8 +52,8 @@ printProject (Project (Ghc ghc) pkgs srcs) =
          , "with-compiler: ", ghc, "\n\n"
          , "packages:\n    ", packages, "\n\n"
          , sources
---         , "allow-older"
---         , "allow-newer"
+         , "allow-older: *\n"
+         , "allow-newer: *\n"
          ]
   where
     packages = intercalate "\n  , " (pack <$> pkgs)
