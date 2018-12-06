@@ -52,7 +52,7 @@ printProject (Project (Ghc ghc) pkgs srcs) =
          , "allow-newer: *\n"
          ]
   where
-    packages = intercalate "\n  , " (pack <$> pkgs)
+    packages = intercalate "\n  , " ((<> "/"). pack <$> pkgs)
     sources = intercalate "\n" (source =<< srcs)
     source Git{repo, commit, subdirs} =
       let base = concat [ "source-repository-package\n    "
