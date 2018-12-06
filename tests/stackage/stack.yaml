@@ -5,5 +5,5 @@ packages:
 - 'foo-util'
 
 extra-deps:
-  - natural-numbers-0.1.2.0
+  - natural-numbers-0.1.2.0@rev:0
   - aeson-1.4.1.0

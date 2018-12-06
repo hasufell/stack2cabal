@@ -78,7 +78,7 @@ data ResolverRef = Canned Text
 -- http://hackage.haskell.org/package/Cabal-2.4.1.0/docs/Distribution-Types-PackageId.html#t:PackageIdentifier
 -- http://hackage.haskell.org/package/Cabal-2.4.1.0/docs/Distribution-Parsec-Class.html#v:simpleParsec
 
-data Dep = Hackage PackageIdentifier
+data Dep = Hackage PkgId
          | SourceDep Git
          deriving (Show)
 
@@ -97,7 +97,7 @@ data NewResolver = NewResolver
   , flags    :: Flags
   } deriving (Show)
 
-data NewDep = NewDep PackageIdentifier
+data NewDep = NewDep PkgId
               deriving (Show)
 
 --------------------------------------------------------------------------------
@@ -203,11 +203,10 @@ instance FromYAML Package where
         Location <$> m .: "location"
 
 instance FromYAML Dep where
-   parseYAML n = (hackage n) <|> (source n)
+   parseYAML n = hackage <|> source
      where
-       hackage = withStr "Hackage" $ \s ->
-         Hackage <$> (hoistMaybe . simpleParse . unpack) s
-       source n' = SourceDep <$> parseYAML n'
+       hackage = Hackage <$> parseYAML n
+       source = SourceDep <$> parseYAML n
 
 instance FromYAML Resolver where
   parseYAML = withMap "Resolver" $ \m -> Resolver
@@ -219,12 +218,15 @@ instance FromYAML Resolver where
 instance FromYAML NewDep where
    parseYAML = withMap "NewDep" $ \m -> hackage' =<< m .: "hackage"
      where
-       hackage' = \s -> NewDep <$>
-         (hoistMaybe . simpleParse . unpack)
-         (takeWhile ('@' /=) s)
+       hackage' n = NewDep <$> parseYAML n
 
 instance FromYAML NewResolver where
   parseYAML = withMap "NewResolver" $ \m -> NewResolver
     <$> m .: "compiler"
     <*> m .:? "packages" .!= mempty
     <*> m .:? "flags" .!= (Flags empty)
+
+newtype PkgId = PkgId { unPkgId :: PackageIdentifier } deriving (Show)
+instance FromYAML PkgId where
+  parseYAML = withStr "PackageIdentifier" $ \s ->
+    PkgId <$> (hoistMaybe . simpleParse . unpack) (takeWhile ('@' /=) s)
