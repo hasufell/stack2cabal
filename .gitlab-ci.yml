@@ -7,6 +7,7 @@ build_job:
   stage: build
   script:
     - cabal v2-build
-    - LC_ALL=C cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
-    - LC_ALL=C cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
+    - for TEST in tests/* ; do
+        LC_ALL=C cabal v2-run stackage-to-hackage -- ${TEST}/stack.yaml ;
+      done
     - git diff tests

@@ -6,6 +6,8 @@
 import qualified Data.ByteString                as BS
 import           Data.List                      (sort)
 import           Data.List.Extra                (nubOn)
+import Data.List.NonEmpty (NonEmpty, nonEmpty)
+import qualified Data.List.NonEmpty as NEL
 import           Data.Map.Strict                (lookup, toList)
 import           Data.Maybe                     (fromMaybe, mapMaybe)
 import           Data.Semigroup.Foldable        (fold1)
@@ -23,6 +25,7 @@ import           Stackage
 import           System.FilePath                (takeDirectory, (</>))
 
 {- MANUAL TEST:
+  LC_ALL=C cabal v2-run stackage-to-hackage -- tests/simplest/stack.yaml
   LC_ALL=C cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
   LC_ALL=C cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
   git diff tests
@@ -52,7 +55,7 @@ printProject (Project (Ghc ghc) pkgs srcs) =
          , "allow-newer: *\n"
          ]
   where
-    packages = intercalate "\n  , " ((<> "/"). pack <$> pkgs)
+    packages = intercalate "\n  , " ((<> "/") . pack <$> NEL.toList pkgs)
     sources = intercalate "\n" (source =<< srcs)
     source Git{repo, commit, subdirs} =
       let base = concat [ "source-repository-package\n    "
@@ -63,12 +66,12 @@ printProject (Project (Ghc ghc) pkgs srcs) =
          then [base]
          else (\d -> concat [base, "    subdir: ", d, "\n"]) <$> subdirs
 
-data Project = Project Ghc [FilePath] [Git] deriving (Show)
+data Project = Project Ghc (NonEmpty FilePath) [Git] deriving (Show)
 
 genProject :: Stack -> Resolver -> Project
 genProject Stack{packages} Resolver{compiler, deps} = Project
   (fromMaybe (Ghc "ghc") compiler)
-  (mapMaybe pickLocal packages)
+  (fromMaybe (pure ".") (nonEmpty $ mapMaybe pickLocal packages))
   (nubOn repo $ mapMaybe pickGit deps)
   where
     pickLocal (Local p)    = Just p
@@ -78,7 +81,7 @@ genProject Stack{packages} Resolver{compiler, deps} = Project
 
 printFreeze :: Freeze -> Text
 printFreeze (Freeze deps (Flags flags)) =
-  concat [ "constraints: \n    ", constraints, "\n"]
+  concat [ "constraints:\n    ", constraints, "\n"]
   where
     constraints = intercalate "\n  , " (constrait <$> sort deps)
     constrait pkg =
