@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# invokes hpack and stackage-to-hackage producing cabal.project,
+# cabal.project.freeze and *.cabal files.
+
+# TODO: rewrite this script as a Haskell app and release on Hackage, depending
+# on hpack and stackage-to-hackage as library deps.
+
+if [ ! -f stack.yaml ] ; then
+    echo "ERROR: stack.yaml does not exist in $PWD"
+    exit 1
+fi
+
+if [ -z "$(which hpack 2>/dev/null)" ] ; then
+    echo "ERROR: hpack is not installed, try: cabal v2-install hpack"
+    exit 1
+fi
+
+if [ -z "$(which stackage-to-hackage 2>/dev/null)" ] ; then
+    echo "ERROR: stackage-to-hackage is not installed, try: cabal v2-install stackage-to-hackage"
+    exit 1
+fi
+
+find . -maxdepth 2 -type f -name package.yaml -print0 | xargs -0 -r -L 1 -P 0 hpack --silent
+
+echo "Generating cabal.project and cabal.project.freeze"
+stackage-to-hackage stack.yaml
+cabal v2-freeze # trims the constraints
