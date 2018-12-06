@@ -28,5 +28,5 @@ find . -maxdepth 2 -name package.yaml -exec hpack {} \;
 echo "Generating cabal.project and cabal.project.freeze"
 stackage-to-hackage stack.yaml
 
-# trims the constraints but doesn't always work...
-#cabal v2-freeze
+# trims the constraints...
+cabal v2-freeze
