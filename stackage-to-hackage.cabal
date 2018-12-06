@@ -1,6 +1,6 @@
 cabal-version:       2.2
 name:                stackage-to-hackage
-version:             1.0.0
+version:             1.0.1
 synopsis:            Convert stack.yaml to cabal.project + cabal.project.freeze
 license:             GPL-3.0-or-later
 license-file:        LICENSE
@@ -15,8 +15,8 @@ description:
   for an existing Haskell application that has its build plan defined for
   the stack build tool.
 
-  The user can use the following script to invoke this binary and hpack:
-  [stack2cabal](https://gitlab.com/tseenshe/stackage-to-hackage/blob/master/stack2cabal).
+  The following convenience script invokes stackage-to-hackage and hpack
+  together [stack2cabal](https://gitlab.com/tseenshe/stackage-to-hackage/blob/master/stack2cabal).
 
 source-repository head
   type: git

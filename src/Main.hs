@@ -97,7 +97,7 @@ data Freeze = Freeze [PackageIdentifier] Flags deriving (Show)
 
 genFreeze :: Resolver -> Freeze
 genFreeze Resolver{deps, flags} =
-  let pkgs = mapMaybe pick deps
+  let pkgs = unPkgId <$> mapMaybe pick deps
       uniqpkgs = nubOn pkgName pkgs
    in Freeze uniqpkgs flags
   where pick (Hackage p)   = Just p
