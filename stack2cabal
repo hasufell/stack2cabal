@@ -21,7 +21,9 @@ if [ -z "$(which stackage-to-hackage 2>/dev/null)" ] ; then
     exit 1
 fi
 
-find . -maxdepth 2 -type f -name package.yaml -print0 | xargs -0 -r -L 1 -P 0 hpack --silent
+# not OSX friendly...
+#find . -maxdepth 2 -type f -name package.yaml -print0 | xargs -0 -r -L 1 -P 0 hpack --silent
+find . -maxdepth 2 -name package.yaml -exec hpack {} \;
 
 echo "Generating cabal.project and cabal.project.freeze"
 stackage-to-hackage stack.yaml
