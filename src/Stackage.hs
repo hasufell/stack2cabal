@@ -30,8 +30,7 @@ import           Options.Applicative.Internal (hoistMaybe)
 import           Prelude                      hiding (concat, head, reverse,
                                                takeWhile)
 import           System.Directory             (XdgDirectory (..),
-                                               createDirectory,
-                                               doesDirectoryExist,
+                                               createDirectoryIfMissing,
                                                doesFileExist, getXdgDirectory)
 import           System.FilePath              (takeDirectory, (</>))
 
@@ -151,7 +150,7 @@ resolve Nothing _ = fail "Remote snapshots can't use relative paths."
 cache :: Text -> IO FilePath
 cache file = do
   dir <- getXdgDirectory XdgCache "stackage"
-  unlessM (doesDirectoryExist dir) (createDirectory dir)
+  createDirectoryIfMissing True dir
   pure $ dir </> (unpack file)
 
 stack2resolver :: Stack -> Resolver

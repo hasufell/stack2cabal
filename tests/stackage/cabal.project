@@ -3,9 +3,9 @@
 with-compiler: ghc-8.4.4
 
 packages:
-    foo-core
-  , foo-logging
-  , foo-util
+    foo-core/
+  , foo-logging/
+  , foo-util/
 
 
 allow-older: *
