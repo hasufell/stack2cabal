@@ -5,13 +5,7 @@ image: registry.gitlab.com/tseenshe/stackage-to-hackage:8.4.4
 
 build_job:
   stage: build
-  cache:
-    key: default
-    paths:
-      - ~/.cabal
-    policy: pull
   script:
-    - cabal v2-update
     - cabal v2-build
     - LC_ALL=C cabal v2-run stackage-to-hackage -- tests/snapshot/stack.yaml
     - LC_ALL=C cabal v2-run stackage-to-hackage -- tests/stackage/stack.yaml
