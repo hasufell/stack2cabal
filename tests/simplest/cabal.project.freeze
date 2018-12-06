@@ -1,17 +1,19 @@
 constraints:
     ALUT ==2.4.0.2
   , ANum ==0.2.0.2
-  , Agda ==2.5.4.2
-  , Allure ==0.8.3.0
+  , Agda ==2.5.3
   , BiobaseNewick ==0.0.0.2
   , Boolean ==0.2.4
   , BoundedChan ==1.0.3.0
-  , Cabal ==2.2.0.1
+  , Cabal ==2.0.1.1
   , ChannelT ==0.0.0.7
-  , ChasingBottoms ==1.3.1.5
+  , Chart ==1.8.3
+  , Chart-cairo ==1.8.3
+  , ChasingBottoms ==1.3.1.4
   , Clipboard ==2.3.2.0
   , ClustalParser ==1.2.3
-  , DAV ==1.3.3
+  , ConfigFile ==1.1.4
+  , DAV ==1.3.2
   , DRBG ==0.5.5
   , Decimal ==0.5.1
   , Diff ==0.3.4
@@ -19,17 +21,21 @@ constraints:
   , Ebnf2ps ==1.0.15
   , EdisonAPI ==1.3.1
   , EdisonCore ==1.3.2.1
+  , FPretty ==1.1
   , FenwickTree ==0.1.2.1
-  , Fin ==0.2.6.0
   , FindBin ==0.0.5
   , FloatingHex ==0.4
-  , FontyFruity ==0.5.3.4
+  , FontyFruity ==0.5.3.3
   , ForestStructures ==0.0.0.2
-  , GLFW-b ==3.2.1.0
+  , Frames ==0.3.0.2
+  , GLFW-b ==1.4.8.3
   , GLURaw ==2.0.0.4
   , GLUT ==2.7.0.14
+  , GPipe ==2.2.3
+  , Genbank ==1.0.3
   , GenericPretty ==1.2.2
-  , Glob ==0.9.3
+  , Glob ==0.9.2
+  , H ==0.9.0.1
   , HCodecs ==0.5.1
   , HDBC ==2.4.0.2
   , HDBC-mysql ==0.7.1.0
@@ -39,74 +45,96 @@ constraints:
   , HSlippyMap ==3.0.1
   , HStringTemplate ==0.8.7
   , HSvm ==0.1.0.3.22
-  , HTF ==0.13.2.5
+  , HTF ==0.13.2.4
   , HTTP ==4000.3.12
   , HUnit ==1.6.0.0
   , HUnit-approx ==1.1.1.1
-  , HaTeX ==3.19.0.0
+  , HaTeX ==3.18.0.0
+  , HaXml ==1.25.4
   , HandsomeSoup ==0.4.2
   , HaskellNet ==0.5.1
   , HaskellNet-SSL ==0.3.4.0
+  , Hclip ==3.0.0.4
   , Hoed ==0.5.1
   , HsOpenSSL -fast-bignum
-  , HsOpenSSL ==0.11.4.15
+  , HsOpenSSL ==0.11.4.14
   , HsOpenSSL-x509-system ==0.1.0.3
-  , IPv6Addr ==1.1.1
-  , IPv6DB ==0.3.1
+  , IPv6Addr ==1.0.4
+  , IPv6DB ==0.2.6
   , Imlib ==0.1.2
-  , IntervalMap ==0.6.1.0
+  , IntervalMap ==0.5.3.1
   , JuicyPixels ==3.2.9.5
-  , JuicyPixels-blp ==0.1.0.1
   , JuicyPixels-extra ==0.3.0
   , JuicyPixels-scale-dct ==0.1.2
-  , LambdaHack ==0.8.3.0
   , LibZip ==1.0.1
   , List ==0.6.2
   , ListLike ==4.6
+  , MFlow ==0.4.6.0
   , MemoTrie ==0.6.9
-  , MissingH ==1.4.1.0
+  , MissingH ==1.4.0.1
   , MonadPrompt ==1.0.0.5
   , MonadRandom ==0.5.1.1
-  , MusicBrainz ==0.4.1
   , Network-NineP ==0.4.3
   , NineP -bytestring-in-base
   , NineP ==0.0.2.1
   , NoHoed ==0.1.1
+  , NoTrace ==0.3.0.2
   , NumInstances ==1.4
   , ObjectName ==1.1.0.1
   , OneTuple ==0.2.2
   , Only ==0.1
   , OpenAL ==1.7.0.4
   , OpenGL ==3.0.2.2
-  , OpenGLRaw ==3.3.1.0
+  , OpenGLRaw ==3.2.7.0
+  , PSQueue ==1.1
   , ParsecTools ==0.0.2.0
+  , PortMidi ==0.1.6.1
   , QuasiText ==0.1.2.6
-  , QuickCheck ==2.11.3
+  , QuickCheck ==2.10.1
   , RSA ==2.3.0
   , Rasterific ==0.7.4
   , RefSerialize ==0.4.0
   , SCalendar ==1.1.0
   , SHA ==1.6.4.4
   , STMonadTrans ==0.4.3
-  , SVGFonts ==1.7
   , SafeSemaphore ==0.10.1
   , SegmentTree ==0.3
-  , ShellCheck ==0.5.0
+  , ShellCheck ==0.4.7
   , Spintax ==0.3.3
-  , Spock ==0.13.0.0
-  , Spock-core ==0.13.0.0
+  , Spock ==0.12.0.0
+  , Spock-api ==0.12.0.1
+  , Spock-api-server ==0.12.0.1
+  , Spock-core ==0.12.0.0
+  , Spock-lucid ==0.4.0.1
+  , Spock-worker ==0.3.1.0
   , StateVar ==1.1.1.1
   , Strafunski-StrategyLib ==5.0.1.0
   , TCache ==0.12.1
-  , TypeCompose ==0.9.14
+  , TypeCompose ==0.9.12
+  , Unique ==0.4.7.5
   , ViennaRNAParser ==1.3.3
   , Win32-notify ==0.3.0.3
-  , X11 ==1.9
+  , Workflow ==0.8.3
+  , X11 ==1.8
   , X11-xft ==0.3.1
   , Xauth ==0.1
+  , Yampa ==0.10.7
+  , YampaSynth ==0.2
   , abstract-deque ==0.3
   , abstract-deque-tests ==0.3
   , abstract-par ==0.3.3
+  , accelerate ==1.1.1.0
+  , accelerate-arithmetic ==1.0.0.1
+  , accelerate-bignum ==0.1.0.0
+  , accelerate-blas ==0.1.0.1
+  , accelerate-fft ==1.1.0.0
+  , accelerate-fftw ==1.0.0.1
+  , accelerate-fourier ==1.0.0.5
+  , accelerate-io ==1.0.0.1
+  , accelerate-llvm ==1.1.0.0
+  , accelerate-llvm-native ==1.1.0.1
+  , accelerate-llvm-ptx ==1.1.0.1
+  , accelerate-utility ==1.0.0.1
   , accuerr ==0.2.0.2
   , ace ==0.6
   , action-permutations ==0.0.0.1
@@ -114,37 +142,34 @@ constraints:
   , ad ==4.3.5
   , adjunctions ==4.4
   , adler32 ==0.1.2.0
-  , aern2-mp ==0.1.3.1
+  , aern2-mp ==0.1.2.0
   , aern2-real ==0.1.1.0
-  , aeson +cffi
-  , aeson ==1.4.1.0
-  , aeson-attoparsec ==0.0.0
+  , aeson ==1.2.4.0
   , aeson-better-errors ==0.9.1.0
   , aeson-casing ==0.1.0.5
-  , aeson-compat ==0.3.9
+  , aeson-compat ==0.3.8
   , aeson-diff ==1.1.0.5
-  , aeson-extra ==0.4.1.1
-  , aeson-generic-compat ==0.0.1.3
-  , aeson-iproute ==0.2
+  , aeson-extra ==0.4.1.0
+  , aeson-generic-compat ==0.0.1.2
+  , aeson-injector ==1.1.0.0
   , aeson-picker ==0.1.0.4
   , aeson-pretty ==0.8.7
   , aeson-qq ==0.8.2
   , aeson-typescript ==0.1.1.0
   , aeson-utils ==0.3.0.2
   , aeson-yak ==0.1.1.3
-  , al ==0.1.4.2
-  , alarmclock ==0.5.0.2
+  , airship ==0.9.3
+  , alarmclock ==0.4.0.4
   , alerts ==0.1.0.0
   , alex ==3.2.4
-  , alg ==0.2.8.0
   , algebra ==4.3.1
-  , algebraic-graphs ==0.2
-  , almost-fix ==0.0.2
+  , algebraic-graphs ==0.1.1.1
   , alsa-core ==0.5.0.1
-  , alsa-pcm ==0.6.1.1
+  , alsa-mixer ==0.2.0.3
+  , alsa-pcm ==0.6.1
   , alsa-seq ==0.6.0.7
   , alternative-vector ==0.0.0
-  , alternators ==1.0.0.0
+  , alternators ==0.1.2.0
   , amazonka ==1.6.0
   , amazonka-apigateway ==1.6.0
   , amazonka-application-autoscaling ==1.6.0
@@ -236,63 +261,64 @@ constraints:
   , amazonka-xray ==1.6.0
   , amqp ==0.18.1
   , annotated-wl-pprint ==0.7.0
-  , ansi-terminal ==0.8.2
+  , ansi-terminal ==0.8.0.4
   , ansi-wl-pprint ==0.6.8.2
+  , ansigraph ==0.3.0.5
+  , apecs ==0.2.4.7
   , api-field-json-th ==0.1.0.2
-  , app-settings ==0.2.0.12
+  , app-settings ==0.2.0.11
   , appar ==0.1.4
-  , apply-refact ==0.5.0.0
-  , apportionment ==0.0.0.3
+  , apply-refact ==0.4.1.0
+  , apportionment ==0.0.0.2
   , approximate ==0.3.1
-  , arithmoi ==0.7.0.0
+  , arithmoi ==0.6.0.1
   , array-memoize ==0.6.0
   , arrow-extras ==0.1.0.1
   , arrow-list ==0.7
   , ascii-progress ==0.3.3.0
+  , asciidiagram ==1.3.3.1
   , asn1-encoding ==0.9.5
   , asn1-parse ==0.9.4
   , asn1-types ==0.3.2
   , assert-failure ==0.1.2.2
   , astro ==0.4.2.1
-  , async ==2.2.1
+  , async ==2.1.1.1
   , async-extra ==0.2.0.0
-  , async-refresh ==0.3.0.0
-  , async-refresh-tokens ==0.4.0.0
-  , async-timer ==0.2.0.0
+  , async-refresh ==0.2.0.2
+  , async-refresh-tokens ==0.3.0.1
+  , async-timer ==0.1.4.1
   , atom-basic ==0.2.5
   , atom-conduit ==0.5.0.1
   , atomic-primops ==0.8.2
-  , atomic-write ==0.2.0.6
+  , atomic-write ==0.2.0.5
   , attoparsec ==0.13.2.2
-  , attoparsec-base64 ==0.0.0
   , attoparsec-binary ==0.2
   , attoparsec-expr ==0.1.1.2
   , attoparsec-ip ==0.0.1
-  , attoparsec-iso8601 ==1.0.1.0
+  , attoparsec-iso8601 ==1.0.0.0
   , attoparsec-path ==0.0.0.1
+  , attoparsec-time ==1
   , attoparsec-uri ==0.0.4
   , audacity ==0.0.2
   , authenticate ==1.3.4
   , authenticate-oauth ==1.6
   , auto ==0.4.3.1
   , auto-update ==0.1.4
-  , autoexporter ==1.1.13
-  , avro ==0.3.5.1
+  , autoexporter ==1.1.10
   , avwx ==0.3.0.2
-  , backprop ==0.2.5.0
-  , bank-holidays-england ==0.1.0.8
+  , axiom ==0.4.6
+  , b9 ==0.5.49
+  , backprop ==0.1.5.2
+  , bank-holidays-england ==0.1.0.7
   , barrier ==0.1.1
-  , base-compat ==0.10.5
-  , base-compat-batteries ==0.10.1
+  , base-compat ==0.9.3
   , base-orphans ==0.7
-  , base-prelude ==1.3
+  , base-prelude ==1.2.1
   , base-unicode-symbols ==0.2.2.4
   , base16-bytestring ==0.1.1.6
   , base32string ==0.9.1
-  , base58-bytestring ==0.1.0
   , base58string ==0.10.0
   , base64-bytestring ==1.0.0.1
-  , base64-bytestring-type ==1
   , base64-string ==0.2
   , basement ==0.0.8
   , basic-prelude ==0.7.0
@@ -300,17 +326,19 @@ constraints:
   , bcrypt ==0.0.11
   , beam-core ==0.7.2.2
   , beam-migrate ==0.3.2.1
-  , bench ==1.0.12
+  , beam-sqlite ==0.3.2.2
+  , bench ==1.0.9
+  , benchpress ==0.2.2.10
   , bencode ==0.6.0.0
+  , bento ==0.1.0
   , between ==0.11.0.0
-  , bhoogle ==0.1.3.5
+  , bhoogle ==0.1.2.9
   , bibtex ==0.1.0.6
   , bifunctors ==5.5.3
   , bimap ==0.3.3
   , bimap-server ==0.1.0.1
   , binary-bits ==0.5
-  , binary-conduit ==1.3.1
-  , binary-ext ==2.0.4
+  , binary-conduit ==1.3
   , binary-ieee754 ==0.1.0.0
   , binary-list ==1.1.1.2
   , binary-orphans ==0.1.8.0
@@ -318,11 +346,17 @@ constraints:
   , binary-parsers ==0.2.3.0
   , binary-search ==1.0.0.3
   , binary-shared ==0.8.3
-  , binary-tagged ==0.1.5.1
+  , binary-tagged ==0.1.5
   , bindings-DSL ==1.0.25
-  , bindings-GLFW ==3.2.1.1
+  , bindings-GLFW ==3.1.2.4
   , bindings-libzip ==1.0.1
   , bindings-uname ==0.1
+  , bioace ==0.0.1
+  , bioalign ==0.0.5
+  , biocore ==0.3.1
+  , biofasta ==0.0.3
+  , biofastq ==0.1
+  , biopsl ==0.4
   , bit-stream ==0.1.0.2
   , bitarray ==0.0.1.1
   , bitcoin-api ==0.12.1
@@ -332,110 +366,105 @@ constraints:
   , bitcoin-tx ==0.13.1
   , bitcoin-types ==0.9.2
   , bits ==0.5.1
-  , bits-extra ==0.0.1.3
   , bitset-word8 ==0.1.1.0
   , bitx-bitcoin ==0.12.0.0
   , blake2 ==0.2.0
-  , blank-canvas ==0.6.3
   , blas-carray ==0.0.1.1
   , blas-ffi ==0.0.1.1
   , blas-hs ==0.1.1.0
+  , blastxml ==0.3.2
   , blaze-bootstrap ==0.1.0.1
   , blaze-builder ==0.4.1.0
-  , blaze-colonnade ==1.2.2
   , blaze-html ==0.9.1.1
-  , blaze-markup ==0.8.2.2
+  , blaze-markup ==0.8.2.1
   , blaze-svg ==0.3.6.1
   , blaze-textual ==0.2.1.0
+  , bloodhound ==0.15.0.2
+  , blosum ==0.1.1.4
   , bmp ==1.2.6.3
   , bno055-haskell ==0.1.0
   , boltzmann-samplers ==0.1.1.0
+  , bookkeeping ==0.2.1.4
   , boolean-like ==0.1.1.0
   , boolsimplifier ==0.1.8
+  , boomerang ==1.4.5.5
   , bordacount ==0.1.0.0
-  , boring ==0.1
   , both ==0.1.1.0
   , bound ==2.0.1
   , boundingboxes ==0.2.3
   , bower-json ==1.0.0.1
   , boxes ==0.1.5
   , brick +demos
-  , brick ==0.37.2
-  , brittany ==0.11.0.0
+  , brick ==0.34.1
+  , brittany ==0.9.0.1
   , broadcast-chan ==0.1.1
-  , bsb-http-chunked ==0.0.0.4
+  , bsb-http-chunked ==0.0.0.2
   , bson ==0.3.2.6
   , bson-lens ==0.1.1
   , btrfs ==0.1.2.3
-  , buffer-builder ==0.2.4.7
+  , buchhaltung ==0.0.7
+  , buffer-builder ==0.2.4.6
   , buffer-pipe ==0.0
-  , butcher ==1.3.2.0
-  , butter ==0.1.0.6
+  , butcher ==1.3.0.0
   , bv ==0.5
-  , bv-little ==0.1.2
+  , bv-little ==0.1.1
   , byteable ==0.1.1
   , bytedump ==1.0
   , byteorder ==1.0.4
   , bytes ==0.15.5
   , byteset ==0.1.1.0
-  , bytestring-builder ==0.10.8.2.0
+  , bytestring-builder ==0.10.8.1.0
   , bytestring-conversion ==0.3.1
   , bytestring-lexing ==0.5.0.2
-  , bytestring-strict-builder ==0.4.5.1
+  , bytestring-strict-builder ==0.4.5
   , bytestring-tree-builder ==0.2.7.2
+  , bytestring-trie ==0.2.4.1
   , bzlib ==0.5.0.5
   , bzlib-conduit ==0.3.0.1
-  , c2hs ==0.28.6
+  , c2hs ==0.28.5
   , cabal-doctest ==1.0.6
-  , cabal-install +lib -native-dns
-  , cabal-install ==2.2.0.0
+  , cabal-file-th ==0.2.4
+  , cabal-install ==2.0.0.1
   , cabal-rpm -old-locale
-  , cabal-rpm ==0.12.6
-  , cabal2nix ==2.9.3
-  , cabal2spec ==2.1.1
+  , cabal-rpm ==0.12.5
+  , cabal-toolkit ==0.0.5
+  , cabal2nix ==2.8.2
   , cache ==0.1.1.1
-  , cachix ==0.1.2
-  , cachix-api ==0.1.0.2
   , cairo ==0.13.5.0
-  , calendar-recycling ==0.0.0.1
+  , calendar-recycling ==0.0
   , call-stack ==0.1.0
-  , capataz ==0.2.0.0
+  , capataz ==0.1.0.1
   , carray ==0.1.6.8
+  , cartel ==0.18.0.2
   , case-insensitive ==1.2.0.11
   , cased ==0.1.0.0
   , cases ==0.1.3.2
   , casing ==0.1.4.0
   , cassava -bytestring--lt-0_10_4
   , cassava ==0.5.1.0
-  , cassava-conduit ==0.5.0
+  , cassava-conduit ==0.4.0.2
   , cassava-records ==0.1.0.4
+  , cassette ==0.1.0
   , cast ==0.1.0.2
-  , category ==0.2.0.1
-  , cayley-client ==0.4.7
-  , cborg ==0.2.1.0
+  , cayley-client ==0.4.6
   , cereal ==0.5.7.0
   , cereal-conduit ==0.8.0
   , cereal-text ==0.1.0.2
   , cereal-time ==0.1.0.0
   , cereal-vector ==0.2.0.1
-  , cfenv ==0.1.0.0
-  , chan ==0.0.3
   , charset ==0.3.7.1
   , charsetdetect-ae ==1.1.0.4
-  , chart-unit ==0.7.0.0
   , chaselev-deque ==0.5.0.5
   , chatwork ==0.1.3.5
-  , cheapskate ==0.1.1.1
+  , cheapskate ==0.1.1
   , cheapskate-highlight ==0.1.0.0
   , cheapskate-lucid ==0.1.0.0
   , check-email ==1.0.2
   , checkers ==0.4.11
-  , checksum ==0.0
   , choice ==0.2.2
-  , chronologique ==0.3.1.1
   , chunked-data ==0.3.1
   , cipher-aes ==0.2.11
-  , cipher-aes128 ==0.7.0.4
+  , cipher-aes128 ==0.7.0.3
   , cipher-blowfish ==0.0.3
   , cipher-camellia ==0.0.2
   , cipher-des ==0.0.6
@@ -443,63 +472,58 @@ constraints:
   , circle-packing ==0.1.0.6
   , cisco-spark-api ==0.1.0.3
   , clang-compilation-database ==0.1.0.1
-  , clash-ghc ==0.99.3
-  , clash-lib ==0.99.3
-  , clash-prelude ==0.99.3
   , classy-prelude ==1.4.0
   , classy-prelude-conduit ==1.4.0
   , classy-prelude-yesod ==1.4.0
-  , classyplate ==0.3.2.0
-  , clay ==0.13.1
+  , classyplate ==0.3.1.0
+  , clay ==0.12.2
+  , cli ==0.1.2
   , clientsession ==0.9.1.2
   , clock ==0.7.2
   , clock-extras ==0.1.0.2
-  , closed ==0.2.0
-  , clr-host ==0.2.1.0
+  , clr-host ==0.2.0.1
   , clr-marshal ==0.2.0.0
   , clumpiness ==0.17.0.0
-  , cmark-gfm ==0.1.6
+  , cmark ==0.5.6
+  , cmark-gfm ==0.1.4
+  , cmark-highlight ==0.2.0.0
+  , cmark-lucid ==0.1.0.0
   , cmdargs ==0.10.20
   , code-builder ==0.1.3
   , code-page ==0.1.3
   , codec ==0.2.1
-  , codec-beam ==0.2.0
-  , codec-rpm ==0.2.2
   , codo-notation ==0.5.2
-  , coercible-utils ==0.0.0
-  , colonnade ==1.2.0.1
   , colorful-monoids ==0.2.1.2
   , colorize-haskell ==1.0.1
   , colour ==2.3.4
-  , combinatorial ==0.1.0.1
-  , comfort-graph ==0.0.3.1
-  , commutative ==0.0.2
+  , colour-accelerate ==0.2.0.0
+  , combinatorial ==0.1
+  , comfort-graph ==0.0.3
+  , commutative ==0.0.1.4
   , comonad ==5.0.4
+  , compact ==0.1.0.1
   , compactmap ==0.1.4.2.1
   , compensated ==0.7.2
   , compiler-warnings ==0.1.0
-  , componentm ==0.0.0.2
-  , componentm-devel ==0.0.0.2
   , composable-associations ==0.1.0.0
   , composable-associations-aeson ==0.1.0.0
   , composition ==1.0.2.1
   , composition-extra ==2.0.0
-  , composition-prelude ==1.5.3.1
+  , composition-prelude ==1.3.0.8
   , compressed ==3.11
   , concise ==0.1.0.1
-  , concurrency ==1.6.1.0
+  , concurrency ==1.4.0.2
   , concurrent-extra ==0.7.0.12
-  , concurrent-output ==1.10.9
-  , concurrent-split ==0.0.1.1
+  , concurrent-output ==1.10.6
+  , concurrent-split ==0.0.1
   , concurrent-supply ==0.1.8
   , cond ==0.4.1.1
-  , conduit ==1.3.1
-  , conduit-algorithms ==0.0.8.2
+  , conduit ==1.3.0.3
+  , conduit-algorithms ==0.0.8.1
   , conduit-combinators ==1.3.0
   , conduit-connection ==0.1.0.4
   , conduit-extra ==1.3.0
   , conduit-iconv ==0.1.1.3
-  , conduit-parse ==0.2.1.0
   , conduit-throttle ==0.3.1.0
   , config-ini ==0.2.2.0
   , configuration-tools ==0.3.1
@@ -508,41 +532,35 @@ constraints:
   , connection ==0.2.8
   , connection-pool ==0.2.2
   , console-style ==0.0.2.1
-  , constraint ==0.1.1.1
   , constraints ==0.10.1
   , consul-haskell ==0.4.2
   , containers-unicode-symbols ==0.3.1.1
   , contravariant ==1.4.1
   , contravariant-extras ==0.3.4
   , control-bool ==0.2.1
-  , control-dsl ==0.2.1.3
-  , control-monad-free ==0.6.2
+  , control-monad-free ==0.6.1
   , control-monad-omega ==0.3.1
   , convertible ==1.1.1.0
   , cookie ==0.4.4
   , countable ==1.0
   , country ==0.1.6
   , courier ==0.1.1.5
-  , cpio-conduit ==0.7.0
   , cpphs ==1.20.8
   , cprng-aes ==0.6.1
   , cpu ==0.1.2
   , cpuinfo ==0.1.0.1
-  , cql ==4.0.1
-  , cql-io ==1.0.1.1
-  , crackNum ==2.3
+  , cql ==3.1.1
+  , cql-io ==0.16.0
+  , crackNum ==1.9
   , credential-store ==0.1.2
-  , criterion ==1.4.1.0
-  , criterion-measurement ==0.1.1.0
+  , criterion ==1.3.0.0
   , cron ==0.6.1
   , crypt-sha512 ==0
   , crypto-api ==0.13.3
   , crypto-api-tests ==0.3
   , crypto-cipher-tests ==0.0.11
   , crypto-cipher-types ==0.0.9
-  , crypto-enigma ==0.0.3.1
-  , crypto-numbers ==0.2.7
-  , crypto-pubkey ==0.2.8
+  , crypto-enigma ==0.0.2.12
   , crypto-pubkey-types ==0.4.3
   , crypto-random ==0.0.9
   , crypto-random-api ==0.2.0
@@ -556,28 +574,29 @@ constraints:
   , cryptohash-sha512 ==0.11.100.1
   , cryptonite ==0.25
   , cryptonite-conduit ==0.2.2
-  , cryptonite-openssl ==0.7
-  , csg ==0.1.0.5
-  , csp ==1.4.0
-  , css-syntax ==0.0.8
+  , cryptonite-openssl ==0.6
+  , csp ==1.3.1
+  , css-syntax ==0.0.7
   , css-text ==0.1.3.0
   , csv ==0.1.2
+  , csv-conduit ==0.6.8.1
   , ctrie ==0.2
-  , cubicbezier ==0.6.0.5
   , cubicspline ==0.1.2
+  , cublas ==0.4.0.1
+  , cuda ==0.9.0.3
   , cue-sheet ==1.0.1
+  , cufft ==0.8.0.0
   , curl +new-base
   , curl ==1.3.8
-  , curl-runnings ==0.6.0
-  , currencies ==0.2.0.0
-  , currency ==0.2.0.0
+  , curl-runnings ==0.2.0
+  , currencies ==0.1.1.1
+  , cusolver ==0.1.0.1
+  , cusparse ==0.1.0.1
   , cutter ==0.0
-  , cyclotomic ==0.5.1
-  , czipwith ==1.0.1.1
-  , darcs ==2.14.1
-  , data-accessor ==0.2.2.8
+  , czipwith ==1.0.0.0
+  , data-accessor ==0.2.2.7
   , data-accessor-mtl ==0.2.0.4
-  , data-accessor-template ==0.2.1.16
+  , data-accessor-template ==0.2.1.15
   , data-accessor-transformers ==0.2.1.7
   , data-binary-ieee754 ==0.4.4
   , data-bword ==0.1.0.1
@@ -588,8 +607,8 @@ constraints:
   , data-default-instances-containers ==0.0.1
   , data-default-instances-dlist ==0.0.1
   , data-default-instances-old-locale ==0.0.1
-  , data-diverse ==4.6.0.0
-  , data-diverse-lens ==4.3.0.0
+  , data-diverse ==2.0.1.0
+  , data-diverse-lens ==2.1.0.0
   , data-dword ==0.3.1.2
   , data-endian ==0.1.1
   , data-fix ==0.2.0
@@ -602,79 +621,71 @@ constraints:
   , data-msgpack-types ==0.0.2
   , data-or ==1.0.0.5
   , data-ordlist ==0.4.7.0
-  , data-ref ==0.0.1.2
+  , data-ref ==0.0.1.1
   , data-reify ==0.6.1
   , data-serializer ==0.3.4
   , data-textual ==0.3.0.2
-  , data-tree-print ==0.1.0.2
+  , data-tree-print ==0.1.0.1
   , datadog ==0.2.2.0
   , datasets ==0.2.5
   , dataurl ==0.1.0.0
   , dawg-ord ==0.5.1.0
   , dbcleaner ==0.1.3
-  , dbus ==1.0.1
-  , debian-build ==0.10.1.2
+  , dbus ==0.10.15
+  , debian-build ==0.10.1.1
   , debug ==0.1.1
-  , debug-trace-var ==0.2.0
   , declarative ==0.5.2
   , deepseq-generics ==0.2.0.0
-  , dejafu ==1.11.0.3
+  , dejafu ==1.3.2.0
   , dependent-map ==0.2.4.0
   , dependent-sum ==0.4
   , dependent-sum-template ==0.0.0.6
   , deque ==0.2.1
-  , deriving-compat ==0.5.2
-  , derulo ==1.0.5
-  , detour-via-sci ==1.0.0
-  , df1 ==0.1.1
-  , dhall ==1.15.1
-  , dhall-bash ==1.0.15
-  , dhall-json ==1.2.3
-  , dhall-text ==1.0.14
-  , di ==1.0.1
-  , di-core ==1.0.3
-  , di-df1 ==1.0.2
-  , di-handle ==1.0
-  , di-monad ==1.0.2
-  , diagrams ==1.4
-  , diagrams-builder ==0.8.0.3
-  , diagrams-cairo ==1.4.1
-  , diagrams-canvas ==1.4.1
-  , diagrams-contrib ==1.4.3
-  , diagrams-core ==1.4.1.1
-  , diagrams-gtk ==1.4
-  , diagrams-html5 ==1.4.1
-  , diagrams-lib ==1.4.2.3
-  , diagrams-postscript ==1.4.1
-  , diagrams-rasterific ==1.4.1.1
-  , diagrams-solve ==0.1.1
-  , diagrams-svg ==1.4.2
-  , dictionary-sharing ==0.1.0.0
+  , deriving-compat ==0.4.3
+  , descriptive ==0.9.4
+  , dhall ==1.11.1
+  , dhall-json ==1.0.13
+  , dice ==0.1
+  , dictionaries ==0.2.0.4
+  , diff3 ==0.3.1
   , digest ==0.0.1.2
   , digits ==0.3.1
   , dimensional ==1.1
+  , direct-rocksdb ==0.0.3
   , direct-sqlite ==2.3.23
   , directory-tree ==0.12.1
   , discount ==0.1.1
   , discrimination ==0.3
   , disk-free-space ==0.1.0.1
-  , distributed-closure ==0.4.1
+  , disposable ==0.2.0.4
+  , distance ==0.1.0.0
+  , distributed-closure ==0.4.0
+  , distributed-process ==0.7.4
+  , distributed-process-lifted ==0.3.0.1
+  , distributed-process-monad-control ==0.5.1.3
+  , distributed-process-simplelocalnet ==0.2.4
+  , distributed-process-tests ==0.4.11
   , distributed-static ==0.3.8
-  , distribution-nixpkgs ==1.1.1
+  , distribution ==1.1.1.0
+  , distribution-nixpkgs ==1.1
   , distributive ==0.5.3
-  , dlist ==0.8.0.5
+  , diversity ==0.8.1.0
+  , djinn-ghc ==0.0.2.3
+  , djinn-lib ==0.0.1.3
+  , dlist ==0.8.0.4
   , dlist-instances ==0.1.1.1
   , dlist-nonempty ==0.1.1
   , dns ==3.0.4
   , do-list ==1.0.1
-  , docker ==0.6.0.0
+  , docker ==0.5.1.1
+  , docker-build-cacher ==1.9.2
   , dockerfile ==0.1.0.1
   , docopt ==0.7.0.5
   , doctemplates ==0.2.2.1
-  , doctest ==0.16.0.1
-  , doctest-discover ==0.1.0.9
-  , doctest-driver-gen ==0.2.0.4
-  , dom-parser ==3.1.0
+  , doctest ==0.13.0
+  , doctest-discover ==0.1.0.7
+  , doctest-driver-gen ==0.2.0.3
+  , dom-parser ==3.0.0
   , dotenv ==0.5.2.5
   , dotnet-timespan ==0.0.1.0
   , double-conversion ==2.0.2.0
@@ -682,15 +693,12 @@ constraints:
   , drawille ==0.1.2.0
   , drifter ==0.2.3
   , drifter-postgresql ==0.2.1
-  , dsp ==0.2.4.1
-  , dual-tree ==0.2.2
+  , dsp ==0.2.4
   , dublincore-xml-conduit ==0.1.0.2
-  , dunai ==0.4.0.0
   , dvorak ==0.1.0.0
   , dynamic-state ==0.3.1
   , dyre ==0.8.12
   , easy-file ==0.2.2
-  , easytest ==0.2.1
   , echo ==0.1.3
   , ed25519 ==0.0.5.0
   , edit-distance ==0.2.2.1
@@ -699,117 +707,114 @@ constraints:
   , either ==5.0.1
   , either-unwrap ==1.1
   , ekg ==0.4.0.15
-  , ekg-core ==0.1.1.6
+  , ekg-core ==0.1.1.4
   , ekg-json ==0.1.0.6
   , ekg-statsd ==0.2.4.0
   , ekg-wai ==0.1.0.3
   , elerea ==2.9.0
-  , elf ==0.29
-  , eliminators ==0.4.1
+  , eliminators ==0.3
   , elm-core-sources ==1.0.0
   , elm-export ==0.6.0.1
-  , email-validate ==2.3.2.9
+  , elm-export-persistent ==0.2.0
+  , email-validate ==2.3.2.6
+  , emailaddress ==0.2.0.0
   , enclosed-exceptions ==1.0.3
-  , entropy ==0.4.1.4
-  , enum-subset-generate ==0.1.0.0
+  , entropy ==0.3.8
   , enummapset ==0.5.2.2
   , enumset ==0.0.4.1
   , envelope ==0.2.2.0
-  , envy ==1.5.1.0
+  , envparse ==0.4.1
+  , envy ==1.5.0.0
   , epub-metadata ==4.5
-  , eq ==4.2
+  , eq ==4.1
   , equal-files ==0.0.5.3
-  , equivalence ==0.3.3
+  , equivalence ==0.3.2
   , erf ==2.0.0.0
   , error-util ==0.0.1.2
-  , errors ==2.3.0
-  , errors-ext ==0.4.2
+  , errors ==2.2.5
+  , errors-ext ==0.4.1
   , ersatz ==0.4.4
-  , etc ==0.4.1.0
+  , ether ==0.5.1.0
+  , euler-tour-tree ==0.1.0.1
   , event ==0.1.4
   , event-list ==0.1.2
   , eventful-core ==0.2.0
   , eventful-memory ==0.2.0
+  , eventful-postgresql ==0.2.0
   , eventful-sql-common ==0.2.0
   , eventful-sqlite ==0.2.0
   , eventful-test-helpers ==0.2.0
-  , eventstore ==1.1.6
+  , eventsource-api ==1.3.1
+  , eventsource-geteventstore-store ==1.1.0
+  , eventsource-store-specs ==1.1.1
+  , eventsource-stub-store ==1.0.3
+  , eventstore ==1.1.5
   , every ==0.0.1
   , exact-combinatorics ==0.2.0.8
   , exact-pi ==0.4.1.4
-  , exception-hierarchy ==0.1.0.1
   , exception-mtl ==0.4.0.1
   , exception-transformers ==0.4.0.7
   , exceptional ==0.3.0.0
-  , exceptions ==0.10.0
+  , exceptions ==0.8.3
   , executable-hash ==0.2.0.4
   , executable-path ==0.0.3.1
-  , exinst -serialise
-  , exinst ==0.6
-  , exomizer ==1.0.0
+  , exhaustive ==1.1.6
   , exp-pairs ==0.1.6.0
   , expiring-cache-map ==0.0.6.1
   , explicit-exception ==0.1.9.2
   , extensible ==0.4.9
+  , extensible-effects ==2.4.0.0
   , extensible-exceptions ==0.1.1.4
-  , extra ==1.6.13
+  , extra ==1.6.9
   , extractable-singleton ==0.0.1
-  , extrapolate ==0.3.3
-  , facts ==0.0.1.0
+  , extrapolate ==0.3.1
   , fail ==4.9.0.0
   , farmhash ==0.1.0.5
+  , fast-builder ==0.0.1.0
   , fast-digits ==0.2.1.0
   , fast-logger ==2.4.11
-  , fast-math ==1.0.2
-  , fay +test
-  , fay ==0.24.0.1
-  , fay-base ==0.21.1.0
-  , fay-dom ==0.5.0.1
-  , fb ==1.2.1
+  , fasta ==0.10.4.2
+  , fb ==1.2.0
   , fclabels ==2.0.3.3
   , feature-flags ==0.1.0.1
   , fedora-haskell-tools ==0.5.1
-  , feed ==1.0.1.0
+  , feed ==1.0.0.0
   , fft ==0.1.8.6
   , fgl ==5.6.0.0
   , file-embed ==0.0.10.1
-  , file-embed-lzma ==0
   , file-modules ==0.1.2.4
-  , filecache ==0.4.1
+  , filecache ==0.3.2
   , filelock ==0.1.1.2
   , filemanip ==0.3.6.3
   , fileplow ==0.1.0.0
   , filter-logger ==0.6.0.0
-  , filtrable ==0.1.1.0
-  , fin ==0.0.1
   , find-clumpiness ==0.2.3.1
   , fingertree ==0.1.4.1
+  , fingertree-psqueue ==0.3
   , finite-typelits ==0.1.4.2
-  , first-class-patterns ==0.3.2.4
+  , fitspec ==0.4.4
   , fixed ==0.2.1.1
   , fixed-length ==0.2
   , fixed-vector ==1.1.0.0
-  , fixed-vector-hetero ==0.5.0.0
+  , fixed-vector-hetero ==0.4.0.0
   , flac ==0.1.2
   , flac-picture ==0.1.1
   , flat-mcmc ==1.5.0
-  , flay ==0.4
   , flexible-defaults ==0.0.2
   , floatshow ==0.2.4
-  , flow ==1.0.17
+  , flow ==1.0.14
   , fmlist ==0.9.2
+  , fmt ==0.5.0.0
   , fn ==0.3.0.2
   , focus ==0.1.5.2
-  , focuslist ==0.1.0.0
-  , fold-debounce ==0.2.0.8
-  , fold-debounce-conduit ==0.2.0.3
-  , foldable1 ==0.1.0.0
-  , foldl ==1.4.5
+  , fold-debounce ==0.2.0.7
+  , fold-debounce-conduit ==0.2.0.1
+  , foldl ==1.3.7
   , folds ==0.7.4
+  , follow-file ==0.0.2
   , force-layout ==0.4.0.6
   , foreign-store ==0.2
-  , forkable-monad ==0.2.0.3
-  , forma ==1.1.0
+  , forma ==0.2.0
   , format-numbers ==0.1.0.0
   , formatting ==6.3.6
   , foundation ==0.0.21
@@ -824,310 +829,324 @@ constraints:
   , frisby ==0.2.2
   , from-sum ==0.2.1.0
   , frontmatter ==0.1.0.2
-  , fsnotify ==0.3.0.1
+  , fsnotify ==0.2.1.1
   , fsnotify-conduit ==0.1.1.1
   , funcmp ==1.9
   , functor-classes-compat +containers
   , functor-classes-compat ==1
   , fuzzcheck ==0.1.1
-  , fuzzy-dates ==0.1.1.1
   , fuzzyset ==0.1.0.6
-  , gauge ==0.2.4
+  , gauge ==0.2.3
   , gc ==0.0.2
   , gd ==3000.7.3
   , gdax ==0.6.0.0
-  , gdp ==0.0.0.2
   , general-games ==1.1.1
   , generic-aeson ==0.2.0.9
   , generic-arbitrary ==0.1.0
   , generic-deriving ==1.12.2
-  , generic-lens ==1.0.0.2
-  , generic-random ==1.2.0.0
+  , generic-lens ==0.5.1.0
+  , generic-random ==1.1.0.2
   , generic-xmlpickler ==0.1.0.5
-  , generics-eot ==0.4
+  , generics-eot ==0.2.1.2
   , generics-sop ==0.3.2.0
   , generics-sop-lens ==0.1.2.1
   , geniplate-mirror ==0.7.6
-  , genvalidity ==0.5.1.0
-  , genvalidity-aeson ==0.2.0.2
-  , genvalidity-bytestring ==0.2.0.2
-  , genvalidity-containers ==0.5.1.0
-  , genvalidity-hspec ==0.6.2.0
-  , genvalidity-hspec-aeson ==0.3.0.0
-  , genvalidity-hspec-binary ==0.2.0.2
-  , genvalidity-hspec-cereal ==0.2.0.2
-  , genvalidity-hspec-hashable ==0.2.0.2
-  , genvalidity-path ==0.3.0.2
-  , genvalidity-property ==0.2.1.1
-  , genvalidity-scientific ==0.2.1.0
-  , genvalidity-text ==0.5.1.0
-  , genvalidity-time ==0.2.1.1
-  , genvalidity-unordered-containers ==0.2.0.3
-  , genvalidity-uuid ==0.1.0.2
-  , genvalidity-vector ==0.2.0.3
-  , geodetics ==0.0.6
-  , getopt-generics ==0.13.0.3
+  , genvalidity ==0.4.0.4
+  , genvalidity-aeson ==0.1.0.0
+  , genvalidity-bytestring ==0.1.0.0
+  , genvalidity-containers ==0.3.0.0
+  , genvalidity-hspec ==0.5.0.0
+  , genvalidity-hspec-aeson ==0.1.0.2
+  , genvalidity-hspec-binary ==0.1.0.0
+  , genvalidity-hspec-cereal ==0.1.0.0
+  , genvalidity-hspec-hashable ==0.1.0.0
+  , genvalidity-path ==0.2.0.2
+  , genvalidity-property ==0.1.0.0
+  , genvalidity-scientific ==0.1.0.0
+  , genvalidity-text ==0.4.0.0
+  , genvalidity-time ==0.1.0.1
+  , genvalidity-unordered-containers ==0.1.0.0
+  , genvalidity-uuid ==0.0.0.0
+  , genvalidity-vector ==0.1.0.0
+  , getopt-generics ==0.13.0.2
+  , ghc-compact ==0.1.0.0
   , ghc-core ==0.5.6
+  , ghc-events ==0.7.3
   , ghc-exactprint ==0.5.6.1
   , ghc-parser ==0.2.0.2
   , ghc-paths ==0.1.0.9
-  , ghc-prof ==1.4.1.4
-  , ghc-syntax-highlighter ==0.0.3.0
-  , ghc-tcplugins-extra ==0.3
-  , ghc-typelits-extra ==0.2.6
-  , ghc-typelits-knownnat ==0.5.1
-  , ghc-typelits-natnormalise ==0.6.2
-  , ghcid ==0.7.1
-  , ghcjs-base-stub ==0.2.0.0
+  , ghc-prof ==1.4.1.3
+  , ghc-syb-utils ==0.2.3.3
+  , ghc-tcplugins-extra ==0.2.5
+  , ghc-typelits-extra ==0.2.4
+  , ghc-typelits-knownnat ==0.4.2
+  , ghc-typelits-natnormalise ==0.5.10
+  , ghcid ==0.6.10
+  , ghcjs-base-stub ==0.1.0.4
   , ghcjs-codemirror ==0.0.0.2
+  , ghcjs-perch ==0.3.3.2
   , ghost-buster ==0.1.1.0
   , gi-atk ==2.0.15
   , gi-cairo ==1.0.17
-  , gi-gdk ==3.0.16
-  , gi-gdkpixbuf ==2.0.16
-  , gi-gio ==2.0.18
   , gi-glib ==2.0.17
   , gi-gobject ==2.0.16
-  , gi-gtk ==3.0.26
-  , gi-gtk-hs ==0.3.6.3
-  , gi-gtksource ==3.0.16
-  , gi-javascriptcore ==4.0.16
-  , gi-pango ==1.0.16
-  , gi-vte ==2.91.19
-  , gio ==0.13.5.0
-  , giphy-api ==0.6.0.1
-  , git-vogue ==0.3.0.2
+  , gi-javascriptcore ==4.0.15
+  , ginger ==0.7.3.0
+  , git ==0.2.1
   , github ==0.19
-  , github-release ==1.2.3
+  , github-release ==1.1.6
   , github-types ==0.2.1
-  , github-webhooks ==0.10.0
+  , github-webhook-handler ==0.0.8
+  , github-webhook-handler-snap ==0.0.7
+  , github-webhooks ==0.9.1
   , gitrev ==1.3.1
   , gl ==0.8.0
   , glabrous ==0.3.6
   , glaze ==0.3.0.1
-  , glazier ==1.0.0.0
+  , glazier ==0.11.0.1
+  , glazier-pipes ==0.1.5.1
   , glib ==0.13.6.0
-  , gloss ==1.12.0.0
-  , gloss-raster ==1.12.0.0
-  , gloss-rendering ==1.12.0.0
-  , gnuplot ==0.5.5.3
+  , glob-posix ==0.1.0.1
+  , gloss ==1.11.1.1
+  , gloss-accelerate ==2.0.0.1
+  , gloss-algorithms ==1.11.1.1
+  , gloss-raster ==1.11.1.1
+  , gloss-raster-accelerate ==2.0.0.0
+  , gloss-rendering ==1.11.1.1
+  , gluturtle ==0.0.58.1
+  , gnuplot ==0.5.5.2
   , goggles ==0.3.2
-  , google-oauth2-jwt ==0.3.0
+  , google-cloud ==0.0.4
+  , google-oauth2-jwt ==0.2.2
   , gpolyline ==0.1.0.1
   , graph-core ==0.3.0.0
   , graph-wrapper ==0.2.5.1
   , graphs ==0.7.1
-  , graphviz ==2999.20.0.2
   , gravatar ==0.8.0
   , graylog ==0.1.0.1
-  , greskell -hint-test
-  , greskell ==0.2.2.0
-  , greskell-core ==0.1.2.4
-  , greskell-websocket ==0.1.1.2
   , groom ==0.1.2.1
-  , groundhog ==0.9.0
-  , groundhog-inspector ==0.9.0
-  , groundhog-mysql ==0.9.0
-  , groundhog-postgresql ==0.9.0.1
-  , groundhog-sqlite ==0.9.0
-  , groundhog-th ==0.9.0.1
+  , groundhog ==0.8.0.1
+  , groundhog-inspector ==0.8.0.2
+  , groundhog-mysql ==0.8.0.1
+  , groundhog-postgresql ==0.8.0.3
+  , groundhog-sqlite ==0.8.0.1
+  , groundhog-th ==0.8.0.2
+  , group-by-date ==0.1.0.2
+  , grouped-list ==0.2.2.0
   , groups ==0.4.1.0
-  , gtk ==0.14.10
   , gtk2hs-buildtools ==0.13.4.0
-  , gtk3 ==0.14.9
   , gym-http-api ==0.1.0.1
   , h2c ==1.0.0
-  , hOpenPGP ==2.7.4.1
-  , hackage-db ==2.0.1
+  , hOpenPGP ==2.6.2
+  , hackage-db ==2.0
   , hackage-security ==0.5.3.0
-  , haddock-library ==1.5.0.1
+  , haddock-library ==1.4.5
   , hailgun ==0.4.1.8
-  , hakyll ==4.12.4.0
-  , half ==0.3
-  , hamilton ==0.1.0.3
-  , hamtsolo ==1.0.3
+  , hailgun-simple ==0.1.0.0
+  , hakyll ==4.12.3.0
+  , half ==0.2.2.3
+  , hamilton ==0.1.0.2
   , handwriting ==0.1.0.3
-  , hapistrano ==0.3.7.0
+  , hapistrano ==0.3.5.9
+  , happstack-jmacro ==7.0.12.1
   , happstack-server ==7.5.1.1
+  , happstack-server-tls ==7.1.6.5
   , happy ==1.19.9
-  , hasbolt ==0.1.3.1
+  , hasbolt ==0.1.3.0
   , hashable ==1.2.7.0
+  , hashable-time ==0.2.0.1
   , hashids ==1.0.2.4
-  , hashing ==0.1.0.1
   , hashmap ==1.3.3
   , hashtables ==1.2.3.1
   , haskeline ==0.7.4.3
-  , haskell-gi ==0.21.5
-  , haskell-gi-base ==0.21.4
-  , haskell-gi-overloading ==1.0
-  , haskell-lexer ==1.0.2
-  , haskell-lsp ==0.2.2.0
-  , haskell-lsp-types ==0.2.2.0
+  , haskell-gi ==0.21.4
+  , haskell-gi-base ==0.21.1
+  , haskell-gi-overloading ==0.0
+  , haskell-lexer ==1.0.1
+  , haskell-lsp ==0.2.0.1
+  , haskell-lsp-client ==1.0.0.1
+  , haskell-names ==0.9.2
+  , haskell-neo4j-client ==0.3.2.4
   , haskell-spacegoo ==0.2.0.1
   , haskell-src ==1.0.3.0
-  , haskell-src-exts ==1.20.3
-  , haskell-src-exts-simple ==1.20.0.0
-  , haskell-src-exts-util ==0.2.4
+  , haskell-src-exts ==1.20.2
+  , haskell-src-exts-util ==0.2.3
   , haskell-src-meta ==0.8.0.3
-  , haskell-tools-ast ==1.1.0.2
-  , haskell-tools-backend-ghc ==1.1.0.2
-  , haskell-tools-builtin-refactorings ==1.1.0.2
-  , haskell-tools-debug ==1.1.0.2
-  , haskell-tools-demo ==1.1.0.2
-  , haskell-tools-prettyprint ==1.1.0.2
-  , haskell-tools-refactor ==1.1.0.2
-  , haskell-tools-rewrite ==1.1.0.2
-  , haskey ==0.3.0.2
-  , haskey-btree ==0.3.0.0
-  , haskey-mtl ==0.3.1.0
+  , haskell-tools-ast ==1.0.1.1
+  , haskell-tools-backend-ghc ==1.0.1.1
+  , haskell-tools-prettyprint ==1.0.1.1
+  , haskell-tools-refactor ==1.0.1.2
+  , haskell-tools-rewrite ==1.0.1.1
   , haskintex ==0.8.0.0
-  , hasql ==1.3.0.3
-  , hasql-optparse-applicative ==0.3.0.3
-  , hasql-pool ==0.5
-  , hasql-transaction ==0.7
+  , hasmin ==1.0.2
+  , hasql ==1.1.1
+  , hasql-migration ==0.1.3
+  , hasql-optparse-applicative ==0.3.0.2
+  , hasql-pool ==0.4.3.1
+  , hasql-transaction ==0.6.0.1
+  , hastache ==0.6.1
   , hasty-hamiltonian ==1.3.2
-  , haxl ==2.0.1.1
+  , haxl ==0.5.1.0
+  , haxr ==3000.11.2
   , hbeanstalk ==0.2.4
   , hdaemonize ==0.5.5
+  , hdevtools ==0.1.7.0
   , heap ==1.0.4
   , heaps ==0.3.6
+  , heatshrink ==0.1.0.0
   , hebrew-time ==0.1.1
-  , hedgehog ==0.6.1
-  , hedgehog-corpus ==0.1.0
-  , hedis ==0.10.8
+  , hedgehog ==0.5.3
+  , hedgehog-quickcheck ==0.1
+  , hedis ==0.10.3
+  , heist ==1.0.1.2
   , here ==1.2.13
   , heredoc ==0.2.0.0
+  , herms ==1.9.0.4
   , heterocephalus ==1.0.5.2
   , hex ==0.1.2
-  , hexml ==0.3.4
+  , hexml ==0.3.3
   , hexml-lens ==0.2.1
   , hexpat ==0.20.13
   , hexstring ==0.11.1
+  , hformat ==0.3.3.0
   , hfsevents ==0.1.6
-  , hgmp ==0.1.1
+  , hid ==0.2.2
   , hidapi ==0.1.5
   , hidden-char ==0.1.0.2
   , hierarchical-clustering ==0.4.6
-  , hierarchy ==1.0.2
-  , higher-leveldb ==0.5.0.2
+  , higher-leveldb ==0.5.0.1
+  , highjson ==0.4.0.0
+  , highjson-swagger ==0.4.0.0
+  , highjson-th ==0.4.0.0
   , highlighting-kate ==0.6.4
-  , hinotify ==0.3.10
-  , hint ==0.8.0
-  , histogram-fill ==0.9.1.0
+  , hindent ==5.2.7
+  , hinotify ==0.3.9
+  , hint ==0.7.0
+  , histogram-fill ==0.8.5.0
+  , hit ==0.6.3
   , hjsmin ==0.2.0.2
-  , hledger ==1.10
-  , hledger-api ==1.10
-  , hledger-interest ==1.5.3
-  , hledger-lib ==1.10
-  , hledger-ui ==1.10.1
-  , hledger-web ==1.10
+  , hjsonpointer ==1.3.0
+  , hjsonschema ==1.7.2
+  , hledger ==1.5
+  , hledger-api ==1.5
+  , hledger-iadd ==1.3.5
+  , hledger-interest ==1.5.1
+  , hledger-lib ==1.5.1
+  , hledger-ui ==1.5
+  , hledger-web ==1.5.1
   , hlibgit2 ==0.18.0.16
-  , hlibsass ==0.1.7.0
+  , hlibsass ==0.1.6.1
   , hlint ==2.1.10
-  , hmatrix ==0.19.0.0
-  , hmatrix-backprop ==0.1.2.3
-  , hmatrix-gsl ==0.19.0.1
+  , hmatrix ==0.18.2.0
+  , hmatrix-backprop ==0.1.2.0
+  , hmatrix-gsl ==0.18.2.0
   , hmatrix-gsl-stats ==0.4.1.7
   , hmatrix-morpheus ==0.1.1.2
-  , hmatrix-special ==0.19.0.0
-  , hmatrix-vector-sized ==0.1.1.2
+  , hmatrix-repa ==0.1.2.2
+  , hmatrix-special ==0.4.0.1
+  , hmatrix-vector-sized ==0.1.1.0
   , hmpfr ==0.4.4
+  , hocilib ==0.2.0
   , hoogle ==5.0.17.3
-  , hoopl ==3.10.2.2
-  , hopenpgp-tools ==0.21.2
-  , hopenssl ==2.2.2
+  , hopenssl ==2.2.1
   , hopfli ==0.2.2.1
+  , hosc ==0.16
   , hostname ==1.0
   , hostname-validate ==1.0.0
-  , hourglass ==0.2.12
+  , hourglass ==0.2.11
   , hourglass-orphans ==0.1.0.0
   , hp2pretty ==0.8.0.2
-  , hpack ==0.28.2
+  , hpack ==0.27.0
+  , hpc-coveralls ==1.0.10
+  , hpio -test-hlint
+  , hpio ==0.9.0.6
+  , hpp ==0.5.2
   , hpqtypes ==1.5.3.0
-  , hprotoc ==2.4.11
-  , hquantlib ==0.0.5.0
-  , hquantlib-time ==0.0.4.1
+  , hquantlib ==0.0.4.0
   , hreader ==1.1.0
   , hreader-lens ==0.1.3.0
-  , hruby ==0.3.6
+  , hruby ==0.3.5.4
   , hs-GeoIP ==0.3
   , hs-bibutils ==6.6.0.0
-  , hs-functors ==0.1.3.0
-  , hsass ==0.7.0
+  , hsass ==0.5.0
+  , hsb2hs ==0.3.1
   , hscolour ==1.24.4
   , hsdns ==1.7.1
   , hsebaysdk ==0.4.0.0
   , hsemail ==2
   , hset ==2.2.0
-  , hsexif ==0.6.1.6
-  , hsini ==0.5.1.2
+  , hsexif ==0.6.1.5
+  , hsignal ==0.2.7.5
   , hsinstall ==1.6
-  , hslogger ==1.2.12
+  , hslogger ==1.2.10
   , hslua ==0.9.5.2
   , hslua-aeson ==0.3.0.2
   , hslua-module-text ==0.1.2.1
+  , hsndfile ==0.8.0
+  , hsndfile-vector ==0.5.2
   , hsp ==0.10.0
-  , hspec ==2.5.5
+  , hspec ==2.4.8
   , hspec-attoparsec ==0.1.0.2
   , hspec-checkers ==0.1.0.2
-  , hspec-contrib ==0.5.0
-  , hspec-core ==2.5.5
-  , hspec-discover ==2.5.5
+  , hspec-contrib ==0.4.0
+  , hspec-core ==2.4.8
+  , hspec-discover ==2.4.8
   , hspec-expectations ==0.8.2
   , hspec-expectations-lifted ==0.10.0
   , hspec-expectations-pretty-diff ==0.7.2.4
-  , hspec-golden-aeson ==0.7.0.0
+  , hspec-golden-aeson ==0.5.1.0
   , hspec-megaparsec ==1.0.0
   , hspec-meta ==2.4.6
   , hspec-pg-transact ==0.1.0.2
-  , hspec-smallcheck ==0.5.2
+  , hspec-smallcheck ==0.5.0
   , hspec-wai ==0.9.0
   , hspec-wai-json ==0.9.0
+  , hspec-webdriver ==1.2.0
+  , hsshellscript ==3.4.5
+  , hstatistics ==0.3
   , hstatsd ==0.1
   , hsx-jmacro ==7.3.8.1
   , hsyslog ==5.0.1
-  , hsyslog-udp ==0.2.4
-  , htaglib ==1.2.0
+  , hsyslog-udp ==0.2.3
+  , htaglib ==1.1.1
   , html ==1.0.1.2
-  , html-conduit ==1.3.2
+  , html-conduit ==1.3.1
   , html-email-validate ==0.2.0.0
-  , html-entities ==1.1.4.2
   , html-entity-map ==0.1.0.0
   , htoml ==1.0.0.3
-  , http-api-data ==0.3.8.1
-  , http-client ==0.5.14
+  , http-api-data ==0.3.7.2
+  , http-client ==0.5.13.1
   , http-client-openssl ==0.2.2.0
   , http-client-tls ==0.3.5.3
   , http-common ==0.8.2.0
   , http-conduit ==2.3.2
   , http-date ==0.0.8
   , http-link-header ==1.0.3.1
-  , http-media ==0.7.1.3
-  , http-reverse-proxy ==0.6.0
+  , http-media ==0.7.1.2
+  , http-reverse-proxy ==0.5.0.1
   , http-streams ==0.8.6.1
-  , http-types ==0.12.2
-  , http2 ==1.6.4
-  , httpd-shed ==0.4.0.3
+  , http-types ==0.12.1
+  , http2 ==1.6.3
   , human-readable-duration ==0.2.0.3
-  , hunit-dejafu ==1.2.0.6
+  , hunit-dejafu ==1.1.0.3
   , hvect ==0.4.0.0
   , hvega ==0.1.0.3
   , hw-balancedparens ==0.2.0.2
-  , hw-bits ==0.7.0.4
-  , hw-conduit ==0.2.0.5
+  , hw-bits ==0.7.0.3
+  , hw-conduit ==0.2.0.3
   , hw-diagnostics ==0.0.0.5
   , hw-excess ==0.2.0.2
+  , hw-fingertree ==0.1.0.1
   , hw-fingertree-strict ==0.1.1.1
   , hw-hedgehog ==0.1.0.2
   , hw-hspec-hedgehog ==0.1.0.5
   , hw-int ==0.0.0.3
-  , hw-ip ==0.1.0.0
   , hw-json ==0.6.0.0
   , hw-mquery ==0.1.0.1
   , hw-parser ==0.0.0.3
-  , hw-prim ==0.6.2.20
+  , hw-prim ==0.5.0.5
   , hw-rankselect ==0.10.0.3
-  , hw-rankselect-base ==0.3.2.1
+  , hw-rankselect-base ==0.2.0.2
   , hw-string-parse ==0.0.0.4
   , hw-succinct ==0.1.0.1
   , hw-xml ==0.1.0.3
@@ -1148,44 +1167,46 @@ constraints:
   , hybrid-vectors ==0.2.2
   , hyperloglog ==0.4.2
   , hyphenation ==0.7.1
-  , hyraxAbif ==0.2.3.10
   , iconv ==0.4.1.3
   , identicon ==0.2.2
+  , idris ==1.3.0
   , ieee754 ==0.8.0
   , if ==0.1.0.0
   , iff ==0.0.6
+  , ignore ==0.1.1.0
   , ihaskell ==0.9.1.0
   , ihaskell-hvega ==0.1.0.3
   , ihs ==0.1.0.2
   , ilist ==0.3.1.0
   , imagesize-conduit ==1.1
-  , immortal ==0.3
+  , immortal ==0.2.2.1
+  , imprint ==0.0.1.0
   , include-file ==0.1.0.3
-  , incremental-parser ==0.3.2
-  , indentation-core ==0.0.0.2
-  , indentation-parsec ==0.0.0.2
-  , indents ==0.5.0.0
-  , indexed-list-literals ==0.2.1.2
+  , incremental-parser ==0.2.5.4
+  , indentation-core ==0.0.0.1
+  , indentation-parsec ==0.0.0.1
+  , indents ==0.4.0.1
+  , indexed-list-literals ==0.1.0.1
   , inflections ==0.4.0.3
-  , influxdb ==1.6.1
+  , influxdb ==1.3.0.1
   , ini ==0.3.6
-  , inline-c ==0.6.1.0
+  , inline-c ==0.6.0.6
+  , inline-c-cpp ==0.2.1.0
   , inline-java ==0.8.4
-  , inliterate ==0.1.0
+  , inline-r ==0.9.2
   , insert-ordered-containers ==0.2.1.0
   , inspection-testing ==0.2.0.1
   , instance-control ==0.1.2.0
-  , integer-logarithms ==1.0.2.2
+  , integer-logarithms ==1.0.2.1
   , integration ==0.2.1
   , intern ==0.9.2
   , interpolate ==0.2.0
-  , interpolatedstring-perl6 ==1.0.1
-  , interpolation ==0.1.0.3
+  , interpolatedstring-perl6 ==1.0.0
+  , interpolation ==0.1.0.2
   , intervals ==0.8.1
   , intro ==0.3.2.0
-  , invariant ==0.5.1
+  , invariant ==0.5
   , invertible ==0.2.0.5
-  , invertible-grammar ==0.1.1
   , io-choice ==0.0.6
   , io-machine ==0.2.0.0
   , io-manager ==0.1.0.2
@@ -1194,12 +1215,12 @@ constraints:
   , io-storage ==0.3
   , io-streams ==1.5.0.1
   , io-streams-haproxy ==1.0.0.2
-  , ip ==1.3.0
-  , ip6addr ==1.0.0
-  , iproute ==1.7.6
+  , ip ==1.2.1
+  , ip6addr ==0.5.3
+  , iproute ==1.7.5
   , ipython-kernel ==0.9.1.0
   , irc ==0.6.1.0
-  , irc-client ==1.1.0.5
+  , irc-client ==1.1.0.4
   , irc-conduit ==0.3.0.1
   , irc-ctcp ==0.1.3.0
   , irc-dcc ==2.0.1
@@ -1209,212 +1230,221 @@ constraints:
   , iso8601-time ==0.1.5
   , iterable ==3.0
   , ix-shapable ==0.1.0
-  , ixset-typed ==0.4.0.1
-  , jack ==0.7.1.4
-  , jailbreak-cabal ==1.3.3
+  , ixset ==1.0.7
+  , ixset-typed ==0.3.1.1
+  , jack ==0.7.1.3
+  , javascript-extras ==0.3.2.0
   , jmacro ==0.6.15
-  , jmacro-rpc ==0.3.3
+  , jmacro-rpc ==0.3.2
+  , jmacro-rpc-happstack ==0.3.2
   , jmacro-rpc-snap ==0.3
   , jni ==0.6.1
-  , jose ==0.7.0.0
+  , jose ==0.6.0.3
   , jose-jwt ==0.7.8
   , js-flot ==0.8.3
   , js-jquery ==3.3.1
   , json ==0.9.2
-  , json-autotype ==2.0.0
-  , json-feed ==1.0.5
-  , json-rpc-client ==0.2.5.0
-  , json-rpc-generic ==0.2.1.5
-  , json-rpc-server ==0.2.6.0
-  , json-schema ==0.7.4.2
+  , json-autotype ==1.0.18
+  , json-builder ==0.3
+  , json-rpc-generic ==0.2.1.4
+  , json-schema ==0.7.4.1
+  , json-stream ==0.4.2.3
   , justified-containers ==0.3.0.0
   , jvm ==0.4.2
   , jvm-batching ==0.1.1
   , jvm-streaming ==0.3.1
   , jwt ==0.7.2
-  , kan-extensions ==5.2
-  , kanji ==3.4.0
-  , kansas-comet ==0.4
-  , katip ==0.6.0.0
+  , kan-extensions ==5.1
+  , kanji ==3.1.0.1
+  , katydid ==0.1.1.0
   , kawhi ==0.3.0
   , kdt ==0.2.4
   , keycode ==0.2.2
   , keys ==3.12.1
-  , kleene ==0
   , kmeans ==0.1.3
+  , knob ==0.1.1
   , koofr-client ==1.0.0.3
   , kraken ==0.1.0
   , l10n ==0.1.0.1
   , labels ==0.3.3
-  , lackey ==1.0.7
-  , lambdabot-core ==5.1.0.4
-  , lambdabot-irc-plugins ==5.1.0.4
+  , lackey ==1.0.5
+  , lambdabot-core ==5.1.0.2
+  , lambdabot-irc-plugins ==5.1.0.1
   , lame ==0.1.1
-  , language-c ==0.8.2
-  , language-c-quote ==0.12.2
-  , language-docker ==6.0.4
-  , language-ecmascript ==0.19
+  , language-c ==0.7.2
+  , language-c-quote ==0.12.1
+  , language-docker ==2.0.1
+  , language-ecmascript ==0.17.2.0
+  , language-fortran ==0.5.1
+  , language-glsl ==0.2.1
   , language-haskell-extract ==0.2.4
   , language-java ==0.2.9
   , language-javascript ==0.6.0.11
   , language-nix ==2.1.0.1
-  , language-puppet ==1.3.20.1
+  , language-puppet ==1.3.20
   , lapack-carray ==0.0.2
   , lapack-ffi ==0.0.2
-  , lapack-ffi-tools ==0.1.1
+  , lapack-ffi-tools ==0.1.0.1
   , large-hashable ==0.1.0.4
   , largeword ==1.2.5
-  , latex ==0.1.0.4
+  , latex ==0.1.0.3
   , lattices ==1.7.1.1
-  , lawful ==0.1.0.0
   , lazyio ==0.1.0.4
   , lca ==0.3.1
-  , leancheck ==0.7.7
+  , leancheck ==0.7.1
   , leapseconds-announced ==2017.1.0.1
-  , learn-physics ==0.6.3
   , lens ==4.16.1
+  , lens-accelerate ==0.1.0.0
   , lens-action ==0.2.3
   , lens-aeson ==1.0.2
   , lens-datetime ==0.3
-  , lens-family ==1.2.3
-  , lens-family-core ==1.2.3
+  , lens-family ==1.2.2
+  , lens-family-core ==1.2.2
   , lens-family-th ==0.5.0.2
-  , lens-labels ==0.3.0.1
-  , lens-misc ==0.0.2.0
+  , lens-labels ==0.1.0.2
   , lens-properties ==4.11.1
   , lens-regex ==0.1.0
   , lens-simple ==0.1.0.9
-  , lenz ==0.3.0.0
+  , lentil ==1.0.11.3
   , leveldb-haskell ==0.6.5
+  , lexer-applicative ==2.1.0.2
   , libffi ==0.1
   , libgit ==0.3.1
   , libgraph ==1.14
-  , libmpd ==0.9.0.9
+  , libinfluxdb ==0.0.4
+  , libmpd ==0.9.0.8
+  , liboath-hs ==0.0.1.0
+  , libsystemd-journal ==1.4.3
   , libxml-sax ==0.7.5
+  , licensor ==0.2.2
   , lift-generics ==0.1.2
-  , lifted-async ==0.10.0.3
+  , lifted-async ==0.9.3.3
   , lifted-base ==0.2.3.12
   , line ==4.0.1
   , linear ==1.20.8
+  , linear-accelerate ==0.5.0.1
   , linked-list-with-iterator ==0.1.1.0
   , linux-file-extents ==0.2.0.0
   , linux-namespaces ==0.1.3.0
   , list-t ==1.0.1
   , listsafe ==0.1.0.1
-  , llvm-hs ==6.3.0
-  , llvm-hs-pretty ==0.5.0.0
-  , llvm-hs-pure ==6.2.1
+  , llvm-hs ==5.1.3
+  , llvm-hs-pure ==5.1.2
   , lmdb ==0.2.5
-  , load-env ==0.2.0.2
-  , locators ==0.2.4.4
+  , load-env ==0.1.2
   , loch-th ==0.2.2
   , lockfree-queue ==0.2.3.1
+  , log ==0.9.0.1
   , log-base ==0.7.4.0
   , log-domain ==0.12
+  , log-elasticsearch ==0.9.1.0
   , log-postgres ==0.7.0.2
+  , log-warper ==1.8.11
   , logfloat ==0.13.3.3
   , logger-thread ==0.1.0.2
-  , logging-effect ==1.3.3
+  , logging-effect ==1.2.6
+  , logging-effect-extra ==1.2.2
+  , logging-effect-extra-file ==1.1.2
+  , logging-effect-extra-handler ==1.1.4
   , logging-facade ==0.3.0
   , logging-facade-syslog ==1
   , logict ==0.6.0.2
-  , long-double ==0.1
   , loop ==0.3.0
   , lrucache ==1.2.0.0
   , lrucaching ==0.3.3
-  , lucid ==2.9.11
-  , lucid-extras ==0.1.0.1
-  , luhn ==0.2
+  , lucid ==2.9.10
+  , lxd-client ==0.1.0.6
   , lxd-client-config ==0.1.0.1
-  , lz4 ==0.2.3.1
   , lzma ==0.0.0.3
   , lzma-conduit ==1.2.1
   , machines ==0.6.4
   , machines-binary ==0.3.0.3
   , machines-directory ==0.2.1.0
   , machines-io ==0.2.0.13
-  , magicbane ==0.3.0
-  , main-tester ==0.1.0.0
-  , mainland-pretty ==0.7
+  , mainland-pretty ==0.6.1
   , makefile ==1.1.0.0
   , managed ==1.0.6
+  , mandrill ==0.5.3.3
+  , map-syntax ==0.2.0.2
   , mapquest-api ==0.3.1
-  , markdown ==0.1.17.4
+  , markdown ==0.1.17.1
   , markdown-unlit ==0.5.0
   , markov-chain ==0.0.3.4
+  , markup ==4.0.4
   , marvin-interpolate ==1.1.2
-  , massiv ==0.2.4.0
+  , massiv ==0.1.6.1
   , massiv-io ==0.1.4.0
   , math-functions ==0.2.1.0
   , mathexpr ==0.3.0.0
+  , matplotlib ==0.6.0
   , matrices ==0.4.5
-  , matrix ==0.3.6.1
+  , matrix ==0.3.5.0
   , matrix-market-attoparsec ==0.1.0.8
   , maximal-cliques ==0.1.1
   , mbox ==0.3.4
   , mbox-utility ==0.0.1
   , mbtiles ==0.6.0.0
-  , mbug ==1.3
   , mcmc-types ==1.0.3
   , med-module ==0.1.1
   , median-stream ==0.7.0.0
-  , mega-sdist ==0.3.3.1
-  , megaparsec ==6.5.0
-  , memory ==0.14.18
+  , megaparsec ==6.4.1
+  , memory ==0.14.16
   , mercury-api ==0.1.0.1
   , mersenne-random-pure64 -small_base
   , mersenne-random-pure64 ==0.2.2.0
   , messagepack ==0.5.4
   , messagepack-rpc ==0.5.1
   , metrics ==0.4.1.1
-  , mfsolve ==0.3.2.0
   , microformats2-parser ==1.0.1.9
-  , microlens ==0.4.9.1
+  , microlens ==0.4.8.3
   , microlens-aeson ==2.3.0
-  , microlens-contra ==0.1.0.2
-  , microlens-ghc ==0.4.9.1
+  , microlens-contra ==0.1.0.1
+  , microlens-ghc ==0.4.8.0
   , microlens-mtl ==0.1.11.1
-  , microlens-platform ==0.3.10
-  , microlens-th ==0.4.2.3
+  , microlens-platform ==0.3.9.0
+  , microlens-th ==0.4.1.3
   , microspec ==0.1.0.0
   , microstache ==1.0.1.1
   , midi ==0.2.2.2
   , mighty-metropolis ==1.2.0
-  , milena ==0.5.2.3
+  , milena ==0.5.2.2
   , mime-mail ==0.4.14
   , mime-mail-ses ==0.4.1
   , mime-types ==0.1.0.8
   , minimorph ==0.1.6.1
-  , minio-hs -live-test
-  , minio-hs ==1.2.0
-  , minisat-solver ==0.1
+  , minio-hs ==1.0.1
   , miniutter ==0.4.7.0
   , mintty ==0.1.2
-  , miso ==0.21.2.0
+  , misfortune ==0.1.1.2
+  , miso ==0.14.0.0
   , missing-foreign ==0.1.1
-  , mixed-types-num ==0.3.1.5
-  , mltool ==0.2.0.1
+  , mixed-types-num ==0.3.1.4
+  , mltool ==0.1.0.2
   , mmap ==0.5.9
   , mmark ==0.0.5.6
   , mmark-cli ==0.0.3.0
-  , mmark-ext ==0.2.1.1
+  , mmark-ext ==0.2.1.0
   , mmorph ==1.1.2
   , mnist-idx ==0.1.2.8
   , mockery ==0.3.5
+  , model ==0.4.4
   , modern-uri ==0.2.2.0
+  , modify-fasta ==0.8.3.0
   , moesocks ==1.0.0.44
+  , mole ==0.0.6
   , monad-control ==1.0.2.3
   , monad-control-aligned ==0.0.1.1
   , monad-coroutine ==0.9.0.4
   , monad-extras ==0.6.0
   , monad-journal ==0.8.1
-  , monad-logger ==0.3.30
+  , monad-logger ==0.3.29
   , monad-logger-json ==0.1.0.0
   , monad-logger-prefix ==0.1.10
   , monad-logger-syslog ==0.1.4.0
   , monad-loops ==0.4.3
   , monad-memo ==0.4.1
   , monad-metrics ==0.2.1.2
+  , monad-mock ==0.2.0.0
   , monad-par ==0.3.4.8
   , monad-par-extras ==0.3.3
   , monad-parallel ==0.7.2.3
@@ -1423,17 +1453,19 @@ constraints:
   , monad-recorder ==0.1.1
   , monad-skeleton ==0.1.5
   , monad-st ==0.2.4.1
-  , monad-time ==0.3.1.0
+  , monad-time ==0.2
   , monad-unlift ==0.2.0
   , monad-unlift-ref ==0.2.1
   , monadic-arrays ==0.2.2
-  , monadlist ==0.0.2
+  , monadloc ==0.7.1
+  , monadoid ==0.0.2
+  , monadplus ==1.4.2
   , monads-tf ==0.1.0.3
-  , mongoDB ==2.4.0.0
+  , mongoDB ==2.3.0.5
   , mono-traversable ==1.0.9.0
   , mono-traversable-instances ==0.1.0.0
-  , monoid-extras ==0.5
-  , monoid-subclasses ==0.4.6.1
+  , monoid-extras ==0.4.4
+  , monoid-subclasses ==0.4.6
   , monoid-transformer ==0.0.4
   , monoidal-containers ==0.3.1.0
   , morte ==1.6.20
@@ -1445,34 +1477,34 @@ constraints:
   , multiarg ==0.30.0.10
   , multimap ==1.2.1
   , multipart ==0.1.3
-  , multistate ==0.8.0.1
+  , multiset ==0.3.4
+  , multistate ==0.7.1.2
   , murmur-hash ==0.1.0.9
   , mustache ==2.3.0
   , mutable-containers ==0.3.4
   , mwc-probability ==2.0.4
-  , mwc-probability-transition ==0.4
   , mwc-random ==0.13.6.0
-  , mysql ==0.1.6
+  , mwc-random-accelerate ==0.1.0.0
+  , mysql ==0.1.5
   , mysql-haskell ==0.8.3.0
   , mysql-haskell-nem ==0.1.0.0
   , mysql-haskell-openssl ==0.8.3.0
   , mysql-simple ==0.4.5
+  , n-tuple ==0.0.2.0
   , nagios-check ==0.3.2
-  , named ==0.1.0.0
-  , names-th ==0.3.0.0
+  , names-th ==0.2.0.5
   , nano-erl ==0.1.0.1
   , nanospec ==0.2.2
+  , naqsha ==0.2.0.1
   , nats ==1.1.2
-  , natural-induction ==0.2.0.0
-  , natural-numbers ==0.1.2.0
   , natural-sort ==0.1.2
   , natural-transformation ==0.4
   , ndjson-conduit ==0.1.0.5
-  , neat-interpolation ==0.3.2.2
+  , neat-interpolation ==0.3.2.1
   , netlib-carray ==0.0.1.1
-  , netlib-ffi ==0.1
+  , netlib-ffi ==0.0.1
   , netpbm ==1.0.2
-  , nettle ==0.3.0
+  , nettle ==0.2.1
   , netwire ==5.0.3
   , netwire-input ==0.0.7
   , netwire-input-glfw ==0.0.10
@@ -1480,22 +1512,23 @@ constraints:
   , network-anonymous-i2p ==0.10.0
   , network-anonymous-tor ==0.11.0
   , network-attoparsec ==0.12.2
-  , network-byte-order ==0.0.0.0
+  , network-carbon ==1.0.12
   , network-conduit-tls ==1.3.2
   , network-house ==0.1.0.2
   , network-info ==0.2.0.10
   , network-ip ==0.3.0.2
   , network-multicast ==0.2.0
-  , network-simple ==0.4.3
-  , network-simple-tls ==0.3.1
+  , network-simple ==0.4.2
   , network-transport ==0.5.2
   , network-transport-composed ==0.2.1
   , network-transport-inmemory ==0.5.2
+  , network-transport-tcp ==0.6.0
   , network-transport-tests ==0.2.4.2
   , network-uri ==2.6.1.0
   , newtype ==0.2
   , newtype-generics ==0.5.3
   , next-ref ==0.1.0.2
+  , nfc ==0.1.0
   , nicify-lib ==1.0.1
   , nix-paths +allow-relative-paths
   , nix-paths ==1.0.1
@@ -1504,127 +1537,135 @@ constraints:
   , non-negative ==0.1.2
   , nonce ==1.0.7
   , nondeterminism ==1.4
-  , not-gloss ==0.7.7.0
+  , normalization-insensitive ==2.0.1
   , nsis ==0.3.2
   , numbers ==3000.2.0.2
   , numeric-extras ==0.1
-  , numeric-prelude ==0.4.3.1
-  , numhask ==0.2.3.1
-  , numhask-prelude ==0.1.0.1
-  , numhask-range ==0.2.3.1
-  , numhask-test ==0.1.0.0
+  , numeric-prelude ==0.4.3
+  , numhask ==0.1.4.0
+  , numhask-range ==0.1.3.0
   , numtype-dk ==0.5.0.2
-  , nvim-hs ==1.0.0.3
-  , nvim-hs-contrib ==1.0.0.0
-  , o-clock ==1.0.0.1
+  , nvvm ==0.8.0.3
+  , o-clock ==0.1.1
   , oauthenticated ==0.2.1.0
   , objective ==1.1.2
-  , odbc ==0.2.2
+  , ochintin-daicho ==0.1.0.1
   , oeis ==0.3.9
   , ofx ==0.4.2.0
   , old-locale ==1.0.0.7
   , old-time ==1.1.0.3
-  , om-elm ==1.0.0.3
   , once ==0.2
-  , one-liner ==1.0
+  , one-liner ==0.9.2
   , one-liner-instances ==0.1.2.1
-  , online ==0.3.0.0
+  , online ==0.2.1.0
   , oo-prototypes ==0.1.0.0
+  , opaleye ==0.6.7001.0
   , open-browser ==0.2.1.0
   , open-witness ==0.4.0.1
-  , openexr-write ==0.1.0.2
+  , openexr-write ==0.1.0.1
   , openpgp-asciiarmor ==0.1.1
-  , opensource ==0.1.1.0
+  , opensource ==0.1.0.0
   , openssl-streams ==1.2.1.3
   , operational ==0.2.3.5
   , operational-class ==0.3.0.0
   , opml-conduit ==0.6.0.4
   , optional-args ==1.0.2
   , options ==1.2.1.1
-  , optparse-applicative ==0.14.3.0
+  , optparse-applicative ==0.14.2.0
   , optparse-generic ==1.3.0
   , optparse-simple ==0.1.0
   , optparse-text ==0.1.1.0
   , overhang ==1.0.0
-  , packcheck ==0.3.1
-  , packdeps ==0.4.5
+  , package-description-remote ==0.2.0.0
+  , packdeps ==0.4.4
   , pager ==0.1.1.0
+  , pagerduty ==0.0.8
   , pagination ==0.2.1
-  , palette ==0.3.0.1
-  , pandoc ==2.2.1
-  , pandoc-citeproc ==0.14.8.1
-  , pandoc-types ==1.17.5.4
+  , palette ==0.1.0.5
+  , pandoc -old-locale
+  , pandoc ==2.1.2
+  , pandoc-citeproc ==0.14.3.1
+  , pandoc-types ==1.17.3.1
   , pango ==0.13.5.0
-  , papillon ==0.1.0.6
+  , papillon ==0.1.0.5
   , parallel ==3.2.2.0
   , parallel-io ==0.3.3
   , parseargs ==0.2.0.8
   , parsec ==3.1.13.0
   , parsec-numeric ==0.1.0.0
-  , parser-combinators ==1.0.0
+  , parser-combinators ==0.4.0
   , parsers ==0.12.9
   , partial-handler ==1.0.3
   , partial-isomorphisms ==0.2.2.1
   , partial-order ==0.1.2.1
+  , partial-semigroup ==0.3.0.3
   , path ==0.6.1
-  , path-extra ==0.2.0
+  , path-extra ==0.0.6
   , path-io ==1.3.3
   , path-pieces ==0.2.1
+  , path-text-utf8 ==0.0.1.0
   , pathtype -old-time
   , pathtype ==0.8.1
   , pathwalk ==0.3.1.2
+  , patience ==0.1.1
   , pattern-arrows ==0.0.2
   , pcf-font ==0.2.2.0
   , pcf-font-embed ==0.1.2.0
-  , pcg-random ==0.1.3.5
   , pcre-heavy ==1.0.0.2
   , pcre-light ==0.4.0.4
   , pcre-utils ==0.1.8.1.1
+  , pdf-toolbox-content ==0.0.5.1
+  , pdf-toolbox-core ==0.0.4.1
+  , pdf-toolbox-document ==0.0.7.1
   , pdfinfo ==1.5.4
-  , peano ==0.1.0.1
+  , pell ==0.1.1.0
   , pem ==0.2.4
-  , perf ==0.4.1.0
+  , perf ==0.3.1.1
   , perfect-hash-generator ==0.2.0.6
   , persistable-record ==0.6.0.4
-  , persistable-types-HDBC-pg ==0.0.3.5
+  , persistable-types-HDBC-pg ==0.0.3.3
   , persistent ==2.8.2
-  , persistent-iproute ==0.2.3
+  , persistent-mongoDB ==2.8.0
   , persistent-mysql ==2.8.1
-  , persistent-mysql-haskell ==0.4.2
+  , persistent-mysql-haskell ==0.4.1
   , persistent-postgresql ==2.8.2.0
+  , persistent-redis ==2.5.2.2
   , persistent-refs ==0.4
-  , persistent-sqlite ==2.8.2
+  , persistent-sqlite ==2.8.1.2
   , persistent-template ==2.5.4
   , pg-transact ==0.1.0.1
   , pgp-wordlist ==0.1.0.2
   , phantom-state ==0.2.1.2
-  , picosat ==0.1.5
+  , picedit ==0.2.3.0
+  , picoparsec ==0.1.2.3
+  , picosat ==0.1.4
   , pid1 ==0.1.2.0
-  , pinboard ==0.9.12.11
+  , pinboard ==0.9.12.10
+  , pinch ==0.3.3.0
   , pipes ==4.3.9
   , pipes-aeson ==0.4.1.8
   , pipes-attoparsec ==0.5.1.5
-  , pipes-binary ==0.4.2
   , pipes-bytestring ==2.1.6
   , pipes-category ==0.3.0.0
-  , pipes-concurrency ==2.0.12
+  , pipes-concurrency ==2.0.11
   , pipes-csv ==1.4.3
   , pipes-extras ==1.0.15
   , pipes-fastx ==0.3.0.0
-  , pipes-fluid ==0.6.0.1
+  , pipes-fluid ==0.6.0.0
   , pipes-group ==1.0.12
-  , pipes-http ==1.0.5
-  , pipes-misc ==0.5.0.0
+  , pipes-misc ==0.4.0.1
+  , pipes-mongodb ==0.1.0.0
   , pipes-network ==0.6.5
-  , pipes-network-tls ==0.3
   , pipes-parse ==3.0.8
   , pipes-random ==1.0.0.4
   , pipes-safe ==2.2.9
+  , pipes-text ==0.0.2.5
   , pipes-wai ==3.2.0
+  , pixelated-avatar-generator ==0.1.3
   , pkcs10 ==0.2.0.0
   , placeholders ==0.1
-  , plot-light ==0.4.3
-  , plotlyhs ==0.2.1
+  , plot ==0.2.3.9
+  , plot-light ==0.2.9
   , pointed ==5.0.1
   , pointedlist ==0.6.1
   , pointless-fun ==1.1.0.6
@@ -1632,28 +1673,32 @@ constraints:
   , poly-arity ==0.1.0
   , polynomials-bernstein ==1.1.2
   , polyparse ==1.12
-  , pooled-io ==0.0.2.2
-  , portable-lines ==0.1
+  , pomaps ==0.0.1.0
+  , pooled-io ==0.0.2.1
+  , posix-paths ==0.2.1.5
   , post-mess-age ==0.2.1.0
-  , postgresql-binary ==0.12.1.2
-  , postgresql-libpq ==0.9.4.2
+  , postgresql-binary ==0.12.1.1
+  , postgresql-libpq ==0.9.4.1
   , postgresql-schema ==0.1.14
   , postgresql-simple ==0.5.4.0
-  , postgresql-simple-migration ==0.1.13.0
+  , postgresql-simple-migration ==0.1.12.0
   , postgresql-simple-queue ==1.0.1
   , postgresql-simple-url ==0.2.1.0
   , postgresql-transactional ==1.1.1
   , postgresql-typed ==0.5.3.0
-  , pptable ==0.3.0.0
-  , pqueue ==1.4.1.2
+  , pptable ==0.2.0.0
+  , pqueue ==1.4.1.1
+  , pred-set ==0.0.1
+  , pred-trie ==0.5.1.2
   , prefix-units ==0.2.0
   , prelude-compat ==0.0.0.1
   , prelude-extras ==0.4.0.3
   , prelude-safeenum ==0.1.1.2
+  , preprocessor-tools ==1.0.1
   , present ==4.1.0
   , pretty-class ==1.0.1.1
   , pretty-hex ==1.0
-  , pretty-show ==1.7
+  , pretty-show ==1.6.16
   , pretty-simple ==2.1.0.1
   , pretty-types ==0.2.3.1
   , prettyclass ==1.0.0.0
@@ -1662,73 +1707,77 @@ constraints:
   , prettyprinter-compat-annotated-wl-pprint ==1
   , prettyprinter-compat-ansi-wl-pprint ==1.0.1
   , prettyprinter-compat-wl-pprint ==1.0.0.1
-  , prettyprinter-convert-ansi-wl-pprint ==1.1
   , prim-uniq ==0.1.0.1
   , primes ==0.2.1.0
-  , primitive ==0.6.3.0
-  , probability ==0.2.5.2
+  , primitive ==0.6.4.0
+  , probability ==0.2.5.1
   , process-extras ==0.7.4
-  , product-isomorphic ==0.0.3.3
-  , product-profunctors ==0.10.0.0
+  , product-isomorphic ==0.0.3.2
+  , product-profunctors ==0.9.0.0
   , profiterole ==0.1
   , profunctors ==5.2.2
   , project-template ==0.2.0.1
   , projectroot ==0.2.0.1
   , prometheus-client ==0.3.0
+  , prometheus-metrics-ghc ==0.3.0
   , promises ==0.3
   , prompt ==0.1.1.2
-  , proto-lens ==0.4.0.1
-  , proto-lens-arbitrary ==0.1.2.2
-  , proto-lens-combinators ==0.1.0.11
-  , proto-lens-optparse ==0.1.1.4
-  , proto-lens-protobuf-types ==0.3.0.1
-  , proto-lens-protoc ==0.3.1.2
-  , proto-lens-runtime ==0.4.0.2
+  , proto-lens ==0.2.2.0
+  , proto-lens-arbitrary ==0.1.1.1
+  , proto-lens-descriptors ==0.2.2.0
+  , proto-lens-optparse ==0.1.1.1
   , protobuf ==0.2.1.2
-  , protobuf-simple ==0.1.1.0
+  , protobuf-simple ==0.1.0.5
   , protocol-buffers ==2.4.11
   , protocol-buffers-descriptor ==2.4.11
-  , protocol-radius ==0.0.1.1
+  , protocol-radius ==0.0.1.0
   , protocol-radius-test ==0.0.1.0
   , protolude ==0.2.2
   , proxied ==0.3
   , psql-helpers ==0.1.0.0
   , psqueues ==0.2.7.0
-  , publicsuffix ==0.20180513
-  , pure-zlib ==0.6.4
+  , pthread ==0.2.0
+  , publicsuffix ==0.20171229
+  , pure-io ==0.2.1
   , pureMD5 ==2.1.3
-  , purescript-bridge ==0.13.0.0
+  , purescript-bridge ==0.11.1.2
   , pushbullet-types ==0.4.1.0
+  , pusher-http-haskell ==1.5.1.5
+  , pwstore-fast ==2.4.4
+  , qchas ==1.1.0.1
   , qm-interpolated-string ==0.3.0.0
-  , qnap-decrypt ==0.3.3
   , quickbench ==1.0
   , quickcheck-arbitrary-adt ==0.3.1.0
   , quickcheck-assertions ==0.3.0
-  , quickcheck-instances ==0.3.19
+  , quickcheck-classes ==0.4.13
+  , quickcheck-combinators ==0.0.4
+  , quickcheck-instances ==0.3.18
   , quickcheck-io ==0.2.0
+  , quickcheck-properties ==0.1
   , quickcheck-simple ==0.1.0.4
   , quickcheck-special ==0.1.0.6
+  , quickcheck-state-machine ==0.3.1
   , quickcheck-text ==0.1.2.1
   , quickcheck-unicode ==1.0.1.0
-  , quicklz ==1.5.0.11
-  , rainbow ==0.30.0.2
-  , rainbox ==0.20.0.0
+  , quickcheck-with-counterexamples ==1.0
+  , raaz ==0.2.0
+  , rainbow ==0.28.0.4
+  , rainbox ==0.18.0.10
   , rakuten ==0.1.1.5
   , ramus ==0.1.2
   , random ==1.1
-  , random-bytestring ==0.1.3.1
   , random-fu ==0.2.7.0
   , random-shuffle ==0.0.4
   , random-source ==0.3.0.6
   , random-tree ==0.6.0.5
   , range-set-list ==0.1.3
+  , rank-product ==0.2.0.1
   , rank1dynamic ==0.4.0
-  , rank2classes ==1.1.0.1
-  , rasterific-svg ==0.3.3.2
-  , ratel ==1.0.7
-  , ratel-wai ==1.0.4
+  , rank2classes ==1.0.2
+  , rasterific-svg ==0.3.3.1
+  , ratel ==1.0.5
+  , ratel-wai ==1.0.3
   , ratio-int ==0.1.2
-  , rattletrap ==4.1.2
   , raw-strings-qq ==1.1
   , rawfilepath ==0.2.4
   , rawstring-qm ==0.2.3.0
@@ -1739,15 +1788,19 @@ constraints:
   , read-editor ==0.1.0.2
   , read-env-var ==1.0.0.0
   , readable ==0.3.1
-  , rebase ==1.2.4
-  , record-dot-preprocessor ==0.1.4
   , recursion-schemes ==5.0.3
+  , redis-io ==0.7.0
+  , redis-resp ==0.4.0
   , reducers ==3.12.3
   , ref-fd ==0.4.0.1
   , refact ==0.3.0.2
   , references ==0.3.3.1
-  , refined ==0.2.3.0
+  , refined ==0.1.2.1
   , reflection ==2.1.4
+  , reform ==0.2.7.2
+  , reform-blaze ==0.2.4.3
+  , reform-hamlet ==0.0.5.3
+  , reform-happstack ==0.2.5.2
   , regex-applicative ==0.3.3
   , regex-applicative-text ==0.1.0.1
   , regex-base ==0.93.2
@@ -1760,638 +1813,663 @@ constraints:
   , regex-tdfa ==1.2.3.1
   , regex-tdfa-text ==1.0.0.3
   , reinterpret-cast ==0.1.0
-  , relational-query ==0.12.1.0
-  , relational-query-HDBC ==0.7.1.1
+  , relational-query ==0.11.4.0
+  , relational-query-HDBC ==0.6.8.0
   , relational-record ==0.2.2.0
   , relational-schemas ==0.1.6.2
-  , relude ==0.1.1
+  , rematch ==0.2.0.0
   , renderable ==0.2.0.1
-  , repa ==3.4.1.4
+  , repa ==3.4.1.3
+  , repa-algorithms ==3.4.1.2
+  , repa-io ==3.4.1.1
   , repline ==0.1.7.0
-  , req ==1.1.0
-  , req-conduit ==1.0.0
+  , req ==1.0.0
   , req-url-extra ==0.1.0.0
-  , require ==0.2.1
-  , reroute ==0.5.0.0
-  , resolv ==0.1.1.2
+  , reroute ==0.4.1.0
   , resource-pool ==0.2.3.2
-  , resourcet ==1.2.2
+  , resourcet ==1.2.1
+  , rest-core ==0.39
+  , rest-snap ==0.3.0.0
   , rest-stringmap ==0.2.0.7
+  , rest-types ==1.14.1.2
   , result ==0.2.6.0
   , rethinkdb-client-driver ==0.0.25
-  , retry ==0.7.7.0
+  , retry ==0.7.6.3
   , rev-state ==0.1.2
-  , rfc5051 ==0.1.0.4
-  , rhine ==0.4.0.1
+  , rfc5051 ==0.1.0.3
   , riak ==1.1.2.5
   , riak-protobuf ==0.23.0.0
   , rio ==0.1.5.0
-  , rio-orphans ==0.1.1.0
   , rng-utils ==0.3.0
   , roles ==0.2.0.0
-  , rosezipper ==0.2
+  , rollbar-hs ==0.2.0.0
+  , rose-trees ==0.0.4.4
   , rot13 ==0.2.0.1
-  , rounded ==0.1.0.1
   , rss-conduit ==0.4.2.2
   , runmemo ==1.0.0.1
   , rvar ==0.2.0.3
-  , s3-signer ==0.5.0.0
+  , s3-signer ==0.3.0.0
   , safe ==0.3.17
   , safe-exceptions ==0.1.7.0
   , safe-exceptions-checked ==0.1.0
-  , safe-foldable ==0.1.0.0
-  , safe-money -serialise
-  , safe-money ==0.6
   , safecopy ==0.9.4.1
   , safeio ==0.0.5.0
-  , saltine ==0.1.0.2
-  , salve ==1.0.6
   , sample-frame ==0.0.3
   , sample-frame-np ==0.0.4.1
   , sampling ==0.3.3
-  , sandi ==0.4.3
   , sandman ==0.2.0.1
   , say ==0.1.0.1
   , sbp ==2.3.17
-  , sbv ==7.12
+  , sbv ==7.5
   , scalendar ==1.2.0
   , scalpel ==0.5.1
   , scalpel-core ==0.5.1
   , scanner ==0.2
+  , schematic ==0.4.2.0
   , scientific ==0.3.6.2
-  , scotty -hpc-coveralls
   , scotty ==0.11.2
   , scrypt ==0.5.0
-  , sdl2 ==2.4.1.0
+  , sdl2 ==2.4.0.1
   , sdl2-gfx ==0.2
   , sdl2-image ==2.0.0
   , sdl2-mixer ==1.1.0
-  , sdl2-ttf ==2.1.0
+  , sdl2-ttf ==2.0.2
   , search-algorithms ==0.3.0
-  , secp256k1 ==0.5.2
   , securemem ==0.1.10
-  , selda ==0.2.0.0
+  , selda ==0.1.12.1
   , selda-postgresql ==0.1.7.2
   , selda-sqlite ==0.1.6.0
   , semigroupoid-extras ==5
   , semigroupoids ==5.2.2
   , semigroups ==0.18.5
   , semiring-simple ==1.0.0.1
+  , semirings ==0.1.3.0
   , semver ==0.3.3.1
   , sendfile ==0.7.9
+  , sensu-run ==0.4.0.5
   , seqalign ==0.2.0.4
+  , seqloc ==0.6.1.1
+  , sequence ==0.9.8
   , serf ==0.1.1.0
-  , serialise ==0.2.0.0
-  , servant ==0.14.1
+  , servant ==0.13.0.1
   , servant-JuicyPixels ==0.3.0.4
-  , servant-auth ==0.3.2.0
-  , servant-auth-client ==0.3.3.0
-  , servant-auth-docs ==0.2.10.0
-  , servant-auth-server ==0.4.0.1
-  , servant-auth-swagger ==0.2.10.0
   , servant-blaze ==0.8
   , servant-cassava ==0.10
-  , servant-checked-exceptions ==2.0.0.0
-  , servant-checked-exceptions-core ==2.0.0.0
-  , servant-client ==0.14
-  , servant-client-core ==0.14.1
-  , servant-dhall ==0.1.0.1
+  , servant-client ==0.13.0.1
+  , servant-client-core ==0.13.0.1
   , servant-docs ==0.11.2
-  , servant-elm ==0.5.0.0
+  , servant-elm ==0.4.0.1
   , servant-exceptions ==0.1.1
   , servant-foreign ==0.11.1
+  , servant-generic ==0.1.0.3
   , servant-github-webhook ==0.4.1.0
   , servant-js ==0.9.3.2
-  , servant-lucid ==0.8.1
+  , servant-kotlin ==0.1.1.2
+  , servant-lucid ==0.8
   , servant-mock ==0.8.4
   , servant-pandoc ==0.5.0.0
-  , servant-ruby ==0.8.0.2
-  , servant-server ==0.14.1
+  , servant-purescript ==0.9.0.2
+  , servant-ruby ==0.7.0.0
+  , servant-server ==0.13.0.1
   , servant-static-th ==0.2.2.0
-  , servant-streaming ==0.3.0.0
-  , servant-streaming-client ==0.3.0.0
-  , servant-streaming-server ==0.3.0.0
-  , servant-swagger ==1.1.6
-  , servant-swagger-ui ==0.3.0.3.13.2
-  , servant-swagger-ui-core ==0.3.1
-  , servant-tracing ==0.1.0.2
+  , servant-subscriber ==0.6.0.1
+  , servant-swagger ==1.1.5
+  , servant-swagger-ui ==0.2.5.3.9.1
   , servant-websockets ==1.1.0
   , servant-yaml ==0.1.0.0
-  , serverless-haskell ==0.6.7
   , serversession ==1.0.1
+  , serversession-backend-persistent ==1.0.4
+  , serversession-backend-redis ==1.0.3
   , serversession-frontend-wai ==1.0
   , servius ==1.2.3.0
   , ses-html ==0.4.0.0
   , set-cover ==0.0.9
+  , set-monad ==0.2.0.0
   , setenv ==0.1.1.3
-  , setlocale ==1.0.0.8
-  , sexp-grammar ==2.0.1
+  , setlocale ==1.0.0.6
+  , sets ==0.0.5.2
   , shake ==0.16.4
-  , shake-language-c ==0.12.0
-  , shakespeare ==2.0.20
-  , shell-conduit ==4.7.0
-  , shell-escape ==0.2.0
+  , shake-language-c ==0.11.0
+  , shakespeare ==2.0.15
   , shelltestrunner ==1.9
-  , shelly ==1.8.1
+  , shelly ==1.7.2
+  , shikensu ==0.3.8
   , shortcut-links ==0.4.2.0
   , should-not-typecheck ==2.1.0
   , show-combinators ==0.1.0.0
   , show-prettyprint ==0.2.2
-  , siggy-chardust ==1.0.0
   , signal ==0.1.0.4
   , silently ==1.2.5
-  , simple-cmd ==0.1.2
+  , simple ==0.11.2
+  , simple-log ==0.9.6
   , simple-reflect ==0.3.3
   , simple-sendfile ==0.2.27
-  , simple-vec3 ==0.4.0.9
-  , simplest-sqlite ==0.1.0.0
-  , since ==0.0.0
+  , simple-session ==0.10.1.1
+  , simple-templates ==0.8.0.1
   , singleton-bool ==0.1.4
-  , singleton-nats ==0.4.2
-  , singletons ==2.4.1
+  , singleton-nats ==0.4.1
+  , singletons ==2.3.1
   , siphash ==1.0.3
-  , size-based ==0.1.2.0
   , skein ==1.0.9.4
-  , skylighting ==0.7.4
-  , skylighting-core ==0.7.4
-  , slack-web ==0.2.0.9
+  , skeletons ==0.4.0
+  , skylighting ==0.6
+  , slack-web ==0.2.0.6
   , slave-thread ==1.0.2
+  , slug ==0.1.7
   , smallcheck ==1.1.5
   , smoothie ==0.4.2.9
   , smtp-mail ==0.1.4.6
+  , snap ==1.1.0.0
   , snap-blaze ==0.2.1.5
   , snap-core ==1.0.3.2
-  , snap-server ==1.1.0.0
-  , snappy ==0.2.0.2
+  , snap-server ==1.0.3.3
   , snowflake ==0.1.1.1
   , soap ==0.2.3.6
   , soap-openssl ==0.1.0.2
   , soap-tls ==0.1.1.4
+  , socket ==0.8.1.0
   , socket-activation ==0.1.0.2
   , socks ==0.5.6
   , sort ==1.0.0.0
-  , sorted-list ==0.2.1.0
+  , sorted-list ==0.2.0.0
   , sourcemap ==0.1.6
-  , sox ==0.2.3.1
-  , soxlib ==0.0.3.1
+  , sox ==0.2.3
+  , soxlib ==0.0.3
   , sparkle ==0.7.4
-  , sparse-linear-algebra ==0.3.1
-  , spatial-math ==0.5.0.1
+  , sparse-linear-algebra ==0.2.9.9
+  , spdx ==0.2.2.0
   , special-values ==0.1.0.0
-  , speculate ==0.3.5
+  , speculate ==0.3.2
   , speculation ==1.5.0.3
   , speedy-slice ==0.3.0
   , sphinx ==0.6.0.2
   , splice ==0.6.1.1
   , split ==0.2.3.3
-  , splitmix ==0.0.1
+  , splitmix ==0
   , spoon ==0.3.1
-  , spreadsheet ==0.1.3.8
+  , spreadsheet ==0.1.3.7
   , sql-words ==0.1.6.2
   , sqlite-simple ==0.4.16.0
-  , sqlite-simple-errors ==0.6.1.0
-  , squeal-postgresql ==0.3.2.0
+  , squeal-postgresql ==0.1.1.4
   , srcloc ==0.5.1.2
   , stache ==1.2.1
-  , stack ==1.7.1
-  , starter ==0.3.0
+  , stack-type ==0.1.0.0
+  , starter ==0.2.1
   , state-codes ==0.1.3
+  , stateWriter ==0.2.10
   , stateref ==0.3
   , statestack ==0.2.0.5
-  , static-canvas ==0.2.0.3
-  , static-text ==0.2.0.3
+  , static-text ==0.2.0.2
   , statistics ==0.14.0.2
   , stb-image-redux ==0.2.1.2
-  , step-function ==0.2
-  , stm ==2.4.5.1
+  , stitch ==0.5.0.0
+  , stm ==2.4.5.0
   , stm-chans ==3.0.0.4
-  , stm-conduit ==4.0.1
+  , stm-conduit ==4.0.0
   , stm-containers ==0.2.16
   , stm-delay ==0.1.1.1
   , stm-extras ==0.1.0.3
-  , stm-split ==0.0.2.1
+  , stm-split ==0.0.2
   , stm-stats ==0.2.0.0
+  , stm-supply ==0.2.0.0
   , stopwatch ==0.1.0.5
-  , storable-complex ==0.2.3.0
+  , storable-complex ==0.2.2
   , storable-endian ==0.2.6
   , storable-record ==0.0.4
   , storable-tuple ==0.0.3.3
   , storablevector ==0.2.13
-  , store ==0.5.0.1
+  , store ==0.4.3.2
   , store-core ==0.4.4
-  , stratosphere ==0.24.4
-  , streaming ==0.2.2.0
-  , streaming-attoparsec ==1.0.0
+  , stratosphere ==0.19.1
+  , streaming ==0.2.1.0
   , streaming-bytestring ==0.1.6
-  , streaming-commons ==0.2.1.0
-  , streaming-wai ==0.1.1
-  , streamly ==0.3.0
+  , streaming-commons ==0.1.19
+  , streamly ==0.1.2
   , streamproc ==1.6.2
   , streams ==3.3
   , strict ==0.3.2
   , strict-base-types ==0.6.1
-  , strict-concurrency ==0.2.4.3
+  , strict-concurrency ==0.2.4.2
+  , strict-types ==0.1.2
   , string-class ==0.1.7.0
   , string-combinators ==0.6.0.5
   , string-conv ==0.1.2
   , string-conversions ==0.4.0.1
   , string-qq ==0.0.2
-  , string-transform ==1.1.0
+  , string-transform ==1.0.0
+  , stringable ==0.1.3
   , stringbuilder ==0.5.1
   , stringsearch ==0.3.6.6
-  , strive ==5.0.7
+  , stripe-core ==2.3.0
+  , strive ==5.0.6
   , structs ==0.1.1
-  , stylish-haskell ==0.9.2.0
   , sum-type-boilerplate ==0.1.1
   , sundown ==0.6
   , superbuffer ==0.3.1.1
   , svg-builder ==0.1.1
-  , svg-tree ==0.6.2.3
+  , svg-tree ==0.6.2.2
   , swagger ==0.3.0
-  , swagger2 ==2.2.2
+  , swagger2 ==2.2.1
   , swish ==0.9.2.1
   , syb ==0.7
+  , syb-with-class ==0.6.1.9
   , symbol ==0.2.4
   , symengine ==0.1.2.0
   , sysinfo ==0.1.1
   , system-argv0 ==0.1.1
-  , system-fileio ==0.3.16.4
+  , system-fileio ==0.3.16.3
   , system-filepath ==0.4.14
   , tabular ==0.2.2.7
-  , tagchup ==0.4.1.1
-  , tagged ==0.8.5
+  , tagchup ==0.4.1
+  , tagged ==0.8.6
   , tagged-binary ==0.2.0.1
   , tagged-identity ==0.1.2
-  , tagged-transformer ==0.8.1
   , tagshare ==0.0
-  , tagsoup ==0.14.7
+  , tagsoup ==0.14.6
   , tagstream-conduit ==0.5.5.3
-  , tao ==1.0.0
-  , tao-example ==1.0.0
   , tar -old-time
   , tar ==0.5.1.0
-  , tar-conduit ==0.2.5
+  , tar-conduit ==0.2.3.1
   , tardis ==0.4.1.0
-  , tasty ==1.1.0.4
+  , tasty ==1.0.1.1
   , tasty-ant-xml ==1.1.4
-  , tasty-dejafu ==1.2.0.7
+  , tasty-auto ==0.2.0.0
+  , tasty-dejafu ==1.1.0.2
   , tasty-discover ==4.2.1
   , tasty-expected-failure ==0.11.1.1
   , tasty-golden ==2.3.2
-  , tasty-hedgehog ==0.2.0.0
-  , tasty-hspec ==1.1.5.1
+  , tasty-hedgehog ==0.1.0.2
+  , tasty-hspec ==1.1.5
+  , tasty-html ==0.4.1.1
   , tasty-hunit ==0.10.0.1
   , tasty-kat ==0.0.3
   , tasty-program ==1.0.5
-  , tasty-quickcheck ==0.10
-  , tasty-silver ==3.1.12
+  , tasty-quickcheck ==0.9.2
+  , tasty-rerun ==1.1.12
+  , tasty-silver ==3.1.11
   , tasty-smallcheck ==0.8.1
   , tasty-stats ==0.2.0.4
   , tasty-th ==0.1.7
   , tce-conf ==1.3
   , tcp-streams ==1.0.1.0
   , tcp-streams-openssl ==1.0.1.0
-  , tdigest ==0.2.1
-  , teardown ==0.5.0.0
-  , telegram-bot-simple ==0.2.0
-  , temporary ==1.3
+  , tdigest ==0.1
+  , teardown ==0.3.0.0
+  , template ==0.2.0.10
+  , temporary ==1.2.1.1
   , temporary-rc ==1.2.0.3
   , tensorflow-test ==0.1.0.0
+  , termcolor ==0.2.0.0
+  , terminal-progress-bar ==0.2
   , terminal-size ==0.3.2.1
+  , test-fixture ==0.5.1.0
   , test-framework ==0.8.2.0
   , test-framework-hunit ==0.3.0.2
-  , test-framework-quickcheck2 ==0.3.0.5
+  , test-framework-quickcheck2 ==0.3.0.4
   , test-framework-smallcheck ==0.2
   , test-framework-th ==0.2.4
-  , testing-feat ==1.1.0.0
-  , testing-type-modifiers ==0.1.0.1
-  , texmath ==0.11.1.2
+  , testing-feat ==0.4.0.3
+  , texmath ==0.10.1.2
   , text -integer-simple
-  , text ==1.2.3.1
+  , text ==1.2.3.0
   , text-binary ==0.2.1.1
-  , text-builder ==0.5.4.3
   , text-conversions ==0.3.0
+  , text-format ==0.3.2
+  , text-generic-pretty ==1.2.1
   , text-icu ==0.7.0.1
   , text-latin1 ==0.3.1
-  , text-ldap ==0.1.1.13
+  , text-ldap ==0.1.1.12
   , text-manipulate ==0.2.0.1
   , text-metrics ==0.3.0
   , text-postgresql ==0.0.3.1
   , text-printer ==0.5
+  , text-region ==0.3.1.0
   , text-short ==0.1.2
-  , text-show ==3.7.4
-  , text-show-instances ==3.6.5
+  , text-show ==3.7.2
+  , text-show-instances ==3.6.3
   , text-zipper ==0.10.1
   , textlocal ==0.1.0.5
   , tf-random ==0.5
   , tfp ==1.0.0.2
   , th-abstraction ==0.2.8.0
-  , th-data-compat ==0.0.2.7
-  , th-desugar ==1.8
+  , th-data-compat ==0.0.2.6
+  , th-desugar ==1.7
   , th-expand-syns ==0.4.4.0
   , th-extras ==0.0.0.4
-  , th-lift ==0.7.11
+  , th-lift ==0.7.10
   , th-lift-instances ==0.1.11
-  , th-nowq ==0.1.0.2
   , th-orphans ==0.13.6
-  , th-printf ==0.5.1
-  , th-reify-compat ==0.0.1.5
+  , th-reify-compat ==0.0.1.4
   , th-reify-many ==0.1.8
   , th-strict-compat ==0.1.0.1
+  , th-to-exp ==0.0.1.1
   , th-utilities ==0.2.0.1
-  , these ==0.7.5
+  , these ==0.7.4
   , thread-hierarchy ==0.3.0.0
-  , thread-local-storage ==0.2
+  , thread-local-storage ==0.1.2
   , threads ==0.5.1.6
   , threads-extras ==0.1.0.2
-  , threepenny-gui ==0.8.3.0
+  , threepenny-editors ==0.5.6
+  , threepenny-gui ==0.8.2.4
+  , threepenny-gui-flexbox ==0.4.2
   , throttle-io-stream ==0.2.0.1
   , through-text ==0.1.0.0
   , throwable-exceptions ==0.1.0.9
   , tibetan-utils ==0.1.1.5
+  , tidal ==0.9.9
   , tile ==0.3.0.0
   , time-compat ==0.1.0.3
   , time-lens ==0.4.0.2
   , time-locale-compat -old-locale
-  , time-locale-compat ==0.1.1.5
+  , time-locale-compat ==0.1.1.4
   , time-locale-vietnamese ==1.0.0.0
   , time-parsers ==0.1.2.0
   , timeit ==2.0
   , timelens ==0.2.0.2
+  , timemap ==0.0.7
   , timerep ==2.0.0.2
+  , timespan ==0.3.0.0
   , timezone-olson ==0.1.9
   , timezone-series ==0.1.9
-  , tintin ==1.9.2
   , tinylog ==0.14.1
+  , tinytemplate ==0.1.2.0
   , titlecase ==1.0.1
+  , tldr ==0.3.0
   , tls ==1.4.1
   , tls-debug ==0.4.5
   , tls-session-manager ==0.0.0.2
   , tmapchan ==0.0.3
   , tmapmvar ==0.0.4
   , tmp-postgres ==0.1.1.1
-  , tomland ==0.3.1
+  , token-bucket ==0.1.0.1
   , tostring ==0.2.1.1
-  , transaction ==0.1.1.3
-  , transformers-base ==0.4.5.2
+  , transformers-base ==0.4.4
   , transformers-bifunctors ==0.1
-  , transformers-compat +five-three
-  , transformers-compat ==0.6.2
+  , transformers-compat ==0.5.1.4
+  , transformers-either ==0.0.2
   , transformers-fix ==1.0
   , transformers-lift ==0.2.0.1
+  , transient ==0.5.9.2
+  , transient-universe ==0.4.6.1
   , traverse-with-class ==1.0.0.0
   , tree-diff ==0.0.1
   , tree-fun ==0.8.1.0
-  , trifecta ==2
+  , tries ==0.0.5
+  , trifecta ==1.7.1.1
   , triplesec ==0.1.2.0
+  , true-name ==0.1.0.3
   , tsv2csv ==0.1.0.2
   , ttrie ==0.1.2.1
   , tuple ==0.3.0.2
-  , tuple-sop ==0.3.1.0
   , tuple-th ==0.2.5
   , tuples-homogenous-h98 ==0.1.1.0
-  , turtle ==1.5.12
+  , turtle ==1.5.10
+  , turtle-options ==0.1.0.4
+  , type-assertions ==0.1.0.0
+  , type-combinators ==0.2.4.3
+  , type-combinators-singletons ==0.2.1.0
   , type-fun ==0.1.1
   , type-hint ==0.1
   , type-level-integers ==0.0.1
   , type-level-kv-list ==1.1.0
   , type-level-numbers ==0.1.1.1
-  , type-of-html ==1.4.1.0
-  , type-of-html-static ==0.1.0.2
+  , type-of-html ==1.3.4.0
   , type-operators ==0.1.0.4
   , type-spec ==0.3.0.1
   , typed-process ==0.2.3.0
-  , typelits-witnesses ==0.3.0.3
-  , typenums ==0.1.2.1
+  , typelits-witnesses ==0.3.0.2
   , typography-geometry ==1.0.0.1
-  , tz ==0.1.3.2
-  , tzdata ==0.1.20181026.0
+  , tz ==0.1.3.1
+  , tzdata ==0.1.20180122.0
+  , ua-parser ==0.7.5.1
   , uglymemo ==0.1.0.1
-  , unbound-generics ==0.3.4
+  , unbound-generics ==0.3.3
   , unbounded-delays ==0.1.1.0
   , unboxed-ref ==0.4.0.0
   , uncertain ==0.3.1.0
-  , unconstrained ==0.1.0.2
+  , unexceptionalio ==0.3.0
   , unfoldable ==0.9.6
   , unfoldable-restricted ==0.0.3
-  , unicode ==0.0.1.1
+  , unicode ==0.0.1
   , unicode-show ==0.1.0.3
-  , unicode-transforms ==0.3.5
+  , unicode-transforms ==0.3.4
   , unification-fd ==0.10.0.1
-  , union ==0.1.2
+  , union ==0.1.1.2
   , union-find ==0.2
   , uniplate ==1.6.12
-  , uniprot-kb ==0.1.2.0
   , uniq-deep ==1.1.0.0
   , unique ==0
   , unit-constraint ==0.0.0
+  , units-parser ==0.1.1.2
   , universe ==1.0
   , universe-base ==1.0.2.1
   , universe-instances-base ==1.0
   , universe-instances-extended ==1.0.0.1
   , universe-instances-trans ==1.0.0.1
   , universe-reverse-instances ==1.0
-  , universum ==1.2.0
+  , universum ==1.1.1
   , unix-bytestring ==0.3.7.3
-  , unix-compat ==0.5.1
+  , unix-compat ==0.5.0.1
   , unix-time ==0.3.8
-  , unliftio ==0.2.8.1
-  , unliftio-core ==0.1.2.0
+  , unliftio ==0.2.7.0
+  , unliftio-core ==0.1.1.0
   , unlit ==0.4.0.0
   , unordered-containers ==0.2.9.0
-  , unordered-intmap ==0.1.1
   , unsafe ==0.0
-  , uri-bytestring ==0.3.2.1
+  , uom-plugin ==0.3.0.0
+  , uri-bytestring ==0.3.2.0
+  , uri-bytestring-aeson ==0.1.0.6
   , uri-encode ==1.5.0.5
   , uri-templater ==0.3.1.0
-  , urlpath ==9.0.0
+  , urlpath ==8.1.0
+  , userid ==0.1.3.2
   , users ==0.5.0.0
   , users-postgresql-simple ==0.5.0.2
   , users-test ==0.5.0.1
   , utf8-light ==0.4.2
   , utf8-string ==1.0.1.1
-  , util ==0.1.11.0
   , utility-ht ==0.0.14
   , uuid ==1.3.13
   , uuid-types ==1.0.3
+  , vado ==0.0.10
   , validation ==1
-  , validity ==0.7.0.0
-  , validity-aeson ==0.2.0.2
-  , validity-bytestring ==0.3.0.2
-  , validity-containers ==0.3.1.0
-  , validity-path ==0.3.0.2
-  , validity-scientific ==0.2.0.2
-  , validity-text ==0.3.1.0
-  , validity-time ==0.2.0.2
-  , validity-unordered-containers ==0.2.0.2
-  , validity-uuid ==0.1.0.2
-  , validity-vector ==0.2.0.2
-  , valor ==0.1.0.0
+  , validationt ==0.2.1.0
+  , validity ==0.4.0.4
+  , validity-aeson ==0.1.0.0
+  , validity-bytestring ==0.2.0.0
+  , validity-containers ==0.2.0.0
+  , validity-path ==0.2.0.2
+  , validity-scientific ==0.1.0.0
+  , validity-text ==0.2.0.1
+  , validity-time ==0.1.0.0
+  , validity-unordered-containers ==0.1.0.0
+  , validity-uuid ==0.0.0.0
+  , validity-vector ==0.1.0.0
+  , varying ==0.7.0.3
   , vault ==0.3.1.2
-  , vec ==0.1
+  , vcswrapper ==0.1.6
   , vector ==0.12.0.1
-  , vector-algorithms ==0.7.0.4
-  , vector-binary-instances ==0.2.5.1
+  , vector-algorithms ==0.7.0.1
+  , vector-binary-instances ==0.2.4
   , vector-buffer ==0.4.1
   , vector-builder ==0.3.6
-  , vector-bytes-instances ==0.1.1
+  , vector-fftw ==0.1.3.8
   , vector-instances ==3.4
   , vector-mmap ==0.0.3
-  , vector-sized ==1.0.4.0
+  , vector-sized ==0.6.1.0
   , vector-space ==0.13
   , vector-split ==1.0.0.2
   , vector-th-unbox ==0.2.1.6
-  , vectortiles ==1.4.0
+  , vectortiles ==1.3.0
   , verbosity ==0.2.3.0
-  , versions ==3.4.0.1
-  , viewprof ==0.0.0.24
-  , vinyl ==0.8.1.1
+  , versions ==3.3.2
+  , vhd ==0.2.2
+  , vinyl ==0.7.0
   , vivid ==0.3.0.2
   , vivid-osc ==0.3.0.0
   , vivid-supercollider ==0.3.0.0
   , void ==0.7.2
-  , vty ==5.21
+  , vty ==5.20
   , wai ==3.2.1.2
   , wai-app-static ==3.1.6.2
   , wai-cli ==0.1.1
   , wai-conduit ==3.0.0.4
   , wai-cors ==0.2.6
   , wai-eventsource ==3.0.0
-  , wai-extra ==3.0.24.3
-  , wai-handler-launch ==3.0.2.4
+  , wai-extra ==3.0.22.0
+  , wai-handler-launch ==3.0.2.3
   , wai-logger ==2.3.2
   , wai-middleware-caching ==0.1.0.2
   , wai-middleware-caching-lru ==0.1.0.0
+  , wai-middleware-caching-redis ==0.2.0.0
   , wai-middleware-consul ==0.1.0.2
   , wai-middleware-crowd ==0.1.4.2
   , wai-middleware-metrics ==0.2.4
+  , wai-middleware-prometheus ==0.3.0
+  , wai-middleware-rollbar ==0.10.0
   , wai-middleware-static ==0.8.2
-  , wai-middleware-travisci ==0.1.0
+  , wai-middleware-throttle ==0.2.2.1
   , wai-predicates ==0.10.0
+  , wai-route ==0.3.1.2
+  , wai-routing ==0.13.0
   , wai-session ==0.3.3
   , wai-session-postgresql ==0.2.1.2
   , wai-slack-middleware ==0.2.0
-  , wai-transformers ==0.1.0
+  , wai-transformers ==0.0.7
   , wai-websockets ==3.0.1.2
-  , warp ==3.2.25
+  , warp ==3.2.23
   , warp-tls ==3.2.4.3
-  , warp-tls-uid ==0.2.0.5
   , wave ==0.1.5
-  , wcwidth ==0.0.2
+  , wavefront ==0.7.1.2
   , web-plugins ==0.2.9
   , web-routes ==0.27.14.2
+  , web-routes-boomerang ==0.28.4.2
+  , web-routes-happstack ==0.23.11
   , web-routes-hsp ==0.24.6.1
+  , web-routes-th ==0.22.6.3
   , web-routes-wai ==0.24.3.1
   , web3 ==0.7.3.0
   , webdriver ==0.8.5
-  , webex-teams-api ==0.2.0.0
-  , webex-teams-conduit ==0.2.0.0
-  , webex-teams-pipes ==0.2.0.0
+  , webdriver-angular ==0.1.11
+  , webpage ==0.0.5
   , webrtc-vad ==0.1.0.3
-  , websockets ==0.12.5.2
+  , websockets ==0.12.5.1
+  , websockets-rpc ==0.6.0
+  , websockets-simple ==0.0.6.3
   , websockets-snap ==0.10.3.0
-  , weeder ==1.0.8
+  , weeder ==1.0.6
   , weigh ==0.0.12
-  , wide-word ==0.1.0.7
+  , wide-word ==0.1.0.6
   , wikicfp-scraper ==0.1.0.9
-  , wild-bind ==0.1.2.3
-  , wild-bind-x11 ==0.2.0.6
+  , wild-bind ==0.1.2.1
+  , wild-bind-x11 ==0.2.0.4
   , wire-streams ==0.1.1.0
   , with-location ==0.1.0
   , withdependencies ==0.2.4.2
   , witherable ==0.2
   , witness ==0.4
-  , wizards ==1.0.3
+  , wizards ==1.0.2
+  , wl-pprint ==1.2.1
   , wl-pprint-annotated ==0.1.0.1
   , wl-pprint-console ==0.1.0.2
   , wl-pprint-extras ==3.5.0.5
   , wl-pprint-terminfo ==3.7.1.4
-  , wl-pprint-text ==1.2.0.0
+  , wl-pprint-text ==1.1.1.0
   , word-trie ==0.3.0
   , word-wrap ==0.4.1
   , word24 ==2.0.1
   , word8 ==0.1.3
   , world-peace ==0.1.0.0
   , wrap ==0.0.0
-  , wreq ==0.5.3.0
+  , wrecker ==1.3.1.0
+  , wreq ==0.5.2.1
   , wreq-stringless ==0.5.9.1
   , writer-cps-full ==0.1.0.0
   , writer-cps-lens ==0.1.0.1
   , writer-cps-morph ==0.1.0.2
   , writer-cps-mtl ==0.1.1.5
   , writer-cps-transformers ==0.1.1.4
-  , ws ==0.0.4
-  , wuss ==1.1.11
+  , wuss ==1.1.10
   , x11-xim ==0.0.9.0
-  , x509 ==1.7.5
-  , x509-store ==1.6.7
+  , x509 ==1.7.3
+  , x509-store ==1.6.6
   , x509-system ==1.6.6
-  , x509-validation ==1.6.11
+  , x509-validation ==1.6.10
   , xdg-basedir ==0.2.2
   , xeno ==0.3.4
   , xenstore ==0.1.1
-  , xhtml ==3000.2.2.1
+  , xhtml ==3000.2.2
   , xls ==0.1.1
   , xlsx ==0.7.2
+  , xlsx-tabular ==0.2.2.1
   , xml ==1.3.14
-  , xml-basic ==0.1.3.1
-  , xml-conduit ==1.8.0.1
-  , xml-conduit-parse ==0.3.1.2
+  , xml-basic ==0.1.3
+  , xml-conduit ==1.8.0
   , xml-conduit-writer ==0.1.1.2
   , xml-hamlet ==0.5.0
   , xml-html-qq ==0.1.0.1
   , xml-indexed-cursor ==0.1.1.0
-  , xml-isogen ==0.3.0
+  , xml-isogen ==0.2.1
   , xml-lens ==0.1.6.3
   , xml-picklers ==0.3.6
   , xml-to-json ==2.0.1
   , xml-to-json-fast ==2.0.0
   , xml-types ==0.3.6
-  , xmlbf ==0.4.1
-  , xmlbf-xeno ==0.1.1
   , xmlgen ==0.6.2.2
+  , xmlhtml ==0.2.5.2
+  , xmonad ==0.13
+  , xmonad-contrib ==0.13
+  , xmonad-extras ==0.13.4.1
   , xss-sanitize ==0.3.6
+  , xturtle ==0.2.0.0
+  , xxhash ==0.0.2
   , xxhash-ffi ==0.2.0.0
   , yaml ==0.8.32
   , yes-precure5-command ==5.5.3
-  , yeshql ==4.1.0.1
-  , yeshql-core ==4.1.0.2
-  , yeshql-hdbc ==4.1.0.2
+  , yeshql ==3.0.1.3
   , yesod ==1.6.0
   , yesod-alerts ==0.1.2.0
-  , yesod-auth ==1.6.5
-  , yesod-auth-fb ==1.9.1
-  , yesod-auth-hashdb ==1.7.1
+  , yesod-auth ==1.6.4.1
+  , yesod-auth-fb ==1.9.0
+  , yesod-auth-hashdb ==1.7
   , yesod-bin ==1.6.0.3
-  , yesod-core ==1.6.8.1
+  , yesod-core ==1.6.6
   , yesod-csp ==0.2.4.0
   , yesod-eventsource ==1.6.0
   , yesod-fb ==0.5.0
-  , yesod-form ==1.6.3
-  , yesod-form-bootstrap4 ==1.0.2
+  , yesod-form ==1.6.2
   , yesod-gitrepo ==0.3.0
   , yesod-gitrev ==0.2.0.0
   , yesod-newsfeed ==1.6.1.0
-  , yesod-paginator ==1.1.0.1
-  , yesod-persistent ==1.6.0.1
-  , yesod-recaptcha2 ==0.2.4
+  , yesod-paginator ==0.11.0
+  , yesod-persistent ==1.6.0
   , yesod-sitemap ==1.6.0
-  , yesod-static ==1.6.0.1
-  , yesod-test ==1.6.5.1
-  , yesod-text-markdown ==0.1.10
+  , yesod-static ==1.6.0
+  , yesod-table ==2.0.3
+  , yesod-test ==1.6.5
   , yesod-websockets ==0.3.0.1
+  , yi-core ==0.17.1
+  , yi-frontend-vty ==0.17.1
+  , yi-fuzzy-open ==0.17.1
+  , yi-ireader ==0.17.1
+  , yi-keymap-cua ==0.17.1
+  , yi-keymap-emacs ==0.17.1
+  , yi-keymap-vim ==0.17.1
   , yi-language ==0.17.1
-  , yi-rope ==0.11
+  , yi-misc-modes ==0.17.1
+  , yi-mode-haskell ==0.17.1
+  , yi-mode-javascript ==0.17.1
+  , yi-rope ==0.10
+  , yi-snippet ==0.17.1
+  , yjsvg ==0.2.0.1
   , yjtools ==0.9.18
-  , yoga ==0.0.0.5
+  , yoga ==0.0.0.2
   , youtube ==0.2.1.1
   , zero ==0.1.4
   , zeromq4-haskell ==0.7.0
-  , zeromq4-patterns ==0.3.1.0
   , zim-parser ==0.2.1.0
-  , zip ==1.1.0
+  , zip ==1.0.0
   , zip-archive ==0.3.3
-  , zip-stream ==0.1.1
   , zippers ==0.2.5
   , zlib ==0.6.2
   , zlib-bindings ==0.1.1.5
