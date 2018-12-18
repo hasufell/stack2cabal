@@ -26,25 +26,31 @@ source-repository head
 
 common deps
   build-depends:    , base ^>= 4.11.1.0 || ^>= 4.12.0.0
-  ghc-options:        -Wall
-                      -Werror=missing-home-modules
-  default-language:   Haskell2010
-
-executable stackage-to-hackage
-  import:             deps
-  hs-source-dirs:     src
-  main-is:            Main.hs
-  other-modules:      Stackage
-  build-depends:    , Cabal                ^>= 2.4.1.0
-                    , HsYAML               ^>= 0.1.1.2
                     , bytestring           ^>= 0.10.8.2
-                    -- http-client, not http-streams, to match hpack
-                    , http-client          ^>= 0.5.14
-                    , http-client-tls      ^>= 0.3.5.3
+                    , Cabal                ^>= 2.4.1.0
                     , containers           ^>= 0.6.0.1
                     , directory            ^>= 1.3.3.1
                     , extra                ^>= 1.6.13
                     , filepath             ^>= 1.4.2.1
-                    , optparse-applicative ^>= 0.14.3.0
                     , text                 ^>= 1.2.3.1
+  ghc-options:        -Wall
+                      -Werror=missing-home-modules
+  default-language:   Haskell2010
+
+library stackage-to-hackage-lib
+  import:             deps
+  hs-source-dirs:     lib
+  exposed-modules:    StackageToHackage.Hackage
+                    , StackageToHackage.Stackage
+  build-depends:    , HsYAML               ^>= 0.1.1.2
+                    -- http-client, not http-streams, to match hpack
+                    , http-client          ^>= 0.5.14
+                    , http-client-tls      ^>= 0.3.5.3
+
+executable stackage-to-hackage
+  import:             deps
+  hs-source-dirs:     exe
+  main-is:            Main.hs
+  build-depends:      stackage-to-hackage-lib
+                    , optparse-applicative ^>= 0.14.3.0
   ghc-options:        -threaded
