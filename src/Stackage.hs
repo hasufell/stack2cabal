@@ -12,23 +12,23 @@ module Stackage where
 import           Control.Applicative          ((<|>))
 import           Control.Monad.Extra          (loopM, unlessM)
 import qualified Data.ByteString              as BS
-import           Data.ByteString.Char8        (pack)
+import           Data.ByteString.Lazy         (toStrict)
 import           Data.List.NonEmpty           (NonEmpty (..), head, reverse,
                                                (<|))
 import           Data.Map.Strict              (Map, empty)
 import           Data.Maybe                   (listToMaybe, mapMaybe)
-import           Data.Text                    (Text, concat, isSuffixOf,
-                                               replace, takeWhile, unpack)
+import           Data.Text                    (Text, isSuffixOf, replace,
+                                               takeWhile, unpack)
 import           Data.YAML                    (FromYAML, decodeStrict,
                                                parseYAML, withMap, withStr,
                                                (.!=), (.:), (.:?))
 import           Distribution.Text            (simpleParse)
 import           Distribution.Types.PackageId (PackageIdentifier (..))
-import qualified Network.Http.Client          as Http
-import           Network.URI                  (parseURI)
+import           Network.HTTP.Client          (httpLbs, parseRequest,
+                                               responseBody)
+import           Network.HTTP.Client.TLS      (getGlobalManager)
 import           Options.Applicative.Internal (hoistMaybe)
-import           Prelude                      hiding (concat, head, reverse,
-                                               takeWhile)
+import           Prelude                      hiding (head, reverse, takeWhile)
 import           System.Directory             (XdgDirectory (..),
                                                createDirectoryIfMissing,
                                                doesFileExist, getXdgDirectory)
@@ -130,12 +130,14 @@ resolve _ (Canned lts) = do
   either fail (\r -> pure (Nothing, r)) $ new2old <$> (decode1Strict $ text)
     where
       download =
-        let path = replace "." "/" (replace "-" "/" lts)
+        let path = unpack $ replace "." "/" (replace "-" "/" lts)
             raw = concat ["https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/", path, ".yaml"]
         in do
-          url <- maybe (fail "invalid URL") pure (parseURI $ unpack raw)
-          putStrLn ("Downloading: " <> (show url))
-          Http.get (pack $ show url) Http.concatHandler
+          manager <- getGlobalManager
+          url <- parseRequest raw
+          putStrLn ("Downloading: " <> raw)
+          resp <- httpLbs url manager
+          pure $ toStrict $ responseBody resp
 
       update file content = unlessM (doesFileExist file) (BS.writeFile file content)
 
