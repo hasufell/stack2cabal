@@ -19,7 +19,6 @@ import           Distribution.Pretty            (prettyShow)
 import           Distribution.Types.PackageId   (PackageIdentifier (..))
 import           Distribution.Types.PackageName (PackageName, mkPackageName,
                                                  unPackageName)
-import           OpenSSL                        (withOpenSSL)
 import qualified Options.Applicative            as Opts
 import           Stackage
 import           System.Directory               (doesDirectoryExist,
@@ -29,7 +28,7 @@ import           System.FilePath                (addTrailingPathSeparator,
                                                  takeExtension, (</>))
 
 main :: IO ()
-main = withOpenSSL $ do
+main = do
   Options{input} <- Opts.execParser $
                    Opts.info (Opts.helper <*> optionsParser) Opts.fullDesc
   text <- BS.readFile input
