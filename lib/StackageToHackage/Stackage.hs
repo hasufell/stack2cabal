@@ -7,15 +7,16 @@
 -- Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
 -- the actual ADT, but stack isn't available as a library that we can build from
 -- Hackage.
-module Stackage where
+module StackageToHackage.Stackage where
 
-import           Control.Applicative          ((<|>))
+import           Control.Applicative          (Alternative, empty, (<|>))
 import           Control.Monad.Extra          (loopM, unlessM)
 import qualified Data.ByteString              as BS
 import           Data.ByteString.Lazy         (toStrict)
 import           Data.List.NonEmpty           (NonEmpty (..), head, reverse,
                                                (<|))
-import           Data.Map.Strict              (Map, empty)
+import           Data.Map.Strict              (Map)
+import qualified Data.Map.Strict              as M
 import           Data.Maybe                   (listToMaybe, mapMaybe)
 import           Data.Text                    (Text, isSuffixOf, replace,
                                                takeWhile, unpack)
@@ -27,7 +28,6 @@ import           Distribution.Types.PackageId (PackageIdentifier (..))
 import           Network.HTTP.Client          (httpLbs, parseRequest,
                                                responseBody)
 import           Network.HTTP.Client.TLS      (getGlobalManager)
-import           Options.Applicative.Internal (hoistMaybe)
 import           Prelude                      hiding (head, reverse, takeWhile)
 import           System.Directory             (XdgDirectory (..),
                                                createDirectoryIfMissing,
@@ -183,7 +183,7 @@ instance FromYAML Stack where
        <*> m .:? "compiler"
        <*> m .:? "packages" .!= mempty
        <*> m .:? "extra-deps" .!= mempty
-       <*> m .:? "flags" .!= (Flags empty)
+       <*> m .:? "flags" .!= (Flags M.empty)
 
 instance FromYAML Git where
   parseYAML = withMap "Git" $ \m -> Git
@@ -215,7 +215,7 @@ instance FromYAML Resolver where
     <$> m .:? "resolver"
     <*> m .:? "compiler"
     <*> m .:? "packages" .!= mempty
-    <*> m .:? "flags" .!= (Flags empty)
+    <*> m .:? "flags" .!= (Flags M.empty)
 
 instance FromYAML NewDep where
    parseYAML = withMap "NewDep" $ \m -> hackage' =<< m .: "hackage"
@@ -226,9 +226,12 @@ instance FromYAML NewResolver where
   parseYAML = withMap "NewResolver" $ \m -> NewResolver
     <$> m .: "compiler"
     <*> m .:? "packages" .!= mempty
-    <*> m .:? "flags" .!= (Flags empty)
+    <*> m .:? "flags" .!= (Flags M.empty)
 
 newtype PkgId = PkgId { unPkgId :: PackageIdentifier } deriving (Show)
 instance FromYAML PkgId where
   parseYAML = withStr "PackageIdentifier" $ \s ->
     PkgId <$> (hoistMaybe . simpleParse . unpack) (takeWhile ('@' /=) s)
+
+hoistMaybe :: Alternative m => Maybe a -> m a
+hoistMaybe = maybe empty pure
