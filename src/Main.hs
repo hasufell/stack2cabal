@@ -11,7 +11,7 @@ import           Data.List.NonEmpty             (NonEmpty, nonEmpty)
 import qualified Data.List.NonEmpty             as NEL
 import qualified Data.Map.Strict                as M
 import           Data.Maybe                     (fromMaybe, mapMaybe)
-import           Data.Semigroup.Foldable        (fold1)
+import           Data.Semigroup                 (sconcat)
 import           Data.Text                      (Text)
 import qualified Data.Text                      as T
 import           Data.Text.Encoding             (encodeUtf8)
@@ -38,7 +38,7 @@ main = withOpenSSL $ do
     dir = (takeDirectory input)
   resolvers <- unroll dir stack
   let
-    resolver = fold1 resolvers
+    resolver = sconcat resolvers
     project = genProject stack resolver
     dirs = NEL.toList $ (dir </>) <$> localDirs project
   cabals <- concat <$> traverse (globExt ".cabal") dirs
