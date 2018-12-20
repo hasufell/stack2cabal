@@ -4,15 +4,14 @@
 {-# LANGUAGE ViewPatterns          #-}
 
 module StackageToHackage.Hackage
-  ( stackageToHackage
-  , Project, printProject
-  , Freeze, printFreeze
+  ( stackToCabal
+  , Project(..), printProject
+  , Freeze(..), printFreeze
   ) where
 
-import           Control.Monad.Extra            (ifM)
 import           Data.List                      (sort)
 import           Data.List.Extra                (nubOn)
-import           Data.List.NonEmpty             (NonEmpty, nonEmpty)
+import           Data.List.NonEmpty             (NonEmpty)
 import qualified Data.List.NonEmpty             as NEL
 import qualified Data.Map.Strict                as M
 import           Data.Maybe                     (fromMaybe, mapMaybe)
@@ -22,33 +21,20 @@ import qualified Data.Text                      as T
 import           Distribution.Pretty            (prettyShow)
 import           Distribution.Types.PackageId   (PackageIdentifier (..))
 import           Distribution.Types.PackageName (PackageName, unPackageName)
-import           Distribution.Types.PackageName (mkPackageName)
 import           StackageToHackage.Stackage
-import           System.Directory               (doesDirectoryExist,
-                                                 listDirectory)
 import           System.FilePath                (addTrailingPathSeparator)
-import           System.FilePath                (takeBaseName, takeExtension,
-                                                 (</>))
 
--- | Writes out a stack.yaml as cabal.project and cabal.project.freeze
-stackageToHackage :: FilePath -> Stack -> IO (Project, Freeze)
-stackageToHackage dir stack = do
+-- | Converts a stack.yaml (and list of local packages) to cabal.project and
+-- cabal.project.freeze.
+stackToCabal :: [PackageName] -> FilePath -> Stack -> IO (Project, Freeze)
+stackToCabal ignore dir stack = do
   resolvers <- unroll dir stack
   let resolver = sconcat resolvers
       project = genProject stack resolver
-      dirs = NEL.toList $ (dir </>) <$> localDirs project
-  cabals <- concat <$> traverse (globExt ".cabal") dirs
-  let
-    -- assumes that .cabal files are named correctly, otherwise we need
-    -- PackageDescription-Parsec.html#v:readGenericPackageDescription
-    ignore = (mkPackageName . takeBaseName) <$> cabals
-    freeze = genFreeze resolver ignore
+      freeze = genFreeze resolver ignore
   pure (project, freeze)
 
-globExt :: String -> FilePath -> IO [FilePath]
-globExt ext path = do
-  files <- ifM (doesDirectoryExist path) (listDirectory path) (pure [])
-  pure $ filter ((ext ==) . takeExtension) files
+-- TODO: something like stackToCabal that puts constraints into .cabal files
 
 printProject :: Project -> Text
 printProject (Project (Ghc ghc) pkgs srcs) =
@@ -74,17 +60,12 @@ printProject (Project (Ghc ghc) pkgs srcs) =
 
 data Project = Project Ghc (NonEmpty FilePath) [Git] deriving (Show)
 
-localDirs :: Project -> NonEmpty FilePath
-localDirs (Project _ nefp _ ) = nefp
-
 genProject :: Stack -> Resolver -> Project
-genProject Stack{packages} Resolver{compiler, deps} = Project
+genProject stack Resolver{compiler, deps} = Project
   (fromMaybe (Ghc "ghc") compiler)
-  (fromMaybe (pure ".") (nonEmpty $ mapMaybe pickLocal packages))
+  (localDirs stack)
   (nubOn repo $ mapMaybe pickGit deps)
   where
-    pickLocal (Local p)    = Just p
-    pickLocal (Location _) = Nothing
     pickGit (Hackage _ )  = Nothing
     pickGit (SourceDep g) = Just g
 

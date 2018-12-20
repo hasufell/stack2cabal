@@ -13,11 +13,11 @@ import           Control.Applicative          (Alternative, empty, (<|>))
 import           Control.Monad.Extra          (loopM, unlessM)
 import qualified Data.ByteString              as BS
 import           Data.ByteString.Lazy         (toStrict)
-import           Data.List.NonEmpty           (NonEmpty (..), head, reverse,
-                                               (<|))
+import           Data.List.NonEmpty           (NonEmpty (..), head, nonEmpty,
+                                               reverse, (<|))
 import           Data.Map.Strict              (Map)
 import qualified Data.Map.Strict              as M
-import           Data.Maybe                   (listToMaybe, mapMaybe)
+import           Data.Maybe                   (fromMaybe, listToMaybe, mapMaybe)
 import           Data.Text                    (Text, isSuffixOf, replace,
                                                takeWhile, unpack)
 import           Data.YAML                    (FromYAML, decodeStrict,
@@ -42,6 +42,13 @@ data Stack = Stack
   , flags     :: Flags
   -- TODO ghcOptions
   } deriving (Show)
+
+localDirs :: Stack -> NonEmpty FilePath
+localDirs Stack{packages} =
+  fromMaybe (pure ".") $ nonEmpty $ mapMaybe locals packages
+  where
+    locals (Local p)    = Just p
+    locals (Location _) = Nothing
 
 newtype Ghc = Ghc Text
   deriving (Show)
