@@ -1,6 +1,6 @@
 cabal-version:       2.2
 name:                stackage-to-hackage
-version:             1.0.2
+version:             1.1.0
 synopsis:            Convert stack.yaml to cabal.project + cabal.project.freeze
 license:             GPL-3.0-or-later
 license-file:        LICENSE
@@ -8,7 +8,7 @@ author:              Tseen She
 maintainer:          Tseen She
 copyright:           2018 Tseen She
 bug-reports:         https://gitlab.com/tseenshe/stackage-to-hackage/merge_requests
-tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.2
+tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.3
 category:            Building
 description:
   This is a small tool to create a cabal.project and cabal.project.freeze file
