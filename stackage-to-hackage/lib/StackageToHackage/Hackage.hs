@@ -3,6 +3,7 @@
 {-# LANGUAGE OverloadedStrings     #-}
 {-# LANGUAGE ViewPatterns          #-}
 
+-- | A simplistic model of cabal multi-package files and convertors from Stackage.
 module StackageToHackage.Hackage
   ( stackToCabal
   , Project(..), printProject

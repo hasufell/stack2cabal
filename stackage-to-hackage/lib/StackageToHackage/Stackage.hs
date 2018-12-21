@@ -4,7 +4,7 @@
 {-# LANGUAGE NamedFieldPuns             #-}
 {-# LANGUAGE OverloadedStrings          #-}
 
--- Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
+-- | Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
 -- the actual ADT, but stack isn't available as a library that we can build from
 -- Hackage.
 module StackageToHackage.Stackage where
