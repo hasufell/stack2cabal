@@ -1,6 +1,6 @@
 cabal-version:       2.2
 name:                stack2cabal
-version:             1.0.1
+version:             1.0.2
 synopsis:            Convert stack projects to cabal.project + cabal.project.freeze
 license:             GPL-3.0-or-later
 license-file:        LICENSE
@@ -11,7 +11,7 @@ bug-reports:         https://gitlab.com/tseenshe/stack2cabal/merge_requests
 tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.3
 category:            Building
 description:
-  Convert stack.yaml / package.yaml to cabal.project / cabal.project.freeze / *.cabal.
+  Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
 
 -- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
 
