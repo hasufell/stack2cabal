@@ -26,7 +26,7 @@ main = do
   dir <- getCurrentDirectory
   stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
   let subs = NEL.toList $ (dir </>) <$> localDirs stack
-  hpacks <- filterM doesFileExist $ subs
+  hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
   _ <- traverse runHpack hpacks
   cabals <- concat <$> traverse (globExt ".cabal") subs
   -- we could use the hpack output to figure out which cabal files to use, but
@@ -36,9 +36,9 @@ main = do
   BS.writeFile (dir </> "cabal.project") (encodeUtf8 $ printProject project)
   BS.writeFile (dir </> "cabal.project.freeze") (encodeUtf8 $ printFreeze freeze)
   where
-    target sub = sub </> "package.yaml"
+    hpackInput sub = sub </> "package.yaml"
     opts = defaultOptions {optionsForce = Force}
-    runHpack sub = hpackResult $ setTarget (target sub) opts
+    runHpack sub = hpackResult $ setTarget (hpackInput sub) opts
 
 globExt :: String -> FilePath -> IO [FilePath]
 globExt ext path = do
