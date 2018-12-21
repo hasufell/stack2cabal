@@ -6,13 +6,16 @@ image: registry.gitlab.com/tseenshe/stack2cabal:8.4.4
 build_job:
   stage: build
   script:
-    - cabal v2-build all
-    - for TEST in tests/* ; do
-        LC_ALL=C cabal v2-run stackage-to-hackage -- ${TEST}/stack.yaml ;
-      done
-    - git diff tests
-    - STACK2CABAL=$(cabal v2-exec -- which stack2cabal) &&
-      pushd tests/hpack &&
-      LC_ALL=C $STACK2CABAL &&
-      popd &&
+    - cabal v2-build all &&
+      STACKAGE_TO_HACKAGE=$(cabal v2-exec -- which stackage-to-hackage) &&
+      STACK2CABAL=$(cabal v2-exec -- which stack2cabal) &&
+      for TEST in tests/* ; do
+        LC_ALL=C ${STACKAGE_TO_HACKAGE} -- ${TEST}/stack.yaml ;
+      done &&
+      git diff tests &&
+      for TEST in tests/* ; do
+        pushd $TEST &&
+        LC_ALL=C $STACK2CABAL &&
+        popd ;
+      done &&
       git diff tests
