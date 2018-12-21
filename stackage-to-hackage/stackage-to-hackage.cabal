@@ -7,20 +7,15 @@ license-file:        LICENSE
 author:              Tseen She
 maintainer:          Tseen She
 copyright:           2018 Tseen She
-bug-reports:         https://gitlab.com/tseenshe/stackage-to-hackage/merge_requests
+bug-reports:         https://gitlab.com/tseenshe/stack2cabal/merge_requests
 tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.3
 category:            Building
 description:
-  This is a small tool to create a cabal.project and cabal.project.freeze file
-  for an existing Haskell application that has its build plan defined for
-  the stack build tool.
-
-  The following convenience script invokes stackage-to-hackage and hpack
-  together [stack2cabal](https://gitlab.com/tseenshe/stackage-to-hackage/blob/master/stack2cabal).
-
-source-repository head
-  type: git
-  location: https://gitlab.com/tseenshe/stackage-to-hackage
+  A small library (and demo app) to convert stack.yaml files to cabal.project /
+  cabal.project.freeze for an existing Haskell application that has its build plan
+  defined for the stack build tool.
+  .
+  Users will want to use the stack2cabal application, integrating hpack support.
 
 -- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
 
@@ -37,7 +32,7 @@ common deps
                       -Werror=missing-home-modules
   default-language:   Haskell2010
 
-library stackage-to-hackage-lib
+library
   import:             deps
   hs-source-dirs:     lib
   exposed-modules:    StackageToHackage.Hackage
@@ -51,6 +46,6 @@ executable stackage-to-hackage
   import:             deps
   hs-source-dirs:     exe
   main-is:            Main.hs
-  build-depends:      stackage-to-hackage-lib
+  build-depends:      stackage-to-hackage
                     , optparse-applicative ^>= 0.14.3.0
   ghc-options:        -threaded
