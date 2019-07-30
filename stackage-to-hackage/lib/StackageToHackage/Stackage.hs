@@ -20,9 +20,10 @@ import qualified Data.Map.Strict              as M
 import           Data.Maybe                   (fromMaybe, listToMaybe, mapMaybe)
 import           Data.Text                    (Text, isSuffixOf, replace,
                                                takeWhile, unpack)
-import           Data.YAML                    (FromYAML, decodeStrict,
-                                               parseYAML, withMap, withStr,
-                                               (.!=), (.:), (.:?))
+import           Data.YAML                    (FromYAML, Mapping, Node (..),
+                                               Parser, Scalar (..),
+                                               decodeStrict, parseYAML, withMap,
+                                               withStr, (.!=), (.:), (.:?))
 import           Distribution.Text            (simpleParse)
 import           Distribution.Types.PackageId (PackageIdentifier (..))
 import           Network.HTTP.Client          (httpLbs, parseRequest,
@@ -137,7 +138,7 @@ resolve _ (Canned lts) = do
   either fail (\r -> pure (Nothing, r)) $ new2old <$> (decode1Strict $ text)
     where
       download =
-        let path = unpack $ replace "." "/" (replace "-" "/" lts)
+        let path = unpack $ replace "." "/" (replace "-" "/" (replace "-0" "-" lts))
             raw = concat ["https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/", path, ".yaml"]
         in do
           manager <- getGlobalManager
@@ -231,9 +232,15 @@ instance FromYAML NewDep where
 
 instance FromYAML NewResolver where
   parseYAML = withMap "NewResolver" $ \m -> NewResolver
-    <$> m .: "compiler"
+    <$> (m .: "compiler" <|> m ..: ("resolver", "compiler"))
     <*> m .:? "packages" .!= mempty
     <*> m .:? "flags" .!= (Flags M.empty)
+    where
+      (..:) :: FromYAML a => Mapping -> (Text, Text) -> Parser a
+      m1 ..: (k1, k2) =
+        case M.lookup (Scalar (SStr k1)) m1 of
+          Just (Mapping _ m2) -> m2 .: k2
+          _ -> fail $ "key " ++ show k1 ++ " not found"
 
 newtype PkgId = PkgId { unPkgId :: PackageIdentifier } deriving (Show)
 instance FromYAML PkgId where
