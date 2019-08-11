@@ -1,33 +1,36 @@
-cabal-version:       2.2
-name:                stack2cabal
-version:             1.0.3
-synopsis:            Convert stack projects to cabal.project + cabal.project.freeze
-license:             GPL-3.0-or-later
-license-file:        LICENSE
-author:              Tseen She
-maintainer:          Tseen She
-copyright:           2018 Tseen She
-bug-reports:         https://gitlab.com/tseenshe/stack2cabal/merge_requests
-tested-with:         GHC ^>= 8.4.4 || ^>= 8.6.3
-category:            Building
+cabal-version: 2.2
+name:          stack2cabal
+version:       1.0.3
+synopsis:
+  Convert stack projects to cabal.project + cabal.project.freeze
+
+license:       GPL-3.0-or-later
+license-file:  LICENSE
+author:        Tseen She
+maintainer:    Tseen She
+copyright:     2018 Tseen She
+bug-reports:   https://gitlab.com/tseenshe/stack2cabal/merge_requests
+tested-with:   GHC ^>=8.4.4 || ^>=8.6.3
+category:      Building
 description:
   Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
 
 -- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
 
 executable stack2cabal
-  hs-source-dirs:     exe
-  main-is:            Main.hs
-  build-depends:      stackage-to-hackage  ^>= 1.1.1
-                    , base ^>= 4.11.1.0 || ^>= 4.12.0.0
-                    , bytestring           ^>= 0.10.8.2
-                    , Cabal                ^>= 2.4.1.0
-                    , directory            ^>= 1.3.3.1
-                    , extra                ^>= 1.6.13
-                    , filepath             ^>= 1.4.2.1
-                    , hpack                ==  0.31.1
-                    , text                 ^>= 1.2.3.1
-  ghc-options:        -Wall
-                      -Werror=missing-home-modules
-  default-language:   Haskell2010
-  ghc-options:        -threaded
+  hs-source-dirs:   exe
+  main-is:          Main.hs
+  build-depends:
+    , base                 ^>=4.11.1.0 || ^>=4.12.0.0
+    , bytestring           ^>=0.10.8.2
+    , Cabal                ^>=2.4.1.0
+    , directory            ^>=1.3.3.1
+    , extra                ^>=1.6.13
+    , filepath             ^>=1.4.2.1
+    , hpack                ==0.31.1
+    , stackage-to-hackage  ^>=1.1.1
+    , text                 ^>=1.2.3.1
+
+  ghc-options:      -Wall -Werror=missing-home-modules
+  default-language: Haskell2010
+  ghc-options:      -threaded
