@@ -1,5 +1,0 @@
--- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
-packages:
- stack2cabal
- stackage-to-hackage
-

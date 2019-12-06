@@ -7,12 +7,7 @@ build_job:
   stage: build
   script:
     - cabal v2-build all &&
-      STACKAGE_TO_HACKAGE=$(cabal v2-exec -- which stackage-to-hackage) &&
-      STACK2CABAL=$(cabal v2-exec -- which stack2cabal) &&
-      for TEST in tests/* ; do
-        LC_ALL=C ${STACKAGE_TO_HACKAGE} -- ${TEST}/stack.yaml ;
-      done &&
-      git diff tests &&
+      STACK2CABAL=$(cabal v2-exec -v0 which -- stack2cabal) &&
       for TEST in tests/* ; do
         pushd $TEST &&
         LC_ALL=C $STACK2CABAL &&
