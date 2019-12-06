@@ -1,7 +1,7 @@
 {-# LANGUAGE DuplicateRecordFields #-}
-{-# LANGUAGE NamedFieldPuns        #-}
-{-# LANGUAGE OverloadedStrings     #-}
-{-# LANGUAGE ViewPatterns          #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ViewPatterns #-}
 
 -- | A simplistic model of cabal multi-package files and convertors from Stackage.
 module StackageToHackage.Hackage
@@ -16,11 +16,12 @@ import           Data.List.NonEmpty             (NonEmpty)
 import qualified Data.List.NonEmpty             as NEL
 import qualified Data.Map.Strict                as M
 import           Data.Maybe                     (fromMaybe, mapMaybe)
+import           Data.Semigroup
 import           Data.Semigroup                 (sconcat)
 import           Data.Text                      (Text)
 import qualified Data.Text                      as T
 import           Distribution.Pretty            (prettyShow)
-import           Distribution.Types.PackageId   (PackageIdentifier (..))
+import           Distribution.Types.PackageId   (PackageIdentifier(..))
 import           Distribution.Types.PackageName (PackageName, unPackageName)
 import           StackageToHackage.Stackage
 import           System.FilePath                (addTrailingPathSeparator)

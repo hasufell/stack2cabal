@@ -1,0 +1,6 @@
+# See `stylish-haskell --defaults`
+steps:
+  - language_pragmas:
+      align: false
+  - imports:
+      separate_lists: false

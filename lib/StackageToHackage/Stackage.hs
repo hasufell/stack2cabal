@@ -1,8 +1,8 @@
-{-# LANGUAGE DerivingStrategies         #-}
-{-# LANGUAGE DuplicateRecordFields      #-}
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
-{-# LANGUAGE NamedFieldPuns             #-}
-{-# LANGUAGE OverloadedStrings          #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 -- | Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
 -- the actual ADT, but stack isn't available as a library that we can build from
@@ -13,24 +13,25 @@ import           Control.Applicative          (Alternative, empty, (<|>))
 import           Control.Monad.Extra          (loopM, unlessM)
 import qualified Data.ByteString              as BS
 import           Data.ByteString.Lazy         (toStrict)
-import           Data.List.NonEmpty           (NonEmpty (..), head, nonEmpty,
+import           Data.List.NonEmpty           (NonEmpty(..), head, nonEmpty,
                                                reverse, (<|))
 import           Data.Map.Strict              (Map)
 import qualified Data.Map.Strict              as M
 import           Data.Maybe                   (fromMaybe, listToMaybe, mapMaybe)
+import           Data.Semigroup
 import           Data.Text                    (Text, isSuffixOf, replace,
                                                takeWhile, unpack)
-import           Data.YAML                    (FromYAML, Mapping, Node (..),
-                                               Parser, Scalar (..),
-                                               decodeStrict, parseYAML, withMap,
-                                               withStr, (.!=), (.:), (.:?))
+import           Data.YAML                    (FromYAML, Mapping, Node(..),
+                                               Parser, Scalar(..), decodeStrict,
+                                               parseYAML, withMap, withStr,
+                                               (.!=), (.:), (.:?))
 import           Distribution.Text            (simpleParse)
-import           Distribution.Types.PackageId (PackageIdentifier (..))
+import           Distribution.Types.PackageId (PackageIdentifier(..))
 import           Network.HTTP.Client          (httpLbs, parseRequest,
                                                responseBody)
 import           Network.HTTP.Client.TLS      (getGlobalManager)
 import           Prelude                      hiding (head, reverse, takeWhile)
-import           System.Directory             (XdgDirectory (..),
+import           System.Directory             (XdgDirectory(..),
                                                createDirectoryIfMissing,
                                                doesFileExist, getXdgDirectory)
 import           System.FilePath              (takeDirectory, (</>))
