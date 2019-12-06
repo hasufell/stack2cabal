@@ -28,7 +28,7 @@ common deps
     , filepath
     , hpack            ^>=0.31.0
     , HsYAML           ^>=0.1.1.2
-    , http-client      ^>=0.5.14
+    , http-client      ^>=0.5.14 || ^>=0.6.0
     , http-client-tls  ^>=0.3.5.3
     , text             ^>=1.2.3.1
 
