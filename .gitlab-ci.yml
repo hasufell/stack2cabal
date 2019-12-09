@@ -5,12 +5,4 @@ image: registry.gitlab.com/tseenshe/stack2cabal:8.4.4
 
 build_job:
   stage: build
-  script:
-    - cabal v2-build all &&
-      STACK2CABAL=$(cabal v2-exec -v0 which -- stack2cabal) &&
-      for TEST in tests/* ; do
-        pushd $TEST &&
-        LC_ALL=C $STACK2CABAL &&
-        popd ;
-      done &&
-      git diff tests
+  script: ./test.sh

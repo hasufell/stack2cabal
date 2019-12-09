@@ -8,3 +8,6 @@ packages:
 
 allow-older: *
 allow-newer: *
+
+-- Verbatim
+flags: +ghcflags
