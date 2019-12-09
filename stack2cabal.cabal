@@ -17,6 +17,11 @@ description:
 
 -- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
 
+flag ghcflags
+  description: Generate .ghc.flags files during compilation
+  manual:      True
+  default:     False
+
 common deps
   build-depends:
     , base             >=4.10    && <5.0
@@ -31,6 +36,11 @@ common deps
     , http-client      ^>=0.5.14 || ^>=0.6.0
     , http-client-tls  ^>=0.3.5.3
     , text             ^>=1.2.3.1
+
+  if flag(ghcflags)
+    build-tool-depends: hsinspect:hsinspect
+    build-depends: ghcflags
+    ghc-options: -fplugin GhcFlags.Plugin
 
   ghc-options:      -Wall -Werror=missing-home-modules
   default-language: Haskell2010
