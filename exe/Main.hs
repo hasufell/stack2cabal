@@ -1,4 +1,5 @@
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
@@ -17,6 +18,7 @@ import           Distribution.Types.PackageName (mkPackageName)
 import           Hpack                          (Force(..), Options(..),
                                                  defaultOptions, hpackResult,
                                                  setTarget)
+import           Options.Applicative
 import           Prelude                        hiding (lines)
 import           StackageToHackage.Hackage      (printFreeze, printProject,
                                                  stackToCabal)
@@ -24,14 +26,34 @@ import           StackageToHackage.Stackage     (localDirs, readStack)
 import           System.Directory               (doesDirectoryExist,
                                                  doesFileExist,
                                                  getCurrentDirectory,
-                                                 listDirectory)
-import           System.FilePath                (takeBaseName, takeExtension,
+                                                 listDirectory,
+                                                 makeAbsolute)
+import           System.FilePath                (takeBaseName, takeDirectory, takeExtension,
                                                  (</>))
+
+
+data Opts = Input (Maybe FilePath)
+
+optsP :: Parser Opts
+optsP = Input <$> optional
+  (strOption
+    (short 'f' <> long "file" <> metavar "STACK_FILE" <> help
+      "Path to stack.yaml (optional, uses current dir by default)"
+    )
+  )
+
 
 main :: IO ()
 main = do
-  dir <- getCurrentDirectory
-  stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
+  (stack, dir) <- customExecParser (prefs showHelpOnError) (info (optsP <**> helper) idm) >>= \case
+    Input (Just fp) -> do
+      dir <- makeAbsolute (takeDirectory fp)
+      stack <- readStack =<< BS.readFile fp
+      pure (stack, dir)
+    Input Nothing   -> do
+      dir <- getCurrentDirectory
+      stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
+      pure (stack, dir)
   let subs = NEL.toList $ (dir </>) <$> localDirs stack
   hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
   _ <- traverse runHpack hpacks
