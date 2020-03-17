@@ -11,7 +11,7 @@ module StackageToHackage.Hackage
   ) where
 
 import           Data.List                      (sort)
-import           Data.List.Extra                (nubOn)
+import           Data.List.Extra                (nubOrdOn)
 import           Data.List.NonEmpty             (NonEmpty)
 import qualified Data.List.NonEmpty             as NEL
 import qualified Data.Map.Strict                as M
@@ -65,7 +65,7 @@ genProject :: Stack -> Resolver -> Project
 genProject stack Resolver{compiler, deps} = Project
   (fromMaybe (Ghc "ghc") compiler)
   (localDirs stack)
-  (nubOn repo $ mapMaybe pickGit deps)
+  (nubOrdOn repo $ mapMaybe pickGit deps)
   where
     pickGit (Hackage _ )  = Nothing
     pickGit (SourceDep g) = Just g
@@ -96,7 +96,7 @@ data Freeze = Freeze [PackageIdentifier] Flags deriving (Show)
 genFreeze :: Resolver -> [PackageName] -> Freeze
 genFreeze Resolver{deps, flags} ignore =
   let pkgs = filter noSelfs $ unPkgId <$> mapMaybe pick deps
-      uniqpkgs = nubOn pkgName pkgs
+      uniqpkgs = nubOrdOn pkgName pkgs
    in Freeze uniqpkgs flags
   where pick (Hackage p)   = Just p
         pick (SourceDep _) = Nothing
