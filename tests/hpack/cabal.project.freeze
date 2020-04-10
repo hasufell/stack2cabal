@@ -1,2478 +1,2477 @@
-constraints:
-    ALUT ==2.4.0.2
-  , ANum ==0.2.0.2
-  , Agda ==2.5.3
-  , BiobaseNewick ==0.0.0.2
-  , Boolean ==0.2.4
-  , BoundedChan ==1.0.3.0
-  , Cabal ==2.0.1.1
-  , ChannelT ==0.0.0.7
-  , Chart ==1.8.3
-  , Chart-cairo ==1.8.3
-  , ChasingBottoms ==1.3.1.4
-  , Clipboard ==2.3.2.0
-  , ClustalParser ==1.2.3
-  , ConfigFile ==1.1.4
-  , DAV ==1.3.2
-  , DRBG ==0.5.5
-  , Decimal ==0.5.1
-  , Diff ==0.3.4
-  , Earley ==0.12.1.0
-  , Ebnf2ps ==1.0.15
-  , EdisonAPI ==1.3.1
-  , EdisonCore ==1.3.2.1
-  , FPretty ==1.1
-  , FenwickTree ==0.1.2.1
-  , FindBin ==0.0.5
-  , FloatingHex ==0.4
-  , FontyFruity ==0.5.3.3
-  , ForestStructures ==0.0.0.2
-  , Frames ==0.3.0.2
-  , GLFW-b ==1.4.8.3
-  , GLURaw ==2.0.0.4
-  , GLUT ==2.7.0.14
-  , GPipe ==2.2.3
-  , Genbank ==1.0.3
-  , GenericPretty ==1.2.2
-  , Glob ==0.9.2
-  , H ==0.9.0.1
-  , HCodecs ==0.5.1
-  , HDBC ==2.4.0.2
-  , HDBC-mysql ==0.7.1.0
-  , HDBC-session ==0.1.2.0
-  , HPDF ==1.4.10
-  , HSet ==0.0.1
-  , HSlippyMap ==3.0.1
-  , HStringTemplate ==0.8.7
-  , HSvm ==0.1.0.3.22
-  , HTF ==0.13.2.4
-  , HTTP ==4000.3.12
-  , HUnit ==1.6.0.0
-  , HUnit-approx ==1.1.1.1
-  , HaTeX ==3.18.0.0
-  , HaXml ==1.25.4
-  , HandsomeSoup ==0.4.2
-  , HaskellNet ==0.5.1
-  , HaskellNet-SSL ==0.3.4.0
-  , Hclip ==3.0.0.4
-  , Hoed ==0.5.1
-  , HsOpenSSL -fast-bignum
-  , HsOpenSSL ==0.11.4.14
-  , HsOpenSSL-x509-system ==0.1.0.3
-  , IPv6Addr ==1.0.4
-  , IPv6DB ==0.2.6
-  , Imlib ==0.1.2
-  , IntervalMap ==0.5.3.1
-  , JuicyPixels ==3.2.9.5
-  , JuicyPixels-extra ==0.3.0
-  , JuicyPixels-scale-dct ==0.1.2
-  , LibZip ==1.0.1
-  , List ==0.6.2
-  , ListLike ==4.6
-  , MFlow ==0.4.6.0
-  , MemoTrie ==0.6.9
-  , MissingH ==1.4.0.1
-  , MonadPrompt ==1.0.0.5
-  , MonadRandom ==0.5.1.1
-  , Network-NineP ==0.4.3
-  , NineP -bytestring-in-base
-  , NineP ==0.0.2.1
-  , NoHoed ==0.1.1
-  , NoTrace ==0.3.0.2
-  , NumInstances ==1.4
-  , ObjectName ==1.1.0.1
-  , OneTuple ==0.2.2
-  , Only ==0.1
-  , OpenAL ==1.7.0.4
-  , OpenGL ==3.0.2.2
-  , OpenGLRaw ==3.2.7.0
-  , PSQueue ==1.1
-  , ParsecTools ==0.0.2.0
-  , PortMidi ==0.1.6.1
-  , QuasiText ==0.1.2.6
-  , QuickCheck ==2.10.1
-  , RSA ==2.3.0
-  , Rasterific ==0.7.4
-  , RefSerialize ==0.4.0
-  , SCalendar ==1.1.0
-  , SHA ==1.6.4.4
-  , STMonadTrans ==0.4.3
-  , SafeSemaphore ==0.10.1
-  , SegmentTree ==0.3
-  , ShellCheck ==0.4.7
-  , Spintax ==0.3.3
-  , Spock ==0.12.0.0
-  , Spock-api ==0.12.0.1
-  , Spock-api-server ==0.12.0.1
-  , Spock-core ==0.12.0.0
-  , Spock-lucid ==0.4.0.1
-  , Spock-worker ==0.3.1.0
-  , StateVar ==1.1.1.1
-  , Strafunski-StrategyLib ==5.0.1.0
-  , TCache ==0.12.1
-  , TypeCompose ==0.9.12
-  , Unique ==0.4.7.5
-  , ViennaRNAParser ==1.3.3
-  , Win32-notify ==0.3.0.3
-  , Workflow ==0.8.3
-  , X11 ==1.8
-  , X11-xft ==0.3.1
-  , Xauth ==0.1
-  , Yampa ==0.10.7
-  , YampaSynth ==0.2
-  , abstract-deque ==0.3
-  , abstract-deque-tests ==0.3
-  , abstract-par ==0.3.3
-  , accelerate ==1.1.1.0
-  , accelerate-arithmetic ==1.0.0.1
-  , accelerate-bignum ==0.1.0.0
-  , accelerate-blas ==0.1.0.1
-  , accelerate-fft ==1.1.0.0
-  , accelerate-fftw ==1.0.0.1
-  , accelerate-fourier ==1.0.0.5
-  , accelerate-io ==1.0.0.1
-  , accelerate-llvm ==1.1.0.0
-  , accelerate-llvm-native ==1.1.0.1
-  , accelerate-llvm-ptx ==1.1.0.1
-  , accelerate-utility ==1.0.0.1
-  , accuerr ==0.2.0.2
-  , ace ==0.6
-  , action-permutations ==0.0.0.1
-  , active ==0.2.0.13
-  , ad ==4.3.5
-  , adjunctions ==4.4
-  , adler32 ==0.1.2.0
-  , aern2-mp ==0.1.2.0
-  , aern2-real ==0.1.1.0
-  , aeson ==1.2.4.0
-  , aeson-better-errors ==0.9.1.0
-  , aeson-casing ==0.1.0.5
-  , aeson-compat ==0.3.8
-  , aeson-diff ==1.1.0.5
-  , aeson-extra ==0.4.1.0
-  , aeson-generic-compat ==0.0.1.2
-  , aeson-injector ==1.1.0.0
-  , aeson-picker ==0.1.0.4
-  , aeson-pretty ==0.8.7
-  , aeson-qq ==0.8.2
-  , aeson-typescript ==0.1.1.0
-  , aeson-utils ==0.3.0.2
-  , aeson-yak ==0.1.1.3
-  , airship ==0.9.3
-  , alarmclock ==0.4.0.4
-  , alerts ==0.1.0.0
-  , alex ==3.2.4
-  , algebra ==4.3.1
-  , algebraic-graphs ==0.1.1.1
-  , alsa-core ==0.5.0.1
-  , alsa-mixer ==0.2.0.3
-  , alsa-pcm ==0.6.1
-  , alsa-seq ==0.6.0.7
-  , alternative-vector ==0.0.0
-  , alternators ==0.1.2.0
-  , amazonka ==1.6.0
-  , amazonka-apigateway ==1.6.0
-  , amazonka-application-autoscaling ==1.6.0
-  , amazonka-appstream ==1.6.0
-  , amazonka-autoscaling ==1.6.0
-  , amazonka-budgets ==1.6.0
-  , amazonka-certificatemanager ==1.6.0
-  , amazonka-cloudformation ==1.6.0
-  , amazonka-cloudfront ==1.6.0
-  , amazonka-cloudhsm ==1.6.0
-  , amazonka-cloudsearch ==1.6.0
-  , amazonka-cloudsearch-domains ==1.6.0
-  , amazonka-cloudtrail ==1.6.0
-  , amazonka-cloudwatch ==1.6.0
-  , amazonka-cloudwatch-events ==1.6.0
-  , amazonka-cloudwatch-logs ==1.6.0
-  , amazonka-codebuild ==1.6.0
-  , amazonka-codecommit ==1.6.0
-  , amazonka-codedeploy ==1.6.0
-  , amazonka-codepipeline ==1.6.0
-  , amazonka-cognito-identity ==1.6.0
-  , amazonka-cognito-idp ==1.6.0
-  , amazonka-cognito-sync ==1.6.0
-  , amazonka-config ==1.6.0
-  , amazonka-core ==1.6.0
-  , amazonka-datapipeline ==1.6.0
-  , amazonka-devicefarm ==1.6.0
-  , amazonka-directconnect ==1.6.0
-  , amazonka-discovery ==1.6.0
-  , amazonka-dms ==1.6.0
-  , amazonka-ds ==1.6.0
-  , amazonka-dynamodb ==1.6.0
-  , amazonka-dynamodb-streams ==1.6.0
-  , amazonka-ec2 ==1.6.0
-  , amazonka-ecr ==1.6.0
-  , amazonka-ecs ==1.6.0
-  , amazonka-efs ==1.6.0
-  , amazonka-elasticache ==1.6.0
-  , amazonka-elasticbeanstalk ==1.6.0
-  , amazonka-elasticsearch ==1.6.0
-  , amazonka-elastictranscoder ==1.6.0
-  , amazonka-elb ==1.6.0
-  , amazonka-elbv2 ==1.6.0
-  , amazonka-emr ==1.6.0
-  , amazonka-gamelift ==1.6.0
-  , amazonka-glacier ==1.6.0
-  , amazonka-health ==1.6.0
-  , amazonka-iam ==1.6.0
-  , amazonka-importexport ==1.6.0
-  , amazonka-inspector ==1.6.0
-  , amazonka-iot ==1.6.0
-  , amazonka-iot-dataplane ==1.6.0
-  , amazonka-kinesis ==1.6.0
-  , amazonka-kinesis-analytics ==1.6.0
-  , amazonka-kinesis-firehose ==1.6.0
-  , amazonka-kms ==1.6.0
-  , amazonka-lambda ==1.6.0
-  , amazonka-lightsail ==1.6.0
-  , amazonka-marketplace-analytics ==1.6.0
-  , amazonka-marketplace-metering ==1.6.0
-  , amazonka-ml ==1.6.0
-  , amazonka-opsworks ==1.6.0
-  , amazonka-opsworks-cm ==1.6.0
-  , amazonka-pinpoint ==1.6.0
-  , amazonka-polly ==1.6.0
-  , amazonka-rds ==1.6.0
-  , amazonka-redshift ==1.6.0
-  , amazonka-rekognition ==1.6.0
-  , amazonka-route53 ==1.6.0
-  , amazonka-route53-domains ==1.6.0
-  , amazonka-s3 ==1.6.0
-  , amazonka-sdb ==1.6.0
-  , amazonka-servicecatalog ==1.6.0
-  , amazonka-ses ==1.6.0
-  , amazonka-shield ==1.6.0
-  , amazonka-sms ==1.6.0
-  , amazonka-snowball ==1.6.0
-  , amazonka-sns ==1.6.0
-  , amazonka-sqs ==1.6.0
-  , amazonka-ssm ==1.6.0
-  , amazonka-stepfunctions ==1.6.0
-  , amazonka-storagegateway ==1.6.0
-  , amazonka-sts ==1.6.0
-  , amazonka-support ==1.6.0
-  , amazonka-swf ==1.6.0
-  , amazonka-test ==1.6.0
-  , amazonka-waf ==1.6.0
-  , amazonka-workspaces ==1.6.0
-  , amazonka-xray ==1.6.0
-  , amqp ==0.18.1
-  , annotated-wl-pprint ==0.7.0
-  , ansi-terminal ==0.8.0.4
-  , ansi-wl-pprint ==0.6.8.2
-  , ansigraph ==0.3.0.5
-  , apecs ==0.2.4.7
-  , api-field-json-th ==0.1.0.2
-  , app-settings ==0.2.0.11
-  , appar ==0.1.4
-  , apply-refact ==0.4.1.0
-  , apportionment ==0.0.0.2
-  , approximate ==0.3.1
-  , arithmoi ==0.6.0.1
-  , array-memoize ==0.6.0
-  , arrow-extras ==0.1.0.1
-  , arrow-list ==0.7
-  , ascii-progress ==0.3.3.0
-  , asciidiagram ==1.3.3.1
-  , asn1-encoding ==0.9.5
-  , asn1-parse ==0.9.4
-  , asn1-types ==0.3.2
-  , assert-failure ==0.1.2.2
-  , astro ==0.4.2.1
-  , async ==2.1.1.1
-  , async-extra ==0.2.0.0
-  , async-refresh ==0.2.0.2
-  , async-refresh-tokens ==0.3.0.1
-  , async-timer ==0.1.4.1
-  , atom-basic ==0.2.5
-  , atom-conduit ==0.5.0.1
-  , atomic-primops ==0.8.2
-  , atomic-write ==0.2.0.5
-  , attoparsec ==0.13.2.2
-  , attoparsec-binary ==0.2
-  , attoparsec-expr ==0.1.1.2
-  , attoparsec-ip ==0.0.1
-  , attoparsec-iso8601 ==1.0.0.0
-  , attoparsec-path ==0.0.0.1
-  , attoparsec-time ==1
-  , attoparsec-uri ==0.0.4
-  , audacity ==0.0.2
-  , authenticate ==1.3.4
-  , authenticate-oauth ==1.6
-  , auto ==0.4.3.1
-  , auto-update ==0.1.4
-  , autoexporter ==1.1.10
-  , avwx ==0.3.0.2
-  , axiom ==0.4.6
-  , b9 ==0.5.49
-  , backprop ==0.1.5.2
-  , bank-holidays-england ==0.1.0.7
-  , barrier ==0.1.1
-  , base-compat ==0.9.3
-  , base-orphans ==0.7
-  , base-prelude ==1.2.1
-  , base-unicode-symbols ==0.2.2.4
-  , base16-bytestring ==0.1.1.6
-  , base32string ==0.9.1
-  , base58string ==0.10.0
-  , base64-bytestring ==1.0.0.1
-  , base64-string ==0.2
-  , basement ==0.0.8
-  , basic-prelude ==0.7.0
-  , bbdb ==0.8
-  , bcrypt ==0.0.11
-  , beam-core ==0.7.2.2
-  , beam-migrate ==0.3.2.1
-  , beam-sqlite ==0.3.2.2
-  , bench ==1.0.9
-  , benchpress ==0.2.2.10
-  , bencode ==0.6.0.0
-  , bento ==0.1.0
-  , between ==0.11.0.0
-  , bhoogle ==0.1.2.9
-  , bibtex ==0.1.0.6
-  , bifunctors ==5.5.3
-  , bimap ==0.3.3
-  , bimap-server ==0.1.0.1
-  , binary-bits ==0.5
-  , binary-conduit ==1.3
-  , binary-ieee754 ==0.1.0.0
-  , binary-list ==1.1.1.2
-  , binary-orphans ==0.1.8.0
-  , binary-parser ==0.5.5
-  , binary-parsers ==0.2.3.0
-  , binary-search ==1.0.0.3
-  , binary-shared ==0.8.3
-  , binary-tagged ==0.1.5
-  , bindings-DSL ==1.0.25
-  , bindings-GLFW ==3.1.2.4
-  , bindings-libzip ==1.0.1
-  , bindings-uname ==0.1
-  , bioace ==0.0.1
-  , bioalign ==0.0.5
-  , biocore ==0.3.1
-  , biofasta ==0.0.3
-  , biofastq ==0.1
-  , biopsl ==0.4
-  , bit-stream ==0.1.0.2
-  , bitarray ==0.0.1.1
-  , bitcoin-api ==0.12.1
-  , bitcoin-api-extra ==0.9.1
-  , bitcoin-block ==0.13.1
-  , bitcoin-script ==0.11.1
-  , bitcoin-tx ==0.13.1
-  , bitcoin-types ==0.9.2
-  , bits ==0.5.1
-  , bitset-word8 ==0.1.1.0
-  , bitx-bitcoin ==0.12.0.0
-  , blake2 ==0.2.0
-  , blas-carray ==0.0.1.1
-  , blas-ffi ==0.0.1.1
-  , blas-hs ==0.1.1.0
-  , blastxml ==0.3.2
-  , blaze-bootstrap ==0.1.0.1
-  , blaze-builder ==0.4.1.0
-  , blaze-html ==0.9.1.1
-  , blaze-markup ==0.8.2.1
-  , blaze-svg ==0.3.6.1
-  , blaze-textual ==0.2.1.0
-  , bloodhound ==0.15.0.2
-  , blosum ==0.1.1.4
-  , bmp ==1.2.6.3
-  , bno055-haskell ==0.1.0
-  , boltzmann-samplers ==0.1.1.0
-  , bookkeeping ==0.2.1.4
-  , boolean-like ==0.1.1.0
-  , boolsimplifier ==0.1.8
-  , boomerang ==1.4.5.5
-  , bordacount ==0.1.0.0
-  , both ==0.1.1.0
-  , bound ==2.0.1
-  , boundingboxes ==0.2.3
-  , bower-json ==1.0.0.1
-  , boxes ==0.1.5
-  , brick +demos
-  , brick ==0.34.1
-  , brittany ==0.9.0.1
-  , broadcast-chan ==0.1.1
-  , bsb-http-chunked ==0.0.0.2
-  , bson ==0.3.2.6
-  , bson-lens ==0.1.1
-  , btrfs ==0.1.2.3
-  , buchhaltung ==0.0.7
-  , buffer-builder ==0.2.4.6
-  , buffer-pipe ==0.0
-  , butcher ==1.3.0.0
-  , bv ==0.5
-  , bv-little ==0.1.1
-  , byteable ==0.1.1
-  , bytedump ==1.0
-  , byteorder ==1.0.4
-  , bytes ==0.15.5
-  , byteset ==0.1.1.0
-  , bytestring-builder ==0.10.8.1.0
-  , bytestring-conversion ==0.3.1
-  , bytestring-lexing ==0.5.0.2
-  , bytestring-strict-builder ==0.4.5
-  , bytestring-tree-builder ==0.2.7.2
-  , bytestring-trie ==0.2.4.1
-  , bzlib ==0.5.0.5
-  , bzlib-conduit ==0.3.0.1
-  , c2hs ==0.28.5
-  , cabal-doctest ==1.0.6
-  , cabal-file-th ==0.2.4
-  , cabal-install ==2.0.0.1
-  , cabal-rpm -old-locale
-  , cabal-rpm ==0.12.5
-  , cabal-toolkit ==0.0.5
-  , cabal2nix ==2.8.2
-  , cache ==0.1.1.1
-  , cairo ==0.13.5.0
-  , calendar-recycling ==0.0
-  , call-stack ==0.1.0
-  , capataz ==0.1.0.1
-  , carray ==0.1.6.8
-  , cartel ==0.18.0.2
-  , case-insensitive ==1.2.0.11
-  , cased ==0.1.0.0
-  , cases ==0.1.3.2
-  , casing ==0.1.4.0
-  , cassava -bytestring--lt-0_10_4
-  , cassava ==0.5.1.0
-  , cassava-conduit ==0.4.0.2
-  , cassava-records ==0.1.0.4
-  , cassette ==0.1.0
-  , cast ==0.1.0.2
-  , cayley-client ==0.4.6
-  , cereal ==0.5.7.0
-  , cereal-conduit ==0.8.0
-  , cereal-text ==0.1.0.2
-  , cereal-time ==0.1.0.0
-  , cereal-vector ==0.2.0.1
-  , charset ==0.3.7.1
-  , charsetdetect-ae ==1.1.0.4
-  , chaselev-deque ==0.5.0.5
-  , chatwork ==0.1.3.5
-  , cheapskate ==0.1.1
-  , cheapskate-highlight ==0.1.0.0
-  , cheapskate-lucid ==0.1.0.0
-  , check-email ==1.0.2
-  , checkers ==0.4.11
-  , choice ==0.2.2
-  , chunked-data ==0.3.1
-  , cipher-aes ==0.2.11
-  , cipher-aes128 ==0.7.0.3
-  , cipher-blowfish ==0.0.3
-  , cipher-camellia ==0.0.2
-  , cipher-des ==0.0.6
-  , cipher-rc4 ==0.1.4
-  , circle-packing ==0.1.0.6
-  , cisco-spark-api ==0.1.0.3
-  , clang-compilation-database ==0.1.0.1
-  , classy-prelude ==1.4.0
-  , classy-prelude-conduit ==1.4.0
-  , classy-prelude-yesod ==1.4.0
-  , classyplate ==0.3.1.0
-  , clay ==0.12.2
-  , cli ==0.1.2
-  , clientsession ==0.9.1.2
-  , clock ==0.7.2
-  , clock-extras ==0.1.0.2
-  , clr-host ==0.2.0.1
-  , clr-marshal ==0.2.0.0
-  , clumpiness ==0.17.0.0
-  , cmark ==0.5.6
-  , cmark-gfm ==0.1.4
-  , cmark-highlight ==0.2.0.0
-  , cmark-lucid ==0.1.0.0
-  , cmdargs ==0.10.20
-  , code-builder ==0.1.3
-  , code-page ==0.1.3
-  , codec ==0.2.1
-  , codo-notation ==0.5.2
-  , colorful-monoids ==0.2.1.2
-  , colorize-haskell ==1.0.1
-  , colour ==2.3.4
-  , colour-accelerate ==0.2.0.0
-  , combinatorial ==0.1
-  , comfort-graph ==0.0.3
-  , commutative ==0.0.1.4
-  , comonad ==5.0.4
-  , compact ==0.1.0.1
-  , compactmap ==0.1.4.2.1
-  , compensated ==0.7.2
-  , compiler-warnings ==0.1.0
-  , composable-associations ==0.1.0.0
-  , composable-associations-aeson ==0.1.0.0
-  , composition ==1.0.2.1
-  , composition-extra ==2.0.0
-  , composition-prelude ==1.3.0.8
-  , compressed ==3.11
-  , concise ==0.1.0.1
-  , concurrency ==1.4.0.2
-  , concurrent-extra ==0.7.0.12
-  , concurrent-output ==1.10.6
-  , concurrent-split ==0.0.1
-  , concurrent-supply ==0.1.8
-  , cond ==0.4.1.1
-  , conduit ==1.3.0.3
-  , conduit-algorithms ==0.0.8.1
-  , conduit-combinators ==1.3.0
-  , conduit-connection ==0.1.0.4
-  , conduit-extra ==1.3.0
-  , conduit-iconv ==0.1.1.3
-  , conduit-throttle ==0.3.1.0
-  , config-ini ==0.2.2.0
-  , configuration-tools ==0.3.1
-  , configurator ==0.3.0.0
-  , configurator-export ==0.1.0.1
-  , connection ==0.2.8
-  , connection-pool ==0.2.2
-  , console-style ==0.0.2.1
-  , constraints ==0.10.1
-  , consul-haskell ==0.4.2
-  , containers-unicode-symbols ==0.3.1.1
-  , contravariant ==1.4.1
-  , contravariant-extras ==0.3.4
-  , control-bool ==0.2.1
-  , control-monad-free ==0.6.1
-  , control-monad-omega ==0.3.1
-  , convertible ==1.1.1.0
-  , cookie ==0.4.4
-  , countable ==1.0
-  , country ==0.1.6
-  , courier ==0.1.1.5
-  , cpphs ==1.20.8
-  , cprng-aes ==0.6.1
-  , cpu ==0.1.2
-  , cpuinfo ==0.1.0.1
-  , cql ==3.1.1
-  , cql-io ==0.16.0
-  , crackNum ==1.9
-  , credential-store ==0.1.2
-  , criterion ==1.3.0.0
-  , cron ==0.6.1
-  , crypt-sha512 ==0
-  , crypto-api ==0.13.3
-  , crypto-api-tests ==0.3
-  , crypto-cipher-tests ==0.0.11
-  , crypto-cipher-types ==0.0.9
-  , crypto-enigma ==0.0.2.12
-  , crypto-pubkey-types ==0.4.3
-  , crypto-random ==0.0.9
-  , crypto-random-api ==0.2.0
-  , cryptocipher ==0.6.2
-  , cryptocompare ==0.1.1
-  , cryptohash ==0.11.9
-  , cryptohash-cryptoapi ==0.1.4
-  , cryptohash-md5 ==0.11.100.1
-  , cryptohash-sha1 ==0.11.100.1
-  , cryptohash-sha256 ==0.11.101.0
-  , cryptohash-sha512 ==0.11.100.1
-  , cryptonite ==0.25
-  , cryptonite-conduit ==0.2.2
-  , cryptonite-openssl ==0.6
-  , csp ==1.3.1
-  , css-syntax ==0.0.7
-  , css-text ==0.1.3.0
-  , csv ==0.1.2
-  , csv-conduit ==0.6.8.1
-  , ctrie ==0.2
-  , cubicspline ==0.1.2
-  , cublas ==0.4.0.1
-  , cuda ==0.9.0.3
-  , cue-sheet ==1.0.1
-  , cufft ==0.8.0.0
-  , curl +new-base
-  , curl ==1.3.8
-  , curl-runnings ==0.2.0
-  , currencies ==0.1.1.1
-  , cusolver ==0.1.0.1
-  , cusparse ==0.1.0.1
-  , cutter ==0.0
-  , czipwith ==1.0.0.0
-  , data-accessor ==0.2.2.7
-  , data-accessor-mtl ==0.2.0.4
-  , data-accessor-template ==0.2.1.15
-  , data-accessor-transformers ==0.2.1.7
-  , data-binary-ieee754 ==0.4.4
-  , data-bword ==0.1.0.1
-  , data-checked ==0.3
-  , data-clist ==0.1.2.1
-  , data-default ==0.7.1.1
-  , data-default-class ==0.1.2.0
-  , data-default-instances-containers ==0.0.1
-  , data-default-instances-dlist ==0.0.1
-  , data-default-instances-old-locale ==0.0.1
-  , data-diverse ==2.0.1.0
-  , data-diverse-lens ==2.1.0.0
-  , data-dword ==0.3.1.2
-  , data-endian ==0.1.1
-  , data-fix ==0.2.0
-  , data-has ==0.3.0.0
-  , data-hash ==0.2.0.1
-  , data-inttrie ==0.1.4
-  , data-lens-light ==0.1.2.2
-  , data-memocombinators ==0.5.1
-  , data-msgpack ==0.0.12
-  , data-msgpack-types ==0.0.2
-  , data-or ==1.0.0.5
-  , data-ordlist ==0.4.7.0
-  , data-ref ==0.0.1.1
-  , data-reify ==0.6.1
-  , data-serializer ==0.3.4
-  , data-textual ==0.3.0.2
-  , data-tree-print ==0.1.0.1
-  , datadog ==0.2.2.0
-  , datasets ==0.2.5
-  , dataurl ==0.1.0.0
-  , dawg-ord ==0.5.1.0
-  , dbcleaner ==0.1.3
-  , dbus ==0.10.15
-  , debian-build ==0.10.1.1
-  , debug ==0.1.1
-  , declarative ==0.5.2
-  , deepseq-generics ==0.2.0.0
-  , dejafu ==1.3.2.0
-  , dependent-map ==0.2.4.0
-  , dependent-sum ==0.4
-  , dependent-sum-template ==0.0.0.6
-  , deque ==0.2.1
-  , deriving-compat ==0.4.3
-  , descriptive ==0.9.4
-  , dhall ==1.11.1
-  , dhall-json ==1.0.13
-  , dice ==0.1
-  , dictionaries ==0.2.0.4
-  , diff3 ==0.3.1
-  , digest ==0.0.1.2
-  , digits ==0.3.1
-  , dimensional ==1.1
-  , direct-rocksdb ==0.0.3
-  , direct-sqlite ==2.3.23
-  , directory-tree ==0.12.1
-  , discount ==0.1.1
-  , discrimination ==0.3
-  , disk-free-space ==0.1.0.1
-  , disposable ==0.2.0.4
-  , distance ==0.1.0.0
-  , distributed-closure ==0.4.0
-  , distributed-process ==0.7.4
-  , distributed-process-lifted ==0.3.0.1
-  , distributed-process-monad-control ==0.5.1.3
-  , distributed-process-simplelocalnet ==0.2.4
-  , distributed-process-tests ==0.4.11
-  , distributed-static ==0.3.8
-  , distribution ==1.1.1.0
-  , distribution-nixpkgs ==1.1
-  , distributive ==0.5.3
-  , diversity ==0.8.1.0
-  , djinn-ghc ==0.0.2.3
-  , djinn-lib ==0.0.1.3
-  , dlist ==0.8.0.4
-  , dlist-instances ==0.1.1.1
-  , dlist-nonempty ==0.1.1
-  , dns ==3.0.4
-  , do-list ==1.0.1
-  , docker ==0.5.1.1
-  , docker-build-cacher ==1.9.2
-  , dockerfile ==0.1.0.1
-  , docopt ==0.7.0.5
-  , doctemplates ==0.2.2.1
-  , doctest ==0.13.0
-  , doctest-discover ==0.1.0.7
-  , doctest-driver-gen ==0.2.0.3
-  , dom-parser ==3.0.0
-  , dotenv ==0.5.2.5
-  , dotnet-timespan ==0.0.1.0
-  , double-conversion ==2.0.2.0
-  , download ==0.3.2.6
-  , drawille ==0.1.2.0
-  , drifter ==0.2.3
-  , drifter-postgresql ==0.2.1
-  , dsp ==0.2.4
-  , dublincore-xml-conduit ==0.1.0.2
-  , dvorak ==0.1.0.0
-  , dynamic-state ==0.3.1
-  , dyre ==0.8.12
-  , easy-file ==0.2.2
-  , echo ==0.1.3
-  , ed25519 ==0.0.5.0
-  , edit-distance ==0.2.2.1
-  , edit-distance-vector ==1.0.0.4
-  , editor-open ==0.6.0.0
-  , either ==5.0.1
-  , either-unwrap ==1.1
-  , ekg ==0.4.0.15
-  , ekg-core ==0.1.1.4
-  , ekg-json ==0.1.0.6
-  , ekg-statsd ==0.2.4.0
-  , ekg-wai ==0.1.0.3
-  , elerea ==2.9.0
-  , eliminators ==0.3
-  , elm-core-sources ==1.0.0
-  , elm-export ==0.6.0.1
-  , elm-export-persistent ==0.2.0
-  , email-validate ==2.3.2.6
-  , emailaddress ==0.2.0.0
-  , enclosed-exceptions ==1.0.3
-  , entropy ==0.3.8
-  , enummapset ==0.5.2.2
-  , enumset ==0.0.4.1
-  , envelope ==0.2.2.0
-  , envparse ==0.4.1
-  , envy ==1.5.0.0
-  , epub-metadata ==4.5
-  , eq ==4.1
-  , equal-files ==0.0.5.3
-  , equivalence ==0.3.2
-  , erf ==2.0.0.0
-  , error-util ==0.0.1.2
-  , errors ==2.2.5
-  , errors-ext ==0.4.1
-  , ersatz ==0.4.4
-  , ether ==0.5.1.0
-  , euler-tour-tree ==0.1.0.1
-  , event ==0.1.4
-  , event-list ==0.1.2
-  , eventful-core ==0.2.0
-  , eventful-memory ==0.2.0
-  , eventful-postgresql ==0.2.0
-  , eventful-sql-common ==0.2.0
-  , eventful-sqlite ==0.2.0
-  , eventful-test-helpers ==0.2.0
-  , eventsource-api ==1.3.1
-  , eventsource-geteventstore-store ==1.1.0
-  , eventsource-store-specs ==1.1.1
-  , eventsource-stub-store ==1.0.3
-  , eventstore ==1.1.5
-  , every ==0.0.1
-  , exact-combinatorics ==0.2.0.8
-  , exact-pi ==0.4.1.4
-  , exception-mtl ==0.4.0.1
-  , exception-transformers ==0.4.0.7
-  , exceptional ==0.3.0.0
-  , exceptions ==0.8.3
-  , executable-hash ==0.2.0.4
-  , executable-path ==0.0.3.1
-  , exhaustive ==1.1.6
-  , exp-pairs ==0.1.6.0
-  , expiring-cache-map ==0.0.6.1
-  , explicit-exception ==0.1.9.2
-  , extensible ==0.4.9
-  , extensible-effects ==2.4.0.0
-  , extensible-exceptions ==0.1.1.4
-  , extra ==1.6.9
-  , extractable-singleton ==0.0.1
-  , extrapolate ==0.3.1
-  , fail ==4.9.0.0
-  , farmhash ==0.1.0.5
-  , fast-builder ==0.0.1.0
-  , fast-digits ==0.2.1.0
-  , fast-logger ==2.4.11
-  , fasta ==0.10.4.2
-  , fb ==1.2.0
-  , fclabels ==2.0.3.3
-  , feature-flags ==0.1.0.1
-  , fedora-haskell-tools ==0.5.1
-  , feed ==1.0.0.0
-  , fft ==0.1.8.6
-  , fgl ==5.6.0.0
-  , file-embed ==0.0.10.1
-  , file-modules ==0.1.2.4
-  , filecache ==0.3.2
-  , filelock ==0.1.1.2
-  , filemanip ==0.3.6.3
-  , fileplow ==0.1.0.0
-  , filter-logger ==0.6.0.0
-  , find-clumpiness ==0.2.3.1
-  , fingertree ==0.1.4.1
-  , fingertree-psqueue ==0.3
-  , finite-typelits ==0.1.4.2
-  , fitspec ==0.4.4
-  , fixed ==0.2.1.1
-  , fixed-length ==0.2
-  , fixed-vector ==1.1.0.0
-  , fixed-vector-hetero ==0.4.0.0
-  , flac ==0.1.2
-  , flac-picture ==0.1.1
-  , flat-mcmc ==1.5.0
-  , flexible-defaults ==0.0.2
-  , floatshow ==0.2.4
-  , flow ==1.0.14
-  , fmlist ==0.9.2
-  , fmt ==0.5.0.0
-  , fn ==0.3.0.2
-  , focus ==0.1.5.2
-  , fold-debounce ==0.2.0.7
-  , fold-debounce-conduit ==0.2.0.1
-  , foldl ==1.3.7
-  , folds ==0.7.4
-  , follow-file ==0.0.2
-  , force-layout ==0.4.0.6
-  , foreign-store ==0.2
-  , forma ==0.2.0
-  , format-numbers ==0.1.0.0
-  , formatting ==6.3.6
-  , foundation ==0.0.21
-  , free ==5.0.2
-  , free-vl ==0.1.4
-  , freenect ==1.2.1
-  , freer-simple ==1.1.0.0
-  , freetype2 ==0.1.2
-  , friday ==0.2.3.1
-  , friday-juicypixels ==0.1.2.4
-  , friendly-time ==0.4.1
-  , frisby ==0.2.2
-  , from-sum ==0.2.1.0
-  , frontmatter ==0.1.0.2
-  , fsnotify ==0.2.1.1
-  , fsnotify-conduit ==0.1.1.1
-  , funcmp ==1.9
-  , functor-classes-compat +containers
-  , functor-classes-compat ==1
-  , fuzzcheck ==0.1.1
-  , fuzzyset ==0.1.0.6
-  , gauge ==0.2.3
-  , gc ==0.0.2
-  , gd ==3000.7.3
-  , gdax ==0.6.0.0
-  , general-games ==1.1.1
-  , generic-aeson ==0.2.0.9
-  , generic-arbitrary ==0.1.0
-  , generic-deriving ==1.12.2
-  , generic-lens ==0.5.1.0
-  , generic-random ==1.1.0.2
-  , generic-xmlpickler ==0.1.0.5
-  , generics-eot ==0.2.1.2
-  , generics-sop ==0.3.2.0
-  , generics-sop-lens ==0.1.2.1
-  , geniplate-mirror ==0.7.6
-  , genvalidity ==0.4.0.4
-  , genvalidity-aeson ==0.1.0.0
-  , genvalidity-bytestring ==0.1.0.0
-  , genvalidity-containers ==0.3.0.0
-  , genvalidity-hspec ==0.5.0.0
-  , genvalidity-hspec-aeson ==0.1.0.2
-  , genvalidity-hspec-binary ==0.1.0.0
-  , genvalidity-hspec-cereal ==0.1.0.0
-  , genvalidity-hspec-hashable ==0.1.0.0
-  , genvalidity-path ==0.2.0.2
-  , genvalidity-property ==0.1.0.0
-  , genvalidity-scientific ==0.1.0.0
-  , genvalidity-text ==0.4.0.0
-  , genvalidity-time ==0.1.0.1
-  , genvalidity-unordered-containers ==0.1.0.0
-  , genvalidity-uuid ==0.0.0.0
-  , genvalidity-vector ==0.1.0.0
-  , getopt-generics ==0.13.0.2
-  , ghc-compact ==0.1.0.0
-  , ghc-core ==0.5.6
-  , ghc-events ==0.7.3
-  , ghc-exactprint ==0.5.6.1
-  , ghc-parser ==0.2.0.2
-  , ghc-paths ==0.1.0.9
-  , ghc-prof ==1.4.1.3
-  , ghc-syb-utils ==0.2.3.3
-  , ghc-tcplugins-extra ==0.2.5
-  , ghc-typelits-extra ==0.2.4
-  , ghc-typelits-knownnat ==0.4.2
-  , ghc-typelits-natnormalise ==0.5.10
-  , ghcid ==0.6.10
-  , ghcjs-base-stub ==0.1.0.4
-  , ghcjs-codemirror ==0.0.0.2
-  , ghcjs-perch ==0.3.3.2
-  , ghost-buster ==0.1.1.0
-  , gi-atk ==2.0.15
-  , gi-cairo ==1.0.17
-  , gi-glib ==2.0.17
-  , gi-gobject ==2.0.16
-  , gi-javascriptcore ==4.0.15
-  , ginger ==0.7.3.0
-  , git ==0.2.1
-  , github ==0.19
-  , github-release ==1.1.6
-  , github-types ==0.2.1
-  , github-webhook-handler ==0.0.8
-  , github-webhook-handler-snap ==0.0.7
-  , github-webhooks ==0.9.1
-  , gitrev ==1.3.1
-  , gl ==0.8.0
-  , glabrous ==0.3.6
-  , glaze ==0.3.0.1
-  , glazier ==0.11.0.1
-  , glazier-pipes ==0.1.5.1
-  , glib ==0.13.6.0
-  , glob-posix ==0.1.0.1
-  , gloss ==1.11.1.1
-  , gloss-accelerate ==2.0.0.1
-  , gloss-algorithms ==1.11.1.1
-  , gloss-raster ==1.11.1.1
-  , gloss-raster-accelerate ==2.0.0.0
-  , gloss-rendering ==1.11.1.1
-  , gluturtle ==0.0.58.1
-  , gnuplot ==0.5.5.2
-  , goggles ==0.3.2
-  , google-cloud ==0.0.4
-  , google-oauth2-jwt ==0.2.2
-  , gpolyline ==0.1.0.1
-  , graph-core ==0.3.0.0
-  , graph-wrapper ==0.2.5.1
-  , graphs ==0.7.1
-  , gravatar ==0.8.0
-  , graylog ==0.1.0.1
-  , groom ==0.1.2.1
-  , groundhog ==0.8.0.1
-  , groundhog-inspector ==0.8.0.2
-  , groundhog-mysql ==0.8.0.1
-  , groundhog-postgresql ==0.8.0.3
-  , groundhog-sqlite ==0.8.0.1
-  , groundhog-th ==0.8.0.2
-  , group-by-date ==0.1.0.2
-  , grouped-list ==0.2.2.0
-  , groups ==0.4.1.0
-  , gtk2hs-buildtools ==0.13.4.0
-  , gym-http-api ==0.1.0.1
-  , h2c ==1.0.0
-  , hOpenPGP ==2.6.2
-  , hackage-db ==2.0
-  , hackage-security ==0.5.3.0
-  , haddock-library ==1.4.5
-  , hailgun ==0.4.1.8
-  , hailgun-simple ==0.1.0.0
-  , hakyll ==4.12.3.0
-  , half ==0.2.2.3
-  , hamilton ==0.1.0.2
-  , handwriting ==0.1.0.3
-  , hapistrano ==0.3.5.9
-  , happstack-jmacro ==7.0.12.1
-  , happstack-server ==7.5.1.1
-  , happstack-server-tls ==7.1.6.5
-  , happy ==1.19.9
-  , hasbolt ==0.1.3.0
-  , hashable ==1.2.7.0
-  , hashable-time ==0.2.0.1
-  , hashids ==1.0.2.4
-  , hashmap ==1.3.3
-  , hashtables ==1.2.3.1
-  , haskeline ==0.7.4.3
-  , haskell-gi ==0.21.4
-  , haskell-gi-base ==0.21.1
-  , haskell-gi-overloading ==0.0
-  , haskell-lexer ==1.0.1
-  , haskell-lsp ==0.2.0.1
-  , haskell-lsp-client ==1.0.0.1
-  , haskell-names ==0.9.2
-  , haskell-neo4j-client ==0.3.2.4
-  , haskell-spacegoo ==0.2.0.1
-  , haskell-src ==1.0.3.0
-  , haskell-src-exts ==1.20.2
-  , haskell-src-exts-util ==0.2.3
-  , haskell-src-meta ==0.8.0.3
-  , haskell-tools-ast ==1.0.1.1
-  , haskell-tools-backend-ghc ==1.0.1.1
-  , haskell-tools-prettyprint ==1.0.1.1
-  , haskell-tools-refactor ==1.0.1.2
-  , haskell-tools-rewrite ==1.0.1.1
-  , haskintex ==0.8.0.0
-  , hasmin ==1.0.2
-  , hasql ==1.1.1
-  , hasql-migration ==0.1.3
-  , hasql-optparse-applicative ==0.3.0.2
-  , hasql-pool ==0.4.3.1
-  , hasql-transaction ==0.6.0.1
-  , hastache ==0.6.1
-  , hasty-hamiltonian ==1.3.2
-  , haxl ==0.5.1.0
-  , haxr ==3000.11.2
-  , hbeanstalk ==0.2.4
-  , hdaemonize ==0.5.5
-  , hdevtools ==0.1.7.0
-  , heap ==1.0.4
-  , heaps ==0.3.6
-  , heatshrink ==0.1.0.0
-  , hebrew-time ==0.1.1
-  , hedgehog ==0.5.3
-  , hedgehog-quickcheck ==0.1
-  , hedis ==0.10.3
-  , heist ==1.0.1.2
-  , here ==1.2.13
-  , heredoc ==0.2.0.0
-  , herms ==1.9.0.4
-  , heterocephalus ==1.0.5.2
-  , hex ==0.1.2
-  , hexml ==0.3.3
-  , hexml-lens ==0.2.1
-  , hexpat ==0.20.13
-  , hexstring ==0.11.1
-  , hformat ==0.3.3.0
-  , hfsevents ==0.1.6
-  , hid ==0.2.2
-  , hidapi ==0.1.5
-  , hidden-char ==0.1.0.2
-  , hierarchical-clustering ==0.4.6
-  , higher-leveldb ==0.5.0.1
-  , highjson ==0.4.0.0
-  , highjson-swagger ==0.4.0.0
-  , highjson-th ==0.4.0.0
-  , highlighting-kate ==0.6.4
-  , hindent ==5.2.7
-  , hinotify ==0.3.9
-  , hint ==0.7.0
-  , histogram-fill ==0.8.5.0
-  , hit ==0.6.3
-  , hjsmin ==0.2.0.2
-  , hjsonpointer ==1.3.0
-  , hjsonschema ==1.7.2
-  , hledger ==1.5
-  , hledger-api ==1.5
-  , hledger-iadd ==1.3.5
-  , hledger-interest ==1.5.1
-  , hledger-lib ==1.5.1
-  , hledger-ui ==1.5
-  , hledger-web ==1.5.1
-  , hlibgit2 ==0.18.0.16
-  , hlibsass ==0.1.6.1
-  , hlint ==2.1.10
-  , hmatrix ==0.18.2.0
-  , hmatrix-backprop ==0.1.2.0
-  , hmatrix-gsl ==0.18.2.0
-  , hmatrix-gsl-stats ==0.4.1.7
-  , hmatrix-morpheus ==0.1.1.2
-  , hmatrix-repa ==0.1.2.2
-  , hmatrix-special ==0.4.0.1
-  , hmatrix-vector-sized ==0.1.1.0
-  , hmpfr ==0.4.4
-  , hocilib ==0.2.0
-  , hoogle ==5.0.17.3
-  , hopenssl ==2.2.1
-  , hopfli ==0.2.2.1
-  , hosc ==0.16
-  , hostname ==1.0
-  , hostname-validate ==1.0.0
-  , hourglass ==0.2.11
-  , hourglass-orphans ==0.1.0.0
-  , hp2pretty ==0.8.0.2
-  , hpc-coveralls ==1.0.10
-  , hpio -test-hlint
-  , hpio ==0.9.0.6
-  , hpp ==0.5.2
-  , hpqtypes ==1.5.3.0
-  , hquantlib ==0.0.4.0
-  , hreader ==1.1.0
-  , hreader-lens ==0.1.3.0
-  , hruby ==0.3.5.4
-  , hs-GeoIP ==0.3
-  , hs-bibutils ==6.6.0.0
-  , hsass ==0.5.0
-  , hsb2hs ==0.3.1
-  , hscolour ==1.24.4
-  , hsdns ==1.7.1
-  , hsebaysdk ==0.4.0.0
-  , hsemail ==2
-  , hset ==2.2.0
-  , hsexif ==0.6.1.5
-  , hsignal ==0.2.7.5
-  , hsinstall ==1.6
-  , hslogger ==1.2.10
-  , hslua ==0.9.5.2
-  , hslua-aeson ==0.3.0.2
-  , hslua-module-text ==0.1.2.1
-  , hsndfile ==0.8.0
-  , hsndfile-vector ==0.5.2
-  , hsp ==0.10.0
-  , hspec ==2.4.8
-  , hspec-attoparsec ==0.1.0.2
-  , hspec-checkers ==0.1.0.2
-  , hspec-contrib ==0.4.0
-  , hspec-core ==2.4.8
-  , hspec-discover ==2.4.8
-  , hspec-expectations ==0.8.2
-  , hspec-expectations-lifted ==0.10.0
-  , hspec-expectations-pretty-diff ==0.7.2.4
-  , hspec-golden-aeson ==0.5.1.0
-  , hspec-megaparsec ==1.0.0
-  , hspec-meta ==2.4.6
-  , hspec-pg-transact ==0.1.0.2
-  , hspec-smallcheck ==0.5.0
-  , hspec-wai ==0.9.0
-  , hspec-wai-json ==0.9.0
-  , hspec-webdriver ==1.2.0
-  , hsshellscript ==3.4.5
-  , hstatistics ==0.3
-  , hstatsd ==0.1
-  , hsx-jmacro ==7.3.8.1
-  , hsyslog ==5.0.1
-  , hsyslog-udp ==0.2.3
-  , htaglib ==1.1.1
-  , html ==1.0.1.2
-  , html-conduit ==1.3.1
-  , html-email-validate ==0.2.0.0
-  , html-entity-map ==0.1.0.0
-  , htoml ==1.0.0.3
-  , http-api-data ==0.3.7.2
-  , http-client ==0.5.13.1
-  , http-client-openssl ==0.2.2.0
-  , http-client-tls ==0.3.5.3
-  , http-common ==0.8.2.0
-  , http-conduit ==2.3.2
-  , http-date ==0.0.8
-  , http-link-header ==1.0.3.1
-  , http-media ==0.7.1.2
-  , http-reverse-proxy ==0.5.0.1
-  , http-streams ==0.8.6.1
-  , http-types ==0.12.1
-  , http2 ==1.6.3
-  , human-readable-duration ==0.2.0.3
-  , hunit-dejafu ==1.1.0.3
-  , hvect ==0.4.0.0
-  , hvega ==0.1.0.3
-  , hw-balancedparens ==0.2.0.2
-  , hw-bits ==0.7.0.3
-  , hw-conduit ==0.2.0.3
-  , hw-diagnostics ==0.0.0.5
-  , hw-excess ==0.2.0.2
-  , hw-fingertree ==0.1.0.1
-  , hw-fingertree-strict ==0.1.1.1
-  , hw-hedgehog ==0.1.0.2
-  , hw-hspec-hedgehog ==0.1.0.5
-  , hw-int ==0.0.0.3
-  , hw-json ==0.6.0.0
-  , hw-mquery ==0.1.0.1
-  , hw-parser ==0.0.0.3
-  , hw-prim ==0.5.0.5
-  , hw-rankselect ==0.10.0.3
-  , hw-rankselect-base ==0.2.0.2
-  , hw-string-parse ==0.0.0.4
-  , hw-succinct ==0.1.0.1
-  , hw-xml ==0.1.0.3
-  , hweblib ==0.6.3
-  , hworker ==0.1.0.1
-  , hxt +network-uri
-  , hxt ==9.3.1.16
-  , hxt-charproperties ==9.2.0.1
-  , hxt-css ==0.1.0.3
-  , hxt-curl ==9.1.1.1
-  , hxt-expat ==9.1.1
-  , hxt-http +network-uri
-  , hxt-http ==9.1.5.2
-  , hxt-pickle-utils ==0.1.0.3
-  , hxt-regex-xmlschema ==9.2.0.3
-  , hxt-tagsoup ==9.1.4
-  , hxt-unicode ==9.0.2.4
-  , hybrid-vectors ==0.2.2
-  , hyperloglog ==0.4.2
-  , hyphenation ==0.7.1
-  , iconv ==0.4.1.3
-  , identicon ==0.2.2
-  , idris ==1.3.0
-  , ieee754 ==0.8.0
-  , if ==0.1.0.0
-  , iff ==0.0.6
-  , ignore ==0.1.1.0
-  , ihaskell ==0.9.1.0
-  , ihaskell-hvega ==0.1.0.3
-  , ihs ==0.1.0.2
-  , ilist ==0.3.1.0
-  , imagesize-conduit ==1.1
-  , immortal ==0.2.2.1
-  , imprint ==0.0.1.0
-  , include-file ==0.1.0.3
-  , incremental-parser ==0.2.5.4
-  , indentation-core ==0.0.0.1
-  , indentation-parsec ==0.0.0.1
-  , indents ==0.4.0.1
-  , indexed-list-literals ==0.1.0.1
-  , inflections ==0.4.0.3
-  , influxdb ==1.3.0.1
-  , ini ==0.3.6
-  , inline-c ==0.6.0.6
-  , inline-c-cpp ==0.2.1.0
-  , inline-java ==0.8.4
-  , inline-r ==0.9.2
-  , insert-ordered-containers ==0.2.1.0
-  , inspection-testing ==0.2.0.1
-  , instance-control ==0.1.2.0
-  , integer-logarithms ==1.0.2.1
-  , integration ==0.2.1
-  , intern ==0.9.2
-  , interpolate ==0.2.0
-  , interpolatedstring-perl6 ==1.0.0
-  , interpolation ==0.1.0.2
-  , intervals ==0.8.1
-  , intro ==0.3.2.0
-  , invariant ==0.5
-  , invertible ==0.2.0.5
-  , io-choice ==0.0.6
-  , io-machine ==0.2.0.0
-  , io-manager ==0.1.0.2
-  , io-memoize ==1.1.1.0
-  , io-region ==0.1.1
-  , io-storage ==0.3
-  , io-streams ==1.5.0.1
-  , io-streams-haproxy ==1.0.0.2
-  , ip ==1.2.1
-  , ip6addr ==0.5.3
-  , iproute ==1.7.5
-  , ipython-kernel ==0.9.1.0
-  , irc ==0.6.1.0
-  , irc-client ==1.1.0.4
-  , irc-conduit ==0.3.0.1
-  , irc-ctcp ==0.1.3.0
-  , irc-dcc ==2.0.1
-  , islink ==0.1.0.0
-  , iso3166-country-codes ==0.20140203.8
-  , iso639 ==0.1.0.3
-  , iso8601-time ==0.1.5
-  , iterable ==3.0
-  , ix-shapable ==0.1.0
-  , ixset ==1.0.7
-  , ixset-typed ==0.3.1.1
-  , jack ==0.7.1.3
-  , javascript-extras ==0.3.2.0
-  , jmacro ==0.6.15
-  , jmacro-rpc ==0.3.2
-  , jmacro-rpc-happstack ==0.3.2
-  , jmacro-rpc-snap ==0.3
-  , jni ==0.6.1
-  , jose ==0.6.0.3
-  , jose-jwt ==0.7.8
-  , js-flot ==0.8.3
-  , js-jquery ==3.3.1
-  , json ==0.9.2
-  , json-autotype ==1.0.18
-  , json-builder ==0.3
-  , json-rpc-generic ==0.2.1.4
-  , json-schema ==0.7.4.1
-  , json-stream ==0.4.2.3
-  , justified-containers ==0.3.0.0
-  , jvm ==0.4.2
-  , jvm-batching ==0.1.1
-  , jvm-streaming ==0.3.1
-  , jwt ==0.7.2
-  , kan-extensions ==5.1
-  , kanji ==3.1.0.1
-  , katydid ==0.1.1.0
-  , kawhi ==0.3.0
-  , kdt ==0.2.4
-  , keycode ==0.2.2
-  , keys ==3.12.1
-  , kmeans ==0.1.3
-  , knob ==0.1.1
-  , koofr-client ==1.0.0.3
-  , kraken ==0.1.0
-  , l10n ==0.1.0.1
-  , labels ==0.3.3
-  , lackey ==1.0.5
-  , lambdabot-core ==5.1.0.2
-  , lambdabot-irc-plugins ==5.1.0.1
-  , lame ==0.1.1
-  , language-c ==0.7.2
-  , language-c-quote ==0.12.1
-  , language-docker ==2.0.1
-  , language-ecmascript ==0.17.2.0
-  , language-fortran ==0.5.1
-  , language-glsl ==0.2.1
-  , language-haskell-extract ==0.2.4
-  , language-java ==0.2.9
-  , language-javascript ==0.6.0.11
-  , language-nix ==2.1.0.1
-  , language-puppet ==1.3.20
-  , lapack-carray ==0.0.2
-  , lapack-ffi ==0.0.2
-  , lapack-ffi-tools ==0.1.0.1
-  , large-hashable ==0.1.0.4
-  , largeword ==1.2.5
-  , latex ==0.1.0.3
-  , lattices ==1.7.1.1
-  , lazyio ==0.1.0.4
-  , lca ==0.3.1
-  , leancheck ==0.7.1
-  , leapseconds-announced ==2017.1.0.1
-  , lens ==4.16.1
-  , lens-accelerate ==0.1.0.0
-  , lens-action ==0.2.3
-  , lens-aeson ==1.0.2
-  , lens-datetime ==0.3
-  , lens-family ==1.2.2
-  , lens-family-core ==1.2.2
-  , lens-family-th ==0.5.0.2
-  , lens-labels ==0.1.0.2
-  , lens-properties ==4.11.1
-  , lens-regex ==0.1.0
-  , lens-simple ==0.1.0.9
-  , lentil ==1.0.11.3
-  , leveldb-haskell ==0.6.5
-  , lexer-applicative ==2.1.0.2
-  , libffi ==0.1
-  , libgit ==0.3.1
-  , libgraph ==1.14
-  , libinfluxdb ==0.0.4
-  , libmpd ==0.9.0.8
-  , liboath-hs ==0.0.1.0
-  , libsystemd-journal ==1.4.3
-  , libxml-sax ==0.7.5
-  , licensor ==0.2.2
-  , lift-generics ==0.1.2
-  , lifted-async ==0.9.3.3
-  , lifted-base ==0.2.3.12
-  , line ==4.0.1
-  , linear ==1.20.8
-  , linear-accelerate ==0.5.0.1
-  , linked-list-with-iterator ==0.1.1.0
-  , linux-file-extents ==0.2.0.0
-  , linux-namespaces ==0.1.3.0
-  , list-t ==1.0.1
-  , listsafe ==0.1.0.1
-  , llvm-hs ==5.1.3
-  , llvm-hs-pure ==5.1.2
-  , lmdb ==0.2.5
-  , load-env ==0.1.2
-  , loch-th ==0.2.2
-  , lockfree-queue ==0.2.3.1
-  , log ==0.9.0.1
-  , log-base ==0.7.4.0
-  , log-domain ==0.12
-  , log-elasticsearch ==0.9.1.0
-  , log-postgres ==0.7.0.2
-  , log-warper ==1.8.11
-  , logfloat ==0.13.3.3
-  , logger-thread ==0.1.0.2
-  , logging-effect ==1.2.6
-  , logging-effect-extra ==1.2.2
-  , logging-effect-extra-file ==1.1.2
-  , logging-effect-extra-handler ==1.1.4
-  , logging-facade ==0.3.0
-  , logging-facade-syslog ==1
-  , logict ==0.6.0.2
-  , loop ==0.3.0
-  , lrucache ==1.2.0.0
-  , lrucaching ==0.3.3
-  , lucid ==2.9.10
-  , lxd-client ==0.1.0.6
-  , lxd-client-config ==0.1.0.1
-  , lzma ==0.0.0.3
-  , lzma-conduit ==1.2.1
-  , machines ==0.6.4
-  , machines-binary ==0.3.0.3
-  , machines-directory ==0.2.1.0
-  , machines-io ==0.2.0.13
-  , mainland-pretty ==0.6.1
-  , makefile ==1.1.0.0
-  , managed ==1.0.6
-  , mandrill ==0.5.3.3
-  , map-syntax ==0.2.0.2
-  , mapquest-api ==0.3.1
-  , markdown ==0.1.17.1
-  , markdown-unlit ==0.5.0
-  , markov-chain ==0.0.3.4
-  , markup ==4.0.4
-  , marvin-interpolate ==1.1.2
-  , massiv ==0.1.6.1
-  , massiv-io ==0.1.4.0
-  , math-functions ==0.2.1.0
-  , mathexpr ==0.3.0.0
-  , matplotlib ==0.6.0
-  , matrices ==0.4.5
-  , matrix ==0.3.5.0
-  , matrix-market-attoparsec ==0.1.0.8
-  , maximal-cliques ==0.1.1
-  , mbox ==0.3.4
-  , mbox-utility ==0.0.1
-  , mbtiles ==0.6.0.0
-  , mcmc-types ==1.0.3
-  , med-module ==0.1.1
-  , median-stream ==0.7.0.0
-  , megaparsec ==6.4.1
-  , memory ==0.14.16
-  , mercury-api ==0.1.0.1
-  , mersenne-random-pure64 -small_base
-  , mersenne-random-pure64 ==0.2.2.0
-  , messagepack ==0.5.4
-  , messagepack-rpc ==0.5.1
-  , metrics ==0.4.1.1
-  , microformats2-parser ==1.0.1.9
-  , microlens ==0.4.8.3
-  , microlens-aeson ==2.3.0
-  , microlens-contra ==0.1.0.1
-  , microlens-ghc ==0.4.8.0
-  , microlens-mtl ==0.1.11.1
-  , microlens-platform ==0.3.9.0
-  , microlens-th ==0.4.1.3
-  , microspec ==0.1.0.0
-  , microstache ==1.0.1.1
-  , midi ==0.2.2.2
-  , mighty-metropolis ==1.2.0
-  , milena ==0.5.2.2
-  , mime-mail ==0.4.14
-  , mime-mail-ses ==0.4.1
-  , mime-types ==0.1.0.8
-  , minimorph ==0.1.6.1
-  , minio-hs ==1.0.1
-  , miniutter ==0.4.7.0
-  , mintty ==0.1.2
-  , misfortune ==0.1.1.2
-  , miso ==0.14.0.0
-  , missing-foreign ==0.1.1
-  , mixed-types-num ==0.3.1.4
-  , mltool ==0.1.0.2
-  , mmap ==0.5.9
-  , mmark ==0.0.5.6
-  , mmark-cli ==0.0.3.0
-  , mmark-ext ==0.2.1.0
-  , mmorph ==1.1.2
-  , mnist-idx ==0.1.2.8
-  , mockery ==0.3.5
-  , model ==0.4.4
-  , modern-uri ==0.2.2.0
-  , modify-fasta ==0.8.3.0
-  , moesocks ==1.0.0.44
-  , mole ==0.0.6
-  , monad-control ==1.0.2.3
-  , monad-control-aligned ==0.0.1.1
-  , monad-coroutine ==0.9.0.4
-  , monad-extras ==0.6.0
-  , monad-journal ==0.8.1
-  , monad-logger ==0.3.29
-  , monad-logger-json ==0.1.0.0
-  , monad-logger-prefix ==0.1.10
-  , monad-logger-syslog ==0.1.4.0
-  , monad-loops ==0.4.3
-  , monad-memo ==0.4.1
-  , monad-metrics ==0.2.1.2
-  , monad-mock ==0.2.0.0
-  , monad-par ==0.3.4.8
-  , monad-par-extras ==0.3.3
-  , monad-parallel ==0.7.2.3
-  , monad-peel ==0.2.1.2
-  , monad-products ==4.0.1
-  , monad-recorder ==0.1.1
-  , monad-skeleton ==0.1.5
-  , monad-st ==0.2.4.1
-  , monad-time ==0.2
-  , monad-unlift ==0.2.0
-  , monad-unlift-ref ==0.2.1
-  , monadic-arrays ==0.2.2
-  , monadloc ==0.7.1
-  , monadoid ==0.0.2
-  , monadplus ==1.4.2
-  , monads-tf ==0.1.0.3
-  , mongoDB ==2.3.0.5
-  , mono-traversable ==1.0.9.0
-  , mono-traversable-instances ==0.1.0.0
-  , monoid-extras ==0.4.4
-  , monoid-subclasses ==0.4.6
-  , monoid-transformer ==0.0.4
-  , monoidal-containers ==0.3.1.0
-  , morte ==1.6.20
-  , mountpoints ==1.0.2
-  , mstate ==0.2.7
-  , mtl ==2.2.2
-  , mtl-compat ==0.2.1.3
-  , mtl-prelude ==2.0.3.1
-  , multiarg ==0.30.0.10
-  , multimap ==1.2.1
-  , multipart ==0.1.3
-  , multiset ==0.3.4
-  , multistate ==0.7.1.2
-  , murmur-hash ==0.1.0.9
-  , mustache ==2.3.0
-  , mutable-containers ==0.3.4
-  , mwc-probability ==2.0.4
-  , mwc-random ==0.13.6.0
-  , mwc-random-accelerate ==0.1.0.0
-  , mysql ==0.1.5
-  , mysql-haskell ==0.8.3.0
-  , mysql-haskell-nem ==0.1.0.0
-  , mysql-haskell-openssl ==0.8.3.0
-  , mysql-simple ==0.4.5
-  , n-tuple ==0.0.2.0
-  , nagios-check ==0.3.2
-  , names-th ==0.2.0.5
-  , nano-erl ==0.1.0.1
-  , nanospec ==0.2.2
-  , naqsha ==0.2.0.1
-  , nats ==1.1.2
-  , natural-sort ==0.1.2
-  , natural-transformation ==0.4
-  , ndjson-conduit ==0.1.0.5
-  , neat-interpolation ==0.3.2.1
-  , netlib-carray ==0.0.1.1
-  , netlib-ffi ==0.0.1
-  , netpbm ==1.0.2
-  , nettle ==0.2.1
-  , netwire ==5.0.3
-  , netwire-input ==0.0.7
-  , netwire-input-glfw ==0.0.10
-  , network ==2.6.3.6
-  , network-anonymous-i2p ==0.10.0
-  , network-anonymous-tor ==0.11.0
-  , network-attoparsec ==0.12.2
-  , network-carbon ==1.0.12
-  , network-conduit-tls ==1.3.2
-  , network-house ==0.1.0.2
-  , network-info ==0.2.0.10
-  , network-ip ==0.3.0.2
-  , network-multicast ==0.2.0
-  , network-simple ==0.4.2
-  , network-transport ==0.5.2
-  , network-transport-composed ==0.2.1
-  , network-transport-inmemory ==0.5.2
-  , network-transport-tcp ==0.6.0
-  , network-transport-tests ==0.2.4.2
-  , network-uri ==2.6.1.0
-  , newtype ==0.2
-  , newtype-generics ==0.5.3
-  , next-ref ==0.1.0.2
-  , nfc ==0.1.0
-  , nicify-lib ==1.0.1
-  , nix-paths +allow-relative-paths
-  , nix-paths ==1.0.1
-  , non-empty ==0.3.0.1
-  , non-empty-sequence ==0.2.0.2
-  , non-negative ==0.1.2
-  , nonce ==1.0.7
-  , nondeterminism ==1.4
-  , normalization-insensitive ==2.0.1
-  , nsis ==0.3.2
-  , numbers ==3000.2.0.2
-  , numeric-extras ==0.1
-  , numeric-prelude ==0.4.3
-  , numhask ==0.1.4.0
-  , numhask-range ==0.1.3.0
-  , numtype-dk ==0.5.0.2
-  , nvvm ==0.8.0.3
-  , o-clock ==0.1.1
-  , oauthenticated ==0.2.1.0
-  , objective ==1.1.2
-  , ochintin-daicho ==0.1.0.1
-  , oeis ==0.3.9
-  , ofx ==0.4.2.0
-  , old-locale ==1.0.0.7
-  , old-time ==1.1.0.3
-  , once ==0.2
-  , one-liner ==0.9.2
-  , one-liner-instances ==0.1.2.1
-  , online ==0.2.1.0
-  , oo-prototypes ==0.1.0.0
-  , opaleye ==0.6.7001.0
-  , open-browser ==0.2.1.0
-  , open-witness ==0.4.0.1
-  , openexr-write ==0.1.0.1
-  , openpgp-asciiarmor ==0.1.1
-  , opensource ==0.1.0.0
-  , openssl-streams ==1.2.1.3
-  , operational ==0.2.3.5
-  , operational-class ==0.3.0.0
-  , opml-conduit ==0.6.0.4
-  , optional-args ==1.0.2
-  , options ==1.2.1.1
-  , optparse-applicative ==0.14.2.0
-  , optparse-generic ==1.3.0
-  , optparse-simple ==0.1.0
-  , optparse-text ==0.1.1.0
-  , overhang ==1.0.0
-  , package-description-remote ==0.2.0.0
-  , packdeps ==0.4.4
-  , pager ==0.1.1.0
-  , pagerduty ==0.0.8
-  , pagination ==0.2.1
-  , palette ==0.1.0.5
-  , pandoc -old-locale
-  , pandoc ==2.1.2
-  , pandoc-citeproc ==0.14.3.1
-  , pandoc-types ==1.17.3.1
-  , pango ==0.13.5.0
-  , papillon ==0.1.0.5
-  , parallel ==3.2.2.0
-  , parallel-io ==0.3.3
-  , parseargs ==0.2.0.8
-  , parsec ==3.1.13.0
-  , parsec-numeric ==0.1.0.0
-  , parser-combinators ==0.4.0
-  , parsers ==0.12.9
-  , partial-handler ==1.0.3
-  , partial-isomorphisms ==0.2.2.1
-  , partial-order ==0.1.2.1
-  , partial-semigroup ==0.3.0.3
-  , path ==0.6.1
-  , path-extra ==0.0.6
-  , path-io ==1.3.3
-  , path-pieces ==0.2.1
-  , path-text-utf8 ==0.0.1.0
-  , pathtype -old-time
-  , pathtype ==0.8.1
-  , pathwalk ==0.3.1.2
-  , patience ==0.1.1
-  , pattern-arrows ==0.0.2
-  , pcf-font ==0.2.2.0
-  , pcf-font-embed ==0.1.2.0
-  , pcre-heavy ==1.0.0.2
-  , pcre-light ==0.4.0.4
-  , pcre-utils ==0.1.8.1.1
-  , pdf-toolbox-content ==0.0.5.1
-  , pdf-toolbox-core ==0.0.4.1
-  , pdf-toolbox-document ==0.0.7.1
-  , pdfinfo ==1.5.4
-  , pell ==0.1.1.0
-  , pem ==0.2.4
-  , perf ==0.3.1.1
-  , perfect-hash-generator ==0.2.0.6
-  , persistable-record ==0.6.0.4
-  , persistable-types-HDBC-pg ==0.0.3.3
-  , persistent ==2.8.2
-  , persistent-mongoDB ==2.8.0
-  , persistent-mysql ==2.8.1
-  , persistent-mysql-haskell ==0.4.1
-  , persistent-postgresql ==2.8.2.0
-  , persistent-redis ==2.5.2.2
-  , persistent-refs ==0.4
-  , persistent-sqlite ==2.8.1.2
-  , persistent-template ==2.5.4
-  , pg-transact ==0.1.0.1
-  , pgp-wordlist ==0.1.0.2
-  , phantom-state ==0.2.1.2
-  , picedit ==0.2.3.0
-  , picoparsec ==0.1.2.3
-  , picosat ==0.1.4
-  , pid1 ==0.1.2.0
-  , pinboard ==0.9.12.10
-  , pinch ==0.3.3.0
-  , pipes ==4.3.9
-  , pipes-aeson ==0.4.1.8
-  , pipes-attoparsec ==0.5.1.5
-  , pipes-bytestring ==2.1.6
-  , pipes-category ==0.3.0.0
-  , pipes-concurrency ==2.0.11
-  , pipes-csv ==1.4.3
-  , pipes-extras ==1.0.15
-  , pipes-fastx ==0.3.0.0
-  , pipes-fluid ==0.6.0.0
-  , pipes-group ==1.0.12
-  , pipes-misc ==0.4.0.1
-  , pipes-mongodb ==0.1.0.0
-  , pipes-network ==0.6.5
-  , pipes-parse ==3.0.8
-  , pipes-random ==1.0.0.4
-  , pipes-safe ==2.2.9
-  , pipes-text ==0.0.2.5
-  , pipes-wai ==3.2.0
-  , pixelated-avatar-generator ==0.1.3
-  , pkcs10 ==0.2.0.0
-  , placeholders ==0.1
-  , plot ==0.2.3.9
-  , plot-light ==0.2.9
-  , pointed ==5.0.1
-  , pointedlist ==0.6.1
-  , pointless-fun ==1.1.0.6
-  , poll ==0.0.0.1
-  , poly-arity ==0.1.0
-  , polynomials-bernstein ==1.1.2
-  , polyparse ==1.12
-  , pomaps ==0.0.1.0
-  , pooled-io ==0.0.2.1
-  , posix-paths ==0.2.1.5
-  , post-mess-age ==0.2.1.0
-  , postgresql-binary ==0.12.1.1
-  , postgresql-libpq ==0.9.4.1
-  , postgresql-schema ==0.1.14
-  , postgresql-simple ==0.5.4.0
-  , postgresql-simple-migration ==0.1.12.0
-  , postgresql-simple-queue ==1.0.1
-  , postgresql-simple-url ==0.2.1.0
-  , postgresql-transactional ==1.1.1
-  , postgresql-typed ==0.5.3.0
-  , pptable ==0.2.0.0
-  , pqueue ==1.4.1.1
-  , pred-set ==0.0.1
-  , pred-trie ==0.5.1.2
-  , prefix-units ==0.2.0
-  , prelude-compat ==0.0.0.1
-  , prelude-extras ==0.4.0.3
-  , prelude-safeenum ==0.1.1.2
-  , preprocessor-tools ==1.0.1
-  , present ==4.1.0
-  , pretty-class ==1.0.1.1
-  , pretty-hex ==1.0
-  , pretty-show ==1.6.16
-  , pretty-simple ==2.1.0.1
-  , pretty-types ==0.2.3.1
-  , prettyclass ==1.0.0.0
-  , prettyprinter ==1.2.1
-  , prettyprinter-ansi-terminal ==1.1.1.2
-  , prettyprinter-compat-annotated-wl-pprint ==1
-  , prettyprinter-compat-ansi-wl-pprint ==1.0.1
-  , prettyprinter-compat-wl-pprint ==1.0.0.1
-  , prim-uniq ==0.1.0.1
-  , primes ==0.2.1.0
-  , primitive ==0.6.4.0
-  , probability ==0.2.5.1
-  , process-extras ==0.7.4
-  , product-isomorphic ==0.0.3.2
-  , product-profunctors ==0.9.0.0
-  , profiterole ==0.1
-  , profunctors ==5.2.2
-  , project-template ==0.2.0.1
-  , projectroot ==0.2.0.1
-  , prometheus-client ==0.3.0
-  , prometheus-metrics-ghc ==0.3.0
-  , promises ==0.3
-  , prompt ==0.1.1.2
-  , proto-lens ==0.2.2.0
-  , proto-lens-arbitrary ==0.1.1.1
-  , proto-lens-descriptors ==0.2.2.0
-  , proto-lens-optparse ==0.1.1.1
-  , protobuf ==0.2.1.2
-  , protobuf-simple ==0.1.0.5
-  , protocol-buffers ==2.4.11
-  , protocol-buffers-descriptor ==2.4.11
-  , protocol-radius ==0.0.1.0
-  , protocol-radius-test ==0.0.1.0
-  , protolude ==0.2.2
-  , proxied ==0.3
-  , psql-helpers ==0.1.0.0
-  , psqueues ==0.2.7.0
-  , pthread ==0.2.0
-  , publicsuffix ==0.20171229
-  , pure-io ==0.2.1
-  , pureMD5 ==2.1.3
-  , purescript-bridge ==0.11.1.2
-  , pushbullet-types ==0.4.1.0
-  , pusher-http-haskell ==1.5.1.5
-  , pwstore-fast ==2.4.4
-  , qchas ==1.1.0.1
-  , qm-interpolated-string ==0.3.0.0
-  , quickbench ==1.0
-  , quickcheck-arbitrary-adt ==0.3.1.0
-  , quickcheck-assertions ==0.3.0
-  , quickcheck-classes ==0.4.13
-  , quickcheck-combinators ==0.0.4
-  , quickcheck-instances ==0.3.18
-  , quickcheck-io ==0.2.0
-  , quickcheck-properties ==0.1
-  , quickcheck-simple ==0.1.0.4
-  , quickcheck-special ==0.1.0.6
-  , quickcheck-state-machine ==0.3.1
-  , quickcheck-text ==0.1.2.1
-  , quickcheck-unicode ==1.0.1.0
-  , quickcheck-with-counterexamples ==1.0
-  , raaz ==0.2.0
-  , rainbow ==0.28.0.4
-  , rainbox ==0.18.0.10
-  , rakuten ==0.1.1.5
-  , ramus ==0.1.2
-  , random ==1.1
-  , random-fu ==0.2.7.0
-  , random-shuffle ==0.0.4
-  , random-source ==0.3.0.6
-  , random-tree ==0.6.0.5
-  , range-set-list ==0.1.3
-  , rank-product ==0.2.0.1
-  , rank1dynamic ==0.4.0
-  , rank2classes ==1.0.2
-  , rasterific-svg ==0.3.3.1
-  , ratel ==1.0.5
-  , ratel-wai ==1.0.3
-  , ratio-int ==0.1.2
-  , raw-strings-qq ==1.1
-  , rawfilepath ==0.2.4
-  , rawstring-qm ==0.2.3.0
-  , rcu ==0.2.3
-  , rdf ==0.1.0.2
-  , rdtsc ==1.3.0.1
-  , re2 ==0.2
-  , read-editor ==0.1.0.2
-  , read-env-var ==1.0.0.0
-  , readable ==0.3.1
-  , recursion-schemes ==5.0.3
-  , redis-io ==0.7.0
-  , redis-resp ==0.4.0
-  , reducers ==3.12.3
-  , ref-fd ==0.4.0.1
-  , refact ==0.3.0.2
-  , references ==0.3.3.1
-  , refined ==0.1.2.1
-  , reflection ==2.1.4
-  , reform ==0.2.7.2
-  , reform-blaze ==0.2.4.3
-  , reform-hamlet ==0.0.5.3
-  , reform-happstack ==0.2.5.2
-  , regex-applicative ==0.3.3
-  , regex-applicative-text ==0.1.0.1
-  , regex-base ==0.93.2
-  , regex-compat ==0.95.1
-  , regex-compat-tdfa ==0.95.1.4
-  , regex-pcre ==0.94.4
-  , regex-pcre-builtin ==0.94.4.8.8.35
-  , regex-pcre-text ==0.94.0.1
-  , regex-posix ==0.95.2
-  , regex-tdfa ==1.2.3.1
-  , regex-tdfa-text ==1.0.0.3
-  , reinterpret-cast ==0.1.0
-  , relational-query ==0.11.4.0
-  , relational-query-HDBC ==0.6.8.0
-  , relational-record ==0.2.2.0
-  , relational-schemas ==0.1.6.2
-  , rematch ==0.2.0.0
-  , renderable ==0.2.0.1
-  , repa ==3.4.1.3
-  , repa-algorithms ==3.4.1.2
-  , repa-io ==3.4.1.1
-  , repline ==0.1.7.0
-  , req ==1.0.0
-  , req-url-extra ==0.1.0.0
-  , reroute ==0.4.1.0
-  , resource-pool ==0.2.3.2
-  , resourcet ==1.2.1
-  , rest-core ==0.39
-  , rest-snap ==0.3.0.0
-  , rest-stringmap ==0.2.0.7
-  , rest-types ==1.14.1.2
-  , result ==0.2.6.0
-  , rethinkdb-client-driver ==0.0.25
-  , retry ==0.7.6.3
-  , rev-state ==0.1.2
-  , rfc5051 ==0.1.0.3
-  , riak ==1.1.2.5
-  , riak-protobuf ==0.23.0.0
-  , rio ==0.1.5.0
-  , rng-utils ==0.3.0
-  , roles ==0.2.0.0
-  , rollbar-hs ==0.2.0.0
-  , rose-trees ==0.0.4.4
-  , rot13 ==0.2.0.1
-  , rss-conduit ==0.4.2.2
-  , runmemo ==1.0.0.1
-  , rvar ==0.2.0.3
-  , s3-signer ==0.3.0.0
-  , safe ==0.3.17
-  , safe-exceptions ==0.1.7.0
-  , safe-exceptions-checked ==0.1.0
-  , safecopy ==0.9.4.1
-  , safeio ==0.0.5.0
-  , sample-frame ==0.0.3
-  , sample-frame-np ==0.0.4.1
-  , sampling ==0.3.3
-  , sandman ==0.2.0.1
-  , say ==0.1.0.1
-  , sbp ==2.3.17
-  , sbv ==7.5
-  , scalendar ==1.2.0
-  , scalpel ==0.5.1
-  , scalpel-core ==0.5.1
-  , scanner ==0.2
-  , schematic ==0.4.2.0
-  , scientific ==0.3.6.2
-  , scotty ==0.11.2
-  , scrypt ==0.5.0
-  , sdl2 ==2.4.0.1
-  , sdl2-gfx ==0.2
-  , sdl2-image ==2.0.0
-  , sdl2-mixer ==1.1.0
-  , sdl2-ttf ==2.0.2
-  , search-algorithms ==0.3.0
-  , securemem ==0.1.10
-  , selda ==0.1.12.1
-  , selda-postgresql ==0.1.7.2
-  , selda-sqlite ==0.1.6.0
-  , semigroupoid-extras ==5
-  , semigroupoids ==5.2.2
-  , semigroups ==0.18.5
-  , semiring-simple ==1.0.0.1
-  , semirings ==0.1.3.0
-  , semver ==0.3.3.1
-  , sendfile ==0.7.9
-  , sensu-run ==0.4.0.5
-  , seqalign ==0.2.0.4
-  , seqloc ==0.6.1.1
-  , sequence ==0.9.8
-  , serf ==0.1.1.0
-  , servant ==0.13.0.1
-  , servant-JuicyPixels ==0.3.0.4
-  , servant-blaze ==0.8
-  , servant-cassava ==0.10
-  , servant-client ==0.13.0.1
-  , servant-client-core ==0.13.0.1
-  , servant-docs ==0.11.2
-  , servant-elm ==0.4.0.1
-  , servant-exceptions ==0.1.1
-  , servant-foreign ==0.11.1
-  , servant-generic ==0.1.0.3
-  , servant-github-webhook ==0.4.1.0
-  , servant-js ==0.9.3.2
-  , servant-kotlin ==0.1.1.2
-  , servant-lucid ==0.8
-  , servant-mock ==0.8.4
-  , servant-pandoc ==0.5.0.0
-  , servant-purescript ==0.9.0.2
-  , servant-ruby ==0.7.0.0
-  , servant-server ==0.13.0.1
-  , servant-static-th ==0.2.2.0
-  , servant-subscriber ==0.6.0.1
-  , servant-swagger ==1.1.5
-  , servant-swagger-ui ==0.2.5.3.9.1
-  , servant-websockets ==1.1.0
-  , servant-yaml ==0.1.0.0
-  , serversession ==1.0.1
-  , serversession-backend-persistent ==1.0.4
-  , serversession-backend-redis ==1.0.3
-  , serversession-frontend-wai ==1.0
-  , servius ==1.2.3.0
-  , ses-html ==0.4.0.0
-  , set-cover ==0.0.9
-  , set-monad ==0.2.0.0
-  , setenv ==0.1.1.3
-  , setlocale ==1.0.0.6
-  , sets ==0.0.5.2
-  , shake ==0.16.4
-  , shake-language-c ==0.11.0
-  , shakespeare ==2.0.15
-  , shelltestrunner ==1.9
-  , shelly ==1.7.2
-  , shikensu ==0.3.8
-  , shortcut-links ==0.4.2.0
-  , should-not-typecheck ==2.1.0
-  , show-combinators ==0.1.0.0
-  , show-prettyprint ==0.2.2
-  , signal ==0.1.0.4
-  , silently ==1.2.5
-  , simple ==0.11.2
-  , simple-log ==0.9.6
-  , simple-reflect ==0.3.3
-  , simple-sendfile ==0.2.27
-  , simple-session ==0.10.1.1
-  , simple-templates ==0.8.0.1
-  , singleton-bool ==0.1.4
-  , singleton-nats ==0.4.1
-  , singletons ==2.3.1
-  , siphash ==1.0.3
-  , skein ==1.0.9.4
-  , skeletons ==0.4.0
-  , skylighting ==0.6
-  , slack-web ==0.2.0.6
-  , slave-thread ==1.0.2
-  , slug ==0.1.7
-  , smallcheck ==1.1.5
-  , smoothie ==0.4.2.9
-  , smtp-mail ==0.1.4.6
-  , snap ==1.1.0.0
-  , snap-blaze ==0.2.1.5
-  , snap-core ==1.0.3.2
-  , snap-server ==1.0.3.3
-  , snowflake ==0.1.1.1
-  , soap ==0.2.3.6
-  , soap-openssl ==0.1.0.2
-  , soap-tls ==0.1.1.4
-  , socket ==0.8.1.0
-  , socket-activation ==0.1.0.2
-  , socks ==0.5.6
-  , sort ==1.0.0.0
-  , sorted-list ==0.2.0.0
-  , sourcemap ==0.1.6
-  , sox ==0.2.3
-  , soxlib ==0.0.3
-  , sparkle ==0.7.4
-  , sparse-linear-algebra ==0.2.9.9
-  , spdx ==0.2.2.0
-  , special-values ==0.1.0.0
-  , speculate ==0.3.2
-  , speculation ==1.5.0.3
-  , speedy-slice ==0.3.0
-  , sphinx ==0.6.0.2
-  , splice ==0.6.1.1
-  , split ==0.2.3.3
-  , splitmix ==0
-  , spoon ==0.3.1
-  , spreadsheet ==0.1.3.7
-  , sql-words ==0.1.6.2
-  , sqlite-simple ==0.4.16.0
-  , squeal-postgresql ==0.1.1.4
-  , srcloc ==0.5.1.2
-  , stache ==1.2.1
-  , stack-type ==0.1.0.0
-  , starter ==0.2.1
-  , state-codes ==0.1.3
-  , stateWriter ==0.2.10
-  , stateref ==0.3
-  , statestack ==0.2.0.5
-  , static-text ==0.2.0.2
-  , statistics ==0.14.0.2
-  , stb-image-redux ==0.2.1.2
-  , stitch ==0.5.0.0
-  , stm ==2.4.5.0
-  , stm-chans ==3.0.0.4
-  , stm-conduit ==4.0.0
-  , stm-containers ==0.2.16
-  , stm-delay ==0.1.1.1
-  , stm-extras ==0.1.0.3
-  , stm-split ==0.0.2
-  , stm-stats ==0.2.0.0
-  , stm-supply ==0.2.0.0
-  , stopwatch ==0.1.0.5
-  , storable-complex ==0.2.2
-  , storable-endian ==0.2.6
-  , storable-record ==0.0.4
-  , storable-tuple ==0.0.3.3
-  , storablevector ==0.2.13
-  , store ==0.4.3.2
-  , store-core ==0.4.4
-  , stratosphere ==0.19.1
-  , streaming ==0.2.1.0
-  , streaming-bytestring ==0.1.6
-  , streaming-commons ==0.1.19
-  , streamly ==0.1.2
-  , streamproc ==1.6.2
-  , streams ==3.3
-  , strict ==0.3.2
-  , strict-base-types ==0.6.1
-  , strict-concurrency ==0.2.4.2
-  , strict-types ==0.1.2
-  , string-class ==0.1.7.0
-  , string-combinators ==0.6.0.5
-  , string-conv ==0.1.2
-  , string-conversions ==0.4.0.1
-  , string-qq ==0.0.2
-  , string-transform ==1.0.0
-  , stringable ==0.1.3
-  , stringbuilder ==0.5.1
-  , stringsearch ==0.3.6.6
-  , stripe-core ==2.3.0
-  , strive ==5.0.6
-  , structs ==0.1.1
-  , sum-type-boilerplate ==0.1.1
-  , sundown ==0.6
-  , superbuffer ==0.3.1.1
-  , svg-builder ==0.1.1
-  , svg-tree ==0.6.2.2
-  , swagger ==0.3.0
-  , swagger2 ==2.2.1
-  , swish ==0.9.2.1
-  , syb ==0.7
-  , syb-with-class ==0.6.1.9
-  , symbol ==0.2.4
-  , symengine ==0.1.2.0
-  , sysinfo ==0.1.1
-  , system-argv0 ==0.1.1
-  , system-fileio ==0.3.16.3
-  , system-filepath ==0.4.14
-  , tabular ==0.2.2.7
-  , tagchup ==0.4.1
-  , tagged ==0.8.6
-  , tagged-binary ==0.2.0.1
-  , tagged-identity ==0.1.2
-  , tagshare ==0.0
-  , tagsoup ==0.14.6
-  , tagstream-conduit ==0.5.5.3
-  , tar -old-time
-  , tar ==0.5.1.0
-  , tar-conduit ==0.2.3.1
-  , tardis ==0.4.1.0
-  , tasty ==1.0.1.1
-  , tasty-ant-xml ==1.1.4
-  , tasty-auto ==0.2.0.0
-  , tasty-dejafu ==1.1.0.2
-  , tasty-discover ==4.2.1
-  , tasty-expected-failure ==0.11.1.1
-  , tasty-golden ==2.3.2
-  , tasty-hedgehog ==0.1.0.2
-  , tasty-hspec ==1.1.5
-  , tasty-html ==0.4.1.1
-  , tasty-hunit ==0.10.0.1
-  , tasty-kat ==0.0.3
-  , tasty-program ==1.0.5
-  , tasty-quickcheck ==0.9.2
-  , tasty-rerun ==1.1.12
-  , tasty-silver ==3.1.11
-  , tasty-smallcheck ==0.8.1
-  , tasty-stats ==0.2.0.4
-  , tasty-th ==0.1.7
-  , tce-conf ==1.3
-  , tcp-streams ==1.0.1.0
-  , tcp-streams-openssl ==1.0.1.0
-  , tdigest ==0.1
-  , teardown ==0.3.0.0
-  , template ==0.2.0.10
-  , temporary ==1.2.1.1
-  , temporary-rc ==1.2.0.3
-  , tensorflow-test ==0.1.0.0
-  , termcolor ==0.2.0.0
-  , terminal-progress-bar ==0.2
-  , terminal-size ==0.3.2.1
-  , test-fixture ==0.5.1.0
-  , test-framework ==0.8.2.0
-  , test-framework-hunit ==0.3.0.2
-  , test-framework-quickcheck2 ==0.3.0.4
-  , test-framework-smallcheck ==0.2
-  , test-framework-th ==0.2.4
-  , testing-feat ==0.4.0.3
-  , texmath ==0.10.1.2
-  , text -integer-simple
-  , text ==1.2.3.0
-  , text-binary ==0.2.1.1
-  , text-conversions ==0.3.0
-  , text-format ==0.3.2
-  , text-generic-pretty ==1.2.1
-  , text-icu ==0.7.0.1
-  , text-latin1 ==0.3.1
-  , text-ldap ==0.1.1.12
-  , text-manipulate ==0.2.0.1
-  , text-metrics ==0.3.0
-  , text-postgresql ==0.0.3.1
-  , text-printer ==0.5
-  , text-region ==0.3.1.0
-  , text-short ==0.1.2
-  , text-show ==3.7.2
-  , text-show-instances ==3.6.3
-  , text-zipper ==0.10.1
-  , textlocal ==0.1.0.5
-  , tf-random ==0.5
-  , tfp ==1.0.0.2
-  , th-abstraction ==0.2.8.0
-  , th-data-compat ==0.0.2.6
-  , th-desugar ==1.7
-  , th-expand-syns ==0.4.4.0
-  , th-extras ==0.0.0.4
-  , th-lift ==0.7.10
-  , th-lift-instances ==0.1.11
-  , th-orphans ==0.13.6
-  , th-reify-compat ==0.0.1.4
-  , th-reify-many ==0.1.8
-  , th-strict-compat ==0.1.0.1
-  , th-to-exp ==0.0.1.1
-  , th-utilities ==0.2.0.1
-  , these ==0.7.4
-  , thread-hierarchy ==0.3.0.0
-  , thread-local-storage ==0.1.2
-  , threads ==0.5.1.6
-  , threads-extras ==0.1.0.2
-  , threepenny-editors ==0.5.6
-  , threepenny-gui ==0.8.2.4
-  , threepenny-gui-flexbox ==0.4.2
-  , throttle-io-stream ==0.2.0.1
-  , through-text ==0.1.0.0
-  , throwable-exceptions ==0.1.0.9
-  , tibetan-utils ==0.1.1.5
-  , tidal ==0.9.9
-  , tile ==0.3.0.0
-  , time-compat ==0.1.0.3
-  , time-lens ==0.4.0.2
-  , time-locale-compat -old-locale
-  , time-locale-compat ==0.1.1.4
-  , time-locale-vietnamese ==1.0.0.0
-  , time-parsers ==0.1.2.0
-  , timeit ==2.0
-  , timelens ==0.2.0.2
-  , timemap ==0.0.7
-  , timerep ==2.0.0.2
-  , timespan ==0.3.0.0
-  , timezone-olson ==0.1.9
-  , timezone-series ==0.1.9
-  , tinylog ==0.14.1
-  , tinytemplate ==0.1.2.0
-  , titlecase ==1.0.1
-  , tldr ==0.3.0
-  , tls ==1.4.1
-  , tls-debug ==0.4.5
-  , tls-session-manager ==0.0.0.2
-  , tmapchan ==0.0.3
-  , tmapmvar ==0.0.4
-  , tmp-postgres ==0.1.1.1
-  , token-bucket ==0.1.0.1
-  , tostring ==0.2.1.1
-  , transformers-base ==0.4.4
-  , transformers-bifunctors ==0.1
-  , transformers-compat ==0.5.1.4
-  , transformers-either ==0.0.2
-  , transformers-fix ==1.0
-  , transformers-lift ==0.2.0.1
-  , transient ==0.5.9.2
-  , transient-universe ==0.4.6.1
-  , traverse-with-class ==1.0.0.0
-  , tree-diff ==0.0.1
-  , tree-fun ==0.8.1.0
-  , tries ==0.0.5
-  , trifecta ==1.7.1.1
-  , triplesec ==0.1.2.0
-  , true-name ==0.1.0.3
-  , tsv2csv ==0.1.0.2
-  , ttrie ==0.1.2.1
-  , tuple ==0.3.0.2
-  , tuple-th ==0.2.5
-  , tuples-homogenous-h98 ==0.1.1.0
-  , turtle ==1.5.10
-  , turtle-options ==0.1.0.4
-  , type-assertions ==0.1.0.0
-  , type-combinators ==0.2.4.3
-  , type-combinators-singletons ==0.2.1.0
-  , type-fun ==0.1.1
-  , type-hint ==0.1
-  , type-level-integers ==0.0.1
-  , type-level-kv-list ==1.1.0
-  , type-level-numbers ==0.1.1.1
-  , type-of-html ==1.3.4.0
-  , type-operators ==0.1.0.4
-  , type-spec ==0.3.0.1
-  , typed-process ==0.2.3.0
-  , typelits-witnesses ==0.3.0.2
-  , typography-geometry ==1.0.0.1
-  , tz ==0.1.3.1
-  , tzdata ==0.1.20180122.0
-  , ua-parser ==0.7.5.1
-  , uglymemo ==0.1.0.1
-  , unbound-generics ==0.3.3
-  , unbounded-delays ==0.1.1.0
-  , unboxed-ref ==0.4.0.0
-  , uncertain ==0.3.1.0
-  , unexceptionalio ==0.3.0
-  , unfoldable ==0.9.6
-  , unfoldable-restricted ==0.0.3
-  , unicode ==0.0.1
-  , unicode-show ==0.1.0.3
-  , unicode-transforms ==0.3.4
-  , unification-fd ==0.10.0.1
-  , union ==0.1.1.2
-  , union-find ==0.2
-  , uniplate ==1.6.12
-  , uniq-deep ==1.1.0.0
-  , unique ==0
-  , unit-constraint ==0.0.0
-  , units-parser ==0.1.1.2
-  , universe ==1.0
-  , universe-base ==1.0.2.1
-  , universe-instances-base ==1.0
-  , universe-instances-extended ==1.0.0.1
-  , universe-instances-trans ==1.0.0.1
-  , universe-reverse-instances ==1.0
-  , universum ==1.1.1
-  , unix-bytestring ==0.3.7.3
-  , unix-compat ==0.5.0.1
-  , unix-time ==0.3.8
-  , unliftio ==0.2.7.0
-  , unliftio-core ==0.1.1.0
-  , unlit ==0.4.0.0
-  , unordered-containers ==0.2.9.0
-  , unsafe ==0.0
-  , uom-plugin ==0.3.0.0
-  , uri-bytestring ==0.3.2.0
-  , uri-bytestring-aeson ==0.1.0.6
-  , uri-encode ==1.5.0.5
-  , uri-templater ==0.3.1.0
-  , urlpath ==8.1.0
-  , userid ==0.1.3.2
-  , users ==0.5.0.0
-  , users-postgresql-simple ==0.5.0.2
-  , users-test ==0.5.0.1
-  , utf8-light ==0.4.2
-  , utf8-string ==1.0.1.1
-  , utility-ht ==0.0.14
-  , uuid ==1.3.13
-  , uuid-types ==1.0.3
-  , vado ==0.0.10
-  , validation ==1
-  , validationt ==0.2.1.0
-  , validity ==0.4.0.4
-  , validity-aeson ==0.1.0.0
-  , validity-bytestring ==0.2.0.0
-  , validity-containers ==0.2.0.0
-  , validity-path ==0.2.0.2
-  , validity-scientific ==0.1.0.0
-  , validity-text ==0.2.0.1
-  , validity-time ==0.1.0.0
-  , validity-unordered-containers ==0.1.0.0
-  , validity-uuid ==0.0.0.0
-  , validity-vector ==0.1.0.0
-  , varying ==0.7.0.3
-  , vault ==0.3.1.2
-  , vcswrapper ==0.1.6
-  , vector ==0.12.0.1
-  , vector-algorithms ==0.7.0.1
-  , vector-binary-instances ==0.2.4
-  , vector-buffer ==0.4.1
-  , vector-builder ==0.3.6
-  , vector-fftw ==0.1.3.8
-  , vector-instances ==3.4
-  , vector-mmap ==0.0.3
-  , vector-sized ==0.6.1.0
-  , vector-space ==0.13
-  , vector-split ==1.0.0.2
-  , vector-th-unbox ==0.2.1.6
-  , vectortiles ==1.3.0
-  , verbosity ==0.2.3.0
-  , versions ==3.3.2
-  , vhd ==0.2.2
-  , vinyl ==0.7.0
-  , vivid ==0.3.0.2
-  , vivid-osc ==0.3.0.0
-  , vivid-supercollider ==0.3.0.0
-  , void ==0.7.2
-  , vty ==5.20
-  , wai ==3.2.1.2
-  , wai-app-static ==3.1.6.2
-  , wai-cli ==0.1.1
-  , wai-conduit ==3.0.0.4
-  , wai-cors ==0.2.6
-  , wai-eventsource ==3.0.0
-  , wai-extra ==3.0.22.0
-  , wai-handler-launch ==3.0.2.3
-  , wai-logger ==2.3.2
-  , wai-middleware-caching ==0.1.0.2
-  , wai-middleware-caching-lru ==0.1.0.0
-  , wai-middleware-caching-redis ==0.2.0.0
-  , wai-middleware-consul ==0.1.0.2
-  , wai-middleware-crowd ==0.1.4.2
-  , wai-middleware-metrics ==0.2.4
-  , wai-middleware-prometheus ==0.3.0
-  , wai-middleware-rollbar ==0.10.0
-  , wai-middleware-static ==0.8.2
-  , wai-middleware-throttle ==0.2.2.1
-  , wai-predicates ==0.10.0
-  , wai-route ==0.3.1.2
-  , wai-routing ==0.13.0
-  , wai-session ==0.3.3
-  , wai-session-postgresql ==0.2.1.2
-  , wai-slack-middleware ==0.2.0
-  , wai-transformers ==0.0.7
-  , wai-websockets ==3.0.1.2
-  , warp ==3.2.23
-  , warp-tls ==3.2.4.3
-  , wave ==0.1.5
-  , wavefront ==0.7.1.2
-  , web-plugins ==0.2.9
-  , web-routes ==0.27.14.2
-  , web-routes-boomerang ==0.28.4.2
-  , web-routes-happstack ==0.23.11
-  , web-routes-hsp ==0.24.6.1
-  , web-routes-th ==0.22.6.3
-  , web-routes-wai ==0.24.3.1
-  , web3 ==0.7.3.0
-  , webdriver ==0.8.5
-  , webdriver-angular ==0.1.11
-  , webpage ==0.0.5
-  , webrtc-vad ==0.1.0.3
-  , websockets ==0.12.5.1
-  , websockets-rpc ==0.6.0
-  , websockets-simple ==0.0.6.3
-  , websockets-snap ==0.10.3.0
-  , weeder ==1.0.6
-  , weigh ==0.0.12
-  , wide-word ==0.1.0.6
-  , wikicfp-scraper ==0.1.0.9
-  , wild-bind ==0.1.2.1
-  , wild-bind-x11 ==0.2.0.4
-  , wire-streams ==0.1.1.0
-  , with-location ==0.1.0
-  , withdependencies ==0.2.4.2
-  , witherable ==0.2
-  , witness ==0.4
-  , wizards ==1.0.2
-  , wl-pprint ==1.2.1
-  , wl-pprint-annotated ==0.1.0.1
-  , wl-pprint-console ==0.1.0.2
-  , wl-pprint-extras ==3.5.0.5
-  , wl-pprint-terminfo ==3.7.1.4
-  , wl-pprint-text ==1.1.1.0
-  , word-trie ==0.3.0
-  , word-wrap ==0.4.1
-  , word24 ==2.0.1
-  , word8 ==0.1.3
-  , world-peace ==0.1.0.0
-  , wrap ==0.0.0
-  , wrecker ==1.3.1.0
-  , wreq ==0.5.2.1
-  , wreq-stringless ==0.5.9.1
-  , writer-cps-full ==0.1.0.0
-  , writer-cps-lens ==0.1.0.1
-  , writer-cps-morph ==0.1.0.2
-  , writer-cps-mtl ==0.1.1.5
-  , writer-cps-transformers ==0.1.1.4
-  , wuss ==1.1.10
-  , x11-xim ==0.0.9.0
-  , x509 ==1.7.3
-  , x509-store ==1.6.6
-  , x509-system ==1.6.6
-  , x509-validation ==1.6.10
-  , xdg-basedir ==0.2.2
-  , xeno ==0.3.4
-  , xenstore ==0.1.1
-  , xhtml ==3000.2.2
-  , xls ==0.1.1
-  , xlsx ==0.7.2
-  , xlsx-tabular ==0.2.2.1
-  , xml ==1.3.14
-  , xml-basic ==0.1.3
-  , xml-conduit ==1.8.0
-  , xml-conduit-writer ==0.1.1.2
-  , xml-hamlet ==0.5.0
-  , xml-html-qq ==0.1.0.1
-  , xml-indexed-cursor ==0.1.1.0
-  , xml-isogen ==0.2.1
-  , xml-lens ==0.1.6.3
-  , xml-picklers ==0.3.6
-  , xml-to-json ==2.0.1
-  , xml-to-json-fast ==2.0.0
-  , xml-types ==0.3.6
-  , xmlgen ==0.6.2.2
-  , xmlhtml ==0.2.5.2
-  , xmonad ==0.13
-  , xmonad-contrib ==0.13
-  , xmonad-extras ==0.13.4.1
-  , xss-sanitize ==0.3.6
-  , xturtle ==0.2.0.0
-  , xxhash ==0.0.2
-  , xxhash-ffi ==0.2.0.0
-  , yaml ==0.8.32
-  , yes-precure5-command ==5.5.3
-  , yeshql ==3.0.1.3
-  , yesod ==1.6.0
-  , yesod-alerts ==0.1.2.0
-  , yesod-auth ==1.6.4.1
-  , yesod-auth-fb ==1.9.0
-  , yesod-auth-hashdb ==1.7
-  , yesod-bin ==1.6.0.3
-  , yesod-core ==1.6.6
-  , yesod-csp ==0.2.4.0
-  , yesod-eventsource ==1.6.0
-  , yesod-fb ==0.5.0
-  , yesod-form ==1.6.2
-  , yesod-gitrepo ==0.3.0
-  , yesod-gitrev ==0.2.0.0
-  , yesod-newsfeed ==1.6.1.0
-  , yesod-paginator ==0.11.0
-  , yesod-persistent ==1.6.0
-  , yesod-sitemap ==1.6.0
-  , yesod-static ==1.6.0
-  , yesod-table ==2.0.3
-  , yesod-test ==1.6.5
-  , yesod-websockets ==0.3.0.1
-  , yi-core ==0.17.1
-  , yi-frontend-vty ==0.17.1
-  , yi-fuzzy-open ==0.17.1
-  , yi-ireader ==0.17.1
-  , yi-keymap-cua ==0.17.1
-  , yi-keymap-emacs ==0.17.1
-  , yi-keymap-vim ==0.17.1
-  , yi-language ==0.17.1
-  , yi-misc-modes ==0.17.1
-  , yi-mode-haskell ==0.17.1
-  , yi-mode-javascript ==0.17.1
-  , yi-rope ==0.10
-  , yi-snippet ==0.17.1
-  , yjsvg ==0.2.0.1
-  , yjtools ==0.9.18
-  , yoga ==0.0.0.2
-  , youtube ==0.2.1.1
-  , zero ==0.1.4
-  , zeromq4-haskell ==0.7.0
-  , zim-parser ==0.2.1.0
-  , zip ==1.0.0
-  , zip-archive ==0.3.3
-  , zippers ==0.2.5
-  , zlib ==0.6.2
-  , zlib-bindings ==0.1.1.5
-  , zlib-lens ==0.1.2.1
-  , zot ==0.0.3
-  , zstd ==0.1.0.0
-  , ztail ==1.2.0.2
+constraints: any.ALUT ==2.4.0.2,
+             any.ANum ==0.2.0.2,
+             any.Agda ==2.5.3,
+             any.BiobaseNewick ==0.0.0.2,
+             any.Boolean ==0.2.4,
+             any.BoundedChan ==1.0.3.0,
+             any.Cabal ==2.0.1.1,
+             any.ChannelT ==0.0.0.7,
+             any.Chart ==1.8.3,
+             any.Chart-cairo ==1.8.3,
+             any.ChasingBottoms ==1.3.1.4,
+             any.Clipboard ==2.3.2.0,
+             any.ClustalParser ==1.2.3,
+             any.ConfigFile ==1.1.4,
+             any.DAV ==1.3.2,
+             any.DRBG ==0.5.5,
+             any.Decimal ==0.5.1,
+             any.Diff ==0.3.4,
+             any.Earley ==0.12.1.0,
+             any.Ebnf2ps ==1.0.15,
+             any.EdisonAPI ==1.3.1,
+             any.EdisonCore ==1.3.2.1,
+             any.FPretty ==1.1,
+             any.FenwickTree ==0.1.2.1,
+             any.FindBin ==0.0.5,
+             any.FloatingHex ==0.4,
+             any.FontyFruity ==0.5.3.3,
+             any.ForestStructures ==0.0.0.2,
+             any.Frames ==0.3.0.2,
+             any.GLFW-b ==1.4.8.3,
+             any.GLURaw ==2.0.0.4,
+             any.GLUT ==2.7.0.14,
+             any.GPipe ==2.2.3,
+             any.Genbank ==1.0.3,
+             any.GenericPretty ==1.2.2,
+             any.Glob ==0.9.2,
+             any.H ==0.9.0.1,
+             any.HCodecs ==0.5.1,
+             any.HDBC ==2.4.0.2,
+             any.HDBC-mysql ==0.7.1.0,
+             any.HDBC-session ==0.1.2.0,
+             any.HPDF ==1.4.10,
+             any.HSet ==0.0.1,
+             any.HSlippyMap ==3.0.1,
+             any.HStringTemplate ==0.8.7,
+             any.HSvm ==0.1.0.3.22,
+             any.HTF ==0.13.2.4,
+             any.HTTP ==4000.3.12,
+             any.HUnit ==1.6.0.0,
+             any.HUnit-approx ==1.1.1.1,
+             any.HaTeX ==3.18.0.0,
+             any.HaXml ==1.25.4,
+             any.HandsomeSoup ==0.4.2,
+             any.HaskellNet ==0.5.1,
+             any.HaskellNet-SSL ==0.3.4.0,
+             any.Hclip ==3.0.0.4,
+             any.Hoed ==0.5.1,
+             HsOpenSSL -fast-bignum,
+             any.HsOpenSSL ==0.11.4.14,
+             any.HsOpenSSL-x509-system ==0.1.0.3,
+             any.IPv6Addr ==1.0.4,
+             any.IPv6DB ==0.2.6,
+             any.Imlib ==0.1.2,
+             any.IntervalMap ==0.5.3.1,
+             any.JuicyPixels ==3.2.9.5,
+             any.JuicyPixels-extra ==0.3.0,
+             any.JuicyPixels-scale-dct ==0.1.2,
+             any.LibZip ==1.0.1,
+             any.List ==0.6.2,
+             any.ListLike ==4.6,
+             any.MFlow ==0.4.6.0,
+             any.MemoTrie ==0.6.9,
+             any.MissingH ==1.4.0.1,
+             any.MonadPrompt ==1.0.0.5,
+             any.MonadRandom ==0.5.1.1,
+             any.Network-NineP ==0.4.3,
+             NineP -bytestring-in-base,
+             any.NineP ==0.0.2.1,
+             any.NoHoed ==0.1.1,
+             any.NoTrace ==0.3.0.2,
+             any.NumInstances ==1.4,
+             any.ObjectName ==1.1.0.1,
+             any.OneTuple ==0.2.2,
+             any.Only ==0.1,
+             any.OpenAL ==1.7.0.4,
+             any.OpenGL ==3.0.2.2,
+             any.OpenGLRaw ==3.2.7.0,
+             any.PSQueue ==1.1,
+             any.ParsecTools ==0.0.2.0,
+             any.PortMidi ==0.1.6.1,
+             any.QuasiText ==0.1.2.6,
+             any.QuickCheck ==2.10.1,
+             any.RSA ==2.3.0,
+             any.Rasterific ==0.7.4,
+             any.RefSerialize ==0.4.0,
+             any.SCalendar ==1.1.0,
+             any.SHA ==1.6.4.4,
+             any.STMonadTrans ==0.4.3,
+             any.SafeSemaphore ==0.10.1,
+             any.SegmentTree ==0.3,
+             any.ShellCheck ==0.4.7,
+             any.Spintax ==0.3.3,
+             any.Spock ==0.12.0.0,
+             any.Spock-api ==0.12.0.1,
+             any.Spock-api-server ==0.12.0.1,
+             any.Spock-core ==0.12.0.0,
+             any.Spock-lucid ==0.4.0.1,
+             any.Spock-worker ==0.3.1.0,
+             any.StateVar ==1.1.1.1,
+             any.Strafunski-StrategyLib ==5.0.1.0,
+             any.TCache ==0.12.1,
+             any.TypeCompose ==0.9.12,
+             any.Unique ==0.4.7.5,
+             any.ViennaRNAParser ==1.3.3,
+             any.Win32-notify ==0.3.0.3,
+             any.Workflow ==0.8.3,
+             any.X11 ==1.8,
+             any.X11-xft ==0.3.1,
+             any.Xauth ==0.1,
+             any.Yampa ==0.10.7,
+             any.YampaSynth ==0.2,
+             any.abstract-deque ==0.3,
+             any.abstract-deque-tests ==0.3,
+             any.abstract-par ==0.3.3,
+             any.accelerate ==1.1.1.0,
+             any.accelerate-arithmetic ==1.0.0.1,
+             any.accelerate-bignum ==0.1.0.0,
+             any.accelerate-blas ==0.1.0.1,
+             any.accelerate-fft ==1.1.0.0,
+             any.accelerate-fftw ==1.0.0.1,
+             any.accelerate-fourier ==1.0.0.5,
+             any.accelerate-io ==1.0.0.1,
+             any.accelerate-llvm ==1.1.0.0,
+             any.accelerate-llvm-native ==1.1.0.1,
+             any.accelerate-llvm-ptx ==1.1.0.1,
+             any.accelerate-utility ==1.0.0.1,
+             any.accuerr ==0.2.0.2,
+             any.ace ==0.6,
+             any.action-permutations ==0.0.0.1,
+             any.active ==0.2.0.13,
+             any.ad ==4.3.5,
+             any.adjunctions ==4.4,
+             any.adler32 ==0.1.2.0,
+             any.aern2-mp ==0.1.2.0,
+             any.aern2-real ==0.1.1.0,
+             any.aeson ==1.2.4.0,
+             any.aeson-better-errors ==0.9.1.0,
+             any.aeson-casing ==0.1.0.5,
+             any.aeson-compat ==0.3.8,
+             any.aeson-diff ==1.1.0.5,
+             any.aeson-extra ==0.4.1.0,
+             any.aeson-generic-compat ==0.0.1.2,
+             any.aeson-injector ==1.1.0.0,
+             any.aeson-picker ==0.1.0.4,
+             any.aeson-pretty ==0.8.7,
+             any.aeson-qq ==0.8.2,
+             any.aeson-typescript ==0.1.1.0,
+             any.aeson-utils ==0.3.0.2,
+             any.aeson-yak ==0.1.1.3,
+             any.airship ==0.9.3,
+             any.alarmclock ==0.4.0.4,
+             any.alerts ==0.1.0.0,
+             any.alex ==3.2.4,
+             any.algebra ==4.3.1,
+             any.algebraic-graphs ==0.1.1.1,
+             any.alsa-core ==0.5.0.1,
+             any.alsa-mixer ==0.2.0.3,
+             any.alsa-pcm ==0.6.1,
+             any.alsa-seq ==0.6.0.7,
+             any.alternative-vector ==0.0.0,
+             any.alternators ==0.1.2.0,
+             any.amazonka ==1.6.0,
+             any.amazonka-apigateway ==1.6.0,
+             any.amazonka-application-autoscaling ==1.6.0,
+             any.amazonka-appstream ==1.6.0,
+             any.amazonka-autoscaling ==1.6.0,
+             any.amazonka-budgets ==1.6.0,
+             any.amazonka-certificatemanager ==1.6.0,
+             any.amazonka-cloudformation ==1.6.0,
+             any.amazonka-cloudfront ==1.6.0,
+             any.amazonka-cloudhsm ==1.6.0,
+             any.amazonka-cloudsearch ==1.6.0,
+             any.amazonka-cloudsearch-domains ==1.6.0,
+             any.amazonka-cloudtrail ==1.6.0,
+             any.amazonka-cloudwatch ==1.6.0,
+             any.amazonka-cloudwatch-events ==1.6.0,
+             any.amazonka-cloudwatch-logs ==1.6.0,
+             any.amazonka-codebuild ==1.6.0,
+             any.amazonka-codecommit ==1.6.0,
+             any.amazonka-codedeploy ==1.6.0,
+             any.amazonka-codepipeline ==1.6.0,
+             any.amazonka-cognito-identity ==1.6.0,
+             any.amazonka-cognito-idp ==1.6.0,
+             any.amazonka-cognito-sync ==1.6.0,
+             any.amazonka-config ==1.6.0,
+             any.amazonka-core ==1.6.0,
+             any.amazonka-datapipeline ==1.6.0,
+             any.amazonka-devicefarm ==1.6.0,
+             any.amazonka-directconnect ==1.6.0,
+             any.amazonka-discovery ==1.6.0,
+             any.amazonka-dms ==1.6.0,
+             any.amazonka-ds ==1.6.0,
+             any.amazonka-dynamodb ==1.6.0,
+             any.amazonka-dynamodb-streams ==1.6.0,
+             any.amazonka-ec2 ==1.6.0,
+             any.amazonka-ecr ==1.6.0,
+             any.amazonka-ecs ==1.6.0,
+             any.amazonka-efs ==1.6.0,
+             any.amazonka-elasticache ==1.6.0,
+             any.amazonka-elasticbeanstalk ==1.6.0,
+             any.amazonka-elasticsearch ==1.6.0,
+             any.amazonka-elastictranscoder ==1.6.0,
+             any.amazonka-elb ==1.6.0,
+             any.amazonka-elbv2 ==1.6.0,
+             any.amazonka-emr ==1.6.0,
+             any.amazonka-gamelift ==1.6.0,
+             any.amazonka-glacier ==1.6.0,
+             any.amazonka-health ==1.6.0,
+             any.amazonka-iam ==1.6.0,
+             any.amazonka-importexport ==1.6.0,
+             any.amazonka-inspector ==1.6.0,
+             any.amazonka-iot ==1.6.0,
+             any.amazonka-iot-dataplane ==1.6.0,
+             any.amazonka-kinesis ==1.6.0,
+             any.amazonka-kinesis-analytics ==1.6.0,
+             any.amazonka-kinesis-firehose ==1.6.0,
+             any.amazonka-kms ==1.6.0,
+             any.amazonka-lambda ==1.6.0,
+             any.amazonka-lightsail ==1.6.0,
+             any.amazonka-marketplace-analytics ==1.6.0,
+             any.amazonka-marketplace-metering ==1.6.0,
+             any.amazonka-ml ==1.6.0,
+             any.amazonka-opsworks ==1.6.0,
+             any.amazonka-opsworks-cm ==1.6.0,
+             any.amazonka-pinpoint ==1.6.0,
+             any.amazonka-polly ==1.6.0,
+             any.amazonka-rds ==1.6.0,
+             any.amazonka-redshift ==1.6.0,
+             any.amazonka-rekognition ==1.6.0,
+             any.amazonka-route53 ==1.6.0,
+             any.amazonka-route53-domains ==1.6.0,
+             any.amazonka-s3 ==1.6.0,
+             any.amazonka-sdb ==1.6.0,
+             any.amazonka-servicecatalog ==1.6.0,
+             any.amazonka-ses ==1.6.0,
+             any.amazonka-shield ==1.6.0,
+             any.amazonka-sms ==1.6.0,
+             any.amazonka-snowball ==1.6.0,
+             any.amazonka-sns ==1.6.0,
+             any.amazonka-sqs ==1.6.0,
+             any.amazonka-ssm ==1.6.0,
+             any.amazonka-stepfunctions ==1.6.0,
+             any.amazonka-storagegateway ==1.6.0,
+             any.amazonka-sts ==1.6.0,
+             any.amazonka-support ==1.6.0,
+             any.amazonka-swf ==1.6.0,
+             any.amazonka-test ==1.6.0,
+             any.amazonka-waf ==1.6.0,
+             any.amazonka-workspaces ==1.6.0,
+             any.amazonka-xray ==1.6.0,
+             any.amqp ==0.18.1,
+             any.annotated-wl-pprint ==0.7.0,
+             any.ansi-terminal ==0.8.0.4,
+             any.ansi-wl-pprint ==0.6.8.2,
+             any.ansigraph ==0.3.0.5,
+             any.apecs ==0.2.4.7,
+             any.api-field-json-th ==0.1.0.2,
+             any.app-settings ==0.2.0.11,
+             any.appar ==0.1.4,
+             any.apply-refact ==0.4.1.0,
+             any.apportionment ==0.0.0.2,
+             any.approximate ==0.3.1,
+             any.arithmoi ==0.6.0.1,
+             any.array-memoize ==0.6.0,
+             any.arrow-extras ==0.1.0.1,
+             any.arrow-list ==0.7,
+             any.ascii-progress ==0.3.3.0,
+             any.asciidiagram ==1.3.3.1,
+             any.asn1-encoding ==0.9.5,
+             any.asn1-parse ==0.9.4,
+             any.asn1-types ==0.3.2,
+             any.assert-failure ==0.1.2.2,
+             any.astro ==0.4.2.1,
+             any.async ==2.1.1.1,
+             any.async-extra ==0.2.0.0,
+             any.async-refresh ==0.2.0.2,
+             any.async-refresh-tokens ==0.3.0.1,
+             any.async-timer ==0.1.4.1,
+             any.atom-basic ==0.2.5,
+             any.atom-conduit ==0.5.0.1,
+             any.atomic-primops ==0.8.2,
+             any.atomic-write ==0.2.0.5,
+             any.attoparsec ==0.13.2.2,
+             any.attoparsec-binary ==0.2,
+             any.attoparsec-expr ==0.1.1.2,
+             any.attoparsec-ip ==0.0.1,
+             any.attoparsec-iso8601 ==1.0.0.0,
+             any.attoparsec-path ==0.0.0.1,
+             any.attoparsec-time ==1,
+             any.attoparsec-uri ==0.0.4,
+             any.audacity ==0.0.2,
+             any.authenticate ==1.3.4,
+             any.authenticate-oauth ==1.6,
+             any.auto ==0.4.3.1,
+             any.auto-update ==0.1.4,
+             any.autoexporter ==1.1.10,
+             any.avwx ==0.3.0.2,
+             any.axiom ==0.4.6,
+             any.b9 ==0.5.49,
+             any.backprop ==0.1.5.2,
+             any.bank-holidays-england ==0.1.0.7,
+             any.barrier ==0.1.1,
+             any.base-compat ==0.9.3,
+             any.base-orphans ==0.7,
+             any.base-prelude ==1.2.1,
+             any.base-unicode-symbols ==0.2.2.4,
+             any.base16-bytestring ==0.1.1.6,
+             any.base32string ==0.9.1,
+             any.base58string ==0.10.0,
+             any.base64-bytestring ==1.0.0.1,
+             any.base64-string ==0.2,
+             any.basement ==0.0.8,
+             any.basic-prelude ==0.7.0,
+             any.bbdb ==0.8,
+             any.bcrypt ==0.0.11,
+             any.beam-core ==0.7.2.2,
+             any.beam-migrate ==0.3.2.1,
+             any.beam-sqlite ==0.3.2.2,
+             any.bench ==1.0.9,
+             any.benchpress ==0.2.2.10,
+             any.bencode ==0.6.0.0,
+             any.bento ==0.1.0,
+             any.between ==0.11.0.0,
+             any.bhoogle ==0.1.2.9,
+             any.bibtex ==0.1.0.6,
+             any.bifunctors ==5.5.3,
+             any.bimap ==0.3.3,
+             any.bimap-server ==0.1.0.1,
+             any.binary-bits ==0.5,
+             any.binary-conduit ==1.3,
+             any.binary-ieee754 ==0.1.0.0,
+             any.binary-list ==1.1.1.2,
+             any.binary-orphans ==0.1.8.0,
+             any.binary-parser ==0.5.5,
+             any.binary-parsers ==0.2.3.0,
+             any.binary-search ==1.0.0.3,
+             any.binary-shared ==0.8.3,
+             any.binary-tagged ==0.1.5,
+             any.bindings-DSL ==1.0.25,
+             any.bindings-GLFW ==3.1.2.4,
+             any.bindings-libzip ==1.0.1,
+             any.bindings-uname ==0.1,
+             any.bioace ==0.0.1,
+             any.bioalign ==0.0.5,
+             any.biocore ==0.3.1,
+             any.biofasta ==0.0.3,
+             any.biofastq ==0.1,
+             any.biopsl ==0.4,
+             any.bit-stream ==0.1.0.2,
+             any.bitarray ==0.0.1.1,
+             any.bitcoin-api ==0.12.1,
+             any.bitcoin-api-extra ==0.9.1,
+             any.bitcoin-block ==0.13.1,
+             any.bitcoin-script ==0.11.1,
+             any.bitcoin-tx ==0.13.1,
+             any.bitcoin-types ==0.9.2,
+             any.bits ==0.5.1,
+             any.bitset-word8 ==0.1.1.0,
+             any.bitx-bitcoin ==0.12.0.0,
+             any.blake2 ==0.2.0,
+             any.blas-carray ==0.0.1.1,
+             any.blas-ffi ==0.0.1.1,
+             any.blas-hs ==0.1.1.0,
+             any.blastxml ==0.3.2,
+             any.blaze-bootstrap ==0.1.0.1,
+             any.blaze-builder ==0.4.1.0,
+             any.blaze-html ==0.9.1.1,
+             any.blaze-markup ==0.8.2.1,
+             any.blaze-svg ==0.3.6.1,
+             any.blaze-textual ==0.2.1.0,
+             any.bloodhound ==0.15.0.2,
+             any.blosum ==0.1.1.4,
+             any.bmp ==1.2.6.3,
+             any.bno055-haskell ==0.1.0,
+             any.boltzmann-samplers ==0.1.1.0,
+             any.bookkeeping ==0.2.1.4,
+             any.boolean-like ==0.1.1.0,
+             any.boolsimplifier ==0.1.8,
+             any.boomerang ==1.4.5.5,
+             any.bordacount ==0.1.0.0,
+             any.both ==0.1.1.0,
+             any.bound ==2.0.1,
+             any.boundingboxes ==0.2.3,
+             any.bower-json ==1.0.0.1,
+             any.boxes ==0.1.5,
+             brick +demos,
+             any.brick ==0.34.1,
+             any.brittany ==0.9.0.1,
+             any.broadcast-chan ==0.1.1,
+             any.bsb-http-chunked ==0.0.0.2,
+             any.bson ==0.3.2.6,
+             any.bson-lens ==0.1.1,
+             any.btrfs ==0.1.2.3,
+             any.buchhaltung ==0.0.7,
+             any.buffer-builder ==0.2.4.6,
+             any.buffer-pipe ==0.0,
+             any.butcher ==1.3.0.0,
+             any.bv ==0.5,
+             any.bv-little ==0.1.1,
+             any.byteable ==0.1.1,
+             any.bytedump ==1.0,
+             any.byteorder ==1.0.4,
+             any.bytes ==0.15.5,
+             any.byteset ==0.1.1.0,
+             any.bytestring-builder ==0.10.8.1.0,
+             any.bytestring-conversion ==0.3.1,
+             any.bytestring-lexing ==0.5.0.2,
+             any.bytestring-strict-builder ==0.4.5,
+             any.bytestring-tree-builder ==0.2.7.2,
+             any.bytestring-trie ==0.2.4.1,
+             any.bzlib ==0.5.0.5,
+             any.bzlib-conduit ==0.3.0.1,
+             any.c2hs ==0.28.5,
+             any.cabal-doctest ==1.0.6,
+             any.cabal-file-th ==0.2.4,
+             any.cabal-install ==2.0.0.1,
+             cabal-rpm -old-locale,
+             any.cabal-rpm ==0.12.5,
+             any.cabal-toolkit ==0.0.5,
+             any.cabal2nix ==2.8.2,
+             any.cache ==0.1.1.1,
+             any.cairo ==0.13.5.0,
+             any.calendar-recycling ==0.0,
+             any.call-stack ==0.1.0,
+             any.capataz ==0.1.0.1,
+             any.carray ==0.1.6.8,
+             any.cartel ==0.18.0.2,
+             any.case-insensitive ==1.2.0.11,
+             any.cased ==0.1.0.0,
+             any.cases ==0.1.3.2,
+             any.casing ==0.1.4.0,
+             cassava -bytestring--lt-0_10_4,
+             any.cassava ==0.5.1.0,
+             any.cassava-conduit ==0.4.0.2,
+             any.cassava-records ==0.1.0.4,
+             any.cassette ==0.1.0,
+             any.cast ==0.1.0.2,
+             any.cayley-client ==0.4.6,
+             any.cereal ==0.5.7.0,
+             any.cereal-conduit ==0.8.0,
+             any.cereal-text ==0.1.0.2,
+             any.cereal-time ==0.1.0.0,
+             any.cereal-vector ==0.2.0.1,
+             any.charset ==0.3.7.1,
+             any.charsetdetect-ae ==1.1.0.4,
+             any.chaselev-deque ==0.5.0.5,
+             any.chatwork ==0.1.3.5,
+             any.cheapskate ==0.1.1,
+             any.cheapskate-highlight ==0.1.0.0,
+             any.cheapskate-lucid ==0.1.0.0,
+             any.check-email ==1.0.2,
+             any.checkers ==0.4.11,
+             any.choice ==0.2.2,
+             any.chunked-data ==0.3.1,
+             any.cipher-aes ==0.2.11,
+             any.cipher-aes128 ==0.7.0.3,
+             any.cipher-blowfish ==0.0.3,
+             any.cipher-camellia ==0.0.2,
+             any.cipher-des ==0.0.6,
+             any.cipher-rc4 ==0.1.4,
+             any.circle-packing ==0.1.0.6,
+             any.cisco-spark-api ==0.1.0.3,
+             any.clang-compilation-database ==0.1.0.1,
+             any.classy-prelude ==1.4.0,
+             any.classy-prelude-conduit ==1.4.0,
+             any.classy-prelude-yesod ==1.4.0,
+             any.classyplate ==0.3.1.0,
+             any.clay ==0.12.2,
+             any.cli ==0.1.2,
+             any.clientsession ==0.9.1.2,
+             any.clock ==0.7.2,
+             any.clock-extras ==0.1.0.2,
+             any.clr-host ==0.2.0.1,
+             any.clr-marshal ==0.2.0.0,
+             any.clumpiness ==0.17.0.0,
+             any.cmark ==0.5.6,
+             any.cmark-gfm ==0.1.4,
+             any.cmark-highlight ==0.2.0.0,
+             any.cmark-lucid ==0.1.0.0,
+             any.cmdargs ==0.10.20,
+             any.code-builder ==0.1.3,
+             any.code-page ==0.1.3,
+             any.codec ==0.2.1,
+             any.codo-notation ==0.5.2,
+             any.colorful-monoids ==0.2.1.2,
+             any.colorize-haskell ==1.0.1,
+             any.colour ==2.3.4,
+             any.colour-accelerate ==0.2.0.0,
+             any.combinatorial ==0.1,
+             any.comfort-graph ==0.0.3,
+             any.commutative ==0.0.1.4,
+             any.comonad ==5.0.4,
+             any.compact ==0.1.0.1,
+             any.compactmap ==0.1.4.2.1,
+             any.compensated ==0.7.2,
+             any.compiler-warnings ==0.1.0,
+             any.composable-associations ==0.1.0.0,
+             any.composable-associations-aeson ==0.1.0.0,
+             any.composition ==1.0.2.1,
+             any.composition-extra ==2.0.0,
+             any.composition-prelude ==1.3.0.8,
+             any.compressed ==3.11,
+             any.concise ==0.1.0.1,
+             any.concurrency ==1.4.0.2,
+             any.concurrent-extra ==0.7.0.12,
+             any.concurrent-output ==1.10.6,
+             any.concurrent-split ==0.0.1,
+             any.concurrent-supply ==0.1.8,
+             any.cond ==0.4.1.1,
+             any.conduit ==1.3.0.3,
+             any.conduit-algorithms ==0.0.8.1,
+             any.conduit-combinators ==1.3.0,
+             any.conduit-connection ==0.1.0.4,
+             any.conduit-extra ==1.3.0,
+             any.conduit-iconv ==0.1.1.3,
+             any.conduit-throttle ==0.3.1.0,
+             any.config-ini ==0.2.2.0,
+             any.configuration-tools ==0.3.1,
+             any.configurator ==0.3.0.0,
+             any.configurator-export ==0.1.0.1,
+             any.connection ==0.2.8,
+             any.connection-pool ==0.2.2,
+             any.console-style ==0.0.2.1,
+             any.constraints ==0.10.1,
+             any.consul-haskell ==0.4.2,
+             any.containers-unicode-symbols ==0.3.1.1,
+             any.contravariant ==1.4.1,
+             any.contravariant-extras ==0.3.4,
+             any.control-bool ==0.2.1,
+             any.control-monad-free ==0.6.1,
+             any.control-monad-omega ==0.3.1,
+             any.convertible ==1.1.1.0,
+             any.cookie ==0.4.4,
+             any.countable ==1.0,
+             any.country ==0.1.6,
+             any.courier ==0.1.1.5,
+             any.cpphs ==1.20.8,
+             any.cprng-aes ==0.6.1,
+             any.cpu ==0.1.2,
+             any.cpuinfo ==0.1.0.1,
+             any.cql ==3.1.1,
+             any.cql-io ==0.16.0,
+             any.crackNum ==1.9,
+             any.credential-store ==0.1.2,
+             any.criterion ==1.3.0.0,
+             any.cron ==0.6.1,
+             any.crypt-sha512 ==0,
+             any.crypto-api ==0.13.3,
+             any.crypto-api-tests ==0.3,
+             any.crypto-cipher-tests ==0.0.11,
+             any.crypto-cipher-types ==0.0.9,
+             any.crypto-enigma ==0.0.2.12,
+             any.crypto-pubkey-types ==0.4.3,
+             any.crypto-random ==0.0.9,
+             any.crypto-random-api ==0.2.0,
+             any.cryptocipher ==0.6.2,
+             any.cryptocompare ==0.1.1,
+             any.cryptohash ==0.11.9,
+             any.cryptohash-cryptoapi ==0.1.4,
+             any.cryptohash-md5 ==0.11.100.1,
+             any.cryptohash-sha1 ==0.11.100.1,
+             any.cryptohash-sha256 ==0.11.101.0,
+             any.cryptohash-sha512 ==0.11.100.1,
+             any.cryptonite ==0.25,
+             any.cryptonite-conduit ==0.2.2,
+             any.cryptonite-openssl ==0.6,
+             any.csp ==1.3.1,
+             any.css-syntax ==0.0.7,
+             any.css-text ==0.1.3.0,
+             any.csv ==0.1.2,
+             any.csv-conduit ==0.6.8.1,
+             any.ctrie ==0.2,
+             any.cubicspline ==0.1.2,
+             any.cublas ==0.4.0.1,
+             any.cuda ==0.9.0.3,
+             any.cue-sheet ==1.0.1,
+             any.cufft ==0.8.0.0,
+             curl +new-base,
+             any.curl ==1.3.8,
+             any.curl-runnings ==0.2.0,
+             any.currencies ==0.1.1.1,
+             any.cusolver ==0.1.0.1,
+             any.cusparse ==0.1.0.1,
+             any.cutter ==0.0,
+             any.czipwith ==1.0.0.0,
+             any.data-accessor ==0.2.2.7,
+             any.data-accessor-mtl ==0.2.0.4,
+             any.data-accessor-template ==0.2.1.15,
+             any.data-accessor-transformers ==0.2.1.7,
+             any.data-binary-ieee754 ==0.4.4,
+             any.data-bword ==0.1.0.1,
+             any.data-checked ==0.3,
+             any.data-clist ==0.1.2.1,
+             any.data-default ==0.7.1.1,
+             any.data-default-class ==0.1.2.0,
+             any.data-default-instances-containers ==0.0.1,
+             any.data-default-instances-dlist ==0.0.1,
+             any.data-default-instances-old-locale ==0.0.1,
+             any.data-diverse ==2.0.1.0,
+             any.data-diverse-lens ==2.1.0.0,
+             any.data-dword ==0.3.1.2,
+             any.data-endian ==0.1.1,
+             any.data-fix ==0.2.0,
+             any.data-has ==0.3.0.0,
+             any.data-hash ==0.2.0.1,
+             any.data-inttrie ==0.1.4,
+             any.data-lens-light ==0.1.2.2,
+             any.data-memocombinators ==0.5.1,
+             any.data-msgpack ==0.0.12,
+             any.data-msgpack-types ==0.0.2,
+             any.data-or ==1.0.0.5,
+             any.data-ordlist ==0.4.7.0,
+             any.data-ref ==0.0.1.1,
+             any.data-reify ==0.6.1,
+             any.data-serializer ==0.3.4,
+             any.data-textual ==0.3.0.2,
+             any.data-tree-print ==0.1.0.1,
+             any.datadog ==0.2.2.0,
+             any.datasets ==0.2.5,
+             any.dataurl ==0.1.0.0,
+             any.dawg-ord ==0.5.1.0,
+             any.dbcleaner ==0.1.3,
+             any.dbus ==0.10.15,
+             any.debian-build ==0.10.1.1,
+             any.debug ==0.1.1,
+             any.declarative ==0.5.2,
+             any.deepseq-generics ==0.2.0.0,
+             any.dejafu ==1.3.2.0,
+             any.dependent-map ==0.2.4.0,
+             any.dependent-sum ==0.4,
+             any.dependent-sum-template ==0.0.0.6,
+             any.deque ==0.2.1,
+             any.deriving-compat ==0.4.3,
+             any.descriptive ==0.9.4,
+             any.dhall ==1.11.1,
+             any.dhall-json ==1.0.13,
+             any.dice ==0.1,
+             any.dictionaries ==0.2.0.4,
+             any.diff3 ==0.3.1,
+             any.digest ==0.0.1.2,
+             any.digits ==0.3.1,
+             any.dimensional ==1.1,
+             any.direct-rocksdb ==0.0.3,
+             any.direct-sqlite ==2.3.23,
+             any.directory-tree ==0.12.1,
+             any.discount ==0.1.1,
+             any.discrimination ==0.3,
+             any.disk-free-space ==0.1.0.1,
+             any.disposable ==0.2.0.4,
+             any.distance ==0.1.0.0,
+             any.distributed-closure ==0.4.0,
+             any.distributed-process ==0.7.4,
+             any.distributed-process-lifted ==0.3.0.1,
+             any.distributed-process-monad-control ==0.5.1.3,
+             any.distributed-process-simplelocalnet ==0.2.4,
+             any.distributed-process-tests ==0.4.11,
+             any.distributed-static ==0.3.8,
+             any.distribution ==1.1.1.0,
+             any.distribution-nixpkgs ==1.1,
+             any.distributive ==0.5.3,
+             any.diversity ==0.8.1.0,
+             any.djinn-ghc ==0.0.2.3,
+             any.djinn-lib ==0.0.1.3,
+             any.dlist ==0.8.0.4,
+             any.dlist-instances ==0.1.1.1,
+             any.dlist-nonempty ==0.1.1,
+             any.dns ==3.0.4,
+             any.do-list ==1.0.1,
+             any.docker ==0.5.1.1,
+             any.docker-build-cacher ==1.9.2,
+             any.dockerfile ==0.1.0.1,
+             any.docopt ==0.7.0.5,
+             any.doctemplates ==0.2.2.1,
+             any.doctest ==0.13.0,
+             any.doctest-discover ==0.1.0.7,
+             any.doctest-driver-gen ==0.2.0.3,
+             any.dom-parser ==3.0.0,
+             any.dotenv ==0.5.2.5,
+             any.dotnet-timespan ==0.0.1.0,
+             any.double-conversion ==2.0.2.0,
+             any.download ==0.3.2.6,
+             any.drawille ==0.1.2.0,
+             any.drifter ==0.2.3,
+             any.drifter-postgresql ==0.2.1,
+             any.dsp ==0.2.4,
+             any.dublincore-xml-conduit ==0.1.0.2,
+             any.dvorak ==0.1.0.0,
+             any.dynamic-state ==0.3.1,
+             any.dyre ==0.8.12,
+             any.easy-file ==0.2.2,
+             any.echo ==0.1.3,
+             any.ed25519 ==0.0.5.0,
+             any.edit-distance ==0.2.2.1,
+             any.edit-distance-vector ==1.0.0.4,
+             any.editor-open ==0.6.0.0,
+             any.either ==5.0.1,
+             any.either-unwrap ==1.1,
+             any.ekg ==0.4.0.15,
+             any.ekg-core ==0.1.1.4,
+             any.ekg-json ==0.1.0.6,
+             any.ekg-statsd ==0.2.4.0,
+             any.ekg-wai ==0.1.0.3,
+             any.elerea ==2.9.0,
+             any.eliminators ==0.3,
+             any.elm-core-sources ==1.0.0,
+             any.elm-export ==0.6.0.1,
+             any.elm-export-persistent ==0.2.0,
+             any.email-validate ==2.3.2.6,
+             any.emailaddress ==0.2.0.0,
+             any.enclosed-exceptions ==1.0.3,
+             any.entropy ==0.3.8,
+             any.enummapset ==0.5.2.2,
+             any.enumset ==0.0.4.1,
+             any.envelope ==0.2.2.0,
+             any.envparse ==0.4.1,
+             any.envy ==1.5.0.0,
+             any.epub-metadata ==4.5,
+             any.eq ==4.1,
+             any.equal-files ==0.0.5.3,
+             any.equivalence ==0.3.2,
+             any.erf ==2.0.0.0,
+             any.error-util ==0.0.1.2,
+             any.errors ==2.2.5,
+             any.errors-ext ==0.4.1,
+             any.ersatz ==0.4.4,
+             any.ether ==0.5.1.0,
+             any.euler-tour-tree ==0.1.0.1,
+             any.event ==0.1.4,
+             any.event-list ==0.1.2,
+             any.eventful-core ==0.2.0,
+             any.eventful-memory ==0.2.0,
+             any.eventful-postgresql ==0.2.0,
+             any.eventful-sql-common ==0.2.0,
+             any.eventful-sqlite ==0.2.0,
+             any.eventful-test-helpers ==0.2.0,
+             any.eventsource-api ==1.3.1,
+             any.eventsource-geteventstore-store ==1.1.0,
+             any.eventsource-store-specs ==1.1.1,
+             any.eventsource-stub-store ==1.0.3,
+             any.eventstore ==1.1.5,
+             any.every ==0.0.1,
+             any.exact-combinatorics ==0.2.0.8,
+             any.exact-pi ==0.4.1.4,
+             any.exception-mtl ==0.4.0.1,
+             any.exception-transformers ==0.4.0.7,
+             any.exceptional ==0.3.0.0,
+             any.exceptions ==0.8.3,
+             any.executable-hash ==0.2.0.4,
+             any.executable-path ==0.0.3.1,
+             any.exhaustive ==1.1.6,
+             any.exp-pairs ==0.1.6.0,
+             any.expiring-cache-map ==0.0.6.1,
+             any.explicit-exception ==0.1.9.2,
+             any.extensible ==0.4.9,
+             any.extensible-effects ==2.4.0.0,
+             any.extensible-exceptions ==0.1.1.4,
+             any.extra ==1.6.9,
+             any.extractable-singleton ==0.0.1,
+             any.extrapolate ==0.3.1,
+             any.fail ==4.9.0.0,
+             any.farmhash ==0.1.0.5,
+             any.fast-builder ==0.0.1.0,
+             any.fast-digits ==0.2.1.0,
+             any.fast-logger ==2.4.11,
+             any.fasta ==0.10.4.2,
+             any.fb ==1.2.0,
+             any.fclabels ==2.0.3.3,
+             any.feature-flags ==0.1.0.1,
+             any.fedora-haskell-tools ==0.5.1,
+             any.feed ==1.0.0.0,
+             any.fft ==0.1.8.6,
+             any.fgl ==5.6.0.0,
+             any.file-embed ==0.0.10.1,
+             any.file-modules ==0.1.2.4,
+             any.filecache ==0.3.2,
+             any.filelock ==0.1.1.2,
+             any.filemanip ==0.3.6.3,
+             any.fileplow ==0.1.0.0,
+             any.filter-logger ==0.6.0.0,
+             any.find-clumpiness ==0.2.3.1,
+             any.fingertree ==0.1.4.1,
+             any.fingertree-psqueue ==0.3,
+             any.finite-typelits ==0.1.4.2,
+             any.fitspec ==0.4.4,
+             any.fixed ==0.2.1.1,
+             any.fixed-length ==0.2,
+             any.fixed-vector ==1.1.0.0,
+             any.fixed-vector-hetero ==0.4.0.0,
+             any.flac ==0.1.2,
+             any.flac-picture ==0.1.1,
+             any.flat-mcmc ==1.5.0,
+             any.flexible-defaults ==0.0.2,
+             any.floatshow ==0.2.4,
+             any.flow ==1.0.14,
+             any.fmlist ==0.9.2,
+             any.fmt ==0.5.0.0,
+             any.fn ==0.3.0.2,
+             any.focus ==0.1.5.2,
+             any.fold-debounce ==0.2.0.7,
+             any.fold-debounce-conduit ==0.2.0.1,
+             any.foldl ==1.3.7,
+             any.folds ==0.7.4,
+             any.follow-file ==0.0.2,
+             any.force-layout ==0.4.0.6,
+             any.foreign-store ==0.2,
+             any.forma ==0.2.0,
+             any.format-numbers ==0.1.0.0,
+             any.formatting ==6.3.6,
+             any.foundation ==0.0.21,
+             any.free ==5.0.2,
+             any.free-vl ==0.1.4,
+             any.freenect ==1.2.1,
+             any.freer-simple ==1.1.0.0,
+             any.freetype2 ==0.1.2,
+             any.friday ==0.2.3.1,
+             any.friday-juicypixels ==0.1.2.4,
+             any.friendly-time ==0.4.1,
+             any.frisby ==0.2.2,
+             any.from-sum ==0.2.1.0,
+             any.frontmatter ==0.1.0.2,
+             any.fsnotify ==0.2.1.1,
+             any.fsnotify-conduit ==0.1.1.1,
+             any.funcmp ==1.9,
+             functor-classes-compat +containers,
+             any.functor-classes-compat ==1,
+             any.fuzzcheck ==0.1.1,
+             any.fuzzyset ==0.1.0.6,
+             any.gauge ==0.2.3,
+             any.gc ==0.0.2,
+             any.gd ==3000.7.3,
+             any.gdax ==0.6.0.0,
+             any.general-games ==1.1.1,
+             any.generic-aeson ==0.2.0.9,
+             any.generic-arbitrary ==0.1.0,
+             any.generic-deriving ==1.12.2,
+             any.generic-lens ==0.5.1.0,
+             any.generic-random ==1.1.0.2,
+             any.generic-xmlpickler ==0.1.0.5,
+             any.generics-eot ==0.2.1.2,
+             any.generics-sop ==0.3.2.0,
+             any.generics-sop-lens ==0.1.2.1,
+             any.geniplate-mirror ==0.7.6,
+             any.genvalidity ==0.4.0.4,
+             any.genvalidity-aeson ==0.1.0.0,
+             any.genvalidity-bytestring ==0.1.0.0,
+             any.genvalidity-containers ==0.3.0.0,
+             any.genvalidity-hspec ==0.5.0.0,
+             any.genvalidity-hspec-aeson ==0.1.0.2,
+             any.genvalidity-hspec-binary ==0.1.0.0,
+             any.genvalidity-hspec-cereal ==0.1.0.0,
+             any.genvalidity-hspec-hashable ==0.1.0.0,
+             any.genvalidity-path ==0.2.0.2,
+             any.genvalidity-property ==0.1.0.0,
+             any.genvalidity-scientific ==0.1.0.0,
+             any.genvalidity-text ==0.4.0.0,
+             any.genvalidity-time ==0.1.0.1,
+             any.genvalidity-unordered-containers ==0.1.0.0,
+             any.genvalidity-uuid ==0.0.0.0,
+             any.genvalidity-vector ==0.1.0.0,
+             any.getopt-generics ==0.13.0.2,
+             any.ghc-compact ==0.1.0.0,
+             any.ghc-core ==0.5.6,
+             any.ghc-events ==0.7.3,
+             any.ghc-exactprint ==0.5.6.1,
+             any.ghc-parser ==0.2.0.2,
+             any.ghc-paths ==0.1.0.9,
+             any.ghc-prof ==1.4.1.3,
+             any.ghc-syb-utils ==0.2.3.3,
+             any.ghc-tcplugins-extra ==0.2.5,
+             any.ghc-typelits-extra ==0.2.4,
+             any.ghc-typelits-knownnat ==0.4.2,
+             any.ghc-typelits-natnormalise ==0.5.10,
+             any.ghcid ==0.6.10,
+             any.ghcjs-base-stub ==0.1.0.4,
+             any.ghcjs-codemirror ==0.0.0.2,
+             any.ghcjs-perch ==0.3.3.2,
+             any.ghost-buster ==0.1.1.0,
+             any.gi-atk ==2.0.15,
+             any.gi-cairo ==1.0.17,
+             any.gi-glib ==2.0.17,
+             any.gi-gobject ==2.0.16,
+             any.gi-javascriptcore ==4.0.15,
+             any.ginger ==0.7.3.0,
+             any.git ==0.2.1,
+             any.github ==0.19,
+             any.github-release ==1.1.6,
+             any.github-types ==0.2.1,
+             any.github-webhook-handler ==0.0.8,
+             any.github-webhook-handler-snap ==0.0.7,
+             any.github-webhooks ==0.9.1,
+             any.gitrev ==1.3.1,
+             any.gl ==0.8.0,
+             any.glabrous ==0.3.6,
+             any.glaze ==0.3.0.1,
+             any.glazier ==0.11.0.1,
+             any.glazier-pipes ==0.1.5.1,
+             any.glib ==0.13.6.0,
+             any.glob-posix ==0.1.0.1,
+             any.gloss ==1.11.1.1,
+             any.gloss-accelerate ==2.0.0.1,
+             any.gloss-algorithms ==1.11.1.1,
+             any.gloss-raster ==1.11.1.1,
+             any.gloss-raster-accelerate ==2.0.0.0,
+             any.gloss-rendering ==1.11.1.1,
+             any.gluturtle ==0.0.58.1,
+             any.gnuplot ==0.5.5.2,
+             any.goggles ==0.3.2,
+             any.google-cloud ==0.0.4,
+             any.google-oauth2-jwt ==0.2.2,
+             any.gpolyline ==0.1.0.1,
+             any.graph-core ==0.3.0.0,
+             any.graph-wrapper ==0.2.5.1,
+             any.graphs ==0.7.1,
+             any.gravatar ==0.8.0,
+             any.graylog ==0.1.0.1,
+             any.groom ==0.1.2.1,
+             any.groundhog ==0.8.0.1,
+             any.groundhog-inspector ==0.8.0.2,
+             any.groundhog-mysql ==0.8.0.1,
+             any.groundhog-postgresql ==0.8.0.3,
+             any.groundhog-sqlite ==0.8.0.1,
+             any.groundhog-th ==0.8.0.2,
+             any.group-by-date ==0.1.0.2,
+             any.grouped-list ==0.2.2.0,
+             any.groups ==0.4.1.0,
+             any.gtk2hs-buildtools ==0.13.4.0,
+             any.gym-http-api ==0.1.0.1,
+             any.h2c ==1.0.0,
+             any.hOpenPGP ==2.6.2,
+             any.hackage-db ==2.0,
+             any.hackage-security ==0.5.3.0,
+             any.haddock-library ==1.4.5,
+             any.hailgun ==0.4.1.8,
+             any.hailgun-simple ==0.1.0.0,
+             any.hakyll ==4.12.3.0,
+             any.half ==0.2.2.3,
+             any.hamilton ==0.1.0.2,
+             any.handwriting ==0.1.0.3,
+             any.hapistrano ==0.3.5.9,
+             any.happstack-jmacro ==7.0.12.1,
+             any.happstack-server ==7.5.1.1,
+             any.happstack-server-tls ==7.1.6.5,
+             any.happy ==1.19.9,
+             any.hasbolt ==0.1.3.0,
+             any.hashable ==1.2.7.0,
+             any.hashable-time ==0.2.0.1,
+             any.hashids ==1.0.2.4,
+             any.hashmap ==1.3.3,
+             any.hashtables ==1.2.3.1,
+             any.haskeline ==0.7.4.3,
+             any.haskell-gi ==0.21.4,
+             any.haskell-gi-base ==0.21.1,
+             any.haskell-gi-overloading ==0.0,
+             any.haskell-lexer ==1.0.1,
+             any.haskell-lsp ==0.2.0.1,
+             any.haskell-lsp-client ==1.0.0.1,
+             any.haskell-names ==0.9.2,
+             any.haskell-neo4j-client ==0.3.2.4,
+             any.haskell-spacegoo ==0.2.0.1,
+             any.haskell-src ==1.0.3.0,
+             any.haskell-src-exts ==1.20.2,
+             any.haskell-src-exts-util ==0.2.3,
+             any.haskell-src-meta ==0.8.0.3,
+             any.haskell-tools-ast ==1.0.1.1,
+             any.haskell-tools-backend-ghc ==1.0.1.1,
+             any.haskell-tools-prettyprint ==1.0.1.1,
+             any.haskell-tools-refactor ==1.0.1.2,
+             any.haskell-tools-rewrite ==1.0.1.1,
+             any.haskintex ==0.8.0.0,
+             any.hasmin ==1.0.2,
+             any.hasql ==1.1.1,
+             any.hasql-migration ==0.1.3,
+             any.hasql-optparse-applicative ==0.3.0.2,
+             any.hasql-pool ==0.4.3.1,
+             any.hasql-transaction ==0.6.0.1,
+             any.hastache ==0.6.1,
+             any.hasty-hamiltonian ==1.3.2,
+             any.haxl ==0.5.1.0,
+             any.haxr ==3000.11.2,
+             any.hbeanstalk ==0.2.4,
+             any.hdaemonize ==0.5.5,
+             any.hdevtools ==0.1.7.0,
+             any.heap ==1.0.4,
+             any.heaps ==0.3.6,
+             any.heatshrink ==0.1.0.0,
+             any.hebrew-time ==0.1.1,
+             any.hedgehog ==0.5.3,
+             any.hedgehog-quickcheck ==0.1,
+             any.hedis ==0.10.3,
+             any.heist ==1.0.1.2,
+             any.here ==1.2.13,
+             any.heredoc ==0.2.0.0,
+             any.herms ==1.9.0.4,
+             any.heterocephalus ==1.0.5.2,
+             any.hex ==0.1.2,
+             any.hexml ==0.3.3,
+             any.hexml-lens ==0.2.1,
+             any.hexpat ==0.20.13,
+             any.hexstring ==0.11.1,
+             any.hformat ==0.3.3.0,
+             any.hfsevents ==0.1.6,
+             any.hid ==0.2.2,
+             any.hidapi ==0.1.5,
+             any.hidden-char ==0.1.0.2,
+             any.hierarchical-clustering ==0.4.6,
+             any.higher-leveldb ==0.5.0.1,
+             any.highjson ==0.4.0.0,
+             any.highjson-swagger ==0.4.0.0,
+             any.highjson-th ==0.4.0.0,
+             any.highlighting-kate ==0.6.4,
+             any.hindent ==5.2.7,
+             any.hinotify ==0.3.9,
+             any.hint ==0.7.0,
+             any.histogram-fill ==0.8.5.0,
+             any.hit ==0.6.3,
+             any.hjsmin ==0.2.0.2,
+             any.hjsonpointer ==1.3.0,
+             any.hjsonschema ==1.7.2,
+             any.hledger ==1.5,
+             any.hledger-api ==1.5,
+             any.hledger-iadd ==1.3.5,
+             any.hledger-interest ==1.5.1,
+             any.hledger-lib ==1.5.1,
+             any.hledger-ui ==1.5,
+             any.hledger-web ==1.5.1,
+             any.hlibgit2 ==0.18.0.16,
+             any.hlibsass ==0.1.6.1,
+             any.hlint ==2.1.10,
+             any.hmatrix ==0.18.2.0,
+             any.hmatrix-backprop ==0.1.2.0,
+             any.hmatrix-gsl ==0.18.2.0,
+             any.hmatrix-gsl-stats ==0.4.1.7,
+             any.hmatrix-morpheus ==0.1.1.2,
+             any.hmatrix-repa ==0.1.2.2,
+             any.hmatrix-special ==0.4.0.1,
+             any.hmatrix-vector-sized ==0.1.1.0,
+             any.hmpfr ==0.4.4,
+             any.hocilib ==0.2.0,
+             any.hoogle ==5.0.17.3,
+             any.hopenssl ==2.2.1,
+             any.hopfli ==0.2.2.1,
+             any.hosc ==0.16,
+             any.hostname ==1.0,
+             any.hostname-validate ==1.0.0,
+             any.hourglass ==0.2.11,
+             any.hourglass-orphans ==0.1.0.0,
+             any.hp2pretty ==0.8.0.2,
+             any.hpc-coveralls ==1.0.10,
+             hpio -test-hlint,
+             any.hpio ==0.9.0.6,
+             any.hpp ==0.5.2,
+             any.hpqtypes ==1.5.3.0,
+             any.hquantlib ==0.0.4.0,
+             any.hreader ==1.1.0,
+             any.hreader-lens ==0.1.3.0,
+             any.hruby ==0.3.5.4,
+             any.hs-GeoIP ==0.3,
+             any.hs-bibutils ==6.6.0.0,
+             any.hsass ==0.5.0,
+             any.hsb2hs ==0.3.1,
+             any.hscolour ==1.24.4,
+             any.hsdns ==1.7.1,
+             any.hsebaysdk ==0.4.0.0,
+             any.hsemail ==2,
+             any.hset ==2.2.0,
+             any.hsexif ==0.6.1.5,
+             any.hsignal ==0.2.7.5,
+             any.hsinstall ==1.6,
+             any.hslogger ==1.2.10,
+             any.hslua ==0.9.5.2,
+             any.hslua-aeson ==0.3.0.2,
+             any.hslua-module-text ==0.1.2.1,
+             any.hsndfile ==0.8.0,
+             any.hsndfile-vector ==0.5.2,
+             any.hsp ==0.10.0,
+             any.hspec ==2.4.8,
+             any.hspec-attoparsec ==0.1.0.2,
+             any.hspec-checkers ==0.1.0.2,
+             any.hspec-contrib ==0.4.0,
+             any.hspec-core ==2.4.8,
+             any.hspec-discover ==2.4.8,
+             any.hspec-expectations ==0.8.2,
+             any.hspec-expectations-lifted ==0.10.0,
+             any.hspec-expectations-pretty-diff ==0.7.2.4,
+             any.hspec-golden-aeson ==0.5.1.0,
+             any.hspec-megaparsec ==1.0.0,
+             any.hspec-meta ==2.4.6,
+             any.hspec-pg-transact ==0.1.0.2,
+             any.hspec-smallcheck ==0.5.0,
+             any.hspec-wai ==0.9.0,
+             any.hspec-wai-json ==0.9.0,
+             any.hspec-webdriver ==1.2.0,
+             any.hsshellscript ==3.4.5,
+             any.hstatistics ==0.3,
+             any.hstatsd ==0.1,
+             any.hsx-jmacro ==7.3.8.1,
+             any.hsyslog ==5.0.1,
+             any.hsyslog-udp ==0.2.3,
+             any.htaglib ==1.1.1,
+             any.html ==1.0.1.2,
+             any.html-conduit ==1.3.1,
+             any.html-email-validate ==0.2.0.0,
+             any.html-entity-map ==0.1.0.0,
+             any.htoml ==1.0.0.3,
+             any.http-api-data ==0.3.7.2,
+             any.http-client ==0.5.13.1,
+             any.http-client-openssl ==0.2.2.0,
+             any.http-client-tls ==0.3.5.3,
+             any.http-common ==0.8.2.0,
+             any.http-conduit ==2.3.2,
+             any.http-date ==0.0.8,
+             any.http-link-header ==1.0.3.1,
+             any.http-media ==0.7.1.2,
+             any.http-reverse-proxy ==0.5.0.1,
+             any.http-streams ==0.8.6.1,
+             any.http-types ==0.12.1,
+             any.http2 ==1.6.3,
+             any.human-readable-duration ==0.2.0.3,
+             any.hunit-dejafu ==1.1.0.3,
+             any.hvect ==0.4.0.0,
+             any.hvega ==0.1.0.3,
+             any.hw-balancedparens ==0.2.0.2,
+             any.hw-bits ==0.7.0.3,
+             any.hw-conduit ==0.2.0.3,
+             any.hw-diagnostics ==0.0.0.5,
+             any.hw-excess ==0.2.0.2,
+             any.hw-fingertree ==0.1.0.1,
+             any.hw-fingertree-strict ==0.1.1.1,
+             any.hw-hedgehog ==0.1.0.2,
+             any.hw-hspec-hedgehog ==0.1.0.5,
+             any.hw-int ==0.0.0.3,
+             any.hw-json ==0.6.0.0,
+             any.hw-mquery ==0.1.0.1,
+             any.hw-parser ==0.0.0.3,
+             any.hw-prim ==0.5.0.5,
+             any.hw-rankselect ==0.10.0.3,
+             any.hw-rankselect-base ==0.2.0.2,
+             any.hw-string-parse ==0.0.0.4,
+             any.hw-succinct ==0.1.0.1,
+             any.hw-xml ==0.1.0.3,
+             any.hweblib ==0.6.3,
+             any.hworker ==0.1.0.1,
+             hxt +network-uri,
+             any.hxt ==9.3.1.16,
+             any.hxt-charproperties ==9.2.0.1,
+             any.hxt-css ==0.1.0.3,
+             any.hxt-curl ==9.1.1.1,
+             any.hxt-expat ==9.1.1,
+             hxt-http +network-uri,
+             any.hxt-http ==9.1.5.2,
+             any.hxt-pickle-utils ==0.1.0.3,
+             any.hxt-regex-xmlschema ==9.2.0.3,
+             any.hxt-tagsoup ==9.1.4,
+             any.hxt-unicode ==9.0.2.4,
+             any.hybrid-vectors ==0.2.2,
+             any.hyperloglog ==0.4.2,
+             any.hyphenation ==0.7.1,
+             any.iconv ==0.4.1.3,
+             any.identicon ==0.2.2,
+             any.idris ==1.3.0,
+             any.ieee754 ==0.8.0,
+             any.if ==0.1.0.0,
+             any.iff ==0.0.6,
+             any.ignore ==0.1.1.0,
+             any.ihaskell ==0.9.1.0,
+             any.ihaskell-hvega ==0.1.0.3,
+             any.ihs ==0.1.0.2,
+             any.ilist ==0.3.1.0,
+             any.imagesize-conduit ==1.1,
+             any.immortal ==0.2.2.1,
+             any.imprint ==0.0.1.0,
+             any.include-file ==0.1.0.3,
+             any.incremental-parser ==0.2.5.4,
+             any.indentation-core ==0.0.0.1,
+             any.indentation-parsec ==0.0.0.1,
+             any.indents ==0.4.0.1,
+             any.indexed-list-literals ==0.1.0.1,
+             any.inflections ==0.4.0.3,
+             any.influxdb ==1.3.0.1,
+             any.ini ==0.3.6,
+             any.inline-c ==0.6.0.6,
+             any.inline-c-cpp ==0.2.1.0,
+             any.inline-java ==0.8.4,
+             any.inline-r ==0.9.2,
+             any.insert-ordered-containers ==0.2.1.0,
+             any.inspection-testing ==0.2.0.1,
+             any.instance-control ==0.1.2.0,
+             any.integer-logarithms ==1.0.2.1,
+             any.integration ==0.2.1,
+             any.intern ==0.9.2,
+             any.interpolate ==0.2.0,
+             any.interpolatedstring-perl6 ==1.0.0,
+             any.interpolation ==0.1.0.2,
+             any.intervals ==0.8.1,
+             any.intro ==0.3.2.0,
+             any.invariant ==0.5,
+             any.invertible ==0.2.0.5,
+             any.io-choice ==0.0.6,
+             any.io-machine ==0.2.0.0,
+             any.io-manager ==0.1.0.2,
+             any.io-memoize ==1.1.1.0,
+             any.io-region ==0.1.1,
+             any.io-storage ==0.3,
+             any.io-streams ==1.5.0.1,
+             any.io-streams-haproxy ==1.0.0.2,
+             any.ip ==1.2.1,
+             any.ip6addr ==0.5.3,
+             any.iproute ==1.7.5,
+             any.ipython-kernel ==0.9.1.0,
+             any.irc ==0.6.1.0,
+             any.irc-client ==1.1.0.4,
+             any.irc-conduit ==0.3.0.1,
+             any.irc-ctcp ==0.1.3.0,
+             any.irc-dcc ==2.0.1,
+             any.islink ==0.1.0.0,
+             any.iso3166-country-codes ==0.20140203.8,
+             any.iso639 ==0.1.0.3,
+             any.iso8601-time ==0.1.5,
+             any.iterable ==3.0,
+             any.ix-shapable ==0.1.0,
+             any.ixset ==1.0.7,
+             any.ixset-typed ==0.3.1.1,
+             any.jack ==0.7.1.3,
+             any.javascript-extras ==0.3.2.0,
+             any.jmacro ==0.6.15,
+             any.jmacro-rpc ==0.3.2,
+             any.jmacro-rpc-happstack ==0.3.2,
+             any.jmacro-rpc-snap ==0.3,
+             any.jni ==0.6.1,
+             any.jose ==0.6.0.3,
+             any.jose-jwt ==0.7.8,
+             any.js-flot ==0.8.3,
+             any.js-jquery ==3.3.1,
+             any.json ==0.9.2,
+             any.json-autotype ==1.0.18,
+             any.json-builder ==0.3,
+             any.json-rpc-generic ==0.2.1.4,
+             any.json-schema ==0.7.4.1,
+             any.json-stream ==0.4.2.3,
+             any.justified-containers ==0.3.0.0,
+             any.jvm ==0.4.2,
+             any.jvm-batching ==0.1.1,
+             any.jvm-streaming ==0.3.1,
+             any.jwt ==0.7.2,
+             any.kan-extensions ==5.1,
+             any.kanji ==3.1.0.1,
+             any.katydid ==0.1.1.0,
+             any.kawhi ==0.3.0,
+             any.kdt ==0.2.4,
+             any.keycode ==0.2.2,
+             any.keys ==3.12.1,
+             any.kmeans ==0.1.3,
+             any.knob ==0.1.1,
+             any.koofr-client ==1.0.0.3,
+             any.kraken ==0.1.0,
+             any.l10n ==0.1.0.1,
+             any.labels ==0.3.3,
+             any.lackey ==1.0.5,
+             any.lambdabot-core ==5.1.0.2,
+             any.lambdabot-irc-plugins ==5.1.0.1,
+             any.lame ==0.1.1,
+             any.language-c ==0.7.2,
+             any.language-c-quote ==0.12.1,
+             any.language-docker ==2.0.1,
+             any.language-ecmascript ==0.17.2.0,
+             any.language-fortran ==0.5.1,
+             any.language-glsl ==0.2.1,
+             any.language-haskell-extract ==0.2.4,
+             any.language-java ==0.2.9,
+             any.language-javascript ==0.6.0.11,
+             any.language-nix ==2.1.0.1,
+             any.language-puppet ==1.3.20,
+             any.lapack-carray ==0.0.2,
+             any.lapack-ffi ==0.0.2,
+             any.lapack-ffi-tools ==0.1.0.1,
+             any.large-hashable ==0.1.0.4,
+             any.largeword ==1.2.5,
+             any.latex ==0.1.0.3,
+             any.lattices ==1.7.1.1,
+             any.lazyio ==0.1.0.4,
+             any.lca ==0.3.1,
+             any.leancheck ==0.7.1,
+             any.leapseconds-announced ==2017.1.0.1,
+             any.lens ==4.16.1,
+             any.lens-accelerate ==0.1.0.0,
+             any.lens-action ==0.2.3,
+             any.lens-aeson ==1.0.2,
+             any.lens-datetime ==0.3,
+             any.lens-family ==1.2.2,
+             any.lens-family-core ==1.2.2,
+             any.lens-family-th ==0.5.0.2,
+             any.lens-labels ==0.1.0.2,
+             any.lens-properties ==4.11.1,
+             any.lens-regex ==0.1.0,
+             any.lens-simple ==0.1.0.9,
+             any.lentil ==1.0.11.3,
+             any.leveldb-haskell ==0.6.5,
+             any.lexer-applicative ==2.1.0.2,
+             any.libffi ==0.1,
+             any.libgit ==0.3.1,
+             any.libgraph ==1.14,
+             any.libinfluxdb ==0.0.4,
+             any.libmpd ==0.9.0.8,
+             any.liboath-hs ==0.0.1.0,
+             any.libsystemd-journal ==1.4.3,
+             any.libxml-sax ==0.7.5,
+             any.licensor ==0.2.2,
+             any.lift-generics ==0.1.2,
+             any.lifted-async ==0.9.3.3,
+             any.lifted-base ==0.2.3.12,
+             any.line ==4.0.1,
+             any.linear ==1.20.8,
+             any.linear-accelerate ==0.5.0.1,
+             any.linked-list-with-iterator ==0.1.1.0,
+             any.linux-file-extents ==0.2.0.0,
+             any.linux-namespaces ==0.1.3.0,
+             any.list-t ==1.0.1,
+             any.listsafe ==0.1.0.1,
+             any.llvm-hs ==5.1.3,
+             any.llvm-hs-pure ==5.1.2,
+             any.lmdb ==0.2.5,
+             any.load-env ==0.1.2,
+             any.loch-th ==0.2.2,
+             any.lockfree-queue ==0.2.3.1,
+             any.log ==0.9.0.1,
+             any.log-base ==0.7.4.0,
+             any.log-domain ==0.12,
+             any.log-elasticsearch ==0.9.1.0,
+             any.log-postgres ==0.7.0.2,
+             any.log-warper ==1.8.11,
+             any.logfloat ==0.13.3.3,
+             any.logger-thread ==0.1.0.2,
+             any.logging-effect ==1.2.6,
+             any.logging-effect-extra ==1.2.2,
+             any.logging-effect-extra-file ==1.1.2,
+             any.logging-effect-extra-handler ==1.1.4,
+             any.logging-facade ==0.3.0,
+             any.logging-facade-syslog ==1,
+             any.logict ==0.6.0.2,
+             any.loop ==0.3.0,
+             any.lrucache ==1.2.0.0,
+             any.lrucaching ==0.3.3,
+             any.lucid ==2.9.10,
+             any.lxd-client ==0.1.0.6,
+             any.lxd-client-config ==0.1.0.1,
+             any.lzma ==0.0.0.3,
+             any.lzma-conduit ==1.2.1,
+             any.machines ==0.6.4,
+             any.machines-binary ==0.3.0.3,
+             any.machines-directory ==0.2.1.0,
+             any.machines-io ==0.2.0.13,
+             any.mainland-pretty ==0.6.1,
+             any.makefile ==1.1.0.0,
+             any.managed ==1.0.6,
+             any.mandrill ==0.5.3.3,
+             any.map-syntax ==0.2.0.2,
+             any.mapquest-api ==0.3.1,
+             any.markdown ==0.1.17.1,
+             any.markdown-unlit ==0.5.0,
+             any.markov-chain ==0.0.3.4,
+             any.markup ==4.0.4,
+             any.marvin-interpolate ==1.1.2,
+             any.massiv ==0.1.6.1,
+             any.massiv-io ==0.1.4.0,
+             any.math-functions ==0.2.1.0,
+             any.mathexpr ==0.3.0.0,
+             any.matplotlib ==0.6.0,
+             any.matrices ==0.4.5,
+             any.matrix ==0.3.5.0,
+             any.matrix-market-attoparsec ==0.1.0.8,
+             any.maximal-cliques ==0.1.1,
+             any.mbox ==0.3.4,
+             any.mbox-utility ==0.0.1,
+             any.mbtiles ==0.6.0.0,
+             any.mcmc-types ==1.0.3,
+             any.med-module ==0.1.1,
+             any.median-stream ==0.7.0.0,
+             any.megaparsec ==6.4.1,
+             any.memory ==0.14.16,
+             any.mercury-api ==0.1.0.1,
+             mersenne-random-pure64 -small_base,
+             any.mersenne-random-pure64 ==0.2.2.0,
+             any.messagepack ==0.5.4,
+             any.messagepack-rpc ==0.5.1,
+             any.metrics ==0.4.1.1,
+             any.microformats2-parser ==1.0.1.9,
+             any.microlens ==0.4.8.3,
+             any.microlens-aeson ==2.3.0,
+             any.microlens-contra ==0.1.0.1,
+             any.microlens-ghc ==0.4.8.0,
+             any.microlens-mtl ==0.1.11.1,
+             any.microlens-platform ==0.3.9.0,
+             any.microlens-th ==0.4.1.3,
+             any.microspec ==0.1.0.0,
+             any.microstache ==1.0.1.1,
+             any.midi ==0.2.2.2,
+             any.mighty-metropolis ==1.2.0,
+             any.milena ==0.5.2.2,
+             any.mime-mail ==0.4.14,
+             any.mime-mail-ses ==0.4.1,
+             any.mime-types ==0.1.0.8,
+             any.minimorph ==0.1.6.1,
+             any.minio-hs ==1.0.1,
+             any.miniutter ==0.4.7.0,
+             any.mintty ==0.1.2,
+             any.misfortune ==0.1.1.2,
+             any.miso ==0.14.0.0,
+             any.missing-foreign ==0.1.1,
+             any.mixed-types-num ==0.3.1.4,
+             any.mltool ==0.1.0.2,
+             any.mmap ==0.5.9,
+             any.mmark ==0.0.5.6,
+             any.mmark-cli ==0.0.3.0,
+             any.mmark-ext ==0.2.1.0,
+             any.mmorph ==1.1.2,
+             any.mnist-idx ==0.1.2.8,
+             any.mockery ==0.3.5,
+             any.model ==0.4.4,
+             any.modern-uri ==0.2.2.0,
+             any.modify-fasta ==0.8.3.0,
+             any.moesocks ==1.0.0.44,
+             any.mole ==0.0.6,
+             any.monad-control ==1.0.2.3,
+             any.monad-control-aligned ==0.0.1.1,
+             any.monad-coroutine ==0.9.0.4,
+             any.monad-extras ==0.6.0,
+             any.monad-journal ==0.8.1,
+             any.monad-logger ==0.3.29,
+             any.monad-logger-json ==0.1.0.0,
+             any.monad-logger-prefix ==0.1.10,
+             any.monad-logger-syslog ==0.1.4.0,
+             any.monad-loops ==0.4.3,
+             any.monad-memo ==0.4.1,
+             any.monad-metrics ==0.2.1.2,
+             any.monad-mock ==0.2.0.0,
+             any.monad-par ==0.3.4.8,
+             any.monad-par-extras ==0.3.3,
+             any.monad-parallel ==0.7.2.3,
+             any.monad-peel ==0.2.1.2,
+             any.monad-products ==4.0.1,
+             any.monad-recorder ==0.1.1,
+             any.monad-skeleton ==0.1.5,
+             any.monad-st ==0.2.4.1,
+             any.monad-time ==0.2,
+             any.monad-unlift ==0.2.0,
+             any.monad-unlift-ref ==0.2.1,
+             any.monadic-arrays ==0.2.2,
+             any.monadloc ==0.7.1,
+             any.monadoid ==0.0.2,
+             any.monadplus ==1.4.2,
+             any.monads-tf ==0.1.0.3,
+             any.mongoDB ==2.3.0.5,
+             any.mono-traversable ==1.0.9.0,
+             any.mono-traversable-instances ==0.1.0.0,
+             any.monoid-extras ==0.4.4,
+             any.monoid-subclasses ==0.4.6,
+             any.monoid-transformer ==0.0.4,
+             any.monoidal-containers ==0.3.1.0,
+             any.morte ==1.6.20,
+             any.mountpoints ==1.0.2,
+             any.mstate ==0.2.7,
+             any.mtl ==2.2.2,
+             any.mtl-compat ==0.2.1.3,
+             any.mtl-prelude ==2.0.3.1,
+             any.multiarg ==0.30.0.10,
+             any.multimap ==1.2.1,
+             any.multipart ==0.1.3,
+             any.multiset ==0.3.4,
+             any.multistate ==0.7.1.2,
+             any.murmur-hash ==0.1.0.9,
+             any.mustache ==2.3.0,
+             any.mutable-containers ==0.3.4,
+             any.mwc-probability ==2.0.4,
+             any.mwc-random ==0.13.6.0,
+             any.mwc-random-accelerate ==0.1.0.0,
+             any.mysql ==0.1.5,
+             any.mysql-haskell ==0.8.3.0,
+             any.mysql-haskell-nem ==0.1.0.0,
+             any.mysql-haskell-openssl ==0.8.3.0,
+             any.mysql-simple ==0.4.5,
+             any.n-tuple ==0.0.2.0,
+             any.nagios-check ==0.3.2,
+             any.names-th ==0.2.0.5,
+             any.nano-erl ==0.1.0.1,
+             any.nanospec ==0.2.2,
+             any.naqsha ==0.2.0.1,
+             any.nats ==1.1.2,
+             any.natural-sort ==0.1.2,
+             any.natural-transformation ==0.4,
+             any.ndjson-conduit ==0.1.0.5,
+             any.neat-interpolation ==0.3.2.1,
+             any.netlib-carray ==0.0.1.1,
+             any.netlib-ffi ==0.0.1,
+             any.netpbm ==1.0.2,
+             any.nettle ==0.2.1,
+             any.netwire ==5.0.3,
+             any.netwire-input ==0.0.7,
+             any.netwire-input-glfw ==0.0.10,
+             any.network ==2.6.3.6,
+             any.network-anonymous-i2p ==0.10.0,
+             any.network-anonymous-tor ==0.11.0,
+             any.network-attoparsec ==0.12.2,
+             any.network-carbon ==1.0.12,
+             any.network-conduit-tls ==1.3.2,
+             any.network-house ==0.1.0.2,
+             any.network-info ==0.2.0.10,
+             any.network-ip ==0.3.0.2,
+             any.network-multicast ==0.2.0,
+             any.network-simple ==0.4.2,
+             any.network-transport ==0.5.2,
+             any.network-transport-composed ==0.2.1,
+             any.network-transport-inmemory ==0.5.2,
+             any.network-transport-tcp ==0.6.0,
+             any.network-transport-tests ==0.2.4.2,
+             any.network-uri ==2.6.1.0,
+             any.newtype ==0.2,
+             any.newtype-generics ==0.5.3,
+             any.next-ref ==0.1.0.2,
+             any.nfc ==0.1.0,
+             any.nicify-lib ==1.0.1,
+             nix-paths +allow-relative-paths,
+             any.nix-paths ==1.0.1,
+             any.non-empty ==0.3.0.1,
+             any.non-empty-sequence ==0.2.0.2,
+             any.non-negative ==0.1.2,
+             any.nonce ==1.0.7,
+             any.nondeterminism ==1.4,
+             any.normalization-insensitive ==2.0.1,
+             any.nsis ==0.3.2,
+             any.numbers ==3000.2.0.2,
+             any.numeric-extras ==0.1,
+             any.numeric-prelude ==0.4.3,
+             any.numhask ==0.1.4.0,
+             any.numhask-range ==0.1.3.0,
+             any.numtype-dk ==0.5.0.2,
+             any.nvvm ==0.8.0.3,
+             any.o-clock ==0.1.1,
+             any.oauthenticated ==0.2.1.0,
+             any.objective ==1.1.2,
+             any.ochintin-daicho ==0.1.0.1,
+             any.oeis ==0.3.9,
+             any.ofx ==0.4.2.0,
+             any.old-locale ==1.0.0.7,
+             any.old-time ==1.1.0.3,
+             any.once ==0.2,
+             any.one-liner ==0.9.2,
+             any.one-liner-instances ==0.1.2.1,
+             any.online ==0.2.1.0,
+             any.oo-prototypes ==0.1.0.0,
+             any.opaleye ==0.6.7001.0,
+             any.open-browser ==0.2.1.0,
+             any.open-witness ==0.4.0.1,
+             any.openexr-write ==0.1.0.1,
+             any.openpgp-asciiarmor ==0.1.1,
+             any.opensource ==0.1.0.0,
+             any.openssl-streams ==1.2.1.3,
+             any.operational ==0.2.3.5,
+             any.operational-class ==0.3.0.0,
+             any.opml-conduit ==0.6.0.4,
+             any.optional-args ==1.0.2,
+             any.options ==1.2.1.1,
+             any.optparse-applicative ==0.14.2.0,
+             any.optparse-generic ==1.3.0,
+             any.optparse-simple ==0.1.0,
+             any.optparse-text ==0.1.1.0,
+             any.overhang ==1.0.0,
+             any.package-description-remote ==0.2.0.0,
+             any.packdeps ==0.4.4,
+             any.pager ==0.1.1.0,
+             any.pagerduty ==0.0.8,
+             any.pagination ==0.2.1,
+             any.palette ==0.1.0.5,
+             pandoc -old-locale,
+             any.pandoc ==2.1.2,
+             any.pandoc-citeproc ==0.14.3.1,
+             any.pandoc-types ==1.17.3.1,
+             any.pango ==0.13.5.0,
+             any.papillon ==0.1.0.5,
+             any.parallel ==3.2.2.0,
+             any.parallel-io ==0.3.3,
+             any.parseargs ==0.2.0.8,
+             any.parsec ==3.1.13.0,
+             any.parsec-numeric ==0.1.0.0,
+             any.parser-combinators ==0.4.0,
+             any.parsers ==0.12.9,
+             any.partial-handler ==1.0.3,
+             any.partial-isomorphisms ==0.2.2.1,
+             any.partial-order ==0.1.2.1,
+             any.partial-semigroup ==0.3.0.3,
+             any.path ==0.6.1,
+             any.path-extra ==0.0.6,
+             any.path-io ==1.3.3,
+             any.path-pieces ==0.2.1,
+             any.path-text-utf8 ==0.0.1.0,
+             pathtype -old-time,
+             any.pathtype ==0.8.1,
+             any.pathwalk ==0.3.1.2,
+             any.patience ==0.1.1,
+             any.pattern-arrows ==0.0.2,
+             any.pcf-font ==0.2.2.0,
+             any.pcf-font-embed ==0.1.2.0,
+             any.pcre-heavy ==1.0.0.2,
+             any.pcre-light ==0.4.0.4,
+             any.pcre-utils ==0.1.8.1.1,
+             any.pdf-toolbox-content ==0.0.5.1,
+             any.pdf-toolbox-core ==0.0.4.1,
+             any.pdf-toolbox-document ==0.0.7.1,
+             any.pdfinfo ==1.5.4,
+             any.pell ==0.1.1.0,
+             any.pem ==0.2.4,
+             any.perf ==0.3.1.1,
+             any.perfect-hash-generator ==0.2.0.6,
+             any.persistable-record ==0.6.0.4,
+             any.persistable-types-HDBC-pg ==0.0.3.3,
+             any.persistent ==2.8.2,
+             any.persistent-mongoDB ==2.8.0,
+             any.persistent-mysql ==2.8.1,
+             any.persistent-mysql-haskell ==0.4.1,
+             any.persistent-postgresql ==2.8.2.0,
+             any.persistent-redis ==2.5.2.2,
+             any.persistent-refs ==0.4,
+             any.persistent-sqlite ==2.8.1.2,
+             any.persistent-template ==2.5.4,
+             any.pg-transact ==0.1.0.1,
+             any.pgp-wordlist ==0.1.0.2,
+             any.phantom-state ==0.2.1.2,
+             any.picedit ==0.2.3.0,
+             any.picoparsec ==0.1.2.3,
+             any.picosat ==0.1.4,
+             any.pid1 ==0.1.2.0,
+             any.pinboard ==0.9.12.10,
+             any.pinch ==0.3.3.0,
+             any.pipes ==4.3.9,
+             any.pipes-aeson ==0.4.1.8,
+             any.pipes-attoparsec ==0.5.1.5,
+             any.pipes-bytestring ==2.1.6,
+             any.pipes-category ==0.3.0.0,
+             any.pipes-concurrency ==2.0.11,
+             any.pipes-csv ==1.4.3,
+             any.pipes-extras ==1.0.15,
+             any.pipes-fastx ==0.3.0.0,
+             any.pipes-fluid ==0.6.0.0,
+             any.pipes-group ==1.0.12,
+             any.pipes-misc ==0.4.0.1,
+             any.pipes-mongodb ==0.1.0.0,
+             any.pipes-network ==0.6.5,
+             any.pipes-parse ==3.0.8,
+             any.pipes-random ==1.0.0.4,
+             any.pipes-safe ==2.2.9,
+             any.pipes-text ==0.0.2.5,
+             any.pipes-wai ==3.2.0,
+             any.pixelated-avatar-generator ==0.1.3,
+             any.pkcs10 ==0.2.0.0,
+             any.placeholders ==0.1,
+             any.plot ==0.2.3.9,
+             any.plot-light ==0.2.9,
+             any.pointed ==5.0.1,
+             any.pointedlist ==0.6.1,
+             any.pointless-fun ==1.1.0.6,
+             any.poll ==0.0.0.1,
+             any.poly-arity ==0.1.0,
+             any.polynomials-bernstein ==1.1.2,
+             any.polyparse ==1.12,
+             any.pomaps ==0.0.1.0,
+             any.pooled-io ==0.0.2.1,
+             any.posix-paths ==0.2.1.5,
+             any.post-mess-age ==0.2.1.0,
+             any.postgresql-binary ==0.12.1.1,
+             any.postgresql-libpq ==0.9.4.1,
+             any.postgresql-schema ==0.1.14,
+             any.postgresql-simple ==0.5.4.0,
+             any.postgresql-simple-migration ==0.1.12.0,
+             any.postgresql-simple-queue ==1.0.1,
+             any.postgresql-simple-url ==0.2.1.0,
+             any.postgresql-transactional ==1.1.1,
+             any.postgresql-typed ==0.5.3.0,
+             any.pptable ==0.2.0.0,
+             any.pqueue ==1.4.1.1,
+             any.pred-set ==0.0.1,
+             any.pred-trie ==0.5.1.2,
+             any.prefix-units ==0.2.0,
+             any.prelude-compat ==0.0.0.1,
+             any.prelude-extras ==0.4.0.3,
+             any.prelude-safeenum ==0.1.1.2,
+             any.preprocessor-tools ==1.0.1,
+             any.present ==4.1.0,
+             any.pretty-class ==1.0.1.1,
+             any.pretty-hex ==1.0,
+             any.pretty-show ==1.6.16,
+             any.pretty-simple ==2.1.0.1,
+             any.pretty-types ==0.2.3.1,
+             any.prettyclass ==1.0.0.0,
+             any.prettyprinter ==1.2.1,
+             any.prettyprinter-ansi-terminal ==1.1.1.2,
+             any.prettyprinter-compat-annotated-wl-pprint ==1,
+             any.prettyprinter-compat-ansi-wl-pprint ==1.0.1,
+             any.prettyprinter-compat-wl-pprint ==1.0.0.1,
+             any.prim-uniq ==0.1.0.1,
+             any.primes ==0.2.1.0,
+             any.primitive ==0.6.4.0,
+             any.probability ==0.2.5.1,
+             any.process-extras ==0.7.4,
+             any.product-isomorphic ==0.0.3.2,
+             any.product-profunctors ==0.9.0.0,
+             any.profiterole ==0.1,
+             any.profunctors ==5.2.2,
+             any.project-template ==0.2.0.1,
+             any.projectroot ==0.2.0.1,
+             any.prometheus-client ==0.3.0,
+             any.prometheus-metrics-ghc ==0.3.0,
+             any.promises ==0.3,
+             any.prompt ==0.1.1.2,
+             any.proto-lens ==0.2.2.0,
+             any.proto-lens-arbitrary ==0.1.1.1,
+             any.proto-lens-descriptors ==0.2.2.0,
+             any.proto-lens-optparse ==0.1.1.1,
+             any.protobuf ==0.2.1.2,
+             any.protobuf-simple ==0.1.0.5,
+             any.protocol-buffers ==2.4.11,
+             any.protocol-buffers-descriptor ==2.4.11,
+             any.protocol-radius ==0.0.1.0,
+             any.protocol-radius-test ==0.0.1.0,
+             any.protolude ==0.2.2,
+             any.proxied ==0.3,
+             any.psql-helpers ==0.1.0.0,
+             any.psqueues ==0.2.7.0,
+             any.pthread ==0.2.0,
+             any.publicsuffix ==0.20171229,
+             any.pure-io ==0.2.1,
+             any.pureMD5 ==2.1.3,
+             any.purescript-bridge ==0.11.1.2,
+             any.pushbullet-types ==0.4.1.0,
+             any.pusher-http-haskell ==1.5.1.5,
+             any.pwstore-fast ==2.4.4,
+             any.qchas ==1.1.0.1,
+             any.qm-interpolated-string ==0.3.0.0,
+             any.quickbench ==1.0,
+             any.quickcheck-arbitrary-adt ==0.3.1.0,
+             any.quickcheck-assertions ==0.3.0,
+             any.quickcheck-classes ==0.4.13,
+             any.quickcheck-combinators ==0.0.4,
+             any.quickcheck-instances ==0.3.18,
+             any.quickcheck-io ==0.2.0,
+             any.quickcheck-properties ==0.1,
+             any.quickcheck-simple ==0.1.0.4,
+             any.quickcheck-special ==0.1.0.6,
+             any.quickcheck-state-machine ==0.3.1,
+             any.quickcheck-text ==0.1.2.1,
+             any.quickcheck-unicode ==1.0.1.0,
+             any.quickcheck-with-counterexamples ==1.0,
+             any.raaz ==0.2.0,
+             any.rainbow ==0.28.0.4,
+             any.rainbox ==0.18.0.10,
+             any.rakuten ==0.1.1.5,
+             any.ramus ==0.1.2,
+             any.random ==1.1,
+             any.random-fu ==0.2.7.0,
+             any.random-shuffle ==0.0.4,
+             any.random-source ==0.3.0.6,
+             any.random-tree ==0.6.0.5,
+             any.range-set-list ==0.1.3,
+             any.rank-product ==0.2.0.1,
+             any.rank1dynamic ==0.4.0,
+             any.rank2classes ==1.0.2,
+             any.rasterific-svg ==0.3.3.1,
+             any.ratel ==1.0.5,
+             any.ratel-wai ==1.0.3,
+             any.ratio-int ==0.1.2,
+             any.raw-strings-qq ==1.1,
+             any.rawfilepath ==0.2.4,
+             any.rawstring-qm ==0.2.3.0,
+             any.rcu ==0.2.3,
+             any.rdf ==0.1.0.2,
+             any.rdtsc ==1.3.0.1,
+             any.re2 ==0.2,
+             any.read-editor ==0.1.0.2,
+             any.read-env-var ==1.0.0.0,
+             any.readable ==0.3.1,
+             any.recursion-schemes ==5.0.3,
+             any.redis-io ==0.7.0,
+             any.redis-resp ==0.4.0,
+             any.reducers ==3.12.3,
+             any.ref-fd ==0.4.0.1,
+             any.refact ==0.3.0.2,
+             any.references ==0.3.3.1,
+             any.refined ==0.1.2.1,
+             any.reflection ==2.1.4,
+             any.reform ==0.2.7.2,
+             any.reform-blaze ==0.2.4.3,
+             any.reform-hamlet ==0.0.5.3,
+             any.reform-happstack ==0.2.5.2,
+             any.regex-applicative ==0.3.3,
+             any.regex-applicative-text ==0.1.0.1,
+             any.regex-base ==0.93.2,
+             any.regex-compat ==0.95.1,
+             any.regex-compat-tdfa ==0.95.1.4,
+             any.regex-pcre ==0.94.4,
+             any.regex-pcre-builtin ==0.94.4.8.8.35,
+             any.regex-pcre-text ==0.94.0.1,
+             any.regex-posix ==0.95.2,
+             any.regex-tdfa ==1.2.3.1,
+             any.regex-tdfa-text ==1.0.0.3,
+             any.reinterpret-cast ==0.1.0,
+             any.relational-query ==0.11.4.0,
+             any.relational-query-HDBC ==0.6.8.0,
+             any.relational-record ==0.2.2.0,
+             any.relational-schemas ==0.1.6.2,
+             any.rematch ==0.2.0.0,
+             any.renderable ==0.2.0.1,
+             any.repa ==3.4.1.3,
+             any.repa-algorithms ==3.4.1.2,
+             any.repa-io ==3.4.1.1,
+             any.repline ==0.1.7.0,
+             any.req ==1.0.0,
+             any.req-url-extra ==0.1.0.0,
+             any.reroute ==0.4.1.0,
+             any.resource-pool ==0.2.3.2,
+             any.resourcet ==1.2.1,
+             any.rest-core ==0.39,
+             any.rest-snap ==0.3.0.0,
+             any.rest-stringmap ==0.2.0.7,
+             any.rest-types ==1.14.1.2,
+             any.result ==0.2.6.0,
+             any.rethinkdb-client-driver ==0.0.25,
+             any.retry ==0.7.6.3,
+             any.rev-state ==0.1.2,
+             any.rfc5051 ==0.1.0.3,
+             any.riak ==1.1.2.5,
+             any.riak-protobuf ==0.23.0.0,
+             any.rio ==0.1.5.0,
+             any.rng-utils ==0.3.0,
+             any.roles ==0.2.0.0,
+             any.rollbar-hs ==0.2.0.0,
+             any.rose-trees ==0.0.4.4,
+             any.rot13 ==0.2.0.1,
+             any.rss-conduit ==0.4.2.2,
+             any.runmemo ==1.0.0.1,
+             any.rvar ==0.2.0.3,
+             any.s3-signer ==0.3.0.0,
+             any.safe ==0.3.17,
+             any.safe-exceptions ==0.1.7.0,
+             any.safe-exceptions-checked ==0.1.0,
+             any.safecopy ==0.9.4.1,
+             any.safeio ==0.0.5.0,
+             any.sample-frame ==0.0.3,
+             any.sample-frame-np ==0.0.4.1,
+             any.sampling ==0.3.3,
+             any.sandman ==0.2.0.1,
+             any.say ==0.1.0.1,
+             any.sbp ==2.3.17,
+             any.sbv ==7.5,
+             any.scalendar ==1.2.0,
+             any.scalpel ==0.5.1,
+             any.scalpel-core ==0.5.1,
+             any.scanner ==0.2,
+             any.schematic ==0.4.2.0,
+             any.scientific ==0.3.6.2,
+             any.scotty ==0.11.2,
+             any.scrypt ==0.5.0,
+             any.sdl2 ==2.4.0.1,
+             any.sdl2-gfx ==0.2,
+             any.sdl2-image ==2.0.0,
+             any.sdl2-mixer ==1.1.0,
+             any.sdl2-ttf ==2.0.2,
+             any.search-algorithms ==0.3.0,
+             any.securemem ==0.1.10,
+             any.selda ==0.1.12.1,
+             any.selda-postgresql ==0.1.7.2,
+             any.selda-sqlite ==0.1.6.0,
+             any.semigroupoid-extras ==5,
+             any.semigroupoids ==5.2.2,
+             any.semigroups ==0.18.5,
+             any.semiring-simple ==1.0.0.1,
+             any.semirings ==0.1.3.0,
+             any.semver ==0.3.3.1,
+             any.sendfile ==0.7.9,
+             any.sensu-run ==0.4.0.5,
+             any.seqalign ==0.2.0.4,
+             any.seqloc ==0.6.1.1,
+             any.sequence ==0.9.8,
+             any.serf ==0.1.1.0,
+             any.servant ==0.13.0.1,
+             any.servant-JuicyPixels ==0.3.0.4,
+             any.servant-blaze ==0.8,
+             any.servant-cassava ==0.10,
+             any.servant-client ==0.13.0.1,
+             any.servant-client-core ==0.13.0.1,
+             any.servant-docs ==0.11.2,
+             any.servant-elm ==0.4.0.1,
+             any.servant-exceptions ==0.1.1,
+             any.servant-foreign ==0.11.1,
+             any.servant-generic ==0.1.0.3,
+             any.servant-github-webhook ==0.4.1.0,
+             any.servant-js ==0.9.3.2,
+             any.servant-kotlin ==0.1.1.2,
+             any.servant-lucid ==0.8,
+             any.servant-mock ==0.8.4,
+             any.servant-pandoc ==0.5.0.0,
+             any.servant-purescript ==0.9.0.2,
+             any.servant-ruby ==0.7.0.0,
+             any.servant-server ==0.13.0.1,
+             any.servant-static-th ==0.2.2.0,
+             any.servant-subscriber ==0.6.0.1,
+             any.servant-swagger ==1.1.5,
+             any.servant-swagger-ui ==0.2.5.3.9.1,
+             any.servant-websockets ==1.1.0,
+             any.servant-yaml ==0.1.0.0,
+             any.serversession ==1.0.1,
+             any.serversession-backend-persistent ==1.0.4,
+             any.serversession-backend-redis ==1.0.3,
+             any.serversession-frontend-wai ==1.0,
+             any.servius ==1.2.3.0,
+             any.ses-html ==0.4.0.0,
+             any.set-cover ==0.0.9,
+             any.set-monad ==0.2.0.0,
+             any.setenv ==0.1.1.3,
+             any.setlocale ==1.0.0.6,
+             any.sets ==0.0.5.2,
+             any.shake ==0.16.4,
+             any.shake-language-c ==0.11.0,
+             any.shakespeare ==2.0.15,
+             any.shelltestrunner ==1.9,
+             any.shelly ==1.7.2,
+             any.shikensu ==0.3.8,
+             any.shortcut-links ==0.4.2.0,
+             any.should-not-typecheck ==2.1.0,
+             any.show-combinators ==0.1.0.0,
+             any.show-prettyprint ==0.2.2,
+             any.signal ==0.1.0.4,
+             any.silently ==1.2.5,
+             any.simple ==0.11.2,
+             any.simple-log ==0.9.6,
+             any.simple-reflect ==0.3.3,
+             any.simple-sendfile ==0.2.27,
+             any.simple-session ==0.10.1.1,
+             any.simple-templates ==0.8.0.1,
+             any.singleton-bool ==0.1.4,
+             any.singleton-nats ==0.4.1,
+             any.singletons ==2.3.1,
+             any.siphash ==1.0.3,
+             any.skein ==1.0.9.4,
+             any.skeletons ==0.4.0,
+             any.skylighting ==0.6,
+             any.slack-web ==0.2.0.6,
+             any.slave-thread ==1.0.2,
+             any.slug ==0.1.7,
+             any.smallcheck ==1.1.5,
+             any.smoothie ==0.4.2.9,
+             any.smtp-mail ==0.1.4.6,
+             any.snap ==1.1.0.0,
+             any.snap-blaze ==0.2.1.5,
+             any.snap-core ==1.0.3.2,
+             any.snap-server ==1.0.3.3,
+             any.snowflake ==0.1.1.1,
+             any.soap ==0.2.3.6,
+             any.soap-openssl ==0.1.0.2,
+             any.soap-tls ==0.1.1.4,
+             any.socket ==0.8.1.0,
+             any.socket-activation ==0.1.0.2,
+             any.socks ==0.5.6,
+             any.sort ==1.0.0.0,
+             any.sorted-list ==0.2.0.0,
+             any.sourcemap ==0.1.6,
+             any.sox ==0.2.3,
+             any.soxlib ==0.0.3,
+             any.sparkle ==0.7.4,
+             any.sparse-linear-algebra ==0.2.9.9,
+             any.spdx ==0.2.2.0,
+             any.special-values ==0.1.0.0,
+             any.speculate ==0.3.2,
+             any.speculation ==1.5.0.3,
+             any.speedy-slice ==0.3.0,
+             any.sphinx ==0.6.0.2,
+             any.splice ==0.6.1.1,
+             any.split ==0.2.3.3,
+             any.splitmix ==0,
+             any.spoon ==0.3.1,
+             any.spreadsheet ==0.1.3.7,
+             any.sql-words ==0.1.6.2,
+             any.sqlite-simple ==0.4.16.0,
+             any.squeal-postgresql ==0.1.1.4,
+             any.srcloc ==0.5.1.2,
+             any.stache ==1.2.1,
+             any.stack-type ==0.1.0.0,
+             any.starter ==0.2.1,
+             any.state-codes ==0.1.3,
+             any.stateWriter ==0.2.10,
+             any.stateref ==0.3,
+             any.statestack ==0.2.0.5,
+             any.static-text ==0.2.0.2,
+             any.statistics ==0.14.0.2,
+             any.stb-image-redux ==0.2.1.2,
+             any.stitch ==0.5.0.0,
+             any.stm ==2.4.5.0,
+             any.stm-chans ==3.0.0.4,
+             any.stm-conduit ==4.0.0,
+             any.stm-containers ==0.2.16,
+             any.stm-delay ==0.1.1.1,
+             any.stm-extras ==0.1.0.3,
+             any.stm-split ==0.0.2,
+             any.stm-stats ==0.2.0.0,
+             any.stm-supply ==0.2.0.0,
+             any.stopwatch ==0.1.0.5,
+             any.storable-complex ==0.2.2,
+             any.storable-endian ==0.2.6,
+             any.storable-record ==0.0.4,
+             any.storable-tuple ==0.0.3.3,
+             any.storablevector ==0.2.13,
+             any.store ==0.4.3.2,
+             any.store-core ==0.4.4,
+             any.stratosphere ==0.19.1,
+             any.streaming ==0.2.1.0,
+             any.streaming-bytestring ==0.1.6,
+             any.streaming-commons ==0.1.19,
+             any.streamly ==0.1.2,
+             any.streamproc ==1.6.2,
+             any.streams ==3.3,
+             any.strict ==0.3.2,
+             any.strict-base-types ==0.6.1,
+             any.strict-concurrency ==0.2.4.2,
+             any.strict-types ==0.1.2,
+             any.string-class ==0.1.7.0,
+             any.string-combinators ==0.6.0.5,
+             any.string-conv ==0.1.2,
+             any.string-conversions ==0.4.0.1,
+             any.string-qq ==0.0.2,
+             any.string-transform ==1.0.0,
+             any.stringable ==0.1.3,
+             any.stringbuilder ==0.5.1,
+             any.stringsearch ==0.3.6.6,
+             any.stripe-core ==2.3.0,
+             any.strive ==5.0.6,
+             any.structs ==0.1.1,
+             any.sum-type-boilerplate ==0.1.1,
+             any.sundown ==0.6,
+             any.superbuffer ==0.3.1.1,
+             any.svg-builder ==0.1.1,
+             any.svg-tree ==0.6.2.2,
+             any.swagger ==0.3.0,
+             any.swagger2 ==2.2.1,
+             any.swish ==0.9.2.1,
+             any.syb ==0.7,
+             any.syb-with-class ==0.6.1.9,
+             any.symbol ==0.2.4,
+             any.symengine ==0.1.2.0,
+             any.sysinfo ==0.1.1,
+             any.system-argv0 ==0.1.1,
+             any.system-fileio ==0.3.16.3,
+             any.system-filepath ==0.4.14,
+             any.tabular ==0.2.2.7,
+             any.tagchup ==0.4.1,
+             any.tagged ==0.8.6,
+             any.tagged-binary ==0.2.0.1,
+             any.tagged-identity ==0.1.2,
+             any.tagshare ==0.0,
+             any.tagsoup ==0.14.6,
+             any.tagstream-conduit ==0.5.5.3,
+             tar -old-time,
+             any.tar ==0.5.1.0,
+             any.tar-conduit ==0.2.3.1,
+             any.tardis ==0.4.1.0,
+             any.tasty ==1.0.1.1,
+             any.tasty-ant-xml ==1.1.4,
+             any.tasty-auto ==0.2.0.0,
+             any.tasty-dejafu ==1.1.0.2,
+             any.tasty-discover ==4.2.1,
+             any.tasty-expected-failure ==0.11.1.1,
+             any.tasty-golden ==2.3.2,
+             any.tasty-hedgehog ==0.1.0.2,
+             any.tasty-hspec ==1.1.5,
+             any.tasty-html ==0.4.1.1,
+             any.tasty-hunit ==0.10.0.1,
+             any.tasty-kat ==0.0.3,
+             any.tasty-program ==1.0.5,
+             any.tasty-quickcheck ==0.9.2,
+             any.tasty-rerun ==1.1.12,
+             any.tasty-silver ==3.1.11,
+             any.tasty-smallcheck ==0.8.1,
+             any.tasty-stats ==0.2.0.4,
+             any.tasty-th ==0.1.7,
+             any.tce-conf ==1.3,
+             any.tcp-streams ==1.0.1.0,
+             any.tcp-streams-openssl ==1.0.1.0,
+             any.tdigest ==0.1,
+             any.teardown ==0.3.0.0,
+             any.template ==0.2.0.10,
+             any.temporary ==1.2.1.1,
+             any.temporary-rc ==1.2.0.3,
+             any.tensorflow-test ==0.1.0.0,
+             any.termcolor ==0.2.0.0,
+             any.terminal-progress-bar ==0.2,
+             any.terminal-size ==0.3.2.1,
+             any.test-fixture ==0.5.1.0,
+             any.test-framework ==0.8.2.0,
+             any.test-framework-hunit ==0.3.0.2,
+             any.test-framework-quickcheck2 ==0.3.0.4,
+             any.test-framework-smallcheck ==0.2,
+             any.test-framework-th ==0.2.4,
+             any.testing-feat ==0.4.0.3,
+             any.texmath ==0.10.1.2,
+             text -integer-simple,
+             any.text ==1.2.3.0,
+             any.text-binary ==0.2.1.1,
+             any.text-conversions ==0.3.0,
+             any.text-format ==0.3.2,
+             any.text-generic-pretty ==1.2.1,
+             any.text-icu ==0.7.0.1,
+             any.text-latin1 ==0.3.1,
+             any.text-ldap ==0.1.1.12,
+             any.text-manipulate ==0.2.0.1,
+             any.text-metrics ==0.3.0,
+             any.text-postgresql ==0.0.3.1,
+             any.text-printer ==0.5,
+             any.text-region ==0.3.1.0,
+             any.text-short ==0.1.2,
+             any.text-show ==3.7.2,
+             any.text-show-instances ==3.6.3,
+             any.text-zipper ==0.10.1,
+             any.textlocal ==0.1.0.5,
+             any.tf-random ==0.5,
+             any.tfp ==1.0.0.2,
+             any.th-abstraction ==0.2.8.0,
+             any.th-data-compat ==0.0.2.6,
+             any.th-desugar ==1.7,
+             any.th-expand-syns ==0.4.4.0,
+             any.th-extras ==0.0.0.4,
+             any.th-lift ==0.7.10,
+             any.th-lift-instances ==0.1.11,
+             any.th-orphans ==0.13.6,
+             any.th-reify-compat ==0.0.1.4,
+             any.th-reify-many ==0.1.8,
+             any.th-strict-compat ==0.1.0.1,
+             any.th-to-exp ==0.0.1.1,
+             any.th-utilities ==0.2.0.1,
+             any.these ==0.7.4,
+             any.thread-hierarchy ==0.3.0.0,
+             any.thread-local-storage ==0.1.2,
+             any.threads ==0.5.1.6,
+             any.threads-extras ==0.1.0.2,
+             any.threepenny-editors ==0.5.6,
+             any.threepenny-gui ==0.8.2.4,
+             any.threepenny-gui-flexbox ==0.4.2,
+             any.throttle-io-stream ==0.2.0.1,
+             any.through-text ==0.1.0.0,
+             any.throwable-exceptions ==0.1.0.9,
+             any.tibetan-utils ==0.1.1.5,
+             any.tidal ==0.9.9,
+             any.tile ==0.3.0.0,
+             any.time-compat ==0.1.0.3,
+             any.time-lens ==0.4.0.2,
+             time-locale-compat -old-locale,
+             any.time-locale-compat ==0.1.1.4,
+             any.time-locale-vietnamese ==1.0.0.0,
+             any.time-parsers ==0.1.2.0,
+             any.timeit ==2.0,
+             any.timelens ==0.2.0.2,
+             any.timemap ==0.0.7,
+             any.timerep ==2.0.0.2,
+             any.timespan ==0.3.0.0,
+             any.timezone-olson ==0.1.9,
+             any.timezone-series ==0.1.9,
+             any.tinylog ==0.14.1,
+             any.tinytemplate ==0.1.2.0,
+             any.titlecase ==1.0.1,
+             any.tldr ==0.3.0,
+             any.tls ==1.4.1,
+             any.tls-debug ==0.4.5,
+             any.tls-session-manager ==0.0.0.2,
+             any.tmapchan ==0.0.3,
+             any.tmapmvar ==0.0.4,
+             any.tmp-postgres ==0.1.1.1,
+             any.token-bucket ==0.1.0.1,
+             any.tostring ==0.2.1.1,
+             any.transformers-base ==0.4.4,
+             any.transformers-bifunctors ==0.1,
+             any.transformers-compat ==0.5.1.4,
+             any.transformers-either ==0.0.2,
+             any.transformers-fix ==1.0,
+             any.transformers-lift ==0.2.0.1,
+             any.transient ==0.5.9.2,
+             any.transient-universe ==0.4.6.1,
+             any.traverse-with-class ==1.0.0.0,
+             any.tree-diff ==0.0.1,
+             any.tree-fun ==0.8.1.0,
+             any.tries ==0.0.5,
+             any.trifecta ==1.7.1.1,
+             any.triplesec ==0.1.2.0,
+             any.true-name ==0.1.0.3,
+             any.tsv2csv ==0.1.0.2,
+             any.ttrie ==0.1.2.1,
+             any.tuple ==0.3.0.2,
+             any.tuple-th ==0.2.5,
+             any.tuples-homogenous-h98 ==0.1.1.0,
+             any.turtle ==1.5.10,
+             any.turtle-options ==0.1.0.4,
+             any.type-assertions ==0.1.0.0,
+             any.type-combinators ==0.2.4.3,
+             any.type-combinators-singletons ==0.2.1.0,
+             any.type-fun ==0.1.1,
+             any.type-hint ==0.1,
+             any.type-level-integers ==0.0.1,
+             any.type-level-kv-list ==1.1.0,
+             any.type-level-numbers ==0.1.1.1,
+             any.type-of-html ==1.3.4.0,
+             any.type-operators ==0.1.0.4,
+             any.type-spec ==0.3.0.1,
+             any.typed-process ==0.2.3.0,
+             any.typelits-witnesses ==0.3.0.2,
+             any.typography-geometry ==1.0.0.1,
+             any.tz ==0.1.3.1,
+             any.tzdata ==0.1.20180122.0,
+             any.ua-parser ==0.7.5.1,
+             any.uglymemo ==0.1.0.1,
+             any.unbound-generics ==0.3.3,
+             any.unbounded-delays ==0.1.1.0,
+             any.unboxed-ref ==0.4.0.0,
+             any.uncertain ==0.3.1.0,
+             any.unexceptionalio ==0.3.0,
+             any.unfoldable ==0.9.6,
+             any.unfoldable-restricted ==0.0.3,
+             any.unicode ==0.0.1,
+             any.unicode-show ==0.1.0.3,
+             any.unicode-transforms ==0.3.4,
+             any.unification-fd ==0.10.0.1,
+             any.union ==0.1.1.2,
+             any.union-find ==0.2,
+             any.uniplate ==1.6.12,
+             any.uniq-deep ==1.1.0.0,
+             any.unique ==0,
+             any.unit-constraint ==0.0.0,
+             any.units-parser ==0.1.1.2,
+             any.universe ==1.0,
+             any.universe-base ==1.0.2.1,
+             any.universe-instances-base ==1.0,
+             any.universe-instances-extended ==1.0.0.1,
+             any.universe-instances-trans ==1.0.0.1,
+             any.universe-reverse-instances ==1.0,
+             any.universum ==1.1.1,
+             any.unix-bytestring ==0.3.7.3,
+             any.unix-compat ==0.5.0.1,
+             any.unix-time ==0.3.8,
+             any.unliftio ==0.2.7.0,
+             any.unliftio-core ==0.1.1.0,
+             any.unlit ==0.4.0.0,
+             any.unordered-containers ==0.2.9.0,
+             any.unsafe ==0.0,
+             any.uom-plugin ==0.3.0.0,
+             any.uri-bytestring ==0.3.2.0,
+             any.uri-bytestring-aeson ==0.1.0.6,
+             any.uri-encode ==1.5.0.5,
+             any.uri-templater ==0.3.1.0,
+             any.urlpath ==8.1.0,
+             any.userid ==0.1.3.2,
+             any.users ==0.5.0.0,
+             any.users-postgresql-simple ==0.5.0.2,
+             any.users-test ==0.5.0.1,
+             any.utf8-light ==0.4.2,
+             any.utf8-string ==1.0.1.1,
+             any.utility-ht ==0.0.14,
+             any.uuid ==1.3.13,
+             any.uuid-types ==1.0.3,
+             any.vado ==0.0.10,
+             any.validation ==1,
+             any.validationt ==0.2.1.0,
+             any.validity ==0.4.0.4,
+             any.validity-aeson ==0.1.0.0,
+             any.validity-bytestring ==0.2.0.0,
+             any.validity-containers ==0.2.0.0,
+             any.validity-path ==0.2.0.2,
+             any.validity-scientific ==0.1.0.0,
+             any.validity-text ==0.2.0.1,
+             any.validity-time ==0.1.0.0,
+             any.validity-unordered-containers ==0.1.0.0,
+             any.validity-uuid ==0.0.0.0,
+             any.validity-vector ==0.1.0.0,
+             any.varying ==0.7.0.3,
+             any.vault ==0.3.1.2,
+             any.vcswrapper ==0.1.6,
+             any.vector ==0.12.0.1,
+             any.vector-algorithms ==0.7.0.1,
+             any.vector-binary-instances ==0.2.4,
+             any.vector-buffer ==0.4.1,
+             any.vector-builder ==0.3.6,
+             any.vector-fftw ==0.1.3.8,
+             any.vector-instances ==3.4,
+             any.vector-mmap ==0.0.3,
+             any.vector-sized ==0.6.1.0,
+             any.vector-space ==0.13,
+             any.vector-split ==1.0.0.2,
+             any.vector-th-unbox ==0.2.1.6,
+             any.vectortiles ==1.3.0,
+             any.verbosity ==0.2.3.0,
+             any.versions ==3.3.2,
+             any.vhd ==0.2.2,
+             any.vinyl ==0.7.0,
+             any.vivid ==0.3.0.2,
+             any.vivid-osc ==0.3.0.0,
+             any.vivid-supercollider ==0.3.0.0,
+             any.void ==0.7.2,
+             any.vty ==5.20,
+             any.wai ==3.2.1.2,
+             any.wai-app-static ==3.1.6.2,
+             any.wai-cli ==0.1.1,
+             any.wai-conduit ==3.0.0.4,
+             any.wai-cors ==0.2.6,
+             any.wai-eventsource ==3.0.0,
+             any.wai-extra ==3.0.22.0,
+             any.wai-handler-launch ==3.0.2.3,
+             any.wai-logger ==2.3.2,
+             any.wai-middleware-caching ==0.1.0.2,
+             any.wai-middleware-caching-lru ==0.1.0.0,
+             any.wai-middleware-caching-redis ==0.2.0.0,
+             any.wai-middleware-consul ==0.1.0.2,
+             any.wai-middleware-crowd ==0.1.4.2,
+             any.wai-middleware-metrics ==0.2.4,
+             any.wai-middleware-prometheus ==0.3.0,
+             any.wai-middleware-rollbar ==0.10.0,
+             any.wai-middleware-static ==0.8.2,
+             any.wai-middleware-throttle ==0.2.2.1,
+             any.wai-predicates ==0.10.0,
+             any.wai-route ==0.3.1.2,
+             any.wai-routing ==0.13.0,
+             any.wai-session ==0.3.3,
+             any.wai-session-postgresql ==0.2.1.2,
+             any.wai-slack-middleware ==0.2.0,
+             any.wai-transformers ==0.0.7,
+             any.wai-websockets ==3.0.1.2,
+             any.warp ==3.2.23,
+             any.warp-tls ==3.2.4.3,
+             any.wave ==0.1.5,
+             any.wavefront ==0.7.1.2,
+             any.web-plugins ==0.2.9,
+             any.web-routes ==0.27.14.2,
+             any.web-routes-boomerang ==0.28.4.2,
+             any.web-routes-happstack ==0.23.11,
+             any.web-routes-hsp ==0.24.6.1,
+             any.web-routes-th ==0.22.6.3,
+             any.web-routes-wai ==0.24.3.1,
+             any.web3 ==0.7.3.0,
+             any.webdriver ==0.8.5,
+             any.webdriver-angular ==0.1.11,
+             any.webpage ==0.0.5,
+             any.webrtc-vad ==0.1.0.3,
+             any.websockets ==0.12.5.1,
+             any.websockets-rpc ==0.6.0,
+             any.websockets-simple ==0.0.6.3,
+             any.websockets-snap ==0.10.3.0,
+             any.weeder ==1.0.6,
+             any.weigh ==0.0.12,
+             any.wide-word ==0.1.0.6,
+             any.wikicfp-scraper ==0.1.0.9,
+             any.wild-bind ==0.1.2.1,
+             any.wild-bind-x11 ==0.2.0.4,
+             any.wire-streams ==0.1.1.0,
+             any.with-location ==0.1.0,
+             any.withdependencies ==0.2.4.2,
+             any.witherable ==0.2,
+             any.witness ==0.4,
+             any.wizards ==1.0.2,
+             any.wl-pprint ==1.2.1,
+             any.wl-pprint-annotated ==0.1.0.1,
+             any.wl-pprint-console ==0.1.0.2,
+             any.wl-pprint-extras ==3.5.0.5,
+             any.wl-pprint-terminfo ==3.7.1.4,
+             any.wl-pprint-text ==1.1.1.0,
+             any.word-trie ==0.3.0,
+             any.word-wrap ==0.4.1,
+             any.word24 ==2.0.1,
+             any.word8 ==0.1.3,
+             any.world-peace ==0.1.0.0,
+             any.wrap ==0.0.0,
+             any.wrecker ==1.3.1.0,
+             any.wreq ==0.5.2.1,
+             any.wreq-stringless ==0.5.9.1,
+             any.writer-cps-full ==0.1.0.0,
+             any.writer-cps-lens ==0.1.0.1,
+             any.writer-cps-morph ==0.1.0.2,
+             any.writer-cps-mtl ==0.1.1.5,
+             any.writer-cps-transformers ==0.1.1.4,
+             any.wuss ==1.1.10,
+             any.x11-xim ==0.0.9.0,
+             any.x509 ==1.7.3,
+             any.x509-store ==1.6.6,
+             any.x509-system ==1.6.6,
+             any.x509-validation ==1.6.10,
+             any.xdg-basedir ==0.2.2,
+             any.xeno ==0.3.4,
+             any.xenstore ==0.1.1,
+             any.xhtml ==3000.2.2,
+             any.xls ==0.1.1,
+             any.xlsx ==0.7.2,
+             any.xlsx-tabular ==0.2.2.1,
+             any.xml ==1.3.14,
+             any.xml-basic ==0.1.3,
+             any.xml-conduit ==1.8.0,
+             any.xml-conduit-writer ==0.1.1.2,
+             any.xml-hamlet ==0.5.0,
+             any.xml-html-qq ==0.1.0.1,
+             any.xml-indexed-cursor ==0.1.1.0,
+             any.xml-isogen ==0.2.1,
+             any.xml-lens ==0.1.6.3,
+             any.xml-picklers ==0.3.6,
+             any.xml-to-json ==2.0.1,
+             any.xml-to-json-fast ==2.0.0,
+             any.xml-types ==0.3.6,
+             any.xmlgen ==0.6.2.2,
+             any.xmlhtml ==0.2.5.2,
+             any.xmonad ==0.13,
+             any.xmonad-contrib ==0.13,
+             any.xmonad-extras ==0.13.4.1,
+             any.xss-sanitize ==0.3.6,
+             any.xturtle ==0.2.0.0,
+             any.xxhash ==0.0.2,
+             any.xxhash-ffi ==0.2.0.0,
+             any.yaml ==0.8.32,
+             any.yes-precure5-command ==5.5.3,
+             any.yeshql ==3.0.1.3,
+             any.yesod ==1.6.0,
+             any.yesod-alerts ==0.1.2.0,
+             any.yesod-auth ==1.6.4.1,
+             any.yesod-auth-fb ==1.9.0,
+             any.yesod-auth-hashdb ==1.7,
+             any.yesod-bin ==1.6.0.3,
+             any.yesod-core ==1.6.6,
+             any.yesod-csp ==0.2.4.0,
+             any.yesod-eventsource ==1.6.0,
+             any.yesod-fb ==0.5.0,
+             any.yesod-form ==1.6.2,
+             any.yesod-gitrepo ==0.3.0,
+             any.yesod-gitrev ==0.2.0.0,
+             any.yesod-newsfeed ==1.6.1.0,
+             any.yesod-paginator ==0.11.0,
+             any.yesod-persistent ==1.6.0,
+             any.yesod-sitemap ==1.6.0,
+             any.yesod-static ==1.6.0,
+             any.yesod-table ==2.0.3,
+             any.yesod-test ==1.6.5,
+             any.yesod-websockets ==0.3.0.1,
+             any.yi-core ==0.17.1,
+             any.yi-frontend-vty ==0.17.1,
+             any.yi-fuzzy-open ==0.17.1,
+             any.yi-ireader ==0.17.1,
+             any.yi-keymap-cua ==0.17.1,
+             any.yi-keymap-emacs ==0.17.1,
+             any.yi-keymap-vim ==0.17.1,
+             any.yi-language ==0.17.1,
+             any.yi-misc-modes ==0.17.1,
+             any.yi-mode-haskell ==0.17.1,
+             any.yi-mode-javascript ==0.17.1,
+             any.yi-rope ==0.10,
+             any.yi-snippet ==0.17.1,
+             any.yjsvg ==0.2.0.1,
+             any.yjtools ==0.9.18,
+             any.yoga ==0.0.0.2,
+             any.youtube ==0.2.1.1,
+             any.zero ==0.1.4,
+             any.zeromq4-haskell ==0.7.0,
+             any.zim-parser ==0.2.1.0,
+             any.zip ==1.0.0,
+             any.zip-archive ==0.3.3,
+             any.zippers ==0.2.5,
+             any.zlib ==0.6.2,
+             any.zlib-bindings ==0.1.1.5,
+             any.zlib-lens ==0.1.2.1,
+             any.zot ==0.0.3,
+             any.zstd ==0.1.0.0,
+             any.ztail ==1.2.0.2

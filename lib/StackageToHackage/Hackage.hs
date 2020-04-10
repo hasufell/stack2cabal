@@ -76,17 +76,17 @@ genProject stack Resolver{compiler, deps} = Project
 -- way that we exclude self packages.
 printFreeze :: Freeze -> Text
 printFreeze (Freeze deps (Flags flags)) =
-  T.concat [ "constraints:\n    ", constraints, "\n"]
+  T.concat [ "constraints: ", constraints, "\n"]
   where
-    constraints = T.intercalate "\n  , " (constrait <$> sort deps)
+    spacing = ",\n             "
+    constraints = T.intercalate spacing (constrait <$> sort deps)
     constrait pkg =
       let name = (T.pack . unPackageName . pkgName $ pkg)
           ver  = (T.pack . prettyShow . pkgVersion $ pkg)
-          base = T.concat [name, " ==", ver]
+          base = T.concat ["any.", name, " ==", ver]
       in case M.lookup name flags of
         Nothing      -> base
-        Just entries -> T.concat [ name, " ", (custom entries)
-                                 , "\n  , ", base]
+        Just entries -> T.concat [name, " ", (custom entries), spacing, base]
     custom (M.toList -> lst) = T.intercalate " " $ (renderFlag <$> lst)
     renderFlag (name, True)  = "+" <> name
     renderFlag (name, False) = "-" <> name
