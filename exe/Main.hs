@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -5,7 +6,7 @@
 
 module Main where
 
-import           Control.Monad                  (filterM)
+import           Control.Monad                  (filterM, when)
 import           Control.Monad.Extra            (ifM)
 import qualified Data.ByteString                as BS
 import qualified Data.List.NonEmpty             as NEL
@@ -25,11 +26,28 @@ import           System.Directory               (doesDirectoryExist,
                                                  doesFileExist,
                                                  getCurrentDirectory,
                                                  listDirectory)
+import           System.Environment             (getArgs)
+import           System.Exit
 import           System.FilePath                (takeBaseName, takeExtension,
                                                  (</>))
 
+version :: String
+#ifdef CURRENT_PACKAGE_VERSION
+version = CURRENT_PACKAGE_VERSION
+#else
+version = "unknown"
+#endif
+
+help :: String
+help = "stack2cabal [--help|version]"
+
 main :: IO ()
 main = do
+  args <- getArgs
+  when (elem "--version" args) $
+    (putStrLn version) >> exitWith ExitSuccess
+  when (elem "--help" args) $
+    (putStrLn help) >> exitWith ExitSuccess
   dir <- getCurrentDirectory
   stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
   let subs = NEL.toList $ (dir </>) <$> localDirs stack
