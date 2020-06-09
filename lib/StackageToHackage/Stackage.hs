@@ -22,7 +22,7 @@ import           Data.Semigroup
 import           Data.Text                    (Text, isSuffixOf, replace,
                                                takeWhile, unpack)
 import           Data.YAML                    (FromYAML, Mapping, Node(..),
-                                               Parser, Scalar(..), decodeStrict,
+                                               Parser, Pos(..), Scalar(..), decodeStrict,
                                                parseYAML, withMap, withStr,
                                                (.!=), (.:), (.:?))
 import           Distribution.Text            (simpleParse)
@@ -183,7 +183,9 @@ new2old NewResolver{compiler, packages, flags} =
 -- https://github.com/haskell-hvr/HsYAML/pull/5
 decode1Strict :: FromYAML a => BS.ByteString -> Either String a
 decode1Strict text = do
-  as <- decodeStrict text
+  as <- case decodeStrict text of
+    Left e -> Left $ snd e
+    Right a -> Right a
   maybe (Left "expected unique") Right $ listToMaybe as
 
 instance FromYAML Stack where
@@ -237,11 +239,14 @@ instance FromYAML NewResolver where
     <*> m .:? "packages" .!= mempty
     <*> m .:? "flags" .!= (Flags M.empty)
     where
-      (..:) :: FromYAML a => Mapping -> (Text, Text) -> Parser a
+      (..:) :: FromYAML a => Mapping Pos -> (Text, Text) -> Parser a
       m1 ..: (k1, k2) =
-        case M.lookup (Scalar (SStr k1)) m1 of
-          Just (Mapping _ m2) -> m2 .: k2
+        case M.lookup (Scalar fakePos (SStr k1)) m1 of
+          Just (Mapping _ _ m2) -> m2 .: k2
           _ -> fail $ "key " ++ show k1 ++ " not found"
+      fakePos :: Pos
+      fakePos = Pos
+        { posByteOffset = -1 , posCharOffset = -1  , posLine = 1 , posColumn = 0 }
 
 newtype PkgId = PkgId { unPkgId :: PackageIdentifier } deriving (Show)
 instance FromYAML PkgId where
