@@ -12,10 +12,10 @@ module StackageToHackage.Hackage
 
 import           Data.List                      (sort)
 import           Data.List.Extra                (nubOrdOn)
-import           Data.List.NonEmpty             (NonEmpty)
+import           Data.List.NonEmpty             (NonEmpty ((:|)))
 import qualified Data.List.NonEmpty             as NEL
 import qualified Data.Map.Strict                as M
-import           Data.Maybe                     (fromMaybe, mapMaybe)
+import           Data.Maybe                     (fromMaybe, mapMaybe, catMaybes)
 import           Data.Semigroup
 import           Data.Text                      (Text)
 import qualified Data.Text                      as T
@@ -64,11 +64,20 @@ data Project = Project Ghc (NonEmpty FilePath) [Git] deriving (Show)
 genProject :: Stack -> Resolver -> Project
 genProject stack Resolver{compiler, deps} = Project
   (fromMaybe (Ghc "ghc") compiler)
-  (localDirs stack)
+  (localDirs stack `appendList` localDeps deps)
   (nubOrdOn repo $ mapMaybe pickGit deps)
   where
     pickGit (Hackage _ )  = Nothing
+    pickGit (LocalDep _)  = Nothing
     pickGit (SourceDep g) = Just g
+    --
+    localDeps = catMaybes . map fromLocalDeps
+    fromLocalDeps (Hackage _) = Nothing
+    fromLocalDeps (SourceDep _) = Nothing
+    fromLocalDeps (LocalDep d) = Just d
+    --
+    appendList :: NonEmpty a -> [a] -> NonEmpty a
+    appendList (x:|xs) ys = x:|(xs++ys)
 
 -- TODO if there is a dependency listed in the snapshot or LTS but the user
 -- provides a git repo or local package, we are generating the wrong version
@@ -100,4 +109,5 @@ genFreeze Resolver{deps, flags} ignore =
    in Freeze uniqpkgs flags
   where pick (Hackage p)   = Just p
         pick (SourceDep _) = Nothing
+        pick (LocalDep _) = Nothing
         noSelfs (pkgName -> n) = notElem n ignore

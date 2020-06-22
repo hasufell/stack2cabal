@@ -89,6 +89,7 @@ data ResolverRef = Canned Text
 
 data Dep = Hackage PkgId
          | SourceDep Git
+         | LocalDep FilePath
          deriving (Show)
 
 newtype Flags = Flags (Map PkgName (Map FlagName Bool))
@@ -214,10 +215,11 @@ instance FromYAML Package where
         Location <$> m .: "location"
 
 instance FromYAML Dep where
-   parseYAML n = hackage <|> source
+   parseYAML n = hackage <|> source <|> local
      where
        hackage = Hackage <$> parseYAML n
        source = SourceDep <$> parseYAML n
+       local = LocalDep . unpack <$> parseYAML n
 
 instance FromYAML Resolver where
   parseYAML = withMap "Resolver" $ \m -> Resolver
