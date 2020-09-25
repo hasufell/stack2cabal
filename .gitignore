@@ -8,3 +8,7 @@ dist-newstyle/
 *.hp
 *.prof
 *.trace
+
+# stack
+.stack-work/
+.stack.yaml.lock
