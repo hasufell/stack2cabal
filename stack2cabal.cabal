@@ -10,7 +10,7 @@ author:        Tseen She
 maintainer:    Tseen She
 copyright:     2018 Tseen She
 bug-reports:   https://gitlab.com/tseenshe/stack2cabal/merge_requests
-tested-with:   GHC ^>=8.2.2 || ^>=8.4.4 || ^>=8.6.5
+tested-with:   GHC ^>=8.8.4 || ^>=8.10.2
 category:      Building
 description:
   Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
