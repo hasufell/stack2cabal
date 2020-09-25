@@ -1,8 +1,0 @@
-image: registry.gitlab.com/tseenshe/stack2cabal:8.4.4
-
-# TODO matrix build
-# https://docs.gitlab.com/ce/ci/yaml/README.html
-
-build_job:
-  stage: build
-  script: ./test.sh
