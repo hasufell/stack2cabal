@@ -7,7 +7,7 @@ synopsis:
 license:       GPL-3.0-or-later
 license-file:  LICENSE
 author:        Tseen She
-maintainer:    Tseen She
+maintainer:    Julian Ospald
 copyright:     2018 Tseen She
 bug-reports:   https://gitlab.com/tseenshe/stack2cabal/merge_requests
 tested-with:   GHC ^>=8.8.4 || ^>=8.10.2
