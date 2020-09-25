@@ -1,12 +1,12 @@
-{-# LANGUAGE CPP #-}
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
 
 module Main where
 
-import           Control.Monad                  (filterM, when)
+import           Control.Monad                  (filterM)
 import           Control.Monad.Extra            (ifM)
 import qualified Data.ByteString                as BS
 import qualified Data.List.NonEmpty             as NEL
@@ -18,6 +18,7 @@ import           Distribution.Types.PackageName (mkPackageName)
 import           Hpack                          (Force(..), Options(..),
                                                  defaultOptions, hpackResult,
                                                  setTarget)
+import           Options.Applicative
 import           Prelude                        hiding (lines)
 import           StackageToHackage.Hackage      (printFreeze, printProject,
                                                  stackToCabal)
@@ -25,10 +26,9 @@ import           StackageToHackage.Stackage     (localDirs, readStack)
 import           System.Directory               (doesDirectoryExist,
                                                  doesFileExist,
                                                  getCurrentDirectory,
-                                                 listDirectory)
-import           System.Environment             (getArgs)
-import           System.Exit
-import           System.FilePath                (takeBaseName, takeExtension,
+                                                 listDirectory,
+                                                 makeAbsolute)
+import           System.FilePath                (takeBaseName, takeDirectory, takeExtension,
                                                  (</>))
 
 version :: String
@@ -38,18 +38,32 @@ version = CURRENT_PACKAGE_VERSION
 version = "unknown"
 #endif
 
-help :: String
-help = "stack2cabal [--help|version]"
+data Opts = Input (Maybe FilePath)
+
+optsP :: Parser Opts
+optsP = Input <$> optional
+  (strOption
+    (short 'f' <> long "file" <> metavar "STACK_FILE" <> help
+      "Path to stack.yaml (optional, uses current dir by default)"
+    )
+  )
+
 
 main :: IO ()
 main = do
-  args <- getArgs
-  when (elem "--version" args) $
-    (putStrLn version) >> exitWith ExitSuccess
-  when (elem "--help" args) $
-    (putStrLn help) >> exitWith ExitSuccess
-  dir <- getCurrentDirectory
-  stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
+  let versionHelp = infoOption
+        version
+        (long "version" <> help "Show version" <> hidden)
+
+  (stack, dir) <- customExecParser (prefs showHelpOnError) (info (optsP <**> helper <**> versionHelp) idm) >>= \case
+    Input (Just fp) -> do
+      dir <- makeAbsolute (takeDirectory fp)
+      stack <- readStack =<< BS.readFile fp
+      pure (stack, dir)
+    Input Nothing   -> do
+      dir <- getCurrentDirectory
+      stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
+      pure (stack, dir)
   let subs = NEL.toList $ (dir </>) <$> localDirs stack
   hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
   _ <- traverse runHpack hpacks
