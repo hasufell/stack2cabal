@@ -29,14 +29,14 @@ common deps
     , Cabal            >=2.2     && <3.4
     , containers
     , directory
-    , extra            ^>=1.6.13
+    , extra            >=1.6.13
     , filepath
-    , hpack            ^>=0.31.0 || ^>= 0.32.0 || ^>= 0.33.0
+    , hpack            >=0.31.0
     , HsYAML           >=0.2 && <0.3
-    , http-client      ^>=0.5.14 || ^>=0.6.0
-    , http-client-tls  ^>=0.3.5.3
-    , optparse-applicative ^>= 0.15
-    , text             ^>=1.2.3.1
+    , http-client      >=0.5.14
+    , http-client-tls  >=0.3.5.3
+    , optparse-applicative >= 0.15
+    , text             >=1.2.3.1
 
   if flag(ghcflags)
     build-tool-depends: hsinspect:hsinspect
