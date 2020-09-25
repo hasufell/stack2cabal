@@ -43,7 +43,7 @@ common deps
     build-depends: ghcflags
     ghc-options: -fplugin GhcFlags.Plugin
 
-  ghc-options:      -Wall -Werror=missing-home-modules
+  ghc-options:      -Wall
   default-language: Haskell2010
 
 executable stack2cabal
