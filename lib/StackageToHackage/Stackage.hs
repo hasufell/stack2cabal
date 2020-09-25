@@ -20,7 +20,7 @@ import qualified Data.Map.Strict              as M
 import           Data.Maybe                   (fromMaybe, listToMaybe, mapMaybe)
 import           Data.Semigroup
 import           Data.Text                    (Text, isSuffixOf, replace,
-                                               takeWhile, unpack)
+                                               takeWhile, unpack, isPrefixOf)
 import           Data.YAML                    (FromYAML, Mapping, Node(..),
                                                Parser, Pos(..), Scalar(..), decodeStrict,
                                                parseYAML, withMap, withStr,
@@ -151,11 +151,24 @@ resolve _ (Canned lts) = do
 
       update file content = unlessM (doesFileExist file) (BS.writeFile file content)
 
-resolve (Just base) (Snapshot path) = do
-  let file = base </> (unpack path)
-      dir = takeDirectory file
-  text <- BS.readFile file
-  either fail (\r -> pure (Just dir, r)) $ decode1Strict text
+resolve (Just base) (Snapshot path)
+  | isPrefixOf "http://" path || isPrefixOf "https://" path = parseFromURL
+  | otherwise = parseFromFile
+    where
+      parseFromFile = do
+        let file = base </> (unpack path)
+            dir = takeDirectory file
+        text <- BS.readFile file
+        either fail (\r -> pure (Just dir, r)) $ decode1Strict text
+      parseFromURL = do
+        text <- download
+        either fail (\r -> pure (Nothing, r)) $ decode1Strict text
+      download = do
+        manager <- getGlobalManager
+        url <- parseRequest (unpack path)
+        putStrLn ("Downloading: " <> unpack path)
+        resp <- httpLbs url manager
+        pure $ toStrict $ responseBody resp
 
 resolve Nothing _ = fail "Remote snapshots can't use relative paths."
 
