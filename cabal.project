@@ -1,0 +1,10 @@
+index-state: 2020-09-15T00:00:00Z
+
+with-compiler: ghc-8.8.4
+
+packages:
+    ./
+
+
+allow-older: *
+allow-newer: *
