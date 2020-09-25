@@ -24,24 +24,24 @@ flag ghcflags
 
 common deps
   build-depends:
-    , base             >=4.10    && <5.0
+    , base                  >=4.10    && <5.0
     , bytestring
-    , Cabal            >=2.2     && <3.4
+    , Cabal                 >=2.2     && <3.4
     , containers
     , directory
-    , extra            >=1.6.13
+    , extra                 >=1.6.13
     , filepath
-    , hpack            >=0.31.0
-    , HsYAML           >=0.2 && <0.3
-    , http-client      >=0.5.14
-    , http-client-tls  >=0.3.5.3
-    , optparse-applicative >= 0.15
-    , text             >=1.2.3.1
+    , hpack                 >=0.31.0
+    , HsYAML                ^>=0.2
+    , http-client           >=0.5.14
+    , http-client-tls       >=0.3.5.3
+    , optparse-applicative  >=0.15
+    , text                  >=1.2.3.1
 
   if flag(ghcflags)
-    build-tool-depends: hsinspect:hsinspect
-    build-depends: ghcflags
-    ghc-options: -fplugin GhcFlags.Plugin
+    build-tool-depends: hsinspect:hsinspect -any
+    build-depends:      ghcflags
+    ghc-options:        -fplugin GhcFlags.Plugin
 
   ghc-options:      -Wall
   default-language: Haskell2010
