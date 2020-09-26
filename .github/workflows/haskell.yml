@@ -38,6 +38,9 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
 
+    - name: Clear ~/.cabal/bin
+      run: rm -f ~/.cabal/bin/*
+
     - name: Install shelltestrunner
       run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
     - name: Install dependencies
@@ -62,7 +65,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        stack: ['latest', '1.9.1']
+        stack: ['latest']
 
     steps:
     - uses: actions/checkout@v2

@@ -1,5 +1,10 @@
-$$$ stack2cabal -f tests/hpack/stack.yaml &>/dev/null && git diff tests/hpack
-$$$ stack2cabal -f tests/self/stack.yaml &>/dev/null && git diff tests/self
-$$$ stack2cabal -f tests/simplest/stack.yaml &>/dev/null && git diff tests/simplest
-$$$ stack2cabal -f tests/snapshot/stack.yaml &>/dev/null && git diff tests/snapshot
-$$$ stack2cabal -f tests/stackage/stack.yaml &>/dev/null && git diff tests/stackage
+$$$ stack2cabal -f tests/hpack/stack.yaml && git diff tests/hpack
+>>>2 //
+$$$ stack2cabal -f tests/self/stack.yaml && git diff tests/self
+>>>2 //
+$$$ stack2cabal -f tests/simplest/stack.yaml && git diff tests/simplest
+>>>2 //
+$$$ stack2cabal -f tests/snapshot/stack.yaml && git diff tests/snapshot
+>>>2 //
+$$$ stack2cabal -f tests/stackage/stack.yaml && git diff tests/stackage
+>>>2 //
