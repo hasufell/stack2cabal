@@ -49,6 +49,8 @@ jobs:
       run: |
         cabal test all
         shelltest shelltest.test
+    - name: Build haddock
+      run: cabal haddock
 
   build-stack:
     name: Stack ${{ matrix.stack }} ${{ matrix.os }}
