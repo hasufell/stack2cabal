@@ -77,6 +77,9 @@ jobs:
         stack-no-global: true
         stack-version: ${{ matrix.stack }}
 
+    - name: Add ~/.local/bin to PATH
+      run: echo "::add-path::$HOME/.local/bin"
+
     - name: Cache
       uses: actions/cache@v1
       env:
@@ -102,3 +105,4 @@ jobs:
       run: |
         stack test
         shelltest shelltest.test
+
