@@ -31,7 +31,7 @@ common deps
     , directory
     , extra                 >=1.6.13
     , filepath
-    , hpack                 >=0.31.0
+    , hpack                 ==0.34.2
     , HsYAML                ^>=0.2
     , http-client           >=0.5.14
     , http-client-tls       >=0.3.5.3
