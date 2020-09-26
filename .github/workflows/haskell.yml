@@ -23,6 +23,9 @@ jobs:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
 
+    - name: Add ~/.cabal/bin to PATH
+      run: echo "::add-path::$HOME/.cabal/bin"
+
     - name: Cache
       uses: actions/cache@v1
       env:

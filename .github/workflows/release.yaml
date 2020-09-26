@@ -42,6 +42,9 @@ jobs:
           ghc-version: 8.10.2
           cabal-version: 3.2.0.0
 
+      - name: Add ~/.cabal/bin to PATH
+        run: echo "::add-path::$HOME/.cabal/bin"
+
       - name: Install system dependencies
         run: |
           apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl git bash
