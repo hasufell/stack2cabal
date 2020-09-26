@@ -76,13 +76,12 @@ jobs:
           asset_content_type: application/octet-stream
 
   release-mac-win:
-    name: Create Release for macOS and windows
+    name: Create Release for macOS
     needs: draft_release
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
-          - windows-latest
           - macOS-latest
     steps:
       - name: Checkout code
