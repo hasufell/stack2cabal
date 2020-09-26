@@ -39,7 +39,9 @@ jobs:
           ${{ runner.os }}-
 
     - name: Clear ~/.cabal/bin
-      run: rm -f ~/.cabal/bin/*
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: ~/.cabal/bin
 
     - name: Install shelltestrunner
       run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
