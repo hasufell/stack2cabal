@@ -35,6 +35,7 @@ import           System.Directory             (XdgDirectory(..),
                                                createDirectoryIfMissing,
                                                doesFileExist, getXdgDirectory)
 import           System.FilePath              (takeDirectory, (</>))
+import           System.IO                    (stderr, hPutStrLn)
 
 data Stack = Stack
   { resolver  :: ResolverRef
@@ -145,7 +146,7 @@ resolve _ (Canned lts) = do
         in do
           manager <- getGlobalManager
           url <- parseRequest raw
-          putStrLn ("Downloading: " <> raw)
+          hPutStrLn stderr ("Downloading: " <> raw)
           resp <- httpLbs url manager
           pure $ toStrict $ responseBody resp
 
@@ -166,7 +167,7 @@ resolve (Just base) (Snapshot path)
       download = do
         manager <- getGlobalManager
         url <- parseRequest (unpack path)
-        putStrLn ("Downloading: " <> unpack path)
+        hPutStrLn stderr ("Downloading: " <> unpack path)
         resp <- httpLbs url manager
         pure $ toStrict $ responseBody resp
 
