@@ -1,0 +1,5 @@
+$$$ stack2cabal -f tests/hpack/stack.yaml && git diff tests/hpack
+$$$ stack2cabal -f tests/self/stack.yaml && git diff tests/self
+$$$ stack2cabal -f tests/simplest/stack.yaml && git diff tests/simplest
+$$$ stack2cabal -f tests/snapshot/stack.yaml && git diff tests/snapshot
+$$$ stack2cabal -f tests/stackage/stack.yaml && git diff tests/stackage
