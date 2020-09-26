@@ -7,16 +7,24 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-cabal:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        ghc: ['8.6.5', '8.8.4', '8.10.2']
+        cabal: ['3.2.0.0']
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-haskell@v1
+    - uses: actions/setup-haskell@v1.1.2
       with:
-        ghc-version: '8.8.4'
-        cabal-version: '3.2'
+        ghc-version: ${{ matrix.ghc }}
+        cabal-version: ${{ matrix.cabal }}
+
+    - name: Add ~/.cabal/bin to PATH
+      run: echo "::add-path::$HOME/.cabal/bin"
 
     - name: Cache
       uses: actions/cache@v1
@@ -30,12 +38,71 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
 
+    - name: Clear ~/.cabal/bin
+      uses: JesseTG/rm@v1.0.2
+      with:
+        path: ~/.cabal/bin
+
+    - name: Install shelltestrunner
+      run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
     - name: Install dependencies
       run: |
         cabal update
         cabal build --only-dependencies --enable-tests --enable-benchmarks
     - name: Build
       run: cabal build --enable-tests --enable-benchmarks all
+    - name: Install
+      run: cabal install --install-method=copy --overwrite-policy=always
     - name: Run tests
-      run: cabal test all
+      run: |
+        cabal test all
+        shelltest shelltest.test
+    - name: Build haddock
+      run: cabal haddock
+
+  build-stack:
+    name: Stack ${{ matrix.stack }} ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        stack: ['latest']
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-haskell@v1.1.2
+      with:
+        enable-stack: true
+        stack-no-global: true
+        stack-version: ${{ matrix.stack }}
+
+    - name: Add ~/.local/bin to PATH
+      run: echo "::add-path::$HOME/.local/bin"
+
+    - name: Cache
+      uses: actions/cache@v1
+      env:
+        cache-name: stack-cabal
+      with:
+        path: ~/.stack
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Install shelltestrunner
+      run: stack install shelltestrunner
+    - name: Install dependencies
+      run: |
+        stack install --dependencies-only
+    - name: Build
+      run: stack build
+    - name: Install
+      run: stack install
+    - name: Run tests
+      run: |
+        stack test
+        shelltest shelltest.test
 

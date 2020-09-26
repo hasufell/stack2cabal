@@ -1,0 +1,117 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  draft_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: true
+          prerelease: false
+
+  release-linux:
+    name: Create Release for Linux (static)
+    needs: draft_release
+    runs-on: ubuntu-latest
+    container: alpine:3.12
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-haskell@v1.1.2
+        with:
+          ghc-version: 8.10.2
+          cabal-version: 3.2.0.0
+
+      - name: Add ~/.cabal/bin to PATH
+        run: echo "::add-path::$HOME/.cabal/bin"
+
+      - name: Install system dependencies
+        run: |
+          apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl git bash
+          apk add --no-cache zlib zlib-dev zlib-static gmp gmp-dev ncurses-static
+
+      - name: Install shelltestrunner
+        run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
+      - name: Install cabal dependencies
+        run: |
+          cabal update
+          cabal build --only-dependencies --ghc-options='-split-sections -optl-static'
+      - name: Install
+        run: cabal install --install-method=copy --overwrite-policy=always --ghc-options='-split-sections -optl-static'
+      - name: Run tests
+        run: |
+          cabal test --ghc-options='-split-sections -optl-static' all
+          shelltest shelltest.test
+
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.draft_release.outputs.upload_url }}
+          asset_path: ~/.cabal/bin/stack2cabal
+          asset_name: stack2cabal-linux
+          asset_content_type: application/octet-stream
+
+  release-mac-win:
+    name: Create Release for macOS
+    needs: draft_release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macOS-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-haskell@v1.1.2
+        with:
+          ghc-version: 8.10.2
+          cabal-version: 3.2.0.0
+
+      - name: Install shelltestrunner
+        run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
+      - name: Install cabal dependencies
+        run: |
+          cabal update
+          cabal build --only-dependencies
+      - name: Install
+        run: cabal install --install-method=copy --overwrite-policy=always
+      - name: Run tests
+        run: |
+          cabal test all
+          shelltest shelltest.test
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.draft_release.outputs.upload_url }}
+          asset_path: ~/.cabal/bin/stack2cabal
+          asset_name: stack2cabal-${{ matrix.os }}
+          asset_content_type: application/octet-stream
