@@ -34,35 +34,53 @@ jobs:
     runs-on: ubuntu-latest
     container: alpine:3.12
     steps:
+      - name: Install system dependencies
+        run: |
+          apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl git bash sudo binutils-gold
+          apk add --no-cache zlib zlib-dev zlib-static gmp gmp-dev ncurses-static
+
+      - name: Install ghcup
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://downloads.haskell.org/~ghcup/0.1.11/x86_64-linux-ghcup-0.1.11 > /usr/bin/ghcup
+          chmod +x /usr/bin/ghcup
+          echo "::add-path::$HOME/.ghcup/bin"
+
+      - name: Install GHC and cabal
+        run: |
+          ghcup install ghc 8.10.2
+          ghcup set ghc 8.10.2
+          ghcup install cabal 3.2.0.0
+
+      - name: Update cabal cache
+        run: cabal update
+
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - uses: actions/setup-haskell@v1.1.2
-        with:
-          ghc-version: 8.10.2
-          cabal-version: 3.2.0.0
 
       - name: Add ~/.cabal/bin to PATH
         run: echo "::add-path::$HOME/.cabal/bin"
 
-      - name: Install system dependencies
-        run: |
-          apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl git bash
-          apk add --no-cache zlib zlib-dev zlib-static gmp gmp-dev ncurses-static
-
       - name: Install shelltestrunner
         run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
+
       - name: Install cabal dependencies
         run: |
           cabal update
           cabal build --only-dependencies --ghc-options='-split-sections -optl-static'
+
       - name: Install
         run: cabal install --install-method=copy --overwrite-policy=always --ghc-options='-split-sections -optl-static'
+
+      - name: Strip
+        run: strip ~/.cabal/bin/stack2cabal
+
       - name: Run tests
         run: |
           cabal test --ghc-options='-split-sections -optl-static' all
           shelltest shelltest.test
 
+      - run: echo ::set-env name=HOME::$HOME
+        shell: bash
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -71,7 +89,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.draft_release.outputs.upload_url }}
-          asset_path: ~/.cabal/bin/stack2cabal
+          asset_path: ${{ env.HOME }}/.cabal/bin/stack2cabal
           asset_name: stack2cabal-linux
           asset_content_type: application/octet-stream
 
@@ -92,6 +110,9 @@ jobs:
           ghc-version: 8.10.2
           cabal-version: 3.2.0.0
 
+      - name: Add ~/.cabal/bin to PATH
+        run: echo "::add-path::$HOME/.cabal/bin"
+
       - name: Install shelltestrunner
         run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
       - name: Install cabal dependencies
@@ -100,10 +121,18 @@ jobs:
           cabal build --only-dependencies
       - name: Install
         run: cabal install --install-method=copy --overwrite-policy=always
+
+      - name: Strip mac
+        if: matrix.os == 'macOS-latest'
+        run: strip -s ~/.cabal/bin/stack2cabal
+
       - name: Run tests
         run: |
           cabal test all
           shelltest shelltest.test
+
+      - run: echo ::set-env name=HOME::$HOME
+        shell: bash
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -112,6 +141,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.draft_release.outputs.upload_url }}
-          asset_path: ~/.cabal/bin/stack2cabal
+          asset_path: ${{ env.HOME }}/.cabal/bin/stack2cabal
           asset_name: stack2cabal-${{ matrix.os }}
           asset_content_type: application/octet-stream
