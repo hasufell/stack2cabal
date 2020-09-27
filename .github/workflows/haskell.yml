@@ -11,10 +11,16 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
         ghc: ['8.6.5', '8.8.4', '8.10.2']
         cabal: ['3.2.0.0']
+        exclude:
+          # can't build zlib
+          - os: windows-latest
+            ghc: '8.10.2'
+            cabal: '3.2.0.0'
 
     steps:
     - uses: actions/checkout@v2
@@ -23,8 +29,13 @@ jobs:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
 
-    - name: Add ~/.cabal/bin to PATH
-      run: echo "::add-path::$HOME/.cabal/bin"
+    - name: create ~/.local/bin
+      run: mkdir -p "$HOME/.local/bin"
+      shell: bash
+
+    - name: Add ~/.local/bin to PATH
+      run: echo "::add-path::$HOME/.local/bin"
+      shell: bash
 
     - name: Cache
       uses: actions/cache@v1
@@ -38,27 +49,41 @@ jobs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
 
-    - name: Clear ~/.cabal/bin
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: ~/.cabal/bin
+    - name: Update cabal index
+      run: cabal update
+      shell: bash
 
     - name: Install shelltestrunner
-      run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
+      run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always -f _regex-posix-clib shelltestrunner
+      shell: bash
+
     - name: Install dependencies
-      run: |
-        cabal update
-        cabal build --only-dependencies --enable-tests --enable-benchmarks
+      run: cabal build --only-dependencies --enable-tests --enable-benchmarks
+      shell: bash
+
     - name: Build
       run: cabal build --enable-tests --enable-benchmarks all
+      shell: bash
+
     - name: Install
-      run: cabal install --install-method=copy --overwrite-policy=always
+      run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always
+      shell: bash
+
     - name: Run tests
       run: |
         cabal test all
         shelltest shelltest.test
+      shell: bash
+
     - name: Build haddock
       run: cabal haddock
+      shell: bash
+
+    - if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: plan.json
+        path: ./dist-newstyle/cache/plan.json
 
   build-stack:
     name: Stack ${{ matrix.stack }} ${{ matrix.os }}
@@ -66,7 +91,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
         stack: ['latest']
 
     steps:
@@ -79,6 +104,7 @@ jobs:
 
     - name: Add ~/.local/bin to PATH
       run: echo "::add-path::$HOME/.local/bin"
+      shell: bash
 
     - name: Cache
       uses: actions/cache@v1
@@ -93,16 +119,25 @@ jobs:
           ${{ runner.os }}-
 
     - name: Install shelltestrunner
-      run: stack install shelltestrunner
+      run: stack install --flag regex-posix:_regex-posix-clib shelltestrunner
+      shell: bash
+
     - name: Install dependencies
       run: |
-        stack install --dependencies-only
+        stack install --dependencies-only --flag zlib:bundled-c-zlib
+      shell: bash
+
     - name: Build
-      run: stack build
+      run: stack build --flag zlib:bundled-c-zlib
+      shell: bash
+
     - name: Install
-      run: stack install
+      run: stack install --flag zlib:bundled-c-zlib
+      shell: bash
+
     - name: Run tests
       run: |
-        stack test
+        stack test --flag zlib:bundled-c-zlib
         shelltest shelltest.test
+      shell: bash
 

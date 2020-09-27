@@ -38,46 +38,54 @@ jobs:
         run: |
           apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl git bash sudo binutils-gold
           apk add --no-cache zlib zlib-dev zlib-static gmp gmp-dev ncurses-static
+        shell: bash
 
       - name: Install ghcup
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://downloads.haskell.org/~ghcup/0.1.11/x86_64-linux-ghcup-0.1.11 > /usr/bin/ghcup
           chmod +x /usr/bin/ghcup
           echo "::add-path::$HOME/.ghcup/bin"
+        shell: bash
 
       - name: Install GHC and cabal
         run: |
-          ghcup install ghc 8.10.2
-          ghcup set ghc 8.10.2
+          ghcup install ghc 8.8.4
+          ghcup set ghc 8.8.4
           ghcup install cabal 3.2.0.0
+        shell: bash
 
       - name: Update cabal cache
         run: cabal update
+        shell: bash
 
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Add ~/.cabal/bin to PATH
-        run: echo "::add-path::$HOME/.cabal/bin"
+      - name: Add ~/.local/bin to PATH
+        run: echo "::add-path::$HOME/.local/bin"
+        shell: bash
 
       - name: Install shelltestrunner
-        run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
+        run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always shelltestrunner
+        shell: bash
 
       - name: Install cabal dependencies
-        run: |
-          cabal update
-          cabal build --only-dependencies --ghc-options='-split-sections -optl-static'
+        run: cabal build --only-dependencies --ghc-options='-split-sections -optl-static'
+        shell: bash
 
       - name: Install
-        run: cabal install --install-method=copy --overwrite-policy=always --ghc-options='-split-sections -optl-static'
+        run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always --ghc-options='-split-sections -optl-static'
+        shell: bash
 
       - name: Strip
-        run: strip ~/.cabal/bin/stack2cabal
+        run: strip ~/.local/bin/stack2cabal
+        shell: bash
 
       - name: Run tests
         run: |
           cabal test --ghc-options='-split-sections -optl-static' all
-          shelltest shelltest.test
+          ~/.local/bin/shelltest shelltest.test
+        shell: bash
 
       - run: echo ::set-env name=HOME::$HOME
         shell: bash
@@ -89,9 +97,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.draft_release.outputs.upload_url }}
-          asset_path: ${{ env.HOME }}/.cabal/bin/stack2cabal
+          asset_path: ${{ env.HOME }}/.local/bin/stack2cabal
           asset_name: stack2cabal-linux
           asset_content_type: application/octet-stream
+
+      - if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: plan.json
+          path: ./dist-newstyle/cache/plan.json
 
   release-mac-win:
     name: Create Release for macOS
@@ -107,29 +121,39 @@ jobs:
 
       - uses: actions/setup-haskell@v1.1.2
         with:
-          ghc-version: 8.10.2
+          ghc-version: 8.8.4
           cabal-version: 3.2.0.0
 
-      - name: Add ~/.cabal/bin to PATH
-        run: echo "::add-path::$HOME/.cabal/bin"
+      - name: Add ~/.local/bin to PATH
+        run: echo "::add-path::$HOME/.local/bin"
+        shell: bash
+
+      - name: Update cabal cache
+        run: cabal update
+        shell: bash
 
       - name: Install shelltestrunner
-        run: cabal install --install-method=copy --overwrite-policy=always shelltestrunner
+        run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always -f _regex-posix-clib shelltestrunner
+        shell: bash
+
       - name: Install cabal dependencies
-        run: |
-          cabal update
-          cabal build --only-dependencies
+        run: cabal build --only-dependencies
+        shell: bash
+
       - name: Install
-        run: cabal install --install-method=copy --overwrite-policy=always
+        run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always
+        shell: bash
 
       - name: Strip mac
         if: matrix.os == 'macOS-latest'
-        run: strip -s ~/.cabal/bin/stack2cabal
+        run: strip -s ~/.local/bin/stack2cabal
+        shell: bash
 
       - name: Run tests
         run: |
           cabal test all
-          shelltest shelltest.test
+          ~/.local/bin/shelltest shelltest.test
+        shell: bash
 
       - run: echo ::set-env name=HOME::$HOME
         shell: bash
@@ -141,6 +165,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.draft_release.outputs.upload_url }}
-          asset_path: ${{ env.HOME }}/.cabal/bin/stack2cabal
+          asset_path: ${{ env.HOME }}/.local/bin/stack2cabal
           asset_name: stack2cabal-${{ matrix.os }}
           asset_content_type: application/octet-stream
+
+      - if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: plan.json
+          path: ./dist-newstyle/cache/plan.json
