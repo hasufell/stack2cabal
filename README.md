@@ -1,3 +1,6 @@
+![Haskell CI](https://github.com/hasufell/stack2cabal/workflows/Haskell%20CI/badge.svg)
+[![license](https://img.shields.io/github/license/hasufell/stack2cabal.svg)](LICENSE)
+
 # stack2cabal
 
 This is a fork of [tseenshe/stack2cabal](https://gitlab.com/tseenshe/stack2cabal),
