@@ -63,7 +63,6 @@ jobs:
 
       - name: Add ~/.local/bin to PATH
         run: echo "::add-path::$HOME/.local/bin"
-        shell: bash
 
       - name: Install shelltestrunner
         run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always shelltestrunner
@@ -82,9 +81,15 @@ jobs:
         shell: bash
 
       - name: Run tests
+        run: cabal test --ghc-options='-split-sections -optl-static' all
+        shell: bash
+
+      - name: Run shelltest tests
+        # windows prints paths differently
+        if: matrix.os != 'windows-latest'
         run: |
-          cabal test --ghc-options='-split-sections -optl-static' all
-          ~/.local/bin/shelltest shelltest.test
+          echo "::add-path::$HOME/.local/bin"
+          shelltest shelltest.test
         shell: bash
 
       - run: echo ::set-env name=HOME::$HOME
@@ -126,7 +131,6 @@ jobs:
 
       - name: Add ~/.local/bin to PATH
         run: echo "::add-path::$HOME/.local/bin"
-        shell: bash
 
       - name: Update cabal cache
         run: cabal update
@@ -150,9 +154,15 @@ jobs:
         shell: bash
 
       - name: Run tests
+        run: cabal test --ghc-options='-split-sections -optl-static' all
+        shell: bash
+
+      - name: Run shelltest tests
+        # windows prints paths differently
+        if: matrix.os != 'windows-latest'
         run: |
-          cabal test all
-          ~/.local/bin/shelltest shelltest.test
+          echo "::add-path::$HOME/.local/bin"
+          shelltest shelltest.test
         shell: bash
 
       - run: echo ::set-env name=HOME::$HOME

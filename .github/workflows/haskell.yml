@@ -35,7 +35,6 @@ jobs:
 
     - name: Add ~/.local/bin to PATH
       run: echo "::add-path::$HOME/.local/bin"
-      shell: bash
 
     - name: Cache
       uses: actions/cache@v1
@@ -43,10 +42,11 @@ jobs:
         cache-name: cache-cabal
       with:
         path: ~/.cabal
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
+        key: ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
         restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
+          ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-build-
+          ${{ runner.os }}-${{ matrix.ghc }}-
           ${{ runner.os }}-
 
     - name: Update cabal index
@@ -70,8 +70,14 @@ jobs:
       shell: bash
 
     - name: Run tests
+      run: cabal test all
+      shell: bash
+
+    - name: Run shelltest tests
+      # windows prints paths differently
+      if: matrix.os != 'windows-latest'
       run: |
-        cabal test all
+        echo "::add-path::$HOME/.local/bin"
         shelltest shelltest.test
       shell: bash
 
@@ -104,7 +110,6 @@ jobs:
 
     - name: Add ~/.local/bin to PATH
       run: echo "::add-path::$HOME/.local/bin"
-      shell: bash
 
     - name: Cache
       uses: actions/cache@v1
@@ -112,7 +117,7 @@ jobs:
         cache-name: stack-cabal
       with:
         path: ~/.stack
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml') }}
+        key: ${{ runner.os }}-${{ matrix.stack }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
@@ -136,8 +141,14 @@ jobs:
       shell: bash
 
     - name: Run tests
+      run: stack test
+      shell: bash
+
+    - name: Run shelltest tests
+      # windows prints paths differently
+      if: matrix.os != 'windows-latest'
       run: |
-        stack test --flag zlib:bundled-c-zlib
+        echo "::add-path::$HOME/.local/bin"
         shelltest shelltest.test
       shell: bash
 
