@@ -8,8 +8,10 @@ module StackageToHackage.Hackage
   ( stackToCabal
   , Project(..), printProject
   , Freeze(..), printFreeze
+  , FreezeRemotes(..)
   ) where
 
+import           Control.Monad                  (forM)
 import           Data.List                      (sort)
 import           Data.List.Extra                (nubOrdOn)
 import           Data.List.NonEmpty             (NonEmpty ((:|)))
@@ -17,23 +19,41 @@ import qualified Data.List.NonEmpty             as NEL
 import qualified Data.Map.Strict                as M
 import           Data.Maybe                     (fromMaybe, mapMaybe, catMaybes)
 import           Data.Semigroup
+import qualified Data.HashMap.Strict            as H
 import           Data.Text                      (Text)
 import qualified Data.Text                      as T
+import           Distribution.PackageDescription.Parsec (readGenericPackageDescription)
 import           Distribution.Pretty            (prettyShow)
+import           Distribution.Types.GenericPackageDescription (GenericPackageDescription(..))
+import           Distribution.Types.PackageDescription (PackageDescription(..))
 import           Distribution.Types.PackageId   (PackageIdentifier(..))
-import           Distribution.Types.PackageName (PackageName, unPackageName)
+import           Distribution.Types.PackageName (PackageName, unPackageName, mkPackageName)
+import           Distribution.Verbosity         (silent)
+import           Safe                           (headMay)
 import           StackageToHackage.Stackage
-import           System.FilePath                (addTrailingPathSeparator)
+import           System.FilePath                ((</>),addTrailingPathSeparator)
+import           System.FilePattern.Directory   (getDirectoryFiles)
+import           System.IO.Temp                 (withSystemTempDirectory)
+import           System.Process                 (callProcess)
+
+newtype FreezeRemotes = FreezeRemotes Bool
 
 -- | Converts a stack.yaml (and list of local packages) to cabal.project and
 -- cabal.project.freeze.
-stackToCabal :: [PackageName] -> FilePath -> Stack -> IO (Project, Freeze)
-stackToCabal ignore dir stack = do
+stackToCabal :: FreezeRemotes
+             -> [PackageName]
+             -> FilePath
+             -> Stack
+             -> IO (Project, Freeze)
+stackToCabal (FreezeRemotes freezeRemotes) ignore dir stack = do
   resolvers <- unroll dir stack
   let resolver = sconcat resolvers
       project = genProject stack resolver
       freeze = genFreeze resolver ignore
-  pure (project, freeze)
+  freezeAll <- if freezeRemotes
+               then freezeRemoteRepos project freeze
+               else pure freeze
+  pure (project, freezeAll)
 
 printProject :: Project -> Maybe Text -> Text
 printProject (Project (Ghc ghc) pkgs srcs) hack =
@@ -59,7 +79,11 @@ printProject (Project (Ghc ghc) pkgs srcs) hack =
          then [base]
          else (\d -> T.concat [base, "    subdir: ", d, "\n"]) <$> subdirs
 
-data Project = Project Ghc (NonEmpty FilePath) [Git] deriving (Show)
+data Project = Project
+    { ghc :: Ghc
+    , pkgs :: (NonEmpty FilePath)
+    , srcs :: [Git]
+    } deriving (Show)
 
 genProject :: Stack -> Resolver -> Project
 genProject stack Resolver{compiler, deps} = Project
@@ -79,10 +103,6 @@ genProject stack Resolver{compiler, deps} = Project
     appendList :: NonEmpty a -> [a] -> NonEmpty a
     appendList (x:|xs) ys = x:|(xs++ys)
 
--- TODO if there is a dependency listed in the snapshot or LTS but the user
--- provides a git repo or local package, we are generating the wrong version
--- constraint. We would need to parse the .cabal of all git repos in the same
--- way that we exclude self packages.
 printFreeze :: Freeze -> Text
 printFreeze (Freeze deps (Flags flags)) =
   T.concat [ "constraints: ", constraints, "\n"]
@@ -111,3 +131,33 @@ genFreeze Resolver{deps, flags} ignore =
         pick (SourceDep _) = Nothing
         pick (LocalDep _) = Nothing
         noSelfs (pkgName -> n) = notElem n ignore
+
+
+-- | Acquire all package identifiers from a list of subdirs
+-- of a git repository.
+getPackageIdent :: Git -> IO [PackageIdentifier]
+getPackageIdent (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs)) =
+  withSystemTempDirectory "stack2cabal" $ \dir -> do
+    callProcess "git" ["clone", repo, dir]
+    callProcess "git" ["-C", dir, "reset", "--hard", commit]
+    forM subdirs $ \subdir -> do
+      (Just cabalFile) <- headMay <$> getDirectoryFiles (dir </> subdir) ["*.cabal"]
+      (package . packageDescription)
+        <$> readGenericPackageDescription silent (dir </> subdir </> cabalFile)
+
+
+-- | Also freeze all remote repositories.
+--
+-- Note that this might update (and rightly so) the version of a hackage
+-- dependency in the freeze file, if said dependency was also defined as a
+-- git repo in e.g. stack.yaml.
+freezeRemoteRepos :: Project -> Freeze -> IO Freeze
+freezeRemoteRepos (Project { srcs }) (Freeze deps flags) = do
+  clonedDeps <- fmap concat $ forM srcs $ \src -> getPackageIdent src
+  let newDeps = fromHM $ H.union (toHM clonedDeps) (toHM deps)
+  pure $ Freeze newDeps flags
+ where
+  toHM = H.fromList . fmap (\(PackageIdentifier a b) -> (unPackageName a, b))
+  fromHM = fmap (\(a, b) -> PackageIdentifier (mkPackageName a) b) . H.toList
+
+

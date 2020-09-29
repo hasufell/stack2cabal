@@ -42,11 +42,9 @@ docker run --rm \
   hasufell/stack2cabal
 ```
 
-## Limitations
+## Notes
 
 Hackage packages that are specified as git repositories in e.g. `extra-deps` might
 have a different version than the stack resolver. `stack2cabal` will still record the
-version of the stack resolver in `cabal.project.freeze`. In order to fix that remove
-the constraint of such dependencies entirely from the freeze file.
-
-Also see [#1](https://github.com/hasufell/stack2cabal/issues/1).
+version of the stack resolver in `cabal.project.freeze` unless you pass `--freeze-remotes`
+(which takes longer time).

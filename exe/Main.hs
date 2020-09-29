@@ -22,7 +22,7 @@ import           Hpack                          (Force(..), Options(..),
 import           Options.Applicative
 import           Prelude                        hiding (lines)
 import           StackageToHackage.Hackage      (printFreeze, printProject,
-                                                 stackToCabal)
+                                                 stackToCabal, FreezeRemotes(..))
 import           StackageToHackage.Stackage     (localDirs, readStack)
 import           System.Directory               (doesDirectoryExist,
                                                  doesFileExist,
@@ -39,15 +39,23 @@ version = CURRENT_PACKAGE_VERSION
 version = "unknown"
 #endif
 
-data Opts = Input (Maybe FilePath)
+data Opts = Opts
+  { input :: (Maybe FilePath)
+  , freezeRemotes :: FreezeRemotes
+  }
 
 optsP :: Parser Opts
-optsP = Input <$> optional
-  (strOption
-    (short 'f' <> long "file" <> metavar "STACK_FILE" <> help
-      "Path to stack.yaml (optional, uses current dir by default)"
+optsP = Opts <$>
+  (optional
+    (strOption
+      (short 'f' <> long "file" <> metavar "STACK_FILE" <> help
+        "Path to stack.yaml (optional, uses current dir by default)"
+      )
     )
+  ) <*>
+  (FreezeRemotes <$> switch (short 'r' <> long "freeze-remotes" <> help "Additionally freeze all remote repos (slower, but more correct, because remote repos also can be hackage deps)")
   )
+
 
 
 main :: IO ()
@@ -56,15 +64,15 @@ main = do
         version
         (long "version" <> help "Show version" <> hidden)
 
-  (stack, dir) <- customExecParser (prefs showHelpOnError) (info (optsP <**> helper <**> versionHelp) idm) >>= \case
-    Input (Just fp) -> do
+  (stack, dir, fremotes) <- customExecParser (prefs showHelpOnError) (info (optsP <**> helper <**> versionHelp) idm) >>= \case
+    Opts (Just fp) fremotes -> do
       dir <- makeAbsolute (takeDirectory fp)
       stack <- readStack =<< BS.readFile fp
-      pure (stack, dir)
-    Input Nothing   -> do
+      pure (stack, dir, fremotes)
+    Opts Nothing fremotes -> do
       dir <- getCurrentDirectory
       stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
-      pure (stack, dir)
+      pure (stack, dir, fremotes)
   let subs = NEL.toList $ (dir </>) <$> localDirs stack
   hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
   _ <- traverse runHpack hpacks
@@ -72,7 +80,7 @@ main = do
   -- we could use the hpack output to figure out which cabal files to use, but
   -- that misses projects that have explicit .cabal files, so just scan.
   let ignore = (mkPackageName . takeBaseName) <$> cabals
-  (project, freeze) <- stackToCabal ignore dir stack
+  (project, freeze) <- stackToCabal fremotes ignore dir stack
   hack <- extractHack . decodeUtf8 <$> BS.readFile (dir </> "stack.yaml")
   BS.writeFile (dir </> "cabal.project") (encodeUtf8 $ printProject project hack)
   BS.writeFile (dir </> "cabal.project.freeze") (encodeUtf8 $ printFreeze freeze)
