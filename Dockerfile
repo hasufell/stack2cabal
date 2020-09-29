@@ -1,17 +1,30 @@
-FROM haskell:8.4.4
+FROM alpine:3.12 as builder
 
-# TODO image with multiple ghc
+# install ghc and stack
+RUN \
+  apk add --no-cache git curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl && \
+  apk add --no-cache zlib zlib-dev zlib-static ncurses-static && \
+  curl https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup > /usr/bin/ghcup && \
+  chmod +x /usr/bin/ghcup && \
+  ghcup -v install ghc 8.8.4 && \
+  ghcup -v set ghc 8.8.4 && \
+  ghcup -v install cabal
 
-# docker build . -t registry.gitlab.com/tseenshe/stack2cabal:8.4.4 --squash
-# docker push registry.gitlab.com/tseenshe/stack2cabal:8.4.4
+COPY . /app
 
-RUN apt-get -y update &&\
-    apt-get -y install libssl-dev &&\
-    apt-get clean
+# install app
+RUN \
+  cd /app && \
+  mkdir -p ~/.local/bin && \
+  export PATH="/root/.ghcup/bin:$PATH" && \
+  cabal update && \
+  cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always --ghc-options='-split-sections -optl-static'
 
-# adds a base cache: gitlab caches are unreliable
-COPY . /workdir
-RUN cd /workdir &&\
-    cabal v2-update &&\
-    cabal v2-build all --only-dependencies &&\
-    cd /root && rm -rf /workdir
+# strip binary
+RUN strip -s /root/.local/bin/stack2cabal
+
+FROM alpine:3.12
+
+COPY --from=builder /root/.local/bin/stack2cabal /usr/bin/stack2cabal
+
+ENTRYPOINT ["/usr/bin/stack2cabal"]

@@ -1,4 +1,5 @@
 ![Haskell CI](https://github.com/hasufell/stack2cabal/workflows/Haskell%20CI/badge.svg)
+![Docker build](https://github.com/hasufell/stack2cabal/workflows/Docker%20build/badge.svg)
 [![license](https://img.shields.io/github/license/hasufell/stack2cabal.svg)](LICENSE)
 
 # stack2cabal
@@ -11,17 +12,35 @@ which seems abandoned/inactive.
 Clone the repo and build with either cabal or stack or see the [release page](https://github.com/hasufell/stack2cabal/releases)
 for binaries.
 
+### Docker
+
+```sh
+docker pull hasufell/stack2cabal
+```
+
 ## Usage
 
 To convert a `stack.yaml` to `cabal.project` simply cd to the project directory and run:
 
-```
+```sh
 stack2cabal
 ```
 
 This will also create a `cabal.project.freeze` based on the stack resolver.
 
 Also see `stack2cabal --help` for further options.
+
+### Docker
+
+```sh
+docker run --rm \
+  -v /etc/passwd:/etc/passwd \
+  -u `id -u`:`id -g` \
+  -v `pwd`:`pwd` \
+  -w `pwd` \
+  --tmpfs "$HOME/.cache" \
+  hasufell/stack2cabal
+```
 
 ## Limitations
 
