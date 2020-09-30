@@ -31,3 +31,6 @@ source-repository-package
 
 allow-older: *
 allow-newer: *
+
+package *
+    flags: -O2

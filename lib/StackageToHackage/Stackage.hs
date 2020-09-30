@@ -3,6 +3,7 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
 
 -- | Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
 -- the actual ADT, but stack isn't available as a library that we can build from
@@ -43,7 +44,7 @@ data Stack = Stack
   , packages  :: [Package]
   , extraDeps :: [Dep]
   , flags     :: Flags
-  -- TODO ghcOptions
+  , ghcOptions :: GhcOptions
   } deriving (Show)
 
 localDirs :: Stack -> NonEmpty FilePath
@@ -97,8 +98,23 @@ newtype Flags = Flags (Map PkgName (Map FlagName Bool))
               deriving (Show)
               deriving newtype (FromYAML, Semigroup)
 
+newtype PackageGhcOpts = PackageGhcOpts (Map PkgId GhcFlags)
+              deriving (Show)
+              deriving newtype (FromYAML, Semigroup, Monoid)
+
+data GhcOptions = GhcOptions
+  { locals :: Maybe GhcFlags
+  , targets :: Maybe GhcFlags  -- cabal doesn't know about these
+  , everything :: Maybe GhcFlags
+  , packagesGhcOpts :: PackageGhcOpts
+  } deriving (Show)
+
+emptyGhcOptions :: GhcOptions
+emptyGhcOptions = GhcOptions Nothing Nothing Nothing mempty
+
 type PkgName = Text
 type FlagName = Text
+type GhcFlags = Text
 
 -- the format used at https://github.com/commercialhaskell/stackage-snapshots
 -- which is similar to the Resolver format.
@@ -210,6 +226,28 @@ instance FromYAML Stack where
        <*> m .:? "packages" .!= mempty
        <*> m .:? "extra-deps" .!= mempty
        <*> m .:? "flags" .!= (Flags M.empty)
+       <*> m .:? "ghc-options" .!= emptyGhcOptions
+
+instance FromYAML GhcOptions where
+  parseYAML = withMap "GhcOptions" $ \m -> do
+    locals <- m .:? "$locals"
+    targets <- m .:? "$targets"
+    everything <- m .:? "$everything"
+    packagesGhcOpts <- fmap PackageGhcOpts $
+      M.foldrWithKey (\k a action -> do
+          m1 <- withStr "val" (\val -> do
+              key <- parseYAML k
+              pure (M.singleton key val)) a
+          m2 <- action
+          pure (m1 <> m2)
+          ) (pure M.empty) (newMap m)
+    pure $ GhcOptions{..}
+   where
+    newMap m =
+      node "$everything" `M.delete`
+        (node "$targets" `M.delete`
+          (node "$locals" `M.delete` m))
+    node = Scalar fakePos . SStr
 
 instance FromYAML Git where
   parseYAML = withMap "Git" $ \m -> Git
@@ -260,14 +298,16 @@ instance FromYAML NewResolver where
         case M.lookup (Scalar fakePos (SStr k1)) m1 of
           Just (Mapping _ _ m2) -> m2 .: k2
           _ -> fail $ "key " ++ show k1 ++ " not found"
-      fakePos :: Pos
-      fakePos = Pos
-        { posByteOffset = -1 , posCharOffset = -1  , posLine = 1 , posColumn = 0 }
 
-newtype PkgId = PkgId { unPkgId :: PackageIdentifier } deriving (Show)
+newtype PkgId = PkgId { unPkgId :: PackageIdentifier } deriving (Show, Ord, Eq)
 instance FromYAML PkgId where
   parseYAML = withStr "PackageIdentifier" $ \s ->
     PkgId <$> (hoistMaybe . simpleParse . unpack) (takeWhile ('@' /=) s)
 
 hoistMaybe :: Alternative m => Maybe a -> m a
 hoistMaybe = maybe empty pure
+
+fakePos :: Pos
+fakePos = Pos
+  { posByteOffset = -1 , posCharOffset = -1  , posLine = 1 , posColumn = 0 }
+

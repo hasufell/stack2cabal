@@ -84,7 +84,8 @@ main = do
   let ignore = (mkPackageName . takeBaseName) <$> cabals
   (project, freeze) <- stackToCabal fremotes ignore dir stack
   hack <- extractHack . decodeUtf8 <$> BS.readFile (dir </> "stack.yaml")
-  BS.writeFile (dir </> "cabal.project") (encodeUtf8 $ printProject pin project hack)
+  printText <- printProject pin project hack
+  BS.writeFile (dir </> "cabal.project") (encodeUtf8 printText)
   BS.writeFile (dir </> "cabal.project.freeze") (encodeUtf8 $ printFreeze freeze)
   where
     hpackInput sub = sub </> "package.yaml"
