@@ -40,17 +40,29 @@ version = "unknown"
 #endif
 
 data Opts = Opts
-  { input :: (Maybe FilePath)
+  { input :: FilePath
+  , output :: FilePath
   , freezeRemotes :: FreezeRemotes
   , pinGHC :: PinGHC
   }
 
 optsP :: Parser Opts
 optsP = Opts <$>
-  (optional
+  (
     (strOption
-      (short 'f' <> long "file" <> metavar "STACK_FILE" <> help
-        "Path to stack.yaml (optional, uses current dir by default)"
+      (short 'f' <> long "file" <> metavar "STACK_YAML" <> help
+        "Path to stack.yaml file"
+        <> value "stack.yaml"
+        <> showDefaultWith show
+      )
+    )
+  ) <*>
+  (
+    (strOption
+      (short 'o' <> long "output-file" <> metavar "CABAL_PROJECT" <> help
+        "Path to output file"
+        <> value "cabal.project"
+        <> showDefaultWith show
       )
     )
   ) <*>
@@ -66,27 +78,28 @@ main = do
         version
         (long "version" <> help "Show version" <> hidden)
 
-  (stack, dir, fremotes, pin) <- customExecParser (prefs showHelpOnError) (info (optsP <**> helper <**> versionHelp) idm) >>= \case
-    Opts (Just fp) fremotes pin -> do
-      dir <- makeAbsolute (takeDirectory fp)
-      stack <- readStack =<< BS.readFile fp
-      pure (stack, dir, fremotes, pin)
-    Opts Nothing fremotes pin -> do
-      dir <- getCurrentDirectory
-      stack <- readStack =<< BS.readFile (dir </> "stack.yaml")
-      pure (stack, dir, fremotes, pin)
-  let subs = NEL.toList $ (dir </>) <$> localDirs stack
-  hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
-  _ <- traverse runHpack hpacks
-  cabals <- concat <$> traverse (globExt ".cabal") subs
-  -- we could use the hpack output to figure out which cabal files to use, but
-  -- that misses projects that have explicit .cabal files, so just scan.
-  let ignore = (mkPackageName . takeBaseName) <$> cabals
-  (project, freeze) <- stackToCabal fremotes ignore dir stack
-  hack <- extractHack . decodeUtf8 <$> BS.readFile (dir </> "stack.yaml")
-  printText <- printProject pin project hack
-  BS.writeFile (dir </> "cabal.project") (encodeUtf8 printText)
-  BS.writeFile (dir </> "cabal.project.freeze") (encodeUtf8 $ printFreeze freeze)
+  customExecParser (prefs showHelpOnError) (info (optsP <**> helper <**> versionHelp) idm) >>= \case
+    Opts inFile outFile fremotes pin -> do
+      -- read stack file
+      inDir <- makeAbsolute (takeDirectory inFile)
+      stack <- readStack =<< BS.readFile inFile
+
+      -- get cabal files
+      let subs = NEL.toList $ (inDir </>) <$> localDirs stack
+      hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
+      _ <- traverse runHpack hpacks
+      cabals <- concat <$> traverse (globExt ".cabal") subs
+
+      -- run conversion
+      let ignore = (mkPackageName . takeBaseName) <$> cabals
+      (project, freeze) <- stackToCabal fremotes ignore inDir stack
+      hack <- extractHack . decodeUtf8 <$> BS.readFile (inDir </> "stack.yaml")
+      printText <- printProject pin project hack
+
+      -- write files
+      outDir <- makeAbsolute (takeDirectory outFile)
+      BS.writeFile (outDir </> outFile) (encodeUtf8 printText)
+      BS.writeFile (outDir </> (outFile <> ".freeze")) (encodeUtf8 $ printFreeze freeze)
   where
     hpackInput sub = sub </> "package.yaml"
     opts = defaultOptions {optionsForce = Force}
