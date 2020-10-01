@@ -73,14 +73,14 @@ jobs:
       run: cabal test all
       shell: bash
 
+    - name: Build haddock
+      run: cabal haddock lib:stack2cabal
+      shell: bash
+
     - name: Run shelltest tests
       # windows prints paths differently
       if: matrix.os != 'windows-latest'
       run: shelltest shelltest.test
-      shell: bash
-
-    - name: Build haddock
-      run: cabal haddock
       shell: bash
 
     - if: always()
