@@ -4,10 +4,11 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
+{-# LANGUAGE RecordWildCards #-}
 
 module Main where
 
-import           Control.Monad                  (filterM)
+import           Control.Monad                  (filterM, when, void)
 import           Control.Monad.Extra            (ifM)
 import qualified Data.ByteString                as BS
 import qualified Data.List.NonEmpty             as NEL
@@ -26,7 +27,6 @@ import           StackageToHackage.Hackage      (printFreeze, printProject,
 import           StackageToHackage.Stackage     (localDirs, readStack)
 import           System.Directory               (doesDirectoryExist,
                                                  doesFileExist,
-                                                 getCurrentDirectory,
                                                  listDirectory,
                                                  makeAbsolute)
 import           System.FilePath                (takeBaseName, takeDirectory, takeExtension,
@@ -44,6 +44,7 @@ data Opts = Opts
   , output :: FilePath
   , freezeRemotes :: FreezeRemotes
   , pinGHC :: PinGHC
+  , runHpack :: Bool
   }
 
 optsP :: Parser Opts
@@ -68,7 +69,9 @@ optsP = Opts <$>
   ) <*>
   (FreezeRemotes <$> switch (short 'r' <> long "freeze-remotes" <> help "Additionally freeze all remote repos (slower, but more correct, because remote repos also can be hackage deps)")
   ) <*>
-  ((PinGHC . not) <$> switch (short 'n' <> long "no-pin-ghc" <> help "Don't pin the GHC version"))
+  ((PinGHC . not) <$> switch (long "no-pin-ghc" <> help "Don't pin the GHC version")
+  ) <*>
+  (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
 
 
 
@@ -79,31 +82,32 @@ main = do
         (long "version" <> help "Show version" <> hidden)
 
   customExecParser (prefs showHelpOnError) (info (optsP <**> helper <**> versionHelp) idm) >>= \case
-    Opts inFile outFile fremotes pin -> do
+    Opts {..} -> do
       -- read stack file
-      inDir <- makeAbsolute (takeDirectory inFile)
-      stack <- readStack =<< BS.readFile inFile
+      inDir <- makeAbsolute (takeDirectory input)
+      stack <- readStack =<< BS.readFile input
 
       -- get cabal files
       let subs = NEL.toList $ (inDir </>) <$> localDirs stack
-      hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
-      _ <- traverse runHpack hpacks
+      when runHpack $ do
+        hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
+        void $ traverse execHpack hpacks
       cabals <- concat <$> traverse (globExt ".cabal") subs
 
       -- run conversion
       let ignore = (mkPackageName . takeBaseName) <$> cabals
-      (project, freeze) <- stackToCabal fremotes ignore inDir stack
+      (project, freeze) <- stackToCabal freezeRemotes ignore inDir stack
       hack <- extractHack . decodeUtf8 <$> BS.readFile (inDir </> "stack.yaml")
-      printText <- printProject pin project hack
+      printText <- printProject pinGHC project hack
 
       -- write files
-      outDir <- makeAbsolute (takeDirectory outFile)
-      BS.writeFile (outDir </> outFile) (encodeUtf8 printText)
-      BS.writeFile (outDir </> (outFile <> ".freeze")) (encodeUtf8 $ printFreeze freeze)
+      outDir <- makeAbsolute (takeDirectory output)
+      BS.writeFile (outDir </> output) (encodeUtf8 printText)
+      BS.writeFile (outDir </> (output <> ".freeze")) (encodeUtf8 $ printFreeze freeze)
   where
     hpackInput sub = sub </> "package.yaml"
     opts = defaultOptions {optionsForce = Force}
-    runHpack sub = hpackResult $ setTarget (hpackInput sub) opts
+    execHpack sub = hpackResult $ setTarget (hpackInput sub) opts
 
 -- Backdoor allowing the stack.yaml to contain arbitrary text that will be
 -- included in the cabal.project
