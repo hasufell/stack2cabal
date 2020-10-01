@@ -27,4 +27,7 @@ FROM alpine:3.12
 
 COPY --from=builder /root/.local/bin/stack2cabal /usr/bin/stack2cabal
 
+RUN \
+  apk add --no-cache git
+
 ENTRYPOINT ["/usr/bin/stack2cabal"]
