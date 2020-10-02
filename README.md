@@ -14,6 +14,10 @@ for binaries.
 
 ### Docker
 
+[![Docker pulls](https://img.shields.io/docker/pulls/hasufell/stack2cabal.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
+[![Docker stars](https://img.shields.io/docker/stars/hasufell/stack2cabal.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
+[![Docker image size](https://img.shields.io/docker/image-size/hasufell/stack2cabal/latest.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
+
 ```sh
 docker pull hasufell/stack2cabal
 ```
