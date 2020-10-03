@@ -194,11 +194,12 @@ getPackageIdents (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> 
     callProcess "git" ["clone", repo, dir]
     callProcess "git" ["-C", dir, "reset", "--hard", commit]
     forM subdirs $ \subdir -> do
-      (Just pid) <- getPackageIdent subdir
+      (Just pid) <- getPackageIdent (dir </> subdir)
       pure pid
 
 -- | Get package identifier from project directory.
-getPackageIdent :: FilePath -> IO (Maybe PackageIdentifier)
+getPackageIdent :: FilePath  -- ^ absolute path to project repository
+                -> IO (Maybe PackageIdentifier)
 getPackageIdent dir = do
   cabalFile <- headMay <$> getDirectoryFiles dir ["*.cabal"]
   forM cabalFile $ \f->
