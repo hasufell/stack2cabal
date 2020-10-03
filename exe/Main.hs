@@ -43,7 +43,7 @@ version = "unknown"
 
 data Opts = Opts
   { input :: FilePath
-  , output :: FilePath
+  , output :: Maybe FilePath
   , freezeRemotes :: FreezeRemotes
   , pinGHC :: PinGHC
   , runHpack :: Bool
@@ -61,13 +61,12 @@ optsP = Opts <$>
     )
   ) <*>
   (
-    (strOption
+    (optional (strOption
       (short 'o' <> long "output-file" <> metavar "CABAL_PROJECT" <> help
-        "Path to output file"
-        <> value "cabal.project"
+        "Path to output file (default depends on input file)"
         <> showDefaultWith show
       )
-    )
+    ))
   ) <*>
   (FreezeRemotes <$> switch (short 'r' <> long "freeze-remotes" <> help "Additionally freeze all remote repos (slower, but more correct, because remote repos also can be hackage deps)")
   ) <*>
@@ -105,9 +104,11 @@ main = do
       printText <- printProject pinGHC project hack
 
       -- write files
-      outDir <- makeAbsolute (takeDirectory output)
-      BS.writeFile (outDir </> output) (encodeUtf8 printText)
-      BS.writeFile (outDir </> (output <> ".freeze")) (encodeUtf8 $ printFreeze freeze)
+      outFile <- case output of
+        Just output' -> fmap (</> "cabal.project") $ makeAbsolute (takeDirectory output')
+        Nothing -> pure (inDir </> "cabal.project")
+      BS.writeFile outFile (encodeUtf8 printText)
+      BS.writeFile (outFile <> ".freeze") (encodeUtf8 $ printFreeze freeze)
   where
     hpackInput sub = sub </> "package.yaml"
     opts = defaultOptions {optionsForce = Force}
