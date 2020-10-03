@@ -88,9 +88,7 @@ jobs:
         shell: bash
 
       - name: Run shelltest tests
-        # windows prints paths differently
-        if: matrix.os != 'windows-latest'
-        run: shelltest shelltest.test
+        run: cabal exec --offline --verbose=0 sh -- -c 'shelltest shelltest.test'
         shell: bash
 
       - run: echo ::set-env name=HOME::$HOME
@@ -163,10 +161,16 @@ jobs:
         run: cabal test --ghc-options='-split-sections -optl-static' all
         shell: bash
 
+      - if: matrix.os == 'macOS-latest'
+        name: Install git
+        run: brew install git
+
+      - if: matrix.os == 'windows-latest'
+        name: Install git
+        run: choco install git
+
       - name: Run shelltest tests
-        # windows prints paths differently
-        if: matrix.os != 'windows-latest'
-        run: shelltest shelltest.test
+        run: cabal exec --offline --verbose=0 sh -- -c 'shelltest shelltest.test'
         shell: bash
 
       - run: echo ::set-env name=HOME::$HOME

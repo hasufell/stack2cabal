@@ -78,9 +78,7 @@ jobs:
       shell: bash
 
     - name: Run shelltest tests
-      # windows prints paths differently
-      if: matrix.os != 'windows-latest'
-      run: shelltest shelltest.test
+      run: cabal exec --offline --verbose=0 sh -- -c 'shelltest shelltest.test'
       shell: bash
 
     - if: always()
@@ -122,7 +120,7 @@ jobs:
           ${{ runner.os }}-
 
     - name: Install shelltestrunner
-      run: stack install --flag regex-posix:_regex-posix-clib shelltestrunner
+      run: stack --local-bin-path=$HOME/.local/bin install --flag regex-posix:_regex-posix-clib shelltestrunner
       shell: bash
 
     - name: Install dependencies
@@ -146,13 +144,15 @@ jobs:
       name: Install git
       run: brew install git
 
+    - if: matrix.os == 'windows-latest'
+      name: Install git
+      run: choco install git
+
     - name: Run tests
       run: stack test
       shell: bash
 
     - name: Run shelltest tests
-      # windows prints paths differently
-      if: matrix.os != 'windows-latest'
-      run: shelltest shelltest.test
+      run: stack exec sh -- -c 'shelltest shelltest.test'
       shell: bash
 
