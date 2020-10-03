@@ -30,6 +30,7 @@ common deps
     , cabal-install-parsers
     , containers
     , directory
+    , exceptions
     , extra                 >=1.6.13
     , filepath
     , filepattern           >=0.1.2

@@ -16,6 +16,7 @@ module StackageToHackage.Hackage
 
 import           Cabal.Index                    (PackageInfo)
 import           Control.Monad                  (forM)
+import           Control.Monad.Catch            (handleIOError)
 import           Data.List                      (sort, unionBy)
 import           Data.List.Extra                (nubOrdOn)
 import           Data.List.NonEmpty             (NonEmpty ((:|)))
@@ -61,6 +62,7 @@ stackToCabal (FreezeRemotes freezeRemotes) ignore hackageDeps dir stack = do
       project = genProject stack resolver
   localForks <-
       fmap (nubOrdOn pkgName . filter (flip isHackageDep hackageDeps . pkgName) . catMaybes)
+    . handleIOError (\_ -> pure [])
     . traverse getPackageIdent
     . NEL.toList
     . pkgs
