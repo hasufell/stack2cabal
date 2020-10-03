@@ -15,6 +15,7 @@ module StackageToHackage.Hackage
 
 
 import           Cabal.Index                    (PackageInfo)
+import           Control.Exception              (throwIO)
 import           Control.Monad                  (forM)
 import           Control.Monad.Catch            (handleIOError)
 import           Data.List                      (sort, unionBy)
@@ -37,10 +38,14 @@ import           Distribution.Types.PackageName (PackageName, unPackageName, mkP
 import           Distribution.Verbosity         (silent)
 import           Safe                           (headMay)
 import           StackageToHackage.Stackage
+import           System.Exit                    (ExitCode (..))
 import           System.FilePath                ((</>),addTrailingPathSeparator)
 import           System.FilePattern.Directory   (getDirectoryFiles)
+import           System.IO                      (stderr)
 import           System.IO.Temp                 (withSystemTempDirectory)
-import           System.Process                 (callProcess)
+import           System.Process                 (withCreateProcess,
+                                                 proc, waitForProcess, StdStream (..),
+                                                 CreateProcess (..))
 
 type HackagePkgs = ML.Map PackageName PackageInfo
 
@@ -198,6 +203,15 @@ getPackageIdents (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> 
     forM subdirs $ \subdir -> do
       (Just pid) <- getPackageIdent (dir </> subdir)
       pure pid
+ where
+  callProcess :: FilePath -> [String] -> IO ()
+  callProcess cmd args = do
+      exit_code <- withCreateProcess
+                     (proc cmd args) { delegate_ctlc = True, std_out = (UseHandle stderr) }
+                        $ \_ _ _ p -> waitForProcess p
+      case exit_code of
+        ExitSuccess   -> return ()
+        ExitFailure r -> throwIO . userError $ ("Process \"" <> cmd <> "\" failed with: " <> show r)
 
 -- | Get package identifier from project directory.
 getPackageIdent :: FilePath  -- ^ absolute path to project repository
