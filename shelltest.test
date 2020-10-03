@@ -1,3 +1,6 @@
+$$$ stack2cabal --version
+>>>
+1.0.9
 $$$ stack2cabal -f tests/hpack/stack.yaml && git diff tests/hpack
 >>>2 //
 $$$ stack2cabal -f tests/self/stack.yaml && git diff tests/self

@@ -1,5 +1,13 @@
 # Revision history for stack2cabal
 
+## 1.0.9 -- ????-??-??
+
+- Inspect remote repository package names and exclude them from freeze file (fixes #1), disable with `--no-inspect-remotes`
+- Add `--no-pin-ghc` option
+- Add `--no-run-hpack` option
+- Add `--output-file` option
+- Also parse ghc-options wrt #9
+
 ## 1.0.8 -- 2020-09-25
 
 - fix not parsing local deps [by d86leader](https://gitlab.com/d86leader/stack2cabal/-/commit/bd2370c8a453d2dec5546ab936604b2d7d9f6be2)
