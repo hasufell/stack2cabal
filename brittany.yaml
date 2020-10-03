@@ -1,0 +1,33 @@
+conf_layout:
+  lconfig_columnAlignMode:
+    tag: ColumnAlignModeDisabled
+  lconfig_indentPolicy: IndentPolicyLeft
+
+  lconfig_importColumn: 50
+  lconfig_allowSingleLineExportList: true
+  lconfig_importAsColumn: 50
+  lconfig_hangingTypeSignature: true
+  lconfig_indentListSpecial: true
+  lconfig_indentAmount: 4
+  lconfig_alignmentBreakOnMultiline: true
+  lconfig_cols: 80
+  lconfig_indentWhereSpecial: true
+
+conf_forward:
+  options_ghc:
+  - -XBangPatterns
+  - -XDataKinds
+  - -XExplicitForAll
+  - -XFlexibleContexts
+  - -XFlexibleInstances
+  - -XGADTs
+  - -XImplicitParams
+  - -XLambdaCase
+  - -XMultiWayIf
+  - -XPatternGuards
+  - -XQuasiQuotes
+  - -XRecursiveDo
+  - -XTemplateHaskell
+  - -XTupleSections
+  - -XTypeFamilies
+  - -XViewPatterns

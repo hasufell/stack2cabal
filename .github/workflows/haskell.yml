@@ -138,6 +138,14 @@ jobs:
       run: stack install --flag zlib:bundled-c-zlib
       shell: bash
 
+    - if: matrix.os == 'ubuntu-latest'
+      name: Install git
+      run: sudo apt-get install git
+
+    - if: matrix.os == 'macOS-latest'
+      name: Install git
+      run: brew install git
+
     - name: Run tests
       run: stack test
       shell: bash
