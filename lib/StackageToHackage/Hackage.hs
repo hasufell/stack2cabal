@@ -67,7 +67,7 @@ stackToCabal (FreezeRemotes freezeRemotes) ignore hackageDeps dir stack = do
     $ project
   let freeze = genFreeze resolver localForks ignore
   freezeAll <- if freezeRemotes
-               then freezeRemoteRepos project freeze
+               then freezeRemoteRepos project hackageDeps freeze
                else pure freeze
   pure (project, freezeAll)
 
@@ -205,14 +205,14 @@ getPackageIdent dir = do
     (package . packageDescription)
       <$> readGenericPackageDescription silent (dir </> f)
 
--- | Also freeze all remote repositories.
---
--- Note that this might update (and rightly so) the version of a hackage
--- dependency in the freeze file, if said dependency was also defined as a
--- git repo in e.g. stack.yaml.
-freezeRemoteRepos :: Project -> Freeze -> IO Freeze
-freezeRemoteRepos (Project { srcs }) (Freeze deps flags) = do
-  clonedDeps <- fmap concat $ forM srcs $ \src -> getPackageIdents src
+-- | Also freeze all remote repositories that are hackage deps.
+freezeRemoteRepos :: Project -> HackagePkgs -> Freeze -> IO Freeze
+freezeRemoteRepos (Project { srcs }) hackageDeps (Freeze deps flags) = do
+  clonedDeps <- fmap concat
+    $ forM srcs
+    $ \src -> fmap (filter (flip isHackageDep hackageDeps . pkgName))
+        . getPackageIdents
+        $ src
   let newDeps = fromHM $ H.union (toHM clonedDeps) (toHM deps)
   pure $ Freeze newDeps flags
  where
