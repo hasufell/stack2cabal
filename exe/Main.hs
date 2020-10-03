@@ -8,31 +8,24 @@
 
 module Main where
 
-import           Cabal.Index                    (cachedHackageMetadata)
 import           Control.Monad                  (filterM, when, void)
-import           Control.Monad.Extra            (ifM)
 import qualified Data.ByteString                as BS
 import qualified Data.List.NonEmpty             as NEL
 import           Data.Maybe                     (mapMaybe)
 import           Data.Text                      (Text)
 import qualified Data.Text                      as T
 import           Data.Text.Encoding             (decodeUtf8, encodeUtf8)
-import           Distribution.Types.PackageName (mkPackageName)
 import           Hpack                          (Force(..), Options(..),
                                                  defaultOptions, hpackResult,
                                                  setTarget)
 import           Options.Applicative
 import           Prelude                        hiding (lines)
 import           StackageToHackage.Hackage      (printFreeze, printProject,
-                                                 stackToCabal, FreezeRemotes(..), PinGHC(..),
-                                                 isHackageDep)
+                                                 stackToCabal)
 import           StackageToHackage.Stackage     (localDirs, readStack)
-import           System.Directory               (doesDirectoryExist,
-                                                 doesFileExist,
-                                                 listDirectory,
+import           System.Directory               (doesFileExist,
                                                  makeAbsolute)
-import           System.FilePath                (takeBaseName, takeDirectory, takeExtension,
-                                                 (</>))
+import           System.FilePath                (takeDirectory, (</>))
 
 version :: String
 #ifdef CURRENT_PACKAGE_VERSION
@@ -44,8 +37,8 @@ version = "unknown"
 data Opts = Opts
   { input :: FilePath
   , output :: Maybe FilePath
-  , freezeRemotes :: FreezeRemotes
-  , pinGHC :: PinGHC
+  , inspectRemotes :: Bool
+  , pinGHC :: Bool
   , runHpack :: Bool
   }
 
@@ -68,9 +61,9 @@ optsP = Opts <$>
       )
     ))
   ) <*>
-  (FreezeRemotes <$> switch (short 'r' <> long "freeze-remotes" <> help "Additionally freeze all remote repos that are also hackage packages (slower, but moret correct)")
+  (not <$> switch (long "no-inspect-remotes" <> help "Don't check package names from remote git sources (this is faster, but may leave incorrect versions in cabal.project.freeze if remote packages overwrite stack resolver versions)")
   ) <*>
-  ((PinGHC . not) <$> switch (long "no-pin-ghc" <> help "Don't pin the GHC version")
+  (not <$> switch (long "no-pin-ghc" <> help "Don't pin the GHC version")
   ) <*>
   (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
 
@@ -88,18 +81,13 @@ main = do
       inDir <- makeAbsolute (takeDirectory input)
       stack <- readStack =<< BS.readFile input
 
-      -- get cabal files
       let subs = NEL.toList $ (inDir </>) <$> localDirs stack
       when runHpack $ do
         hpacks <- filterM (\d -> doesFileExist $ hpackInput d) $ subs
         void $ traverse execHpack hpacks
-      cabals <- concat <$> traverse (globExt ".cabal") subs
 
       -- run conversion
-      hackageDeps <- cachedHackageMetadata
-      let ignore = filter (not . flip isHackageDep hackageDeps) $ (mkPackageName . takeBaseName)
-            <$> cabals
-      (project, freeze) <- stackToCabal freezeRemotes ignore hackageDeps inDir stack
+      (project, freeze) <- stackToCabal inspectRemotes inDir stack
       hack <- extractHack . decodeUtf8 <$> BS.readFile (inDir </> "stack.yaml")
       printText <- printProject pinGHC project hack
 
@@ -114,6 +102,7 @@ main = do
     opts = defaultOptions {optionsForce = Force}
     execHpack sub = hpackResult $ setTarget (hpackInput sub) opts
 
+
 -- Backdoor allowing the stack.yaml to contain arbitrary text that will be
 -- included in the cabal.project
 extractHack :: Text -> Maybe Text
@@ -124,9 +113,3 @@ extractHack (T.split ('\n' ==) -> lines) =
   in if null verbatim
      then Nothing
      else Just $ T.intercalate "\n" verbatim
-
-globExt :: String -> FilePath -> IO [FilePath]
-globExt ext path = do
-  files <- ifM (doesDirectoryExist path) (listDirectory path) (pure [])
-  pure $ filter ((ext ==) . takeExtension) files
-
