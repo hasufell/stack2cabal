@@ -68,7 +68,7 @@ optsP = Opts <$>
       )
     ))
   ) <*>
-  (FreezeRemotes <$> switch (short 'r' <> long "freeze-remotes" <> help "Additionally freeze all remote repos (slower, but more correct, because remote repos also can be hackage deps)")
+  (FreezeRemotes <$> switch (short 'r' <> long "freeze-remotes" <> help "Additionally freeze all remote repos that are also hackage packages (slower, but moret correct)")
   ) <*>
   ((PinGHC . not) <$> switch (long "no-pin-ghc" <> help "Don't pin the GHC version")
   ) <*>
