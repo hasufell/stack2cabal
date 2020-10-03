@@ -48,7 +48,9 @@ docker run --rm \
 
 ## Notes
 
-Hackage packages that are specified as git repositories in e.g. `extra-deps` might
+- `stack2cabal` reads the local hackage index state (and caches the results in `XDG_CACHE/cabal-parsers`). This requires that `cabal update` was run at least once. Initial load may take a few seconds, subsequent ones should be faster.
+
+- Hackage packages that are specified as git repositories in e.g. `extra-deps` might
 have a different version than the stack resolver. `stack2cabal` will still record the
 version of the stack resolver in `cabal.project.freeze` unless you pass `--freeze-remotes`
 (which takes longer time).

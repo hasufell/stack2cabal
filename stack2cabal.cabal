@@ -27,6 +27,7 @@ common deps
     , base                  >=4.10    && <5.0
     , bytestring
     , Cabal                 >=3.0     && <3.4
+    , cabal-install-parsers
     , containers
     , directory
     , extra                 >=1.6.13

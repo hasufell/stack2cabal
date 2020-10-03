@@ -6,17 +6,21 @@
 -- | A simplistic model of cabal multi-package files and convertors from Stackage.
 module StackageToHackage.Hackage
   ( stackToCabal
+  , isHackageDep
   , Project(..), printProject
   , Freeze(..), printFreeze
   , FreezeRemotes(..)
   , PinGHC(..)
   ) where
 
+
+import           Cabal.Index                    (PackageInfo)
 import           Control.Monad                  (forM)
-import           Data.List                      (sort)
+import           Data.List                      (sort, unionBy)
 import           Data.List.Extra                (nubOrdOn)
 import           Data.List.NonEmpty             (NonEmpty ((:|)))
 import qualified Data.List.NonEmpty             as NEL
+import qualified Data.Map.Lazy                  as ML
 import qualified Data.Map.Strict                as M
 import           Data.Maybe                     (fromMaybe, mapMaybe, catMaybes)
 import           Data.Semigroup
@@ -37,6 +41,8 @@ import           System.FilePattern.Directory   (getDirectoryFiles)
 import           System.IO.Temp                 (withSystemTempDirectory)
 import           System.Process                 (callProcess)
 
+type HackagePkgs = ML.Map PackageName PackageInfo
+
 newtype FreezeRemotes = FreezeRemotes Bool
 
 newtype PinGHC = PinGHC Bool
@@ -44,15 +50,22 @@ newtype PinGHC = PinGHC Bool
 -- | Converts a stack.yaml (and list of local packages) to cabal.project and
 -- cabal.project.freeze.
 stackToCabal :: FreezeRemotes
-             -> [PackageName]
+             -> [PackageName] -- ^ ignore these (local non-hackage pkgs)
+             -> HackagePkgs
              -> FilePath
              -> Stack
              -> IO (Project, Freeze)
-stackToCabal (FreezeRemotes freezeRemotes) ignore dir stack = do
+stackToCabal (FreezeRemotes freezeRemotes) ignore hackageDeps dir stack = do
   resolvers <- unroll dir stack
   let resolver = sconcat resolvers
       project = genProject stack resolver
-      freeze = genFreeze resolver ignore
+  localForks <-
+      fmap (nubOrdOn pkgName . filter (flip isHackageDep hackageDeps . pkgName) . catMaybes)
+    . traverse getPackageIdent
+    . NEL.toList
+    . pkgs
+    $ project
+  let freeze = genFreeze resolver localForks ignore
   freezeAll <- if freezeRemotes
                then freezeRemoteRepos project freeze
                else pure freeze
@@ -159,10 +172,13 @@ printFreeze (Freeze deps (Flags flags)) =
 
 data Freeze = Freeze [PackageIdentifier] Flags deriving (Show)
 
-genFreeze :: Resolver -> [PackageName] -> Freeze
-genFreeze Resolver{deps, flags} ignore =
+genFreeze :: Resolver
+          -> [PackageIdentifier] -- ^ additional local hackage forks (vendored)
+          -> [PackageName]       -- ^ ignore these (local non-hackage deps)
+          -> Freeze
+genFreeze Resolver{deps, flags} localForks ignore =
   let pkgs = filter noSelfs $ unPkgId <$> mapMaybe pick deps
-      uniqpkgs = nubOrdOn pkgName pkgs
+      uniqpkgs = nubOrdOn pkgName (unionBy (\a b -> pkgName a == pkgName b) localForks pkgs)
    in Freeze uniqpkgs flags
   where pick (Hackage p)   = Just p
         pick (SourceDep _) = Nothing
@@ -204,3 +220,9 @@ freezeRemoteRepos (Project { srcs }) (Freeze deps flags) = do
   fromHM = fmap (\(a, b) -> PackageIdentifier (mkPackageName a) b) . H.toList
 
 
+-- | Whether this package is on hackage. This is checked against the local
+-- index.
+isHackageDep :: PackageName
+             -> HackagePkgs -- ^ the local index
+             -> Bool
+isHackageDep = ML.member

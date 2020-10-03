@@ -8,6 +8,7 @@
 
 module Main where
 
+import           Cabal.Index                    (cachedHackageMetadata)
 import           Control.Monad                  (filterM, when, void)
 import           Control.Monad.Extra            (ifM)
 import qualified Data.ByteString                as BS
@@ -23,7 +24,8 @@ import           Hpack                          (Force(..), Options(..),
 import           Options.Applicative
 import           Prelude                        hiding (lines)
 import           StackageToHackage.Hackage      (printFreeze, printProject,
-                                                 stackToCabal, FreezeRemotes(..), PinGHC(..))
+                                                 stackToCabal, FreezeRemotes(..), PinGHC(..),
+                                                 isHackageDep)
 import           StackageToHackage.Stackage     (localDirs, readStack)
 import           System.Directory               (doesDirectoryExist,
                                                  doesFileExist,
@@ -95,8 +97,10 @@ main = do
       cabals <- concat <$> traverse (globExt ".cabal") subs
 
       -- run conversion
-      let ignore = (mkPackageName . takeBaseName) <$> cabals
-      (project, freeze) <- stackToCabal freezeRemotes ignore inDir stack
+      hackageDeps <- cachedHackageMetadata
+      let ignore = filter (not . flip isHackageDep hackageDeps) $ (mkPackageName . takeBaseName)
+            <$> cabals
+      (project, freeze) <- stackToCabal freezeRemotes ignore hackageDeps inDir stack
       hack <- extractHack . decodeUtf8 <$> BS.readFile (inDir </> "stack.yaml")
       printText <- printProject pinGHC project hack
 
