@@ -5,41 +5,48 @@
 
 -- | A simplistic model of cabal multi-package files and convertors from Stackage.
 module StackageToHackage.Hackage
-  ( stackToCabal
-  , Project(..), printProject
-  , Freeze(..), printFreeze
-  ) where
+    ( Freeze(..)
+    , Project(..)
+    , printFreeze
+    , printProject
+    , stackToCabal
+    )
+where
 
+import StackageToHackage.Stackage
+import StackageToHackage.Stackage.Types
+import StackageToHackage.Hackage.Types
 
-import           Control.Exception              (throwIO)
-import           Control.Monad                  (forM)
-import           Control.Monad.Catch            (handleIOError)
-import           Data.List                      (nub, sort)
-import           Data.List.Extra                (nubOrdOn)
-import           Data.List.NonEmpty             (NonEmpty ((:|)))
-import qualified Data.List.NonEmpty             as NEL
-import qualified Data.Map.Strict                as M
-import           Data.Maybe                     (fromMaybe, mapMaybe, catMaybes)
-import           Data.Semigroup
-import           Data.Text                      (Text)
-import qualified Data.Text                      as T
-import           Distribution.PackageDescription.Parsec (readGenericPackageDescription)
-import           Distribution.Pretty            (prettyShow)
-import           Distribution.Types.GenericPackageDescription (GenericPackageDescription(..))
-import           Distribution.Types.PackageDescription (PackageDescription(..))
-import           Distribution.Types.PackageId   (PackageIdentifier(..))
-import           Distribution.Types.PackageName (PackageName, unPackageName)
-import           Distribution.Verbosity         (silent)
-import           Safe                           (headMay)
-import           StackageToHackage.Stackage
-import           System.Exit                    (ExitCode (..))
-import           System.FilePath                ((</>),addTrailingPathSeparator)
-import           System.FilePattern.Directory   (getDirectoryFiles)
-import           System.IO                      (hPutStrLn, stderr)
-import           System.IO.Temp                 (withSystemTempDirectory)
-import           System.Process                 (withCreateProcess,
-                                                 proc, waitForProcess, StdStream (..),
-                                                 CreateProcess (..))
+import Control.Exception (throwIO)
+import Control.Monad (forM)
+import Control.Monad.Catch (handleIOError)
+import Data.List (nub, sort)
+import Data.List.Extra (nubOrdOn)
+import Data.List.NonEmpty (NonEmpty((:|)))
+import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
+import Data.Semigroup
+import Data.Text (Text)
+import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
+import Distribution.Pretty (prettyShow)
+import Distribution.Types.GenericPackageDescription
+    (GenericPackageDescription(..))
+import Distribution.Types.PackageDescription (PackageDescription(..))
+import Distribution.Types.PackageId (PackageIdentifier(..))
+import Distribution.Types.PackageName (PackageName, unPackageName)
+import Distribution.Verbosity (silent)
+import Safe (headMay)
+import System.Exit (ExitCode(..))
+import System.FilePath ((</>), addTrailingPathSeparator)
+import System.FilePattern.Directory (getDirectoryFiles)
+import System.IO (hPutStrLn, stderr)
+import System.IO.Temp (withSystemTempDirectory)
+import System.Process
+    (withCreateProcess, proc, waitForProcess, StdStream(..), CreateProcess(..))
+
+import qualified Data.List.NonEmpty as NEL
+import qualified Data.Map.Strict as M
+import qualified Data.Text as T
+
 
 -- | Converts a stack.yaml (and list of local packages) to cabal.project and
 -- cabal.project.freeze.
@@ -48,173 +55,205 @@ stackToCabal :: Bool     -- ^ whether to inspect remotes
              -> Stack
              -> IO (Project, Freeze)
 stackToCabal inspectRemotes dir stack = do
-  resolvers <- unroll dir stack
-  let resolver = sconcat resolvers
-      project = genProject stack resolver
-  localPkgs <-
-      fmap catMaybes
-    . handleIOError (\_ -> hPutStrLn stderr
-        "Warning: failed to resolve local .cabal files" >> pure [])
-    . traverse (\f -> getPackageIdent (dir </> f))
-    . NEL.toList
-    . pkgs
-    $ project
-  remotePkgs <- if inspectRemotes
-                then handleIOError
-                    (\_ -> hPutStrLn stderr
-                        "Warning: failed to resolve remote git .cabal files" >> pure [])
-                    $ getRemotePkgs (srcs project)
-                else pure []
-  let ignore = sort . nub . fmap pkgName $ (localPkgs ++ remotePkgs)
-  let freeze = genFreeze resolver ignore
-  pure (project, freeze)
+    resolvers <- unroll dir stack
+    let resolver = sconcat resolvers
+        project = genProject stack resolver
+    localPkgs <-
+        fmap catMaybes
+        . handleIOError
+            (\_ -> hPutStrLn stderr "Warning: failed to resolve local .cabal files"
+                >> pure []
+            )
+        . traverse (\f -> getPackageIdent (dir </> f))
+        . NEL.toList
+        . pkgs
+        $ project
+    remotePkgs <- if inspectRemotes
+        then handleIOError (\_ -> hPutStrLn stderr
+            "Warning: failed to resolve remote git .cabal files"
+            >> pure []) $ getRemotePkgs (srcs project)
+        else pure []
+    let ignore = sort . nub . fmap pkgName $ (localPkgs ++ remotePkgs)
+    let freeze = genFreeze resolver ignore
+    pure (project, freeze)
+
 
 printProject :: Bool  -- ^ whether to pin GHC
              -> Project
              -> Maybe Text
              -> IO Text
 printProject pin (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
-  ghcOpts' <- printGhcOpts ghcOpts
-  pure $ T.concat $ [ "-- Generated by stackage-to-hackage\n\n"] <>
-         withCompiler <>
-         [ "packages:\n    ", packages, "\n\n"
-         , sources, "\n"
-         , "allow-older: *\n"
-         , "allow-newer: *\n"
-         ] <> ghcOpts' <> verbatim hack
+    ghcOpts' <- printGhcOpts ghcOpts
+    pure $ T.concat
+        $ ["-- Generated by stackage-to-hackage\n\n"]
+        <> withCompiler
+        <> [ "packages:\n    ", packages, "\n\n", sources
+           , "\n", "allow-older: *\n", "allow-newer: *\n"
+           ]
+        <> ghcOpts'
+        <> verbatim hack
   where
+    withCompiler :: [Text]
     withCompiler
-      | pin = ["with-compiler: ", ghc, "\n\n"]
-      | otherwise = []
+        | pin = ["with-compiler: ", ghc, "\n\n"]
+        | otherwise = []
+
+    verbatim :: Maybe Text -> [Text]
     verbatim Nothing = []
     verbatim (Just txt) = ["\n-- Verbatim\n", txt]
-    packages = T.intercalate "\n  , " (T.pack . addTrailingPathSeparator <$>
-                                     NEL.toList pkgs)
+
+    packages :: Text
+    packages = T.intercalate "\n  , " (T.pack . addTrailingPathSeparator <$> NEL.toList pkgs)
+
+    sources :: Text
     sources = T.intercalate "\n" (source =<< srcs)
-    source Git{repo, commit, subdirs} =
-      let base = T.concat [ "source-repository-package\n    "
-                        , "type: git\n    "
-                        , "location: ", repo, "\n    "
-                        , "tag: ", commit, "\n"]
-      in if null subdirs
-         then [base]
-         else (\d -> T.concat [base, "    subdir: ", d, "\n"]) <$> subdirs
+
+    source :: Git -> [Text]
+    source Git { repo, commit, subdirs } =
+        let base = T.concat
+                [ "source-repository-package\n    ", "type: git\n    ", "location: "
+                , repo, "\n    ", "tag: ", commit, "\n"
+                ]
+        in if null subdirs
+            then [base]
+            else (\d -> T.concat [base, "    subdir: ", d, "\n"]) <$> subdirs
 
     -- Get the ghc options. This requires IO, because we have to figure out
     -- the local package names.
+    printGhcOpts :: GhcOptions -> IO [GhcFlags]
     printGhcOpts (GhcOptions locals _ everything (PackageGhcOpts packagesGhcOpts)) = do
-      -- locals are basically pkgs since cabal-install-3.4.0.0
-      localsPrint <- case locals of
-        Just x -> fmap concat $ forM pkgs $ \pkg -> do
-          name <- fmap (unPackageName . pkgName) <$> getPackageIdent pkg
-          pure $ maybe []
-            (\n -> if M.member n $ M.mapKeys (unPackageName . pkgName . unPkgId)
-                                             packagesGhcOpts
-                   then []
-                   else ["\npackage ", T.pack n, "\n    ", "flags: ", x, "\n"]
-            )
-            name
-        Nothing -> pure []
-      let everythingPrint = case everything of
-            Just x -> ["\npackage ", "*", "\n    ", "flags: ", x, "\n"]
-            Nothing -> []
-      let pkgSpecificPrint = M.foldrWithKey
-            (\k a b -> ["\npackage "
-                       , (T.pack . unPackageName . pkgName . unPkgId $ k)
-                       , "\n    "
-                       , "flags: "
-                       , a
-                       , "\n"] <> b)
-            [] packagesGhcOpts
-      pure (everythingPrint <> localsPrint <> pkgSpecificPrint)
+        -- locals are basically pkgs since cabal-install-3.4.0.0
+        localsPrint <- case locals of
+            Just x -> fmap concat $ forM pkgs $ \pkg -> do
+                name <- fmap (unPackageName . pkgName)
+                    <$> getPackageIdent pkg
+                pure $ maybe []
+                    (\n -> if M.member n $ M.mapKeys
+                            (unPackageName . pkgName . unPkgId)
+                            packagesGhcOpts
+                        then []
+                        else [ "\npackage ", T.pack n, "\n    ", "flags: ", x, "\n" ]
+                    )
+                    name
+            Nothing -> pure []
+        let everythingPrint = case everything of
+                Just x -> ["\npackage ", "*", "\n    ", "flags: ", x, "\n"]
+                Nothing -> []
+        let pkgSpecificPrint = M.foldrWithKey
+                (\k a b -> [ "\npackage ", T.pack . unPackageName . pkgName . unPkgId $ k
+                    , "\n    "
+                    , "flags: "
+                    , a
+                    , "\n"
+                    ]
+                    <> b) [] packagesGhcOpts
+        pure (everythingPrint <> localsPrint <> pkgSpecificPrint)
 
-data Project = Project
-    { ghc :: Ghc
-    , pkgs :: (NonEmpty FilePath)
-    , srcs :: [Git]
-    , ghcOpts :: GhcOptions
-    } deriving (Show)
 
 genProject :: Stack -> Resolver -> Project
-genProject stack Resolver{compiler, deps} = Project
-  (fromMaybe (Ghc "ghc") compiler)
-  (localDirs stack `appendList` localDeps deps)
-  (nubOrdOn repo $ mapMaybe pickGit deps)
-  (ghcOptions stack)
+genProject stack Resolver { compiler, deps } = Project
+    (fromMaybe (Ghc "ghc") compiler)
+    (localDirs stack `appendList` localDeps deps)
+    (nubOrdOn repo $ mapMaybe pickGit deps)
+    (ghcOptions stack)
   where
-    pickGit (Hackage _ )  = Nothing
-    pickGit (LocalDep _)  = Nothing
+    pickGit :: Dep -> Maybe Git
+    pickGit (Hackage _) = Nothing
+    pickGit (LocalDep _) = Nothing
     pickGit (SourceDep g) = Just g
-    --
-    localDeps = catMaybes . map fromLocalDeps
+
+    localDeps :: [Dep] -> [FilePath]
+    localDeps = mapMaybe fromLocalDeps
+
+    fromLocalDeps :: Dep -> Maybe FilePath
     fromLocalDeps (Hackage _) = Nothing
     fromLocalDeps (SourceDep _) = Nothing
     fromLocalDeps (LocalDep d) = Just d
-    --
+
     appendList :: NonEmpty a -> [a] -> NonEmpty a
-    appendList (x:|xs) ys = x:|(xs++ys)
+    appendList (x :| xs) ys = x :| (xs ++ ys)
+
 
 printFreeze :: Freeze -> Text
-printFreeze (Freeze deps (Flags flags)) =
-  T.concat [ "constraints: ", constraints, "\n"]
+printFreeze (Freeze deps (Flags flags)) = T.concat
+    ["constraints: ", constraints, "\n"]
   where
+    spacing :: Text
     spacing = ",\n             "
+
+    constraints :: Text
     constraints = T.intercalate spacing (constrait <$> sort deps)
+
+    constrait :: PackageIdentifier -> Text
     constrait pkg =
-      let name = (T.pack . unPackageName . pkgName $ pkg)
-          ver  = (T.pack . prettyShow . pkgVersion $ pkg)
-          base = T.concat ["any.", name, " ==", ver]
-      in case M.lookup name flags of
-        Nothing      -> base
-        Just entries -> T.concat [name, " ", (custom entries), spacing, base]
-    custom (M.toList -> lst) = T.intercalate " " $ (renderFlag <$> lst)
-    renderFlag (name, True)  = "+" <> name
+        let name = (T.pack . unPackageName . pkgName $ pkg)
+            ver = (T.pack . prettyShow . pkgVersion $ pkg)
+            base = T.concat ["any.", name, " ==", ver]
+        in case M.lookup name flags of
+            Nothing -> base
+            Just entries ->
+                T.concat [name, " ", custom entries, spacing, base]
+
+    custom :: M.Map Text Bool -> Text
+    custom (M.toList -> lst) = T.intercalate " " (renderFlag <$> lst)
+
+    renderFlag :: (Text, Bool) -> Text
+    renderFlag (name, True) = "+" <> name
     renderFlag (name, False) = "-" <> name
 
-data Freeze = Freeze [PackageIdentifier] Flags deriving (Show)
 
 genFreeze :: Resolver
           -> [PackageName]       -- ^ ignore these (local packages)
           -> Freeze
-genFreeze Resolver{deps, flags} ignore =
-  let pkgs = filter noSelfs $ unPkgId <$> mapMaybe pick deps
-      uniqpkgs = nubOrdOn pkgName pkgs
-   in Freeze uniqpkgs flags
-  where pick (Hackage p)   = Just p
-        pick (SourceDep _) = Nothing
-        pick (LocalDep _) = Nothing
-        noSelfs (pkgName -> n) = notElem n ignore
+genFreeze Resolver { deps, flags } ignore =
+    let pkgs = filter noSelfs $ unPkgId <$> mapMaybe pick deps
+        uniqpkgs = nubOrdOn pkgName pkgs
+    in Freeze uniqpkgs flags
+  where
+    pick :: Dep -> Maybe PkgId
+    pick (Hackage p) = Just p
+    pick (SourceDep _) = Nothing
+    pick (LocalDep _) = Nothing
+
+    noSelfs :: PackageIdentifier -> Bool
+    noSelfs (pkgName -> n) = n `notElem` ignore
 
 
 -- | Acquire all package identifiers from a list of subdirs
 -- of a git repository.
 getRemotePkg :: Git -> IO [PackageIdentifier]
-getRemotePkg (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs)) =
-  withSystemTempDirectory "stack2cabal" $ \dir -> do
-    callProcess "git" ["clone", repo, dir]
-    callProcess "git" ["-C", dir, "reset", "--hard", commit]
-    forM subdirs $ \subdir -> do
-      (Just pid) <- getPackageIdent (dir </> subdir)
-      pure pid
- where
-  callProcess :: FilePath -> [String] -> IO ()
-  callProcess cmd args = do
-      exit_code <- withCreateProcess
-                     (proc cmd args) { delegate_ctlc = True, std_out = (UseHandle stderr) }
-                        $ \_ _ _ p -> waitForProcess p
-      case exit_code of
-        ExitSuccess   -> return ()
-        ExitFailure r -> throwIO . userError $ ("Process \"" <> cmd <> "\" failed with: " <> show r)
+getRemotePkg (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs))
+    = withSystemTempDirectory "stack2cabal" $ \dir -> do
+        callProcess "git" ["clone", repo, dir]
+        callProcess "git" ["-C", dir, "reset", "--hard", commit]
+        forM subdirs $ \subdir -> do
+            (Just pid) <- getPackageIdent (dir </> subdir)
+            pure pid
+  where
+    callProcess :: FilePath -> [String] -> IO ()
+    callProcess cmd args = do
+        exit_code <- withCreateProcess (proc cmd args)
+            { delegate_ctlc = True
+            , std_out = UseHandle stderr
+            } $ \_ _ _ p -> waitForProcess p
+        case exit_code of
+            ExitSuccess -> return ()
+            ExitFailure r ->
+                throwIO
+                    . userError
+                    $ ("Process \"" <> cmd <> "\" failed with: " <> show r)
+
 
 -- | Get package identifier from project directory.
 getPackageIdent :: FilePath  -- ^ absolute path to project repository
                 -> IO (Maybe PackageIdentifier)
 getPackageIdent dir = do
-  cabalFile <- headMay <$> getDirectoryFiles dir ["*.cabal"]
-  forM cabalFile $ \f->
-    (package . packageDescription)
-      <$> readGenericPackageDescription silent (dir </> f)
+    cabalFile <- headMay <$> getDirectoryFiles dir ["*.cabal"]
+    forM cabalFile $ \f ->
+        package . packageDescription
+            <$> readGenericPackageDescription silent (dir </> f)
+
 
 -- | Get all remote VCS packages.
 getRemotePkgs :: [Git] -> IO [PackageIdentifier]
-getRemotePkgs srcs = fmap concat $ forM srcs $ \src -> getRemotePkg $ src
+getRemotePkgs srcs = fmap concat $ forM srcs $ \src -> getRemotePkg src
