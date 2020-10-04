@@ -102,7 +102,7 @@ main = do
             traverse_ execHpack hpacks
 
         -- run conversion
-        hackageUTCDate <- fmap join $ forM hackageIndexDate approxidateIO
+        hackageUTCDate <- join <$> forM hackageIndexDate approxidateIO
         case (hackageIndexDate, hackageUTCDate) of
             (Just d, Nothing) ->
                 throwIO $ userError ("Warning: failed to convert hackage index state date \""

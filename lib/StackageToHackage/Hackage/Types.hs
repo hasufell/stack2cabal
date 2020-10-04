@@ -1,5 +1,3 @@
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
-
 module StackageToHackage.Hackage.Types where
 
 import StackageToHackage.Stackage.Types (Ghc, Git, GhcOptions, PkgName, FlagName)

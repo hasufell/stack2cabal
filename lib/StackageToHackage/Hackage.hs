@@ -204,7 +204,7 @@ printFreeze (Freeze constraints) = T.concat
             ver = (T.pack . prettyShow . pkgVersion $ pkg)
         in T.concat ["any.", name, " ==", ver]
     printConstraint (FlagSetting name flags)
-        | otherwise = T.concat [name, " ", custom flags]
+        = T.concat [name, " ", custom flags]
 
     custom :: M.Map Text Bool -> Text
     custom (M.toList -> lst) = T.intercalate " " (renderFlag <$> lst)
