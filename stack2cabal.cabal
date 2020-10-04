@@ -4,16 +4,20 @@ version:       1.0.10
 synopsis:
   Convert stack projects to cabal.project + cabal.project.freeze
 
-license:       GPL-3.0-or-later
+license:       GPL-3.0-only
 license-file:  LICENSE
 author:        Tseen She
 maintainer:    Julian Ospald
-copyright:     2018 Tseen She
-bug-reports:   https://gitlab.com/tseenshe/stack2cabal/merge_requests
-tested-with:   GHC ^>=8.8.4 || ^>=8.10.2
+copyright:     2018 Tseen She, 2020 Julian Ospald
+bug-reports:   https://github.com/hasufell/stack2cabal/issues
+tested-with:   GHC ^>=8.6.5 || ^>=8.8.4 || ^>=8.10.2
 category:      Building
 description:
   Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
+
+source-repository head
+  type:     git
+  location: https://github.com/hasufell/stack2cabal.git
 
 -- https://www.haskell.org/cabal/users-guide/cabal-projectindex.html
 
