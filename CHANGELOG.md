@@ -1,5 +1,11 @@
 # Revision history for stack2cabal
 
+## 1.0.10 -- 2020-10-04
+
+- Allow to pin hackage state wrt #20
+- Fix missing flags in cabal.project.freeze wrt #24
+- fix bug in ghc-options conversion
+
 ## 1.0.9 -- 2020-10-04
 
 - Inspect remote repository package names and exclude them from freeze file (fixes #1), disable with `--no-inspect-remotes`

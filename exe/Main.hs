@@ -9,8 +9,11 @@ module Main where
 import StackageToHackage.Hackage (printFreeze, printProject, stackToCabal)
 import StackageToHackage.Stackage (localDirs, readStack)
 
+import Control.Exception (throwIO)
 import Control.Monad (filterM, when)
+import Data.Dates.Parsing (parseDateTime, defaultConfigIO)
 import Data.Foldable (traverse_)
+import Data.Hourglass (timeConvert, Elapsed)
 import Data.Maybe (mapMaybe)
 import Data.Text (Text)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
@@ -39,6 +42,7 @@ data Opts = Opts
   , inspectRemotes :: Bool
   , pinGHC :: Bool
   , runHpack :: Bool
+  , hackageIndexDate :: Maybe String -- ^ fuzzy date string
   }
 
 
@@ -73,7 +77,14 @@ optsP =
                 (long "no-pin-ghc" <> help "Don't pin the GHC version")
             )
         <*> (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
-
+        <*> optional
+                (strOption
+                    (short 'p'
+                    <> long "pin-hackage-index"
+                    <> metavar "FUZZY_DATE"
+                    <> help "Pin hackage index state (values like \"now\" and \"yesterday\" work)"
+                    )
+                )
 
 
 main :: IO ()
@@ -92,10 +103,20 @@ main = do
             traverse_ execHpack hpacks
 
         -- run conversion
+        config <- defaultConfigIO
+        let dt :: Maybe Elapsed
+            dt = hackageIndexDate >>= \d -> fmap timeConvert
+                $ either (const Nothing) Just
+                $ parseDateTime config d
+        case (hackageIndexDate, dt) of
+            (Just d, Nothing) ->
+                throwIO $ userError ("Warning: failed to convert hackage index state date \""
+                    <> d <> "\"")
+            _ -> pure ()
         (project, freeze) <- stackToCabal inspectRemotes inDir stack
         hack <- extractHack . decodeUtf8 <$> BS.readFile
             (inDir </> "stack.yaml")
-        printText <- printProject pinGHC project hack
+        printText <- printProject pinGHC dt project hack
 
         -- write files
         outFile <- case output of

@@ -1,6 +1,6 @@
 cabal-version: 2.2
 name:          stack2cabal
-version:       1.0.9
+version:       1.0.10
 synopsis:
   Convert stack projects to cabal.project + cabal.project.freeze
 
@@ -33,13 +33,15 @@ common deps
     , extra                 >=1.6.13
     , filepath
     , filepattern           >=0.1.2
+    , fuzzy-dates           >=0.1.1.2
+    , hourglass
     , hpack                 ==0.34.2
     , HsYAML                ^>=0.2
     , http-client           >=0.5.14
     , http-client-tls       >=0.3.5.3
     , optparse-applicative  >=0.15
     , process               >=1.6.9.0
-    , safe                  >=0.3.19
+    , safe                  >=0.3
     , temporary             >=1.3
     , text                  >=1.2.3.1
 
