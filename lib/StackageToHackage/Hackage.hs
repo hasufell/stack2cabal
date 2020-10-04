@@ -189,24 +189,22 @@ genProject stack Resolver { compiler, deps } = Project
 
 
 printFreeze :: Freeze -> Text
-printFreeze (Freeze deps (Flags flags)) = T.concat
-    ["constraints: ", constraints, "\n"]
+printFreeze (Freeze constraints) = T.concat
+    ["constraints: ", printConstraints, "\n"]
   where
     spacing :: Text
     spacing = ",\n             "
 
-    constraints :: Text
-    constraints = T.intercalate spacing (constrait <$> sort deps)
+    printConstraints :: Text
+    printConstraints = T.intercalate spacing . fmap printConstraint $ constraints
 
-    constrait :: PackageIdentifier -> Text
-    constrait pkg =
+    printConstraint :: Constraint -> Text
+    printConstraint (VersionPin pkg) =
         let name = (T.pack . unPackageName . pkgName $ pkg)
             ver = (T.pack . prettyShow . pkgVersion $ pkg)
-            base = T.concat ["any.", name, " ==", ver]
-        in case M.lookup name flags of
-            Nothing -> base
-            Just entries ->
-                T.concat [name, " ", custom entries, spacing, base]
+        in T.concat ["any.", name, " ==", ver]
+    printConstraint (FlagSetting name flags)
+        | otherwise = T.concat [name, " ", custom flags]
 
     custom :: M.Map Text Bool -> Text
     custom (M.toList -> lst) = T.intercalate " " (renderFlag <$> lst)
@@ -222,7 +220,7 @@ genFreeze :: Resolver
 genFreeze Resolver { deps, flags } ignore =
     let pkgs = filter noSelfs $ unPkgId <$> mapMaybe pick deps
         uniqpkgs = nubOrdOn pkgName pkgs
-    in Freeze uniqpkgs flags
+    in Freeze (toConstraints uniqpkgs flags)
   where
     pick :: Dep -> Maybe PkgId
     pick (Hackage p) = Just p
@@ -231,6 +229,12 @@ genFreeze Resolver { deps, flags } ignore =
 
     noSelfs :: PackageIdentifier -> Bool
     noSelfs (pkgName -> n) = n `notElem` ignore
+
+    toConstraints :: [PackageIdentifier] -> Flags -> [Constraint]
+    toConstraints deps' (Flags flags') =
+        let cdeps = fmap VersionPin deps'
+            cflags = M.elems $ M.mapWithKey FlagSetting flags'
+        in sort (cdeps ++ cflags)
 
 
 -- | Acquire all package identifiers from a list of subdirs
