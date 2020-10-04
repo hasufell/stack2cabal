@@ -60,18 +60,12 @@ stackToCabal inspectRemotes dir stack = do
         project = genProject stack resolver
     localPkgs <-
         fmap catMaybes
-        . handleIOError
-            (\_ -> hPutStrLn stderr "Warning: failed to resolve local .cabal files"
-                >> pure []
-            )
         . traverse (\f -> getPackageIdent (dir </> f))
         . NEL.toList
         . pkgs
         $ project
     remotePkgs <- if inspectRemotes
-        then handleIOError (\_ -> hPutStrLn stderr
-            "Warning: failed to resolve remote git .cabal files"
-            >> pure []) $ getRemotePkgs (srcs project)
+        then getRemotePkgs (srcs project)
         else pure []
     let ignore = sort . nub . fmap pkgName $ (localPkgs ++ remotePkgs)
     let freeze = genFreeze resolver ignore
@@ -230,13 +224,18 @@ genFreeze Resolver { deps, flags } ignore =
 -- | Acquire all package identifiers from a list of subdirs
 -- of a git repository.
 getRemotePkg :: Git -> IO [PackageIdentifier]
-getRemotePkg (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs))
+getRemotePkg git@(Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs))
     = withSystemTempDirectory "stack2cabal" $ \dir -> do
-        callProcess "git" ["clone", repo, dir]
-        callProcess "git" ["-C", dir, "reset", "--hard", commit]
-        forM subdirs $ \subdir -> do
-            (Just pid) <- getPackageIdent (dir </> subdir)
-            pure pid
+          handleIOError
+                (\_ -> hPutStrLn stderr
+                    ("Warning: failed to resolve remote .cabal files of: " <> show git)
+                    >> pure []
+                ) $ do
+                    callProcess "git" ["clone", repo, dir]
+                    callProcess "git" ["-C", dir, "reset", "--hard", commit]
+                    forM subdirs $ \subdir -> do
+                        (Just pid) <- getPackageIdent (dir </> subdir)
+                        pure pid
   where
     callProcess :: FilePath -> [String] -> IO ()
     callProcess cmd args = do
@@ -255,11 +254,15 @@ getRemotePkg (Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subd
 -- | Get package identifier from project directory.
 getPackageIdent :: FilePath  -- ^ absolute path to project repository
                 -> IO (Maybe PackageIdentifier)
-getPackageIdent dir = do
-    cabalFile <- headMay <$> getDirectoryFiles dir ["*.cabal"]
-    forM cabalFile $ \f ->
-        package . packageDescription
-            <$> readGenericPackageDescription silent (dir </> f)
+getPackageIdent dir =
+    handleIOError
+        (\_ -> hPutStrLn stderr ("Warning: failed to resolve .cabal file in " <> dir)
+            >> pure Nothing
+        ) $ do
+            cabalFile <- headMay <$> getDirectoryFiles dir ["*.cabal"]
+            forM cabalFile $ \f ->
+                package . packageDescription
+                    <$> readGenericPackageDescription silent (dir </> f)
 
 
 -- | Get all remote VCS packages.
