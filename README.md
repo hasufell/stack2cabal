@@ -16,7 +16,7 @@ for binaries.
 
 [![Docker pulls](https://img.shields.io/docker/pulls/hasufell/stack2cabal.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
 [![Docker stars](https://img.shields.io/docker/stars/hasufell/stack2cabal.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
-[![Docker image size](https://img.shields.io/docker/image-size/hasufell/stack2cabal/latest.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
+[![Docker image size](https://img.shields.io/docker/image-size/hasufell/stack2cabal/latest.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal) [![Join the chat at https://gitter.im/hasufell/stack2cabal](https://badges.gitter.im/hasufell/stack2cabal.svg)](https://gitter.im/hasufell/stack2cabal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ```sh
 docker pull hasufell/stack2cabal
