@@ -146,17 +146,17 @@ printProject pinGHC indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
                             (unPackageName . pkgName . unPkgId)
                             packagesGhcOpts
                         then []
-                        else [ "\npackage ", T.pack n, "\n    ", "flags: ", x, "\n" ]
+                        else [ "\npackage ", T.pack n, "\n    ", "ghc-options: ", x, "\n" ]
                     )
                     name
             Nothing -> pure []
         let everythingPrint = case everything of
-                Just x -> ["\npackage ", "*", "\n    ", "flags: ", x, "\n"]
+                Just x -> ["\npackage ", "*", "\n    ", "ghc-options: ", x, "\n"]
                 Nothing -> []
         let pkgSpecificPrint = M.foldrWithKey
                 (\k a b -> [ "\npackage ", T.pack . unPackageName . pkgName . unPkgId $ k
                     , "\n    "
-                    , "flags: "
+                    , "ghc-options: "
                     , a
                     , "\n"
                     ]
