@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Install system dependencies
         run: |
-          apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl git bash sudo binutils-gold
+          apk add --no-cache curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz gzip tar perl git bash sudo binutils-gold
           apk add --no-cache zlib zlib-dev zlib-static gmp gmp-dev ncurses-static
 
       - name: Install ghcup
@@ -94,7 +94,7 @@ jobs:
       - run: echo ::set-env name=HOME::$HOME
         shell: bash
 
-      - name: Upload Release Asset
+      - name: Upload Release Asset (binaries)
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
@@ -104,6 +104,26 @@ jobs:
           asset_path: ${{ env.HOME }}/.local/bin/stack2cabal
           asset_name: stack2cabal-linux
           asset_content_type: application/octet-stream
+
+      - name: pack up shell completions
+        run: |
+          mkdir -p completions/{bash,zsh,fish}
+          ~/.local/bin/stack2cabal --bash-completion-script stack2cabal > completions/bash/stack2cabal.sh
+          ~/.local/bin/stack2cabal --zsh-completion-script stack2cabal > completions/zsh/_stack2cabal
+          ~/.local/bin/stack2cabal --fish-completion-script stack2cabal > completions/fish/stack2cabal.fish
+          tar caf completions.tar.gz completions/
+        shell: bash
+
+      - name: Upload Release Asset (completions)
+        id: upload-release-asset-completions
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.draft_release.outputs.upload_url }}
+          asset_path: ./completions.tar.gz
+          asset_name: completions.tar.gz
+          asset_content_type: application/gzip
 
       - if: always()
         uses: actions/upload-artifact@v2
