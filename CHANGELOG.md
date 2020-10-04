@@ -7,6 +7,7 @@
 - Add `--no-run-hpack` option
 - Add `--output-file` option
 - Also parse ghc-options wrt #9
+- Fix path separators on windows wrt #5
 
 ## 1.0.8 -- 2020-09-25
 

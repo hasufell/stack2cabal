@@ -36,7 +36,7 @@ import Distribution.Types.PackageName (PackageName, unPackageName)
 import Distribution.Verbosity (silent)
 import Safe (headMay)
 import System.Exit (ExitCode(..))
-import System.FilePath ((</>), addTrailingPathSeparator)
+import System.FilePath ((</>))
 import System.FilePattern.Directory (getDirectoryFiles)
 import System.IO (hPutStrLn, stderr)
 import System.IO.Temp (withSystemTempDirectory)
@@ -100,10 +100,18 @@ printProject pin (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
 
     verbatim :: Maybe Text -> [Text]
     verbatim Nothing = []
-    verbatim (Just txt) = ["\n-- Verbatim\n", txt]
+    verbatim (Just txt) = ["\n-- Verbatim\n", txt, "\n"]
 
     packages :: Text
-    packages = T.intercalate "\n  , " (T.pack . addTrailingPathSeparator <$> NEL.toList pkgs)
+    packages = T.intercalate "\n  , " (T.pack . addTrailingPathSeparator' <$> NEL.toList pkgs)
+      where
+        addTrailingPathSeparator' :: FilePath -> FilePath
+        addTrailingPathSeparator' x =
+            if hasTrailingPathSeparator' x then x else x ++ ['/']
+
+        hasTrailingPathSeparator' :: FilePath -> Bool
+        hasTrailingPathSeparator' "" = False
+        hasTrailingPathSeparator' x = (last x) == '/'
 
     sources :: Text
     sources = T.intercalate "\n" (source =<< srcs)
