@@ -3,4 +3,5 @@ packages:
 - .
 
 extra-deps:
+  - git-date-0.3.0@sha256:9547d37a9d68dec71f8a61207b717d08f0b2d42575468491d0a7ffd5f17b27df,1747
   - regex-posix-clib-2.7@sha256:998fca06da3d719818f0691ef0b8b9b7375afeea228cb08bd9e2db53f96b0cd7,1232
