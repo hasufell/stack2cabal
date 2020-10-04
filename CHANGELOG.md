@@ -1,6 +1,6 @@
 # Revision history for stack2cabal
 
-## 1.0.9 -- ????-??-??
+## 1.0.9 -- 2020-10-04
 
 - Inspect remote repository package names and exclude them from freeze file (fixes #1), disable with `--no-inspect-remotes`
 - Add `--no-pin-ghc` option
