@@ -1,4 +1,4 @@
-![Haskell CI](https://github.com/hasufell/stack2cabal/workflows/Haskell%20CI/badge.svg)
+[![Gitter](https://badges.gitter.im/hasufell/stack2cabal.svg)](https://gitter.im/hasufell/stack2cabal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)![Haskell CI](https://github.com/hasufell/stack2cabal/workflows/Haskell%20CI/badge.svg)
 ![Docker build](https://github.com/hasufell/stack2cabal/workflows/Docker%20build/badge.svg)
 [![license](https://img.shields.io/github/license/hasufell/stack2cabal.svg)](LICENSE)
 
