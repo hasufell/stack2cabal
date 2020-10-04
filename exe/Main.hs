@@ -10,12 +10,13 @@ import StackageToHackage.Hackage (printFreeze, printProject, stackToCabal)
 import StackageToHackage.Stackage (localDirs, readStack)
 
 import Control.Exception (throwIO)
-import Control.Monad (filterM, when, forM, join)
+import Control.Monad (filterM, when)
+import Data.Dates.Parsing (parseDateTime, defaultConfigIO)
 import Data.Foldable (traverse_)
+import Data.Hourglass (timeConvert, Elapsed)
 import Data.Maybe (mapMaybe)
 import Data.Text (Text)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
-import Data.Time.Git (approxidateIO)
 import Hpack (Force(..), Options(..), defaultOptions, hpackResult, setTarget)
 import Options.Applicative
 import Prelude hiding (lines)
@@ -102,8 +103,12 @@ main = do
             traverse_ execHpack hpacks
 
         -- run conversion
-        hackageUTCDate <- join <$> forM hackageIndexDate approxidateIO
-        case (hackageIndexDate, hackageUTCDate) of
+        config <- defaultConfigIO
+        let dt :: Maybe Elapsed
+            dt = hackageIndexDate >>= \d -> fmap timeConvert
+                $ either (const Nothing) Just
+                $ parseDateTime config d
+        case (hackageIndexDate, dt) of
             (Just d, Nothing) ->
                 throwIO $ userError ("Warning: failed to convert hackage index state date \""
                     <> d <> "\"")
@@ -111,7 +116,7 @@ main = do
         (project, freeze) <- stackToCabal inspectRemotes inDir stack
         hack <- extractHack . decodeUtf8 <$> BS.readFile
             (inDir </> "stack.yaml")
-        printText <- printProject pinGHC hackageUTCDate project hack
+        printText <- printProject pinGHC dt project hack
 
         -- write files
         outFile <- case output of

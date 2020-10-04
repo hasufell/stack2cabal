@@ -20,14 +20,13 @@ import StackageToHackage.Hackage.Types
 import Control.Exception (throwIO)
 import Control.Monad (forM)
 import Control.Monad.Catch (handleIOError)
+import Data.Hourglass (timePrint, ISO8601_DateAndTime(..), Elapsed)
 import Data.List (nub, sort)
 import Data.List.Extra (nubOrdOn)
 import Data.List.NonEmpty (NonEmpty((:|)))
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
 import Data.Semigroup
 import Data.Text (Text)
-import Data.Time.Clock (UTCTime)
-import Data.Time.Format (formatTime, defaultTimeLocale, iso8601DateFormat)
 import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
 import Distribution.Pretty (prettyShow)
 import Distribution.Types.GenericPackageDescription
@@ -75,7 +74,7 @@ stackToCabal inspectRemotes dir stack = do
 
 
 printProject :: Bool           -- ^ whether to pin GHC
-             -> Maybe UTCTime  -- ^ hackage index date to pin
+             -> Maybe Elapsed  -- ^ hackage index date to pin
              -> Project
              -> Maybe Text
              -> IO Text
@@ -96,8 +95,8 @@ printProject pinGHC indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
         | (Just utc) <- indexDate = ["index-state: ", printUTC utc, "\n\n"]
         | otherwise = []
       where
-        printUTC :: UTCTime -> Text
-        printUTC = T.pack . formatTime defaultTimeLocale (iso8601DateFormat (Just "%H:%M:%SZ"))
+        printUTC :: Elapsed -> Text
+        printUTC = T.pack . timePrint ISO8601_DateAndTime
 
     withCompiler :: [Text]
     withCompiler
