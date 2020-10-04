@@ -49,7 +49,7 @@ jobs:
         shell: bash
 
       - if: github.event_name == 'create' && startsWith(github.ref, 'refs/tags/v')
-        run: echo ::set-env name=TAGS::hasufell/stack2cabal:latest,hasufell/stack2cabal:${GITHUB_SHA},hasufell/stack2cabal:${{ steps.branch_name.outputs.SOURCE_TAG }}
+        run: echo ::set-env name=TAGS::hasufell/stack2cabal:${{ steps.branch_name.outputs.SOURCE_TAG }}
         shell: bash
 
       - name: Build and push
