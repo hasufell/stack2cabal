@@ -20,7 +20,7 @@ for binaries.
 [![Docker image size](https://img.shields.io/docker/image-size/hasufell/stack2cabal/latest.svg)](https://hub.docker.com/repository/docker/hasufell/stack2cabal)
 
 ```sh
-docker pull hasufell/stack2cabal
+docker pull hasufell/stack2cabal:latest
 ```
 
 ## Usage
@@ -39,12 +39,12 @@ Also see `stack2cabal --help` for further options.
 
 ```sh
 docker run --rm \
-  -v /etc/passwd:/etc/passwd \
+  -v /etc/passwd:/etc/passwd:ro \
   -u `id -u`:`id -g` \
   -v `pwd`:`pwd` \
   -w `pwd` \
   --tmpfs "$HOME/.cache" \
-  hasufell/stack2cabal
+  hasufell/stack2cabal:latest
 ```
 
 ## Notes
