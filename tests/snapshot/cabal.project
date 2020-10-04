@@ -33,4 +33,4 @@ allow-older: *
 allow-newer: *
 
 package *
-    flags: -O2
+    ghc-options: -O2
