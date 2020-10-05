@@ -13,19 +13,32 @@ module StackageToHackage.Hackage
     )
 where
 
-import StackageToHackage.Stackage
+import StackageToHackage.Stackage ( localDirs, unroll )
 import StackageToHackage.Stackage.Types
+    ( Resolver(Resolver, compiler, deps, flags)
+    , PkgId(unPkgId)
+    , GhcFlags
+    , GhcOptions(GhcOptions)
+    , PackageGhcOpts(PackageGhcOpts)
+    , Flags(..)
+    , Dep(..)
+    , Git(..)
+    , Ghc(Ghc)
+    , Stack(ghcOptions)
+    )
+import StackageToHackage.Hpack (hpackInput, execHpack)
 import StackageToHackage.Hackage.Types
+    ( Constraint(..), Freeze(..), Project(..) )
 
 import Control.Exception (throwIO)
-import Control.Monad (forM)
+import Control.Monad (forM, when, void)
 import Control.Monad.Catch (handleIOError)
 import Data.Hourglass (timePrint, ISO8601_DateAndTime(..), Elapsed)
 import Data.List (nub, sort)
 import Data.List.Extra (nubOrdOn)
 import Data.List.NonEmpty (NonEmpty((:|)))
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
-import Data.Semigroup
+import Data.Semigroup ( Semigroup(sconcat) )
 import Data.Text (Text)
 import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
 import Distribution.Pretty (prettyShow)
@@ -47,15 +60,17 @@ import System.Process
 import qualified Data.List.NonEmpty as NEL
 import qualified Data.Map.Strict as M
 import qualified Data.Text as T
+import System.Directory (doesFileExist)
 
 
 -- | Converts a stack.yaml (and list of local packages) to cabal.project and
 -- cabal.project.freeze.
 stackToCabal :: Bool     -- ^ whether to inspect remotes
+             -> Bool     -- ^ whether to run hpack
              -> FilePath
              -> Stack
              -> IO (Project, Freeze)
-stackToCabal inspectRemotes dir stack = do
+stackToCabal inspectRemotes runHpack dir stack = do
     resolvers <- unroll dir stack
     let resolver = sconcat resolvers
         project = genProject stack resolver
@@ -66,7 +81,7 @@ stackToCabal inspectRemotes dir stack = do
         . pkgs
         $ project
     remotePkgs <- if inspectRemotes
-        then getRemotePkgs (srcs project)
+        then getRemotePkgs (srcs project) runHpack
         else pure []
     let ignore = sort . nub . fmap pkgName $ (localPkgs ++ remotePkgs)
     let freeze = genFreeze resolver ignore
@@ -238,8 +253,8 @@ genFreeze Resolver { deps, flags } ignore =
 
 -- | Acquire all package identifiers from a list of subdirs
 -- of a git repository.
-getRemotePkg :: Git -> IO [PackageIdentifier]
-getRemotePkg git@(Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs))
+getRemotePkg :: Git -> Bool -> IO [PackageIdentifier]
+getRemotePkg git@(Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> subdirs)) runHpack
     = withSystemTempDirectory "stack2cabal" $ \dir ->
           handleIOError
                 (\_ -> hPutStrLn stderr
@@ -248,9 +263,21 @@ getRemotePkg git@(Git (T.unpack -> repo) (T.unpack -> commit) (fmap T.unpack -> 
                 ) $ do
                     callProcess "git" ["clone", repo, dir]
                     callProcess "git" ["-C", dir, "reset", "--hard", commit]
-                    forM subdirs $ \subdir -> do
-                        (Just pid) <- getPackageIdent (dir </> subdir)
-                        pure pid
+                    case subdirs of
+                        [] -> do
+                            when runHpack $ do
+                              b <- doesFileExist (hpackInput dir)
+                              when b $ void $ execHpack dir
+                            (Just pid) <- getPackageIdent dir
+                            pure [pid]
+                        _ ->
+                            forM subdirs $ \subdir -> do
+                                let fullDir =  dir </> subdir
+                                when runHpack $ do
+                                  b <- doesFileExist (hpackInput fullDir)
+                                  when b $ void $ execHpack fullDir
+                                (Just pid) <- getPackageIdent fullDir
+                                pure pid
   where
     callProcess :: FilePath -> [String] -> IO ()
     callProcess cmd args = do
@@ -281,5 +308,5 @@ getPackageIdent dir =
 
 
 -- | Get all remote VCS packages.
-getRemotePkgs :: [Git] -> IO [PackageIdentifier]
-getRemotePkgs srcs = fmap concat $ forM srcs $ \src -> getRemotePkg src
+getRemotePkgs :: [Git] -> Bool -> IO [PackageIdentifier]
+getRemotePkgs srcs runHpack = fmap concat $ forM srcs $ \src -> getRemotePkg src runHpack

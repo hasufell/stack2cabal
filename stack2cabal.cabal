@@ -72,6 +72,7 @@ library
   exposed-modules:
     StackageToHackage.Hackage
     StackageToHackage.Hackage.Types
+    StackageToHackage.Hpack
     StackageToHackage.Prelude
     StackageToHackage.Stackage
     StackageToHackage.Stackage.Types

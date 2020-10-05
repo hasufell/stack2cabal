@@ -7,6 +7,7 @@
 module Main where
 
 import StackageToHackage.Hackage (printFreeze, printProject, stackToCabal)
+import StackageToHackage.Hpack (hpackInput, execHpack)
 import StackageToHackage.Stackage (localDirs, readStack)
 
 import Control.Exception (throwIO)
@@ -17,7 +18,6 @@ import Data.Hourglass (timeConvert, Elapsed)
 import Data.Maybe (mapMaybe)
 import Data.Text (Text)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
-import Hpack (Force(..), Options(..), defaultOptions, hpackResult, setTarget)
 import Options.Applicative
 import Prelude hiding (lines)
 import System.Directory (doesFileExist, makeAbsolute)
@@ -113,7 +113,7 @@ main = do
                 throwIO $ userError ("Warning: failed to convert hackage index state date \""
                     <> d <> "\"")
             _ -> pure ()
-        (project, freeze) <- stackToCabal inspectRemotes inDir stack
+        (project, freeze) <- stackToCabal inspectRemotes runHpack inDir stack
         hack <- extractHack . decodeUtf8 <$> BS.readFile
             (inDir </> "stack.yaml")
         printText <- printProject pinGHC dt project hack
@@ -126,10 +126,6 @@ main = do
         BS.writeFile
             (outFile <> ".freeze")
             (encodeUtf8 $ printFreeze freeze)
-  where
-    hpackInput sub = sub </> "package.yaml"
-    opts = defaultOptions { optionsForce = Force }
-    execHpack sub = hpackResult $ setTarget (hpackInput sub) opts
 
 
 -- Backdoor allowing the stack.yaml to contain arbitrary text that will be
