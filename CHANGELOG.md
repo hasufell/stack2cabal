@@ -1,5 +1,11 @@
 # Revision history for stack2cabal
 
+## 1.0.11 -- ????-??-??
+
+- Fix bug in `cabal.project.freeze` when git-package in extra-deps doesn't have a subdir
+- Run hpack for git deps as well
+- Fix `--output-file` option to use it as full filepath (instead of base directory)
+
 ## 1.0.10 -- 2020-10-04
 
 - Allow to pin hackage state wrt #20
