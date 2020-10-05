@@ -63,7 +63,7 @@ optsP =
                     <> long "output-file"
                     <> metavar "CABAL_PROJECT"
                     <> help
-                           "Path to output file (default depends on input file)"
+                           "Path to output file (default: <project-dir>/cabal.project)"
                     <> showDefaultWith show
                     )
                 )
@@ -120,8 +120,7 @@ main = do
 
         -- write files
         outFile <- case output of
-            Just output' -> (</> "cabal.project")
-                <$> makeAbsolute (takeDirectory output')
+            Just output' -> makeAbsolute output'
             Nothing -> pure (inDir </> "cabal.project")
         BS.writeFile outFile (encodeUtf8 printText)
         BS.writeFile
