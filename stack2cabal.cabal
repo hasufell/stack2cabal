@@ -14,6 +14,8 @@ tested-with:   GHC ^>=8.6.5 || ^>=8.8.4 || ^>=8.10.2
 category:      Building
 description:
   Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
+extra-source-files:  README.md
+                     CHANGELOG.md
 
 source-repository head
   type:     git
