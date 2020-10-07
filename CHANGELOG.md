@@ -1,6 +1,6 @@
 # Revision history for stack2cabal
 
-## 1.0.11 -- ????-??-??
+## 1.0.11 -- 2020-10-05
 
 - Fix bug in `cabal.project.freeze` when git-package in extra-deps doesn't have a subdir
 - Run hpack for git deps as well
