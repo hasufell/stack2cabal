@@ -1,12 +1,13 @@
 [![Gitter](https://badges.gitter.im/hasufell/stack2cabal.svg)](https://gitter.im/hasufell/stack2cabal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Haskell CI](https://github.com/hasufell/stack2cabal/workflows/Haskell%20CI/badge.svg)](https://github.com/hasufell/stack2cabal/actions)
 [![Docker build](https://github.com/hasufell/stack2cabal/workflows/Docker%20build/badge.svg)](https://github.com/hasufell/stack2cabal/actions)
+[![Hackage version](https://img.shields.io/hackage/v/stack2cabal.svg?label=Hackage)](https://hackage.haskell.org/package/stack2cabal)
 [![license](https://img.shields.io/github/license/hasufell/stack2cabal.svg)](LICENSE)
 
 # stack2cabal
 
-This is a fork of [tseenshe/stack2cabal](https://gitlab.com/tseenshe/stack2cabal),
-which seems abandoned/inactive.
+This is forked of [tseenshe/stack2cabal](https://gitlab.com/tseenshe/stack2cabal) and
+the current [hackage package](https://hackage.haskell.org/package/stack2cabal).
 
 ## Installation
 
