@@ -9,12 +9,11 @@ source-repository-package
     type: git
     location: https://github.com/input-output-hk/cardano-base
     tag: 13f44ad35d2762dbf98b3d3be56b7ba2adf515f4
-    subdir:
-        binary
-        binary/test
-        cardano-crypto-class
-        cardano-crypto-praos
-        slotting
+    subdir: binary
+            binary/test
+            cardano-crypto-class
+            cardano-crypto-praos
+            slotting
 
 source-repository-package
     type: git
@@ -25,51 +24,46 @@ source-repository-package
     type: git
     location: https://github.com/input-output-hk/cardano-db-sync
     tag: 9f95fb8bd63c2ce4ff973b7cd11dbada69e86597
-    subdir:
-        cardano-db
-        cardano-db-sync
-        cardano-db-sync-extended
+    subdir: cardano-db
+            cardano-db-sync
+            cardano-db-sync-extended
 
 source-repository-package
     type: git
     location: https://github.com/input-output-hk/cardano-ledger-specs
     tag: 74188f62ff743c690bdf287f7fa18eaa2ee354d4
-    subdir:
-        byron/chain/executable-spec
-        byron/crypto
-        byron/crypto/test
-        byron/ledger/executable-spec
-        byron/ledger/impl
-        byron/ledger/impl/test
-        semantics/executable-spec
-        semantics/small-steps-test
-        shelley/chain-and-ledger/dependencies/non-integer
-        shelley/chain-and-ledger/executable-spec
-        shelley/chain-and-ledger/shelley-spec-ledger-test
+    subdir: byron/chain/executable-spec
+            byron/crypto
+            byron/crypto/test
+            byron/ledger/executable-spec
+            byron/ledger/impl
+            byron/ledger/impl/test
+            semantics/executable-spec
+            semantics/small-steps-test
+            shelley/chain-and-ledger/dependencies/non-integer
+            shelley/chain-and-ledger/executable-spec
+            shelley/chain-and-ledger/shelley-spec-ledger-test
 
 source-repository-package
     type: git
     location: https://github.com/input-output-hk/cardano-node
     tag: 4814003f14340d5a1fc02f3ac15437387a7ada9f
-    subdir:
-        cardano-api
-        cardano-config
-        cardano-node
+    subdir: cardano-api
+            cardano-config
+            cardano-node
 
 source-repository-package
     type: git
     location: https://github.com/input-output-hk/cardano-node
     tag: 497afd7dedc5d5b9bdcdb0e3cac6a50bd9f7dd54
-    subdir:
-        cardano-cli
+    subdir: cardano-cli
 
 source-repository-package
     type: git
     location: https://github.com/input-output-hk/cardano-prelude
     tag: 0c5b0a6619fadf22f4d62a12154e181a6d035c1c
-    subdir:
-        .
-        test
+    subdir: .
+            test
 
 source-repository-package
     type: git
@@ -85,42 +79,39 @@ source-repository-package
     type: git
     location: https://github.com/input-output-hk/iohk-monitoring-framework
     tag: 8f2086aff6b315b41a39b727f860c3477205ed8a
-    subdir:
-        contra-tracer
-        iohk-monitoring
-        plugins/backend-aggregation
-        plugins/backend-ekg
-        plugins/backend-monitoring
-        plugins/backend-trace-forwarder
-        plugins/scribe-systemd
-        tracer-transformers
+    subdir: contra-tracer
+            iohk-monitoring
+            plugins/backend-aggregation
+            plugins/backend-ekg
+            plugins/backend-monitoring
+            plugins/backend-trace-forwarder
+            plugins/scribe-systemd
+            tracer-transformers
 
 source-repository-package
     type: git
     location: https://github.com/input-output-hk/ouroboros-network
     tag: f0eb6e439e7c0121476ded5e88d2f638e8aa36ac
-    subdir:
-        Win32-network
-        cardano-client
-        io-sim
-        io-sim-classes
-        network-mux
-        ntp-client
-        ouroboros-consensus
-        ouroboros-consensus-byron
-        ouroboros-consensus-cardano
-        ouroboros-consensus-shelley
-        ouroboros-network
-        ouroboros-network-framework
-        typed-protocols
-        typed-protocols-examples
+    subdir: Win32-network
+            cardano-client
+            io-sim
+            io-sim-classes
+            network-mux
+            ntp-client
+            ouroboros-consensus
+            ouroboros-consensus-byron
+            ouroboros-consensus-cardano
+            ouroboros-consensus-shelley
+            ouroboros-network
+            ouroboros-network-framework
+            typed-protocols
+            typed-protocols-examples
 
 source-repository-package
     type: git
     location: https://github.com/snoyberg/http-client.git
     tag: 1a75bdfca014723dd5d40760fad854b3f0f37156
-    subdir:
-        http-client
+    subdir: http-client
 
 allow-older: *
 allow-newer: *
