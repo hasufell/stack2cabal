@@ -16,13 +16,9 @@ source-repository-package
     type: git
     location: https://github.com/brendanhay/gogol.git
     tag: c2eba2df7ed69e35835e56f9827a224e2616d208
-    subdir: gogol
-
-source-repository-package
-    type: git
-    location: https://github.com/brendanhay/gogol.git
-    tag: c2eba2df7ed69e35835e56f9827a224e2616d208
-    subdir: core
+    subdir: 
+        core
+        gogol
 
 source-repository-package
     type: git

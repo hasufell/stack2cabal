@@ -142,9 +142,11 @@ printProject pinGHC indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
                 [ "source-repository-package\n    ", "type: git\n    ", "location: "
                 , repo, "\n    ", "tag: ", commit, "\n"
                 ]
-        in if null subdirs
-            then [base]
-            else (\d -> T.concat [base, "    subdir: ", d, "\n"]) <$> subdirs
+        in case sort subdirs of
+            [] -> [base]
+            xs -> [T.concat $ [base, "    subdir: "]
+                    ++ (("\n        " <>) <$> xs)
+                    ++ ["\n"]]
 
     -- Get the ghc options. This requires IO, because we have to figure out
     -- the local package names.
