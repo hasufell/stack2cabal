@@ -2,6 +2,7 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
+{-# LANGUAGE RecordWildCards #-}
 
 -- | A simplistic model of cabal multi-package files and convertors from Stackage.
 module StackageToHackage.Hackage
@@ -13,7 +14,7 @@ module StackageToHackage.Hackage
     )
 where
 
-import StackageToHackage.Stackage ( localDirs, unroll )
+import StackageToHackage.Stackage ( localDirs, unroll, mergeResolvers )
 import StackageToHackage.Stackage.Types
     ( Resolver(Resolver, compiler, deps, flags)
     , PkgId(unPkgId)
@@ -34,11 +35,10 @@ import Control.Exception (throwIO)
 import Control.Monad (forM, when, void)
 import Control.Monad.Catch (handleIOError)
 import Data.Hourglass (timePrint, ISO8601_DateAndTime(..), Elapsed)
-import Data.List (nub, sort)
-import Data.List.Extra (nubOrdOn)
+import Data.List (nub, sort, sortOn)
+import Data.List.Extra (nubOrd, nubOrdOn)
 import Data.List.NonEmpty (NonEmpty((:|)))
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
-import Data.Semigroup ( Semigroup(sconcat) )
 import Data.Text (Text)
 import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
 import Distribution.Pretty (prettyShow)
@@ -72,7 +72,7 @@ stackToCabal :: Bool     -- ^ whether to inspect remotes
              -> IO (Project, Freeze)
 stackToCabal inspectRemotes runHpack dir stack = do
     resolvers <- unroll dir stack
-    let resolver = sconcat resolvers
+    let resolver = foldr1 mergeResolvers resolvers
         project = genProject stack resolver
     localPkgs <-
         fmap catMaybes
@@ -184,7 +184,7 @@ genProject :: Stack -> Resolver -> Project
 genProject stack Resolver { compiler, deps } = Project
     (fromMaybe (Ghc "ghc") compiler)
     (localDirs stack `appendList` localDeps deps)
-    (nubOrdOn repo $ mapMaybe pickGit deps)
+    (sortOn repo $ nubOrd $ mapMaybe pickGit deps)
     (ghcOptions stack)
   where
     pickGit :: Dep -> Maybe Git

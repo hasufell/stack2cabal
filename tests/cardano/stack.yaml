@@ -1,0 +1,50 @@
+resolver: https://raw.githubusercontent.com/input-output-hk/cardano-haskell/da70d67ff662b85e72e1f203defbf5e3028d03cd/snapshots/cardano-1.19.1.yaml
+compiler: ghc-8.6.5
+
+#allow-newer: true
+
+# User packages to be built.
+# Various formats can be used as shown in the example below.
+#
+# packages:
+# - some-directory
+# - https://example.com/foo/bar/baz-0.0.2.tar.gz
+#   subdirs:
+#   - auto-update
+#   - wai
+packages:
+- .
+
+flags:
+  # Bundle VRF crypto in libsodium and do not rely on an external fork to have it.
+  # This still requires the host system to have the 'standard' libsodium installed.
+  cardano-crypto-praos:
+    external-libsodium-vrf: false
+
+extra-deps:
+  - persistent-2.10.5.1
+  - persistent-postgresql-2.10.1.2
+  - persistent-template-2.8.2.3
+
+  # This is something extra we need.
+  - git: https://github.com/input-output-hk/ouroboros-network
+    commit: f0eb6e439e7c0121476ded5e88d2f638e8aa36ac
+    subdirs:
+    - cardano-client
+
+  - git: https://github.com/input-output-hk/cardano-db-sync
+    commit: 9f95fb8bd63c2ce4ff973b7cd11dbada69e86597
+    subdirs:
+      - cardano-db
+      - cardano-db-sync
+      - cardano-db-sync-extended
+
+  - git: https://github.com/input-output-hk/cardano-node
+    commit: 4814003f14340d5a1fc02f3ac15437387a7ada9f
+    subdirs:
+      - cardano-config
+      - cardano-api
+      - cardano-node
+
+nix:
+  shell-file: nix/stack-shell.nix

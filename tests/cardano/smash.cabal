@@ -1,0 +1,5 @@
+cabal-version: 1.12
+name:           smash
+version:        0.0.0
+build-type:     Simple
+

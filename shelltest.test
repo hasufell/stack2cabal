@@ -11,3 +11,5 @@ $$$ stack2cabal -f tests/snapshot/stack.yaml && git diff tests/snapshot
 >>>2 //
 $$$ stack2cabal -f tests/stackage/stack.yaml && git diff tests/stackage
 >>>2 //
+$$$ stack2cabal -f tests/cardano/stack.yaml --no-inspect-remotes && git diff tests/stackage
+>>>2 //

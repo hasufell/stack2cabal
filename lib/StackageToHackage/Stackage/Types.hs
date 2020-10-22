@@ -1,10 +1,10 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE RecordWildCards #-}
 
 module StackageToHackage.Stackage.Types where
 
-import Control.Applicative ((<|>))
 import Data.List.NonEmpty (NonEmpty(..))
 import Data.Map.Strict (Map)
 import Data.Semigroup
@@ -36,7 +36,7 @@ data Git = Git
   { repo    :: Repo
   , commit  :: Commit
   , subdirs :: [Subdir]
-  } deriving (Show)
+  } deriving (Show, Eq, Ord)
 
 
 type Repo = Text
@@ -55,7 +55,7 @@ data Dep = Hackage PkgId
 
 newtype Flags = Flags (Map PkgName (Map FlagName Bool))
               deriving (Show)
-              deriving newtype (Semigroup)
+              deriving newtype (Semigroup, Monoid)
 
 
 newtype PackageGhcOpts = PackageGhcOpts (Map PkgId GhcFlags)
@@ -102,9 +102,6 @@ data Resolver = Resolver
   , flags    :: Flags
   } deriving (Show)
 
-instance Semigroup Resolver where
-    (Resolver r c p f) <> (Resolver r' c' p' f') =
-        Resolver (r <|> r') (c <|> c') (p <> p') (f <> f')
 
 -- TODO: remote ResolverRefs
 data ResolverRef = Canned Text
