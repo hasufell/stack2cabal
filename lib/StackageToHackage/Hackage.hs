@@ -2,7 +2,6 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
-{-# LANGUAGE RecordWildCards #-}
 
 -- | A simplistic model of cabal multi-package files and convertors from Stackage.
 module StackageToHackage.Hackage
@@ -144,7 +143,7 @@ printProject pinGHC indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
                 ]
         in case sort subdirs of
             [] -> [base]
-            xs -> [T.concat $ [base, "    subdir: "]
+            xs -> [T.concat $ [base, "    subdir:"]
                     ++ (("\n        " <>) <$> xs)
                     ++ ["\n"]]
 

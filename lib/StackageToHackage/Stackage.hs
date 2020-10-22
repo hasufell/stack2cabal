@@ -1,7 +1,6 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE DisambiguateRecordFields #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
 
 -- | Duplicates a subset of the Stack ADT. It'd be nice if we could just re-use
 -- the actual ADT, but stack isn't available as a library that we can build from
