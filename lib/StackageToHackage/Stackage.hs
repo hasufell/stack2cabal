@@ -161,7 +161,9 @@ mergeResolvers (Resolver r c p f) (Resolver r' c' p' f') =
              -- on different commit need to delete subdirs from lower resolver
              | otherwise
              -> git
-                 : g { subdirs = subdirs g \\ subdirs git }
+                 -- > [0, 0, 0] \\ [0, 0]
+                 -- [0]
+                 : g { subdirs = nub (subdirs g) \\ nub (subdirs git) }
                  : delete g xs
             Nothing -> git : xs
 
