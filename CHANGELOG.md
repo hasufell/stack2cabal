@@ -1,5 +1,10 @@
 # Revision history for stack2cabal
 
+## 1.0.12 -- 2020-10-23
+
+- Use multiple subdirs per source-repository wrt #29
+- Merge git repos properly, wrt #30
+
 ## 1.0.11 -- 2020-10-05
 
 - Fix bug in `cabal.project.freeze` when git-package in extra-deps doesn't have a subdir
