@@ -1,7 +1,6 @@
-resolver: lts-16.15
+resolver: lts-17.3
 packages:
 - .
 
 extra-deps:
-  - lens-4.19.2@sha256:f0570ca0e4624d9daa57256f00f514e87be155401583fa1665faba47376c63a7,16053
   - regex-posix-clib-2.7@sha256:998fca06da3d719818f0691ef0b8b9b7375afeea228cb08bd9e2db53f96b0cd7,1232
