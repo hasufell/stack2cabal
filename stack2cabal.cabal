@@ -43,7 +43,7 @@ common deps
     , filepattern           ^>=0.1.2
     , fuzzy-dates           ^>=0.1.1.2
     , hourglass             ^>=0.2.12
-    , hpack                 <=0.34.2
+    , hpack                 <=0.34.3
     , HsYAML                ^>=0.2
     , http-client           ^>=0.6.4.1
     , http-client-tls       ^>=0.3.5.3
