@@ -19,7 +19,7 @@ jobs:
         run: |
           echo ${{ github.ref }}
           echo ${{ github.event_name }}
-          echo ::set-env name=GITHUB_REF::${GITHUB_REF}
+          echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_ENV
           echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
           echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
           echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
@@ -41,15 +41,15 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - if: github.event_name == 'pull_request'
-        run: echo ::set-env name=TAGS::hasufell/stack2cabal:${GITHUB_SHA}
+        run: echo "TAGS=hasufell/stack2cabal:${GITHUB_SHA}" >> $GITHUB_ENV
         shell: bash
 
       - if: github.event_name == 'push'
-        run: echo ::set-env name=TAGS::hasufell/stack2cabal:latest,hasufell/stack2cabal:${GITHUB_SHA}
+        run: echo "TAGS=hasufell/stack2cabal:latest,hasufell/stack2cabal:${GITHUB_SHA}" >> $GITHUB_ENV
         shell: bash
 
       - if: github.event_name == 'create' && startsWith(github.ref, 'refs/tags/v')
-        run: echo ::set-env name=TAGS::hasufell/stack2cabal:${{ steps.branch_name.outputs.SOURCE_TAG }}
+        run: echo "TAGS=hasufell/stack2cabal:${{ steps.branch_name.outputs.SOURCE_TAG }}" >> $GITHUB_ENV
         shell: bash
 
       - name: Build and push

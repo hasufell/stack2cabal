@@ -43,7 +43,7 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://downloads.haskell.org/~ghcup/0.1.11/x86_64-linux-ghcup-0.1.11 > /usr/bin/ghcup
           chmod +x /usr/bin/ghcup
-          echo "::add-path::$HOME/.ghcup/bin"
+          echo "$HOME/.ghcup/bin" $GITHUB_PATH
         shell: bash
 
       - name: Install GHC and cabal
@@ -65,7 +65,8 @@ jobs:
         shell: bash
 
       - name: Add ~/.local/bin to PATH
-        run: echo "::add-path::$HOME/.local/bin"
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+        shell: bash
 
       - name: Install shelltestrunner
         run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always shelltestrunner
@@ -91,7 +92,7 @@ jobs:
         run: cabal exec --offline --verbose=0 sh -- -c 'shelltest shelltest.test'
         shell: bash
 
-      - run: echo ::set-env name=HOME::$HOME
+      - run: echo "HOME=$HOME" >> $GITHUB_ENV
         shell: bash
 
       - name: Upload Release Asset (binaries)
@@ -144,7 +145,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - uses: actions/setup-haskell@v1.1.2
+      - uses: haskell/actions/setup@v1.2
         with:
           ghc-version: 8.8.4
           cabal-version: 3.2.0.0
@@ -154,7 +155,8 @@ jobs:
         shell: bash
 
       - name: Add ~/.local/bin to PATH
-        run: echo "::add-path::$HOME/.local/bin"
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+        shell: bash
 
       - name: Update cabal cache
         run: cabal update
@@ -193,15 +195,15 @@ jobs:
         run: cabal exec --offline --verbose=0 sh -- -c 'shelltest shelltest.test'
         shell: bash
 
-      - run: echo ::set-env name=HOME::$HOME
+      - run: echo "HOME=$HOME" >> $GITHUB_ENV
         shell: bash
 
       - if: matrix.os != 'windows-latest'
-        run: echo ::set-env name=ASSET_PATH::$HOME/.local/bin/stack2cabal
+        run: echo "ASSET_PATH=$HOME/.local/bin/stack2cabal" >> $GITHUB_ENV
         shell: bash
 
       - if: matrix.os == 'windows-latest'
-        run: echo ::set-env name=ASSET_PATH::C:\\Users\\runneradmin\\.local\\bin\\stack2cabal.exe
+        run: echo "ASSET_PATH=C:\\Users\\runneradmin\\.local\\bin\\stack2cabal.exe" >> $GITHUB_ENV
         shell: bash
 
       - name: Upload Release Asset
