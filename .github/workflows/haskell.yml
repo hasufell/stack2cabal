@@ -14,17 +14,17 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        ghc: ['8.6.5', '8.8.4', '8.10.2']
+        ghc: ['8.8.4', '8.10.4']
         cabal: ['3.2.0.0']
         exclude:
           # can't build zlib
           - os: windows-latest
-            ghc: '8.10.2'
+            ghc: '8.10.4'
             cabal: '3.2.0.0'
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-haskell@v1.1.2
+    - uses: haskell/actions/setup@v1.2
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
@@ -34,7 +34,8 @@ jobs:
       shell: bash
 
     - name: Add ~/.local/bin to PATH
-      run: echo "::add-path::$HOME/.local/bin"
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+      shell: bash
 
     - name: Cache
       uses: actions/cache@v1
@@ -98,14 +99,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-haskell@v1.1.2
+    - uses: haskell/actions/setup@v1.2
       with:
         enable-stack: true
         stack-no-global: true
         stack-version: ${{ matrix.stack }}
 
     - name: Add ~/.local/bin to PATH
-      run: echo "::add-path::$HOME/.local/bin"
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+      shell: bash
 
     - name: Cache
       uses: actions/cache@v1
