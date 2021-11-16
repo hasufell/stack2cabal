@@ -14,147 +14,28 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        ghc: ['8.8.4', '8.10.4']
-        cabal: ['3.2.0.0']
-        exclude:
-          # can't build zlib
-          - os: windows-latest
-            ghc: '8.10.4'
-            cabal: '3.2.0.0'
+        ghc: ['8.10.7']
+        cabal: ['3.4.0.0']
 
     steps:
     - uses: actions/checkout@v2
-    - uses: haskell/actions/setup@v1.2
+
+    - uses: haskell/actions/setup@v1.2.6
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
 
-    - name: create ~/.local/bin
-      run: mkdir -p "$HOME/.local/bin"
-      shell: bash
-
-    - name: Add ~/.local/bin to PATH
-      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-      shell: bash
-
-    - name: Cache
-      uses: actions/cache@v1
-      env:
-        cache-name: cache-cabal
-      with:
-        path: ~/.cabal
-        key: ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/cabal.project') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-build-
-          ${{ runner.os }}-${{ matrix.ghc }}-
-          ${{ runner.os }}-
-
-    - name: Update cabal index
-      run: cabal update
-      shell: bash
-
-    - name: Install shelltestrunner
-      run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always -f _regex-posix-clib shelltestrunner
-      shell: bash
-
-    - name: Install dependencies
-      run: cabal build --only-dependencies --enable-tests --enable-benchmarks
-      shell: bash
-
-    - name: Build
-      run: cabal build --enable-tests --enable-benchmarks all
-      shell: bash
-
-    - name: Install
-      run: cabal install --installdir="$HOME/.local/bin" --install-method=copy --overwrite-policy=always
-      shell: bash
-
-    - name: Run tests
-      run: cabal test all
-      shell: bash
-
-    - name: Build haddock
-      run: cabal haddock lib:stack2cabal
-      shell: bash
-
-    - name: Run shelltest tests
-      run: cabal exec --offline --verbose=0 sh -- -c 'shelltest shelltest.test'
-      shell: bash
-
-    - if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: plan.json
-        path: ./dist-newstyle/cache/plan.json
-
-  build-stack:
-    name: Stack ${{ matrix.stack }} ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
-        stack: ['latest']
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: haskell/actions/setup@v1.2
-      with:
-        enable-stack: true
-        stack-no-global: true
-        stack-version: ${{ matrix.stack }}
-
-    - name: Add ~/.local/bin to PATH
-      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-      shell: bash
-
-    - name: Cache
-      uses: actions/cache@v1
-      env:
-        cache-name: stack-cabal
-      with:
-        path: ~/.stack
-        key: ${{ runner.os }}-${{ matrix.stack }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cabal') }}-${{ hashFiles('**/stack.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
-
-    - name: Install shelltestrunner
-      run: stack --local-bin-path=$HOME/.local/bin install --flag regex-posix:_regex-posix-clib shelltestrunner
-      shell: bash
-
-    - name: Install dependencies
-      run: |
-        stack install --dependencies-only --flag zlib:bundled-c-zlib
-      shell: bash
-
-    - name: Build
-      run: stack build --flag zlib:bundled-c-zlib
-      shell: bash
-
-    - name: Install
-      run: stack install --flag zlib:bundled-c-zlib
-      shell: bash
-
-    - if: matrix.os == 'ubuntu-latest'
-      name: Install git
-      run: sudo apt-get install git
-
-    - if: matrix.os == 'macOS-latest'
-      name: Install git
-      run: brew install git
-
     - if: matrix.os == 'windows-latest'
-      name: Install git
-      run: choco install git
+      name: Windows
+      run: |
+        ls 'C:\\ghcup\\bin'
+        ls 'C:\Users\runneradmin\AppData\Roaming\cabal\config'
+        cabal user-config diff
+        echo $env:GHCUP_MSYS2
+        echo $env:PATH
+        echo $env:GHCUP_INSTALL_BASE_PREFIX
+        echo "lol"
 
-    - name: Run tests
-      run: stack test
-      shell: bash
 
-    - name: Run shelltest tests
-      run: stack exec sh -- -c 'shelltest shelltest.test'
-      shell: bash
+
 
