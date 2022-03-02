@@ -73,9 +73,10 @@ instance FromYAML GhcOptions where
 
 instance FromYAML Git where
   parseYAML = withMap "Git" $ \m -> Git
-      <$> m .: "git"
+      <$> (m .: "git" <|> github m)
       <*> m .: "commit"
       <*> m .:? "subdirs" .!= []
+    where github m = ("git@github.com:" <>) <$> (m .: "github")
 
 instance FromYAML ResolverRef where
   parseYAML = withStr "ResolverRef" $ \s ->
