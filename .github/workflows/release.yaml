@@ -41,16 +41,15 @@ jobs:
 
       - name: Install ghcup
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://downloads.haskell.org/~ghcup/0.1.11/x86_64-linux-ghcup-0.1.11 > /usr/bin/ghcup
+          curl --proto '=https' --tlsv1.2 -sSf https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup > /usr/bin/ghcup
           chmod +x /usr/bin/ghcup
           echo "$HOME/.ghcup/bin" $GITHUB_PATH
         shell: bash
 
       - name: Install GHC and cabal
         run: |
-          ghcup install ghc 8.8.4
-          ghcup set ghc 8.8.4
-          ghcup install cabal 3.2.0.0
+          ghcup install ghc   --force -i /usr/local     8.10.7
+          ghcup install cabal --force -i /usr/local/bin 3.6.2.0
         shell: bash
 
       - name: Update cabal cache
@@ -147,8 +146,8 @@ jobs:
 
       - uses: haskell/actions/setup@v1.2
         with:
-          ghc-version: 8.8.4
-          cabal-version: 3.2.0.0
+          ghc-version: 8.10.7
+          cabal-version: 3.6.2.0
 
       - name: create ~/.local/bin
         run: mkdir -p "$HOME/.local/bin"
@@ -157,6 +156,15 @@ jobs:
       - name: Add ~/.local/bin to PATH
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
         shell: bash
+        if: matrix.os != 'windows-latest'
+
+      - name: Add ~/.local/bin to PATH
+        run: echo "C:\\Users\\runneradmin\\.local\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        if: matrix.os == 'windows-latest'
+
+      - name: debug
+        run: |
+          echo $Env:Path
 
       - name: Update cabal cache
         run: cabal update
