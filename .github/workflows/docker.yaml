@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - if: github.event_name == 'pull_request'
+      - if: github.event_name == 'pull_request' || github.event_name == 'branches'
         run: echo "TAGS=hasufell/stack2cabal:${GITHUB_SHA}" >> $GITHUB_ENV
         shell: bash
 
