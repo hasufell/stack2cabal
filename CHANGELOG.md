@@ -1,5 +1,9 @@
 # Revision history for stack2cabal
 
+## 1.0.13 -- 2022-03-06
+
+- Support github field in extra-deps wrt [#39](https://github.com/hasufell/stack2cabal/pull/39), by Fumiaki Kinoshita
+
 ## 1.0.12 -- 2020-10-23
 
 - Use multiple subdirs per source-repository wrt #29
