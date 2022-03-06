@@ -6,7 +6,7 @@ packages:
 
 # a couple of local overrides, just for fun
 - location:
-    git: 'https://github.com/TaktInc/freer.git'
+    github: TaktInc/freer
     commit: b1e4911832ad12ef0b9b23883548dcf44ea3bd59
   extra-dep: true
 
@@ -30,7 +30,7 @@ extra-deps:
   - lens-labels-0.3.0.1
   - proto-lens-0.4.0.1
   - proto-lens-runtime-0.4.0.2
-  
+
 # https://docs.haskellstack.org/en/stable/yaml_configuration/#ghc-options
 # to enable optimisations for all deps, use $everything
 ghc-options:

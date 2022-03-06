@@ -10,7 +10,7 @@ author:             Tseen She
 maintainer:         Julian Ospald
 copyright:          2018 Tseen She, 2020 Julian Ospald
 bug-reports:        https://github.com/hasufell/stack2cabal/issues
-tested-with:        GHC ^>=8.8.4 || ^>=8.10.4
+tested-with:        GHC ^>=8.8.4 || ^>=8.10.7
 category:           Building
 description:
   Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
@@ -43,7 +43,7 @@ common deps
     , filepattern           ^>=0.1.2
     , fuzzy-dates           ^>=0.1.1.2
     , hourglass             ^>=0.2.12
-    , hpack                 <=0.34.5
+    , hpack                 ==0.34.5
     , HsYAML                ^>=0.2
     , http-client           ^>=0.6.4.1
     , http-client-tls       ^>=0.3.5.3
