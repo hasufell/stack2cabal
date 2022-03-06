@@ -1,13 +1,14 @@
 FROM alpine:3.12 as builder
 
+ARG GHC=8.10.7
+
 # install ghc and stack
 RUN \
   apk add --no-cache git curl gcc g++ gmp-dev ncurses-dev libffi-dev make xz tar perl && \
   apk add --no-cache zlib zlib-dev zlib-static ncurses-static && \
   curl https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup > /usr/bin/ghcup && \
   chmod +x /usr/bin/ghcup && \
-  ghcup -v install ghc 8.8.4 && \
-  ghcup -v set ghc 8.8.4 && \
+  ghcup -v install ghc --set ${GHC} && \
   ghcup -v install cabal
 
 COPY . /app
