@@ -76,7 +76,7 @@ instance FromYAML Git where
       <$> (m .: "git" <|> github m)
       <*> m .: "commit"
       <*> m .:? "subdirs" .!= []
-    where github m = ("git@github.com:" <>) <$> (m .: "github")
+    where github m = (\x -> "https://github.com/" <> x <> ".git") <$> (m .: "github")
 
 instance FromYAML ResolverRef where
   parseYAML = withStr "ResolverRef" $ \s ->
