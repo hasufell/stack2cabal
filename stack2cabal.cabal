@@ -10,7 +10,7 @@ author:             Tseen She
 maintainer:         Julian Ospald
 copyright:          2018 Tseen She, 2020 Julian Ospald
 bug-reports:        https://github.com/hasufell/stack2cabal/issues
-tested-with:        GHC ^>=8.8.4 || ^>=8.10.4
+tested-with:        GHC ^>=8.8.4 || ^>=8.10.7
 category:           Building
 description:
   Convert @stack.yaml@ \/ @package.yaml@ to @cabal.project@ \/ @cabal.project.freeze@\/ @*.cabal@.
