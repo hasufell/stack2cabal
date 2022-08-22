@@ -34,8 +34,8 @@ import Control.Exception (throwIO)
 import Control.Monad (forM, when, void)
 import Control.Monad.Catch (handleIOError)
 import Data.Hourglass (timePrint, ISO8601_DateAndTime(..), Elapsed)
-import Data.List (nub, sort, sortOn)
-import Data.List.Extra (nubOrd, nubOrdOn)
+import Data.List (nub, sort, sortOn, isSuffixOf, isPrefixOf)
+import Data.List.Extra (nubOrd, nubOrdOn, lower, dropPrefix, dropSuffix)
 import Data.List.NonEmpty (NonEmpty((:|)))
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
 import Data.Text (Text)
@@ -86,6 +86,23 @@ stackToCabal inspectRemotes runHpack dir stack = do
     let freeze = genFreeze resolver ignore
     pure (project, freeze)
 
+-- | Extracts username/repo from an all lowercase repository string.
+--
+-- >>> trimUserRepo "git@github.com:hasufell/stack2cabal.git"
+-- "hasufell/stack2cabal"
+--
+-- >>> trimUserRepo "https://github.com/hasufell/stack2cabal.git"
+-- "hasufell/stack2cabal"
+trimUserRepo :: String -> String
+trimUserRepo s
+    | "git@" `isPrefixOf` s = trimUserRepo $ dropPrefix "git@" s
+    | "https://" `isPrefixOf` s = trimUserRepo $ dropPrefix "https://" s
+    | "github.com" `isPrefixOf` s = trimUserRepo $ dropPrefix "github.com" s
+    | "gitlab.com" `isPrefixOf` s = trimUserRepo $ dropPrefix "gitlab.com" s
+    | "/" `isPrefixOf` s = trimUserRepo $ dropPrefix "/" s
+    | ":" `isPrefixOf` s = trimUserRepo $ dropPrefix ":" s
+    | ".git" `isSuffixOf` s = trimUserRepo $ dropSuffix ".git" s
+    | otherwise = s
 
 printProject :: Bool           -- ^ whether to pin GHC
              -> Maybe Elapsed  -- ^ hackage index date to pin
@@ -104,6 +121,11 @@ printProject pinGHC indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
         <> ghcOpts'
         <> verbatim hack
   where
+    userRepo :: Git -> String
+    userRepo Git{repo} = trimUserRepo . lower $ T.unpack repo
+
+    repos = sortOn userRepo srcs
+
     withHackageIndex :: [Text]
     withHackageIndex
         | (Just utc) <- indexDate = ["index-state: ", printUTC utc, "\n\n"]
@@ -133,7 +155,7 @@ printProject pinGHC indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
         hasTrailingPathSeparator' x = last x == '/'
 
     sources :: Text
-    sources = T.intercalate "\n" (source =<< srcs)
+    sources = T.intercalate "\n" (source =<< repos)
 
     source :: Git -> [Text]
     source Git { repo, commit, subdirs } =
