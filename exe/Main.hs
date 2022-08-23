@@ -6,7 +6,10 @@
 
 module Main where
 
-import StackageToHackage.Hackage (printFreeze, printProject, stackToCabal)
+import StackageToHackage.Hackage
+    ( InspectRemotes(..), PinGhc(..), SortRepos(..), RunHpack(..)
+    , printFreeze, printProject, stackToCabal
+    )
 import StackageToHackage.Hpack (hpackInput, execHpack)
 import StackageToHackage.Stackage (localDirs, readStack)
 
@@ -41,6 +44,7 @@ data Opts = Opts
   , output :: Maybe FilePath
   , inspectRemotes :: Bool
   , pinGHC :: Bool
+  , sortRepos :: Bool
   , runHpack :: Bool
   , hackageIndexDate :: Maybe String -- ^ fuzzy date string
   }
@@ -75,6 +79,9 @@ optsP =
             )
         <*> (not <$> switch
                 (long "no-pin-ghc" <> help "Don't pin the GHC version")
+            )
+        <*> (not <$> switch
+                (long "no-sort-repos" <> help "Don't sort the source repositories")
             )
         <*> (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
         <*> optional
@@ -113,10 +120,10 @@ main = do
                 throwIO $ userError ("Warning: failed to convert hackage index state date \""
                     <> d <> "\"")
             _ -> pure ()
-        (project, freeze) <- stackToCabal inspectRemotes runHpack inDir stack
+        (project, freeze) <- stackToCabal (InspectRemotes inspectRemotes) (RunHpack runHpack) inDir stack
         hack <- extractHack . decodeUtf8 <$> BS.readFile
             (inDir </> "stack.yaml")
-        printText <- printProject pinGHC dt project hack
+        printText <- printProject (PinGhc pinGHC) (SortRepos sortRepos) dt project hack
 
         -- write files
         outFile <- case output of
