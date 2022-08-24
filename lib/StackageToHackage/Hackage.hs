@@ -7,10 +7,6 @@
 module StackageToHackage.Hackage
     ( Freeze(..)
     , Project(..)
-    , InspectRemotes(..)
-    , RunHpack(..)
-    , PinGhc(..)
-    , SortRepos(..)
     , printFreeze
     , printProject
     , stackToCabal
@@ -41,7 +37,6 @@ import Data.Hourglass (timePrint, ISO8601_DateAndTime(..), Elapsed)
 import Data.List (nub, sort, sortOn, isSuffixOf, isPrefixOf)
 import Data.List.Extra (nubOrd, nubOrdOn, lower, dropPrefix, dropSuffix)
 import Data.List.NonEmpty (NonEmpty((:|)))
-import Data.Coerce (coerce)
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
 import Data.Text (Text)
 import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
@@ -66,19 +61,10 @@ import qualified Data.Map.Strict as M
 import qualified Data.Text as T
 import System.Directory (doesFileExist)
 
- -- | Whether to inspect remotes.
-newtype InspectRemotes = InspectRemotes Bool
--- | Whether to run hpack.
-newtype RunHpack = RunHpack Bool
--- | whether to pin GHC.
-newtype PinGhc = PinGhc Bool
--- | Whether to sort source-repository-package items.
-newtype SortRepos = SortRepos Bool
-
 -- | Converts a stack.yaml (and list of local packages) to cabal.project and
 -- cabal.project.freeze.
-stackToCabal :: InspectRemotes
-             -> RunHpack
+stackToCabal :: Bool -- ^ Whether to inspect remotes.
+             -> Bool -- ^ Whether to run hpack.
              -> FilePath
              -> Stack
              -> IO (Project, Freeze)
@@ -92,8 +78,8 @@ stackToCabal inspectRemotes runHpack dir stack = do
         . NEL.toList
         . pkgs
         $ project
-    remotePkgs <- if coerce inspectRemotes
-        then getRemotePkgs (srcs project) (coerce runHpack)
+    remotePkgs <- if inspectRemotes
+        then getRemotePkgs (srcs project) runHpack
         else pure []
     let ignore = sort . nub . fmap pkgName $ (localPkgs ++ remotePkgs)
     let freeze = genFreeze resolver ignore
@@ -117,8 +103,8 @@ trimUserRepo s
     | ".git" `isSuffixOf` s = trimUserRepo $ dropSuffix ".git" s
     | otherwise = s
 
-printProject :: PinGhc
-             -> SortRepos
+printProject :: Bool -- ^ Whether to pin GHC.
+             -> Bool -- ^ Whether to sort source-repository-package items.
              -> Maybe Elapsed  -- ^ hackage index date to pin
              -> Project
              -> Maybe Text
@@ -139,7 +125,7 @@ printProject pinGHC sortRepos indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) ha
     userRepo :: Git -> String
     userRepo Git{repo} = trimUserRepo . lower $ T.unpack repo
 
-    repos = if coerce sortRepos then sortOn userRepo srcs else srcs
+    repos = if sortRepos then sortOn userRepo srcs else srcs
 
     withHackageIndex :: [Text]
     withHackageIndex
@@ -151,7 +137,7 @@ printProject pinGHC sortRepos indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) ha
 
     withCompiler :: [Text]
     withCompiler
-        | coerce pinGHC = ["with-compiler: ", ghc, "\n\n"]
+        | pinGHC = ["with-compiler: ", ghc, "\n\n"]
         | otherwise = []
 
     verbatim :: Maybe Text -> [Text]

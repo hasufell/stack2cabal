@@ -6,10 +6,7 @@
 
 module Main where
 
-import StackageToHackage.Hackage
-    ( InspectRemotes(..), PinGhc(..), SortRepos(..), RunHpack(..)
-    , printFreeze, printProject, stackToCabal
-    )
+import StackageToHackage.Hackage (printFreeze, printProject, stackToCabal)
 import StackageToHackage.Hpack (hpackInput, execHpack)
 import StackageToHackage.Stackage (localDirs, readStack)
 
@@ -18,7 +15,6 @@ import Control.Monad (filterM, when)
 import Data.Dates.Parsing (parseDateTime, defaultConfigIO)
 import Data.Foldable (traverse_)
 import Data.Hourglass (timeConvert, Elapsed)
-import Data.Coerce (coerce)
 import Data.Maybe (mapMaybe)
 import Data.Text (Text)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
@@ -43,10 +39,10 @@ version = "unknown"
 data Opts = Opts
   { input :: FilePath
   , output :: Maybe FilePath
-  , inspectRemotes :: InspectRemotes
-  , pinGHC :: PinGhc
-  , sortRepos :: SortRepos
-  , runHpack :: RunHpack
+  , inspectRemotes :: Bool
+  , pinGHC :: Bool
+  , sortRepos :: Bool
+  , runHpack :: Bool
   , hackageIndexDate :: Maybe String -- ^ fuzzy date string
   }
 
@@ -72,19 +68,19 @@ optsP =
                     <> showDefaultWith show
                     )
                 )
-        <*> (InspectRemotes . not <$> switch
+        <*> (not <$> switch
                 (long "no-inspect-remotes"
                 <> help
                        "Don't check package names from remote git sources (this is faster, but may leave incorrect versions in cabal.project.freeze if remote packages overwrite stack resolver versions)"
                 )
             )
-        <*> (PinGhc . not <$> switch
+        <*> (not <$> switch
                 (long "no-pin-ghc" <> help "Don't pin the GHC version")
             )
-        <*> (SortRepos . not <$> switch
+        <*> (not <$> switch
                 (long "no-sort-repos" <> help "Don't sort the source repositories")
             )
-        <*> (RunHpack . not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
+        <*> (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
         <*> optional
                 (strOption
                     (short 'p'
@@ -105,7 +101,7 @@ main = do
         stack <- readStack =<< BS.readFile input
 
         let subs = NEL.toList $ (inDir </>) <$> localDirs stack
-        when (coerce runHpack) $ do
+        when runHpack $ do
             hpacks <-
                 filterM (doesFileExist . hpackInput) subs
             traverse_ execHpack hpacks
