@@ -63,8 +63,8 @@ import System.Directory (doesFileExist)
 
 -- | Converts a stack.yaml (and list of local packages) to cabal.project and
 -- cabal.project.freeze.
-stackToCabal :: Bool -- ^ Whether to inspect remotes.
-             -> Bool -- ^ Whether to run hpack.
+stackToCabal :: Bool     -- ^ whether to inspect remotes
+             -> Bool     -- ^ whether to run hpack
              -> FilePath
              -> Stack
              -> IO (Project, Freeze)
@@ -103,8 +103,8 @@ trimUserRepo s
     | ".git" `isSuffixOf` s = trimUserRepo $ dropSuffix ".git" s
     | otherwise = s
 
-printProject :: Bool -- ^ Whether to pin GHC.
-             -> Bool -- ^ Whether to sort source-repository-package items.
+printProject :: Bool           -- ^ whether to pin GHC
+             -> Bool           -- ^ whether to sort source-repository-package items
              -> Maybe Elapsed  -- ^ hackage index date to pin
              -> Project
              -> Maybe Text
