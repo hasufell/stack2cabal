@@ -7,7 +7,9 @@ $$$ stack2cabal -f tests/self/stack.yaml && git diff tests/self
 >>>2 //
 $$$ stack2cabal -f tests/simplest/stack.yaml && git diff tests/simplest
 >>>2 //
-$$$ stack2cabal -f tests/snapshot/stack.yaml && git diff tests/snapshot
+$$$ stack2cabal --no-sort-repos -f tests/snapshot/stack.yaml -o tests/snapshot/cabal.unsorted.project && git diff tests/snapshot
+>>>2 //
+$$$ stack2cabal -f tests/snapshot/stack.yaml -o tests/snapshot/cabal.sorted.project && git diff tests/snapshot
 >>>2 //
 $$$ stack2cabal -f tests/stackage/stack.yaml && git diff tests/stackage
 >>>2 //
