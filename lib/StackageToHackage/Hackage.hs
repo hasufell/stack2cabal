@@ -41,6 +41,7 @@ import Data.Hourglass (timePrint, ISO8601_DateAndTime(..), Elapsed)
 import Data.List (nub, sort, sortOn, isSuffixOf, isPrefixOf)
 import Data.List.Extra (nubOrd, nubOrdOn, lower, dropPrefix, dropSuffix)
 import Data.List.NonEmpty (NonEmpty((:|)))
+import Data.Coerce (coerce)
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
 import Data.Text (Text)
 import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
@@ -81,7 +82,7 @@ stackToCabal :: InspectRemotes
              -> FilePath
              -> Stack
              -> IO (Project, Freeze)
-stackToCabal (InspectRemotes inspectRemotes) (RunHpack runHpack) dir stack = do
+stackToCabal inspectRemotes runHpack dir stack = do
     resolvers <- unroll dir stack
     let resolver = foldr1 mergeResolvers resolvers
         project = genProject stack resolver
@@ -91,8 +92,8 @@ stackToCabal (InspectRemotes inspectRemotes) (RunHpack runHpack) dir stack = do
         . NEL.toList
         . pkgs
         $ project
-    remotePkgs <- if inspectRemotes
-        then getRemotePkgs (srcs project) runHpack
+    remotePkgs <- if coerce inspectRemotes
+        then getRemotePkgs (srcs project) (coerce runHpack)
         else pure []
     let ignore = sort . nub . fmap pkgName $ (localPkgs ++ remotePkgs)
     let freeze = genFreeze resolver ignore
@@ -122,10 +123,7 @@ printProject :: PinGhc
              -> Project
              -> Maybe Text
              -> IO Text
-printProject
-    (PinGhc pinGHC)
-    (SortRepos sortRepos)
-    indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
+printProject pinGHC sortRepos indexDate (Project (Ghc ghc) pkgs srcs ghcOpts) hack = do
 
     ghcOpts' <- printGhcOpts ghcOpts
     pure $ T.concat
@@ -141,7 +139,7 @@ printProject
     userRepo :: Git -> String
     userRepo Git{repo} = trimUserRepo . lower $ T.unpack repo
 
-    repos = if sortRepos then sortOn userRepo srcs else srcs
+    repos = if coerce sortRepos then sortOn userRepo srcs else srcs
 
     withHackageIndex :: [Text]
     withHackageIndex
@@ -153,7 +151,7 @@ printProject
 
     withCompiler :: [Text]
     withCompiler
-        | pinGHC = ["with-compiler: ", ghc, "\n\n"]
+        | coerce pinGHC = ["with-compiler: ", ghc, "\n\n"]
         | otherwise = []
 
     verbatim :: Maybe Text -> [Text]

@@ -18,6 +18,7 @@ import Control.Monad (filterM, when)
 import Data.Dates.Parsing (parseDateTime, defaultConfigIO)
 import Data.Foldable (traverse_)
 import Data.Hourglass (timeConvert, Elapsed)
+import Data.Coerce (coerce)
 import Data.Maybe (mapMaybe)
 import Data.Text (Text)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
@@ -42,10 +43,10 @@ version = "unknown"
 data Opts = Opts
   { input :: FilePath
   , output :: Maybe FilePath
-  , inspectRemotes :: Bool
-  , pinGHC :: Bool
-  , sortRepos :: Bool
-  , runHpack :: Bool
+  , inspectRemotes :: InspectRemotes
+  , pinGHC :: PinGhc
+  , sortRepos :: SortRepos
+  , runHpack :: RunHpack
   , hackageIndexDate :: Maybe String -- ^ fuzzy date string
   }
 
@@ -71,19 +72,19 @@ optsP =
                     <> showDefaultWith show
                     )
                 )
-        <*> (not <$> switch
+        <*> (InspectRemotes . not <$> switch
                 (long "no-inspect-remotes"
                 <> help
                        "Don't check package names from remote git sources (this is faster, but may leave incorrect versions in cabal.project.freeze if remote packages overwrite stack resolver versions)"
                 )
             )
-        <*> (not <$> switch
+        <*> (PinGhc . not <$> switch
                 (long "no-pin-ghc" <> help "Don't pin the GHC version")
             )
-        <*> (not <$> switch
+        <*> (SortRepos . not <$> switch
                 (long "no-sort-repos" <> help "Don't sort the source repositories")
             )
-        <*> (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
+        <*> (RunHpack . not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
         <*> optional
                 (strOption
                     (short 'p'
@@ -104,7 +105,7 @@ main = do
         stack <- readStack =<< BS.readFile input
 
         let subs = NEL.toList $ (inDir </>) <$> localDirs stack
-        when runHpack $ do
+        when (coerce runHpack) $ do
             hpacks <-
                 filterM (doesFileExist . hpackInput) subs
             traverse_ execHpack hpacks
@@ -120,10 +121,10 @@ main = do
                 throwIO $ userError ("Warning: failed to convert hackage index state date \""
                     <> d <> "\"")
             _ -> pure ()
-        (project, freeze) <- stackToCabal (InspectRemotes inspectRemotes) (RunHpack runHpack) inDir stack
+        (project, freeze) <- stackToCabal inspectRemotes runHpack inDir stack
         hack <- extractHack . decodeUtf8 <$> BS.readFile
             (inDir </> "stack.yaml")
-        printText <- printProject (PinGhc pinGHC) (SortRepos sortRepos) dt project hack
+        printText <- printProject pinGHC sortRepos dt project hack
 
         -- write files
         outFile <- case output of
