@@ -1,6 +1,6 @@
 cabal-version:      2.2
 name:               stack2cabal
-version:            1.0.13
+version:            1.0.14
 synopsis:
   Convert stack projects to cabal.project + cabal.project.freeze
 
