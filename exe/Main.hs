@@ -41,6 +41,7 @@ data Opts = Opts
   , output :: Maybe FilePath
   , inspectRemotes :: Bool
   , pinGHC :: Bool
+  , sortRepos :: Bool
   , runHpack :: Bool
   , hackageIndexDate :: Maybe String -- ^ fuzzy date string
   }
@@ -75,6 +76,9 @@ optsP =
             )
         <*> (not <$> switch
                 (long "no-pin-ghc" <> help "Don't pin the GHC version")
+            )
+        <*> (not <$> switch
+                (long "no-sort-repos" <> help "Don't sort the source repositories")
             )
         <*> (not <$> switch (long "no-run-hpack" <> help "Don't run hpack"))
         <*> optional
@@ -116,7 +120,7 @@ main = do
         (project, freeze) <- stackToCabal inspectRemotes runHpack inDir stack
         hack <- extractHack . decodeUtf8 <$> BS.readFile
             (inDir </> "stack.yaml")
-        printText <- printProject pinGHC dt project hack
+        printText <- printProject pinGHC sortRepos dt project hack
 
         -- write files
         outFile <- case output of
