@@ -12,6 +12,7 @@
             final.haskell-nix.project' {
               src = ./.;
               compiler-nix-name = "ghc8107";
+              projectFileName = "cabal.project";
               # This is used by `nix develop .` to open a shell for use with
               # `cabal`, `hlint` and `haskell-language-server`
               shell.tools = {
