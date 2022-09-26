@@ -12,3 +12,6 @@ dist-newstyle/
 # stack
 .stack-work/
 stack.yaml.lock
+
+# nix
+result*
