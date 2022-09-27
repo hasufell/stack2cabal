@@ -118,8 +118,9 @@ main = do
                     <> d <> "\"")
             _ -> pure ()
         (project, freeze) <- stackToCabal inspectRemotes runHpack inDir stack
-        hack <- extractHack . decodeUtf8 <$> BS.readFile
-            (inDir </> "stack.yaml")
+
+        inFile <- makeAbsolute input
+        hack <- extractHack . decodeUtf8 <$> BS.readFile inFile
         printText <- printProject pinGHC sortRepos dt project hack
 
         -- write files
