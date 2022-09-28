@@ -34,7 +34,7 @@ common deps
   build-depends:
     , base                  >=4.13     && <5.0
     , bytestring
-    , Cabal                 >=3.0
+    , Cabal                 >=3.0      && <3.8
     , containers
     , directory
     , exceptions            ^>=0.10.4
