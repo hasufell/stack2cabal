@@ -1,6 +1,5 @@
-resolver: lts-18.16
+resolver: lts-18.28
 packages:
 - .
-
 extra-deps:
-  - regex-posix-clib-2.7@sha256:998fca06da3d719818f0691ef0b8b9b7375afeea228cb08bd9e2db53f96b0cd7,1232
+- hpack-0.35.0@sha256:8cd6146fae269390f41dc7237ebd2c479074d4163806d349a41f5a7751d6cea5,4726
