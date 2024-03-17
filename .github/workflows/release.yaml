@@ -48,8 +48,8 @@ jobs:
 
       - name: Install GHC and cabal
         run: |
-          ghcup install ghc   --force -i /usr/local     8.10.7
-          ghcup install cabal --force -i /usr/local/bin 3.6.2.0
+          ghcup install ghc   --force -i /usr/local     9.6.4
+          ghcup install cabal --force -i /usr/local/bin 3.10.2.1
         shell: bash
 
       - name: Update cabal cache
