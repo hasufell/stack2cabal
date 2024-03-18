@@ -48,8 +48,8 @@ jobs:
 
       - name: Install GHC and cabal
         run: |
-          ghcup install ghc   --force -i /usr/local     8.10.7
-          ghcup install cabal --force -i /usr/local/bin 3.6.2.0
+          ghcup install ghc   --force -i /usr/local     9.6.4
+          ghcup install cabal --force -i /usr/local/bin 3.10.2.1
         shell: bash
 
       - name: Update cabal cache
@@ -144,7 +144,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - uses: haskell/actions/setup@v1.2
+      - uses: haskell-actions/setup@v2
         with:
           ghc-version: 8.10.7
           cabal-version: 3.6.2.0

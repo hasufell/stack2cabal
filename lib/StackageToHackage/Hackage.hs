@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -39,7 +40,11 @@ import Data.List.Extra (nubOrd, nubOrdOn, lower, dropPrefix, dropSuffix)
 import Data.List.NonEmpty (NonEmpty((:|)))
 import Data.Maybe (fromMaybe, mapMaybe, catMaybes)
 import Data.Text (Text)
+#if MIN_VERSION_Cabal(3, 8, 0)
+import Distribution.Simple.PackageDescription (readGenericPackageDescription)
+#else
 import Distribution.PackageDescription.Parsec (readGenericPackageDescription)
+#endif
 import Distribution.Pretty (prettyShow)
 import Distribution.Types.GenericPackageDescription
     (GenericPackageDescription(..))

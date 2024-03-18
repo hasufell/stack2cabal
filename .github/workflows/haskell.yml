@@ -14,17 +14,17 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        ghc: ['8.10.7']
-        cabal: ['3.6.2.0']
+        ghc: ['9.6']
+        cabal: ['3.10']
         exclude:
           # can't build zlib
           - os: windows-latest
-            ghc: '8.10.7'
-            cabal: '3.6.2.0'
+            ghc: '9.6'
+            cabal: '3.10'
 
     steps:
     - uses: actions/checkout@v2
-    - uses: haskell/actions/setup@v1.2
+    - uses: haskell-actions/setup@v2
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ matrix.cabal }}
@@ -99,7 +99,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: haskell/actions/setup@v1.2
+    - uses: haskell-actions/setup@v2
       with:
         enable-stack: true
         stack-no-global: true

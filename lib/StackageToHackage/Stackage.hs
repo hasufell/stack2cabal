@@ -141,8 +141,8 @@ mergeResolvers (Resolver r c p f) (Resolver r' c' p' f') =
     mergeDeps :: [Dep] -> [Dep] -> [Dep]
     mergeDeps lhs rhs =
         let nonGits = filter (not . isGitDep) lhs <> filter (not . isGitDep) rhs
-            gitsLhs = (\(SourceDep dep) -> dep) <$> filter isGitDep lhs
-            gitsRhs = (\(SourceDep dep) -> dep) <$> filter isGitDep rhs
+            gitsLhs = [dep | SourceDep dep <- lhs]
+            gitsRhs = [dep | SourceDep dep <- rhs]
             gitMerged = foldl' (\m key -> update key m) gitsRhs gitsLhs
         in (SourceDep <$> gitMerged) <> nonGits
 

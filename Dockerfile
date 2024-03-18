@@ -1,6 +1,6 @@
 FROM alpine:3.12 as builder
 
-ARG GHC=8.10.7
+ARG GHC=9.6.4
 
 # install ghc and stack
 RUN \
