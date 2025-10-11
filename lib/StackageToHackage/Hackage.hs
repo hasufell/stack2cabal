@@ -51,6 +51,9 @@ import Distribution.Types.GenericPackageDescription
 import Distribution.Types.PackageDescription (PackageDescription(..))
 import Distribution.Types.PackageId (PackageIdentifier(..))
 import Distribution.Types.PackageName (PackageName, unPackageName)
+#if MIN_VERSION_Cabal(3, 14, 0)
+import Distribution.Utils.Path (makeSymbolicPath)
+#endif
 import Distribution.Verbosity (silent)
 import Safe (headMay)
 import System.Exit (ExitCode(..))
@@ -333,7 +336,12 @@ getPackageIdent dir =
             cabalFile <- headMay <$> getDirectoryFiles dir ["*.cabal"]
             forM cabalFile $ \f ->
                 package . packageDescription
-                    <$> readGenericPackageDescription silent (dir </> f)
+                    <$> readGenericPackageDescription silent
+#if MIN_VERSION_Cabal(3, 14, 0)
+                            Nothing (makeSymbolicPath (dir </> f))
+#else
+                            (dir </> f)
+#endif
 
 
 -- | Get all remote VCS packages.
