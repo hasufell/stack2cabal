@@ -34,11 +34,11 @@ common deps
   build-depends:
     , base                  >=4.13     && <5.0
     , bytestring
-    , Cabal                 >=3.0      && <3.12
+    , Cabal                 >=3.0      && <3.14
     , containers
     , directory
     , exceptions            ^>=0.10.4
-    , extra                 ^>=1.7.8
+    , extra                 ^>=1.8.1
     , filepath
     , filepattern           ^>=0.1.2
     , fuzzy-dates           ^>=0.1.1.2

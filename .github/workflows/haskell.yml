@@ -8,19 +8,13 @@ on:
 
 jobs:
   build-cabal:
-
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        ghc: ['9.6']
-        cabal: ['3.10']
-        exclude:
-          # can't build zlib
-          - os: windows-latest
-            ghc: '9.6'
-            cabal: '3.10'
+        ghc: ['9.12']
+        cabal: ['3.12']
 
     steps:
     - uses: actions/checkout@v2
