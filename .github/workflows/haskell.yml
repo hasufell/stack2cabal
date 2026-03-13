@@ -32,7 +32,7 @@ jobs:
       shell: bash
 
     - name: Cache
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       env:
         cache-name: cache-cabal
       with:
@@ -104,7 +104,7 @@ jobs:
       shell: bash
 
     - name: Cache
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       env:
         cache-name: stack-cabal
       with:
