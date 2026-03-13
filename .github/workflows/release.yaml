@@ -126,7 +126,7 @@ jobs:
           asset_content_type: application/gzip
 
       - if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: plan.json
           path: ./dist-newstyle/cache/plan.json
@@ -226,7 +226,7 @@ jobs:
           asset_content_type: application/octet-stream
 
       - if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: plan.json
           path: ./dist-newstyle/cache/plan.json

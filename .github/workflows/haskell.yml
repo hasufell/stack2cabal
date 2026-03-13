@@ -77,9 +77,9 @@ jobs:
       shell: bash
 
     - if: always()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: plan.json
+        name: ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-plan.json
         path: ./dist-newstyle/cache/plan.json
 
   build-stack:
