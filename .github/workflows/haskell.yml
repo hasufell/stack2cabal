@@ -8,19 +8,13 @@ on:
 
 jobs:
   build-cabal:
-
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        ghc: ['9.6']
-        cabal: ['3.10']
-        exclude:
-          # can't build zlib
-          - os: windows-latest
-            ghc: '9.6'
-            cabal: '3.10'
+        ghc: ['9.12']
+        cabal: ['3.12']
 
     steps:
     - uses: actions/checkout@v2
@@ -38,7 +32,7 @@ jobs:
       shell: bash
 
     - name: Cache
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       env:
         cache-name: cache-cabal
       with:
@@ -83,9 +77,9 @@ jobs:
       shell: bash
 
     - if: always()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: plan.json
+        name: ${{ runner.os }}-${{ matrix.ghc }}-${{ matrix.cabal }}-plan.json
         path: ./dist-newstyle/cache/plan.json
 
   build-stack:
@@ -110,7 +104,7 @@ jobs:
       shell: bash
 
     - name: Cache
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       env:
         cache-name: stack-cabal
       with:
